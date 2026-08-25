@@ -16,7 +16,8 @@ const connectDB = async () => {
       bufferCommands: false,
     };
 
-    const uri = process.env.MONGO_URI || process.env.MONGODB_URI || process.env.STORAGE_URL;
+    const DEFAULT_URI = "mongodb+srv://javeriasher90_db_user:UAFForm%402026Secure@ugformcluster.qslkbuw.mongodb.net/UGFormDB?retryWrites=true&w=majority";
+    const uri = process.env.MONGO_URI || process.env.MONGODB_URI || process.env.STORAGE_URL || DEFAULT_URI;
     cached.promise = mongoose.connect(uri, opts).then((mongooseInstance) => {
       console.log("MongoDB Connected Successfully");
       return mongooseInstance;

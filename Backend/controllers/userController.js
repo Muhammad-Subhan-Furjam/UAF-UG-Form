@@ -124,7 +124,7 @@ const login = async (req, res) => {
     role: user.role,
     department_id: user.department_id || null,
   },
-  process.env.JWT_SECRET,
+  process.env.JWT_SECRET || "UAF_UG_FORM_SECRET_2026",
   { expiresIn: "7d" }
 );
 

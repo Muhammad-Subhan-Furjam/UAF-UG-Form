@@ -10,7 +10,8 @@ const authMiddleware = (req, res, next) => {
       });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const secret = process.env.JWT_SECRET || "UAF_UG_FORM_SECRET_2026";
+    const decoded = jwt.verify(token, secret);
 
     // id hamesha available rahe
     req.user = {
