@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "installCommand": "cd Backend && npm install && cd ../Frontend/ug-form && npm install",
   "buildCommand": "cd Frontend/ug-form && npm run build",
   "outputDirectory": "Frontend/ug-form/dist",
   "rewrites": [
