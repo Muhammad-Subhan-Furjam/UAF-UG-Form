@@ -9,5 +9,8 @@
     "build": "cd Frontend/ug-form && npm install && npm run build",
     "seed": "cd Backend && node seed.js",
     "start": "cd Backend && npm start"
+  },
+  "dependencies": {
+    "@vercel/functions": "^3.9.5"
   }
 }
