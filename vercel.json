@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "buildCommand": "cd Frontend/ug-form && npm run build",
+  "outputDirectory": "Frontend/ug-form/dist",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

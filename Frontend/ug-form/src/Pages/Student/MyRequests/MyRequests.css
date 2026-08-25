@@ -1,0 +1,330 @@
+/* =========================================
+   MY REQUESTS PAGE - BASE
+========================================= */
+
+.my-requests-page {
+  width: 100%;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #161616;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.requests-card {
+  width: 100%;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e1e5ea;
+  border-radius: 10px;
+
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.06);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.requests-title {
+  margin: 0;
+
+  color: #161616;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.requests-table-wrap {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #d7dce2;
+  border-radius: 9px;
+
+  background-color: #ffffff;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.requests-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.requests-table thead {
+  background-color: #f7f9fb;
+}
+
+.requests-table th {
+  color: #161616;
+
+  text-align: center;
+
+  font-weight: 700;
+
+  border-bottom: 1px solid #d7dce2;
+}
+
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.requests-table td {
+  color: #171717;
+
+  text-align: center;
+
+  font-weight: 600;
+
+  border-bottom: none;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
+
+  font-weight: 600;
+}
+
+.status-badge.pending {
+  background-color: #fff7e9;
+
+  color: #b47434;
+}
+
+
+/* =========================================
+   VIEW BUTTON
+========================================= */
+
+.view-btn {
+  border: none;
+
+  border-radius: 5px;
+
+  background-color: #edf3ff;
+
+  color: #5b80d5;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.view-btn:hover {
+  background-color: #dfe9ff;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   1) MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .requests-card {
+    padding: 18px 14px 22px;
+
+    border-radius: 8px;
+  }
+
+  .requests-title {
+    margin-bottom: 18px;
+
+    font-size: 18px;
+  }
+
+  .requests-table-wrap {
+    border-radius: 7px;
+  }
+
+  .requests-table {
+    min-width: 650px;
+  }
+
+  .requests-table th {
+    height: 55px;
+
+    padding: 10px 8px;
+
+    font-size: 13px;
+  }
+
+  .requests-table td {
+    height: 80px;
+
+    padding: 12px 8px;
+
+    font-size: 13px;
+  }
+
+  .status-badge {
+    min-width: 85px;
+    height: 38px;
+
+    padding: 0 10px;
+
+    font-size: 13px;
+  }
+
+  .view-btn {
+    width: 82px;
+    height: 38px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .requests-card {
+    padding: 22px 20px 28px;
+
+    border-radius: 9px;
+  }
+
+  .requests-title {
+    margin-bottom: 20px;
+
+    font-size: 19px;
+  }
+
+  .requests-table th {
+    height: 60px;
+
+    padding: 12px 8px;
+
+    font-size: 14px;
+  }
+
+  .requests-table td {
+    height: 90px;
+
+    padding: 14px 8px;
+
+    font-size: 14px;
+  }
+
+  .status-badge {
+    min-width: 92px;
+    height: 40px;
+
+    padding: 0 12px;
+
+    font-size: 14px;
+  }
+
+  .view-btn {
+    width: 90px;
+    height: 40px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP
+   1024px AND ABOVE
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .requests-card {
+    min-height: 475px;
+
+    padding: 28px 25px 35px;
+
+    border-radius: 10px;
+  }
+
+  .requests-title {
+    margin-bottom: 24px;
+
+    font-size: 18px;
+  }
+
+  .requests-table-wrap {
+    min-height: 365px;
+  }
+
+  .requests-table th {
+    height: 72px;
+
+    padding: 14px 10px;
+
+    font-size: 14px;
+  }
+
+  .requests-table td {
+    height: 92px;
+
+    padding: 16px 10px;
+
+    font-size: 14px;
+  }
+
+  .status-badge {
+    min-width: 95px;
+    height: 42px;
+
+    padding: 0 13px;
+
+    font-size: 14px;
+  }
+
+  .view-btn {
+    width: 92px;
+    height: 42px;
+
+    font-size: 14px;
+  }
+}

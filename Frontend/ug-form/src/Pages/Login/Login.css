@@ -1,0 +1,562 @@
+/* =========================================
+   LOGIN PAGE - BASE
+========================================= */
+
+.login-page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding-top: 65px;
+  padding-bottom: 65px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   MAIN LOGIN CARD
+========================================= */
+
+.login-card {
+  width: 607px;
+  min-height: 620px;
+
+  padding: 45px 53px 55px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  border-radius: 70px;
+
+  backdrop-filter: blur(1px);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.login-header {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.login-header h1 {
+  margin: 0;
+
+  color: #000000;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  line-height: 1.15;
+}
+
+.login-header p {
+  margin: 14px 0 0;
+
+  color: #000000;
+
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.login-logo {
+  width: 100px;
+  height: auto;
+
+  object-fit: contain;
+
+  margin-top: -6px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.login-form {
+  width: 100%;
+
+  margin-top: 42px;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+
+  color: #000000;
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-group input {
+  width: 100%;
+  height: 62px;
+
+  padding: 0 16px;
+
+  border: 1px solid #b7b7b7;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #000000;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 16px;
+
+  box-sizing: border-box;
+
+  transition: border-color 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: #b7b7b7;
+}
+
+.form-group input:focus {
+  border-color: #082f5b;
+}
+
+
+/* =========================================
+   PASSWORD
+========================================= */
+
+.password-group {
+  margin-bottom: 20px;
+}
+
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-password {
+  align-self: flex-end;
+
+  margin-top: 10px;
+
+  color: #062f5c;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   ROLE SECTION
+========================================= */
+
+.role-section {
+  width: 100%;
+
+  margin-top: 0;
+}
+
+.role-section h2 {
+  margin: 0 0 18px;
+
+  color: #000000;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.role-options {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  gap: 30px;
+}
+
+.role-option {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #000000;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.role-option input[type="radio"] {
+  width: 17px;
+  height: 17px;
+
+  margin: 0;
+
+  accent-color: #062f5c;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.login-btn {
+  width: 210px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 38px auto 0;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #062f5c;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.login-btn:hover {
+  background: #052748;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 18px rgba(6, 47, 92, 0.22);
+}
+
+
+/* =========================================
+   SIGNUP TEXT
+========================================= */
+
+.signup-text {
+  margin: 24px 0 0;
+
+  text-align: center;
+
+  color: #000000;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.signup-text a {
+  margin-left: 4px;
+
+  color: #062f5c;
+
+  font-weight: 700;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   1) MOBILE - 0px TO 768px
+========================================= */
+
+@media (max-width: 768px) {
+
+  .login-page {
+    min-height: 100vh;
+
+    padding: 25px 14px;
+
+    background-attachment: scroll;
+    background-position: center;
+  }
+
+  .login-card {
+    width: 100%;
+    min-height: auto;
+
+    padding: 30px 24px 40px;
+
+    border-radius: 35px;
+  }
+
+  .login-header {
+    gap: 15px;
+  }
+
+  .login-header h1 {
+    font-size: 25px;
+  }
+
+  .login-header p {
+    margin-top: 10px;
+
+    font-size: 15px;
+  }
+
+  .login-logo {
+    width: 80px;
+
+    margin-top: -3px;
+  }
+
+  .login-form {
+    margin-top: 32px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    margin-bottom: 8px;
+
+    font-size: 15px;
+  }
+
+  .form-group input {
+    height: 56px;
+
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+  }
+
+  .forgot-password {
+    margin-top: 9px;
+
+    font-size: 11px;
+  }
+
+  .role-section h2 {
+    margin-bottom: 15px;
+
+    font-size: 16px;
+  }
+
+  .role-options {
+    justify-content: space-between;
+
+    gap: 15px;
+  }
+
+  .role-option {
+    font-size: 14px;
+  }
+
+  .role-option input[type="radio"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .login-btn {
+    width: 180px;
+    height: 54px;
+
+    margin-top: 32px;
+
+    font-size: 16px;
+  }
+
+  .signup-text {
+    margin-top: 22px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================
+   2) TABLET - 769px TO 1023px
+========================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .login-page {
+    min-height: 100vh;
+
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  .login-card {
+    width: 570px;
+    min-height: 600px;
+
+    padding: 40px 48px 48px;
+
+    border-radius: 55px;
+  }
+
+  .login-header h1 {
+    font-size: 28px;
+  }
+
+  .login-header p {
+    margin-top: 12px;
+
+    font-size: 16px;
+  }
+
+  .login-logo {
+    width: 92px;
+  }
+
+  .login-form {
+    margin-top: 38px;
+  }
+
+  .form-group label {
+    font-size: 16px;
+  }
+
+  .form-group input {
+    height: 60px;
+
+    font-size: 16px;
+  }
+
+  .role-section h2 {
+    font-size: 17px;
+  }
+
+  .role-option {
+    font-size: 15px;
+  }
+
+  .login-btn {
+    width: 200px;
+    height: 56px;
+
+    margin-top: 35px;
+
+    font-size: 16px;
+  }
+
+  .signup-text {
+    margin-top: 23px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================
+   3) DESKTOP - 1024px AND ABOVE
+========================================= */
+
+@media (min-width: 1024px) {
+
+  .login-page {
+    min-height: 100vh;
+
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+
+  .login-card {
+    width: 607px;
+    min-height: 620px;
+
+    padding: 45px 53px 55px;
+
+    border-radius: 70px;
+  }
+
+  .login-header h1 {
+    font-size: 30px;
+  }
+
+  .login-header p {
+    font-size: 17px;
+  }
+
+  .login-logo {
+    width: 100px;
+  }
+
+  .form-group label {
+    font-size: 17px;
+  }
+
+  .form-group input {
+    height: 62px;
+
+    font-size: 16px;
+  }
+
+  .role-section h2 {
+    font-size: 18px;
+  }
+
+  .role-option {
+    font-size: 16px;
+  }
+
+  .login-btn {
+    width: 210px;
+    height: 58px;
+
+    font-size: 17px;
+  }
+}

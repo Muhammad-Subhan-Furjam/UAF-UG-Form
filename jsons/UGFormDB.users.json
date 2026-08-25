@@ -1,0 +1,229 @@
+[{
+  "_id": {
+    "$oid": "6a847bf0b3b5474079741164"
+  },
+  "name": "Ali Ahmed",
+  "email": "ali@gmail.com",
+  "password": "$2b$10$s3u1jEpAfWDz75F6mOMvieH/P4H5h2nfLvl5gJJ3U.cVQfyEn2Khe",
+  "role": "student",
+  "ag_number": "2026-CS-001",
+  "phone": "03001234567",
+  "campus_id": null,
+  "faculty_id": null,
+  "department_id": null,
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-18T15:36:16.529Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-18T15:36:16.529Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a847c28b3b5474079741165"
+  },
+  "name": "Dr Ahmed",
+  "email": "coordinator@uaf.edu.pk",
+  "password": "$2b$10$pi8SYob95/Diqw0fIaBda.HD9kvYubxjV361VnWUPBfzHSmNmXd8S",
+  "role": "coordinator",
+  "ag_number": "",
+  "phone": "",
+  "campus_id": null,
+  "faculty_id": null,
+  "department_id": null,
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-18T15:37:12.044Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-18T15:37:12.044Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a84bc0b3cd04faf7ae9d0db"
+  },
+  "name": "javii",
+  "email": "javi@gmail.com",
+  "password": "$2b$10$JWYYM6IIq3BmHqzbF8.JpOmet9Ax7Tlg9GV5dRqCK1QNYDPnzr0by",
+  "employee_id": "",
+  "role": "student",
+  "ag_number": "90",
+  "phone": "",
+  "campus_id": null,
+  "faculty_id": null,
+  "department_id": null,
+  "degree_id": null,
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-18T20:09:47.919Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-18T20:09:47.919Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a85ddf33e3ded4322373715"
+  },
+  "name": "javeria naz",
+  "email": "javeriasher90@gmail.com",
+  "password": "$2b$10$WDUJIQ6TYm7b7PlDw.SaBOS.cLRhFySFsbF0bAC0hMiNhlfz35SPm",
+  "employee_id": "",
+  "role": "student",
+  "ag_number": "061062",
+  "phone": "03107299820",
+  "fatherName": "sher muhammad",
+  "cnic": "3310208090605",
+  "admissionDate": {
+    "$date": "2024-11-19T00:00:00.000Z"
+  },
+  "campus_id": null,
+  "faculty_id": null,
+  "department_id": null,
+  "degree_id": null,
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-19T16:46:43.550Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-24T08:15:31.592Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a85dfdd3e3ded4322373716"
+  },
+  "name": "Ayesha",
+  "email": "ayeshi@gmail.com",
+  "password": "$2b$10$i7Bt/j2mW711GTiNV8SmWe6zPinPrkAtleU2rBNND.3Kso0nehEi.",
+  "employee_id": "75",
+  "role": "coordinator",
+  "ag_number": "",
+  "phone": "03057683695",
+  "fatherName": "",
+  "cnic": "",
+  "admissionDate": null,
+  "campus_id": null,
+  "faculty_id": null,
+  "department_id": null,
+  "degree_id": null,
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-19T16:54:53.407Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-19T19:16:19.089Z"
+  },
+  "__v": 0,
+  "profileImage": "1787166979054-ChatGPT Image Aug 16, 2026, 11_44_47 AM.png"
+},
+{
+  "_id": {
+    "$oid": "6a860ac103043e9da1a8b61c"
+  },
+  "name": "Mahnoor",
+  "email": "mano@gmail.com",
+  "password": "$2b$10$Ig7tp0wpQWNUiFEfXMfoF.aoKlUqEVe93bsvmIgQ68dl7ekswZ5uO",
+  "employee_id": "01",
+  "role": "coordinator",
+  "ag_number": "",
+  "phone": "03107299820",
+  "profileImage": "",
+  "fatherName": "",
+  "cnic": "",
+  "admissionDate": null,
+  "campus_id": "Main Campus",
+  "faculty_id": "Faculty of Sciences",
+  "department_id": "Department of Biochemistry",
+  "degree_id": null,
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-19T19:57:53.743Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-19T19:57:53.743Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a88d4dcefb83ea1a5561046"
+  },
+  "name": "fatima",
+  "email": "fatima123@gmail.com",
+  "password": "$2b$10$POA3eZLz/getCZJChwGTk.wkX/JRNQnelHuGngxs.MDkOjLyOVhoe",
+  "employee_id": "",
+  "role": "student",
+  "ag_number": "03",
+  "phone": "03107299",
+  "profileImage": "",
+  "fatherName": "anwar",
+  "cnic": "3310282037115",
+  "admissionDate": {
+    "$date": "2026-02-19T00:00:00.000Z"
+  },
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a577b1aa0b3c10b1df25"
+  },
+  "department_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df26"
+  },
+  "degree_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df27"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-21T22:44:44.408Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-22T08:12:09.705Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8d22ca99733b2565489206"
+  },
+  "name": "Zainab Nokhaiz",
+  "email": "zaini80@gmail.com",
+  "password": "$2b$10$5HO0faRTC1ClItQnfV2eJ.qc4eUK/deOXVrS36KAkFkAUDnRRpWFK",
+  "employee_id": "",
+  "role": "student",
+  "ag_number": "80",
+  "phone": "0301234",
+  "profileImage": "",
+  "fatherName": "Muhammad Nokhaiz",
+  "cnic": "33102-0809060-5",
+  "admissionDate": {
+    "$date": "2025-01-07T00:00:00.000Z"
+  },
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a57ab1aa0b3c10b1df3c"
+  },
+  "department_id": {
+    "$oid": "6a88a57ab1aa0b3c10b1df3d"
+  },
+  "degree_id": {
+    "$oid": "6a88a57bb1aa0b3c10b1df3f"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T05:06:18.429Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T06:47:37.697Z"
+  },
+  "__v": 0
+}]

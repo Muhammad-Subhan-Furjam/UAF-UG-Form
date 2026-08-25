@@ -1,0 +1,152 @@
+[{
+  "_id": {
+    "$oid": "6a846fa0a935a39cf70b9724"
+  },
+  "name": "Semester 1",
+  "number": 1,
+  "degree_id": {
+    "$oid": "6a846da6b2ac8cee871bb186"
+  },
+  "academic_year": "2026",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-18T14:43:44.088Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-18T14:43:44.088Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a88af63c46398c8d7d17c70"
+  },
+  "name": "Semester 1",
+  "number": 1,
+  "degree_id": {
+    "$oid": "6a88ab61c07bbdd165241f8a"
+  },
+  "academic_year": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-21T20:04:51.546Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-21T20:04:51.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a88b5d5221e93c92b18d255"
+  },
+  "name": "Semester 1",
+  "number": 1,
+  "degree_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df27"
+  },
+  "academic_year": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-21T20:32:21.016Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-21T20:32:21.016Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8960d2a0c60f1ffc9f5252"
+  },
+  "name": "Semester 1",
+  "number": 1,
+  "degree_id": {
+    "$oid": "6a89609ba0c60f1ffc9f5251"
+  },
+  "academic_year": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-22T08:41:54.307Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-22T08:41:54.307Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8d28b6afd9034c5b4f5aea"
+  },
+  "name": "Semester 5",
+  "number": 5,
+  "degree_id": {
+    "$oid": "6a88a57bb1aa0b3c10b1df3f"
+  },
+  "academic_year": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T05:31:34.391Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T05:31:34.391Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8d3434a2ee66542fa15675"
+  },
+  "name": "Semester 6",
+  "number": 6,
+  "degree_id": {
+    "$oid": "6a88a57bb1aa0b3c10b1df3f"
+  },
+  "academic_year": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T06:20:36.166Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T06:20:36.166Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8d3abea2ee66542fa15677"
+  },
+  "name": "Semester 8",
+  "number": 8,
+  "degree_id": {
+    "$oid": "6a88a57bb1aa0b3c10b1df3f"
+  },
+  "academic_year": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T06:48:30.308Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T06:48:30.308Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8d3d80a2ee66542fa1567a"
+  },
+  "name": "Semester 1",
+  "number": 1,
+  "degree_id": {
+    "$oid": "6a8d3d2ca2ee66542fa15679"
+  },
+  "academic_year": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T07:00:16.304Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T07:00:16.304Z"
+  },
+  "__v": 0
+}]

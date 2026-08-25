@@ -1,0 +1,166 @@
+.add-form-page {
+  padding: 24px;
+  background-color: #f5f7fb;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.add-form-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 28px 32px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  margin-top: 20px;
+}
+
+.add-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.add-form-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.back-btn {
+  background: #1e3a5f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.back-btn:hover {
+  background: #16304f;
+}
+
+.add-form .form-group {
+  margin-bottom: 20px;
+}
+
+.add-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.add-form input,
+.add-form select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+.add-form input:focus,
+.add-form select:focus {
+  border-color: #1e3a5f;
+}
+
+.add-form select:disabled {
+  background: #f1f5f9;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #1e3a5f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background: #16304f;
+}
+
+.submit-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.form-message {
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.form-message.success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.form-message.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ========== Responsive ========== */
+
+/* Tablet 769px - 1023px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .add-form-card {
+    max-width: 480px;
+    padding: 24px 28px;
+  }
+}
+
+/* Mobile ≤ 768px */
+@media (max-width: 768px) {
+  .add-form-page {
+    padding: 16px;
+  }
+
+  .add-form-card {
+    padding: 20px 18px;
+    margin-top: 10px;
+  }
+
+  .add-form-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .add-form-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .back-btn {
+    align-self: flex-end;
+  }
+}
+/* New Input highlight */
+.new-input input {
+  border-color: #1e3a5f;
+  background-color: #f8fafc;
+}
+
+.new-input label {
+  color: #1e3a5f;
+  font-weight: 600;
+}

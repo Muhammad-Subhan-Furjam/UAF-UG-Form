@@ -1,0 +1,511 @@
+/* =========================================
+   COORDINATOR PROFILE PAGE
+========================================= */
+
+.coordinator-profile-page {
+  width: 100%;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #17202a;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.coordinator-profile-card {
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #dfe5eb;
+  border-radius: 12px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   COVER
+========================================= */
+
+.coordinator-profile-cover {
+  width: 100%;
+  height: 125px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #082f5c,
+      #145b9c
+    );
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.coordinator-profile-header {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+
+  gap: 22px;
+
+  padding: 0 42px 30px;
+
+  margin-top: -55px;
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.coordinator-profile-image-wrap {
+  position: relative;
+
+  flex-shrink: 0;
+}
+
+.coordinator-profile-image {
+  width: 125px;
+  height: 125px;
+
+  object-fit: cover;
+
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+}
+
+.coordinator-profile-status-dot {
+  position: absolute;
+
+  right: 7px;
+  bottom: 10px;
+
+  width: 20px;
+  height: 20px;
+
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+
+  background: #19c443;
+}
+
+
+/* =========================================
+   MAIN INFO
+========================================= */
+
+.coordinator-profile-main-info {
+  flex: 1;
+
+  padding-bottom: 5px;
+}
+
+.coordinator-profile-name {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.coordinator-profile-id {
+  margin: 6px 0 0;
+
+  color: #69717c;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   EDIT NAME INPUT
+========================================= */
+
+.coordinator-profile-name-input {
+  width: 270px;
+  height: 44px;
+
+  padding: 0 12px;
+
+  border: 1px solid #cbd3dc;
+  border-radius: 6px;
+
+  outline: none;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  box-sizing: border-box;
+}
+
+.coordinator-profile-name-input:focus {
+  border-color: #082f5c;
+}
+
+
+/* =========================================
+   EDIT BUTTON
+========================================= */
+
+.coordinator-profile-edit-btn {
+  min-width: 130px;
+  height: 42px;
+
+  margin-bottom: 5px;
+
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #082f5c;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.coordinator-profile-edit-btn:hover {
+  background: #124678;
+}
+
+
+/* =========================================
+   INFORMATION SECTION
+========================================= */
+
+.coordinator-profile-info-section {
+  padding: 8px 42px 38px;
+}
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.coordinator-profile-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #e4e8ed;
+}
+
+.coordinator-profile-section-header h3 {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.coordinator-profile-section-header p {
+  margin: 6px 0 0;
+
+  color: #7a838e;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   STATUS BADGE
+========================================= */
+
+.coordinator-profile-status-badge {
+  padding: 7px 14px;
+
+  border-radius: 20px;
+
+  background: #e9f8ed;
+
+  color: #21823d;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   INFORMATION GRID
+========================================= */
+
+.coordinator-profile-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  column-gap: 35px;
+  row-gap: 25px;
+
+  margin-top: 28px;
+}
+
+
+/* =========================================
+   FIELD
+========================================= */
+
+.coordinator-profile-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.coordinator-profile-field label {
+  color: #777f89;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.coordinator-profile-field p {
+  margin: 0;
+
+  color: #151515;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   EDIT INPUT
+========================================= */
+
+.coordinator-profile-field input {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 13px;
+
+  border: 1px solid #ccd3dc;
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #151515;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+.coordinator-profile-field input:focus {
+  border-color: #082f5c;
+}
+
+
+/* =========================================
+   ACTIVE STATUS
+========================================= */
+
+.coordinator-active-status {
+  color: #21823d !important;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.coordinator-profile-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  padding: 0 42px 35px;
+}
+
+.coordinator-profile-cancel-btn,
+.coordinator-profile-save-btn {
+  min-width: 130px;
+  height: 45px;
+
+  padding: 0 18px;
+
+  border-radius: 6px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* CANCEL */
+
+.coordinator-profile-cancel-btn {
+  border: 1px solid #c7cdd4;
+
+  background: #ffffff;
+
+  color: #333333;
+}
+
+
+/* SAVE */
+
+.coordinator-profile-save-btn {
+  border: none;
+
+  background: #082f5c;
+
+  color: #ffffff;
+}
+
+.coordinator-profile-save-btn:hover {
+  background: #124678;
+}
+
+/* =========================
+   PROFILE IMAGE UPLOAD
+========================= */
+
+
+.coordinator-profile-image-wrap{
+    position:relative;
+    width:125px;
+    height:125px;
+    flex-shrink:0;
+}
+
+
+.coordinator-profile-image{
+
+    width:125px;
+    height:125px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:5px solid #ffffff;
+
+    box-shadow:0 3px 12px rgba(0,0,0,0.18);
+
+}
+
+
+.change-photo-btn{
+
+    position:absolute;
+
+    bottom:-35px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#082f5c;
+
+    color:white;
+
+    padding:7px 15px;
+
+    border-radius:6px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+}
+
+
+.change-photo-btn input{
+
+    display:none;
+
+}
+
+
+.change-photo-btn:hover{
+
+    background:#145b9c;
+
+}
+
+/* =========================================================
+   TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .coordinator-profile-header {
+    padding: 0 30px 28px;
+  }
+
+  .coordinator-profile-info-section {
+    padding: 8px 30px 35px;
+  }
+
+  .coordinator-profile-grid {
+    column-gap: 25px;
+  }
+
+  .coordinator-profile-actions {
+    padding: 0 30px 35px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   1024px AND ABOVE
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .coordinator-profile-card {
+    min-height: 570px;
+  }
+
+  .coordinator-profile-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}

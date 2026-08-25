@@ -1,0 +1,386 @@
+/* =========================================
+   COORDINATOR REQUESTS PAGE
+========================================= */
+
+.coordinator-requests-page {
+  width: 100%;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #111111;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.coordinator-requests-card {
+  width: 100%;
+
+  min-height: 560px;
+
+  padding: 28px 28px 35px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e5e9;
+  border-radius: 18px;
+
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.coordinator-requests-title {
+  margin: 0 0 24px;
+
+  color: #111111;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.coordinator-requests-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #c9cdd2;
+  border-radius: 16px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.coordinator-requests-table {
+  width: 100%;
+
+  min-width: 760px;
+
+  border-collapse: collapse;
+
+  background: #ffffff;
+}
+
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.coordinator-requests-table thead {
+  background: #f6f7f9;
+}
+
+.coordinator-requests-table th {
+  height: 122px;
+
+  padding: 0 20px;
+
+  text-align: center;
+  vertical-align: middle;
+
+  border-bottom: 1px solid #dedede;
+
+  color: #111111;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.coordinator-requests-table td {
+  height: 94px;
+
+  padding: 0 20px;
+
+  text-align: center;
+  vertical-align: middle;
+
+  color: #111111;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.request-form-id {
+  font-weight: 700;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.request-status {
+  min-width: 105px;
+  height: 56px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 16px;
+
+  border-radius: 5px;
+
+  box-sizing: border-box;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+/* PENDING */
+
+.request-pending {
+  background: #fff7e9;
+
+  color: #b77636;
+}
+
+
+/* APPROVED */
+
+.request-approved {
+  background: #07541f;
+
+  color: #ffffff;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.request-action-btn {
+  min-width: 130px;
+  height: 56px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 5px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.request-action-btn:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.9;
+}
+
+
+/* VIEW BUTTON */
+
+.request-view-btn {
+  background: #edf3ff;
+
+  color: #5d83d6;
+}
+
+
+/* DOWNLOAD BUTTON */
+
+.request-download-btn {
+  background: #082f5c;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   1) MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .coordinator-requests-card {
+    min-height: auto;
+
+    padding: 18px 14px 25px;
+
+    border-radius: 12px;
+  }
+
+  .coordinator-requests-title {
+    margin-bottom: 18px;
+
+    font-size: 19px;
+  }
+
+  .coordinator-requests-table-wrapper {
+    border-radius: 10px;
+  }
+
+  .coordinator-requests-table {
+    min-width: 700px;
+  }
+
+  .coordinator-requests-table th {
+    height: 70px;
+
+    padding: 0 12px;
+
+    font-size: 14px;
+  }
+
+  .coordinator-requests-table td {
+    height: 72px;
+
+    padding: 0 12px;
+
+    font-size: 13px;
+  }
+
+  .request-status {
+    min-width: 88px;
+    height: 42px;
+
+    padding: 0 12px;
+
+    font-size: 13px;
+  }
+
+  .request-action-btn {
+    min-width: 100px;
+    height: 42px;
+
+    padding: 0 12px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .coordinator-requests-card {
+    min-height: 520px;
+
+    padding: 24px 22px 30px;
+
+    border-radius: 15px;
+  }
+
+  .coordinator-requests-title {
+    font-size: 21px;
+  }
+
+  .coordinator-requests-table th {
+    height: 90px;
+
+    padding: 0 15px;
+
+    font-size: 16px;
+  }
+
+  .coordinator-requests-table td {
+    height: 82px;
+
+    padding: 0 15px;
+
+    font-size: 14px;
+  }
+
+  .request-status {
+    min-width: 95px;
+    height: 48px;
+
+    font-size: 14px;
+  }
+
+  .request-action-btn {
+    min-width: 115px;
+    height: 48px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP
+   1024px AND ABOVE
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .coordinator-requests-card {
+    min-height: 560px;
+
+    padding: 28px 28px 35px;
+
+    border-radius: 18px;
+  }
+
+  .coordinator-requests-title {
+    font-size: 24px;
+  }
+
+  .coordinator-requests-table th {
+    height: 122px;
+
+    font-size: 18px;
+  }
+
+  .coordinator-requests-table td {
+    height: 94px;
+
+    font-size: 16px;
+  }
+
+  .request-status {
+    min-width: 105px;
+    height: 56px;
+
+    font-size: 16px;
+  }
+
+  .request-action-btn {
+    min-width: 130px;
+    height: 56px;
+
+    font-size: 16px;
+  }
+}

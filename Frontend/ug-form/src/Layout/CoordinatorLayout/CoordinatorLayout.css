@@ -1,0 +1,332 @@
+/* =========================================
+   COORDINATOR LAYOUT
+========================================= */
+
+.coordinator-layout {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+
+  background-color: #f4f7fa;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.coordinator-sidebar {
+  width: 235px;
+  min-height: 100vh;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #082f5c;
+
+  color: #ffffff;
+
+  z-index: 100;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.coordinator-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 18px 20px;
+}
+
+.coordinator-brand-logo {
+  width: 38px;
+  height: 38px;
+
+  object-fit: contain;
+}
+
+.coordinator-brand-text {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================
+   MENU
+========================================= */
+
+.coordinator-menu {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  padding: 20px 12px;
+}
+
+.coordinator-menu-link {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 14px;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  border-radius: 6px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  box-sizing: border-box;
+
+  transition: background-color 0.2s ease;
+}
+
+.coordinator-menu-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.coordinator-menu-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.coordinator-menu-link.active {
+  background-color: #1f6fd1;
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+.coordinator-logout {
+  margin-top: auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 18px 25px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.coordinator-logout svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.coordinator-main {
+  width: calc(100% - 235px);
+
+  min-height: 100vh;
+
+  margin-left: 235px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.coordinator-header {
+  min-height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+
+  background-color: #ffffff;
+
+  border-bottom: 1px solid #dce3ea;
+}
+
+.coordinator-header h3 {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.coordinator-header p {
+  margin: 5px 0 0;
+
+  color: #6e7680;
+
+  font-size: 12px;
+}
+
+.coordinator-role-badge {
+  padding: 7px 14px;
+
+  border-radius: 5px;
+
+  background-color: #edf2f7;
+
+  color: #25364a;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.coordinator-content {
+  padding: 24px 28px;
+}
+
+
+/* =========================================
+   1) MOBILE - 0 TO 768
+========================================= */
+
+@media (max-width: 768px) {
+
+  .coordinator-layout {
+    flex-direction: column;
+  }
+
+  .coordinator-sidebar {
+    width: 100%;
+    min-height: auto;
+
+    position: relative;
+  }
+
+  .coordinator-brand {
+    padding: 14px 16px;
+  }
+
+  .coordinator-menu {
+    flex-direction: row;
+
+    overflow-x: auto;
+
+    padding: 10px;
+  }
+
+  .coordinator-menu-link {
+    width: auto;
+
+    flex-shrink: 0;
+
+    padding: 10px 12px;
+
+    font-size: 13px;
+  }
+
+  .coordinator-logout {
+    margin-top: 0;
+
+    padding: 12px 18px;
+  }
+
+  .coordinator-main {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+  .coordinator-header {
+    min-height: 65px;
+
+    padding: 0 16px;
+  }
+
+  .coordinator-content {
+    padding: 16px;
+  }
+}
+
+
+/* =========================================
+   2) TABLET - 769 TO 1023
+========================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .coordinator-sidebar {
+    width: 205px;
+  }
+
+  .coordinator-main {
+    width: calc(100% - 205px);
+
+    margin-left: 205px;
+  }
+
+  .coordinator-menu-link {
+    font-size: 14px;
+  }
+
+  .coordinator-content {
+    padding: 20px;
+  }
+}
+
+
+/* =========================================
+   3) DESKTOP - 1024+
+========================================= */
+
+@media (min-width: 1024px) {
+
+  .coordinator-sidebar {
+    width: 235px;
+  }
+
+  .coordinator-main {
+    width: calc(100% - 235px);
+
+    margin-left: 235px;
+  }
+
+  .coordinator-content {
+    padding: 24px 28px;
+  }
+}

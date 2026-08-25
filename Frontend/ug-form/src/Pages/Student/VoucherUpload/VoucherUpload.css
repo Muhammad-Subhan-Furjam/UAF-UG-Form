@@ -1,0 +1,283 @@
+/* =========================================
+   VOUCHER PAGE
+========================================= */
+
+.voucher-page {
+  width: 100%;
+
+  padding: 20px 28px 40px;
+
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.voucher-header {
+  margin-bottom: 42px;
+
+  text-align: center;
+}
+
+.voucher-header h2,
+.voucher-header h3 {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.voucher-upload-card {
+  width: 100%;
+  min-height: 375px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 35px;
+
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HIDDEN INPUT
+========================================= */
+
+.voucher-hidden-input {
+  display: none;
+}
+
+
+/* =========================================
+   TEXT
+========================================= */
+
+.voucher-attach-text {
+  margin: 0 0 20px;
+
+  color: #999999;
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   UPLOAD BUTTON
+========================================= */
+
+.voucher-upload-btn {
+  min-width: 255px;
+  height: 100px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #082f5c;
+
+  color: #ffffff;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.voucher-upload-btn:hover {
+  background: #124678;
+}
+
+
+/* =========================================
+   FILE NAME
+========================================= */
+
+.voucher-selected-file {
+  max-width: 90%;
+
+  display: flex;
+  gap: 7px;
+
+  margin-top: 20px;
+
+  color: #444444;
+
+  font-size: 13px;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   ATTACHED
+========================================= */
+
+.voucher-attached-status {
+  margin-top: 12px;
+
+  color: #19803a;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.voucher-message {
+  margin: 12px 0 0;
+
+  color: #555555;
+
+  font-size: 13px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   BOTTOM ACTIONS
+========================================= */
+
+.voucher-actions {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(140px, 1fr));
+
+  gap: 40px;
+
+  margin-top: 32px;
+}
+
+.voucher-action-btn {
+  height: 62px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #082f5c;
+
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.voucher-action-btn:hover {
+  background: #124678;
+}
+
+
+/* =========================================
+   MOBILE <= 768
+========================================= */
+
+@media (max-width: 768px) {
+
+  .voucher-page {
+    padding: 16px 14px 30px;
+  }
+
+  .voucher-header {
+    margin-bottom: 25px;
+  }
+
+  .voucher-header h2,
+  .voucher-header h3 {
+    font-size: 16px;
+  }
+
+  .voucher-upload-card {
+    min-height: 300px;
+
+    padding: 25px 15px;
+  }
+
+  .voucher-attach-text {
+    font-size: 15px;
+  }
+
+  .voucher-upload-btn {
+    min-width: 190px;
+    height: 70px;
+
+    font-size: 16px;
+  }
+
+  .voucher-actions {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    margin-top: 20px;
+  }
+
+  .voucher-action-btn {
+    width: 100%;
+    height: 54px;
+
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================
+   TABLET 769 - 1023
+========================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .voucher-upload-card {
+    min-height: 340px;
+  }
+
+  .voucher-upload-btn {
+    min-width: 225px;
+    height: 85px;
+  }
+
+  .voucher-actions {
+    gap: 25px;
+  }
+}
+
+
+/* =========================================
+   DESKTOP >= 1024
+========================================= */
+
+@media (min-width: 1024px) {
+
+  .voucher-upload-card {
+    min-height: 375px;
+  }
+}

@@ -1,0 +1,262 @@
+[{
+  "_id": {
+    "$oid": "6a847240765934339535afaf"
+  },
+  "courseCode": "CS101",
+  "courseTitle": "Programming Fundamentals",
+  "creditHours": 3,
+  "campus_id": {
+    "$oid": "6a83888ef0583eada26d8fd0"
+  },
+  "faculty_id": {
+    "$oid": "6a846ada549f8fd9794be675"
+  },
+  "department_id": {
+    "$oid": "6a846bd455606940181beaf7"
+  },
+  "degree_id": {
+    "$oid": "6a846da6b2ac8cee871bb186"
+  },
+  "semester_id": {
+    "$oid": "68af6fa0a935a39cf70b9724"
+  },
+  "courseType": "Compulsory",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-18T14:54:56.881Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-18T14:54:56.881Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8472d7765934339535afb0"
+  },
+  "courseCode": "CS101",
+  "courseTitle": "Programming Fundamentals",
+  "creditHours": 3,
+  "campus_id": {
+    "$oid": "6a83888ef0583eada26d8fd0"
+  },
+  "faculty_id": {
+    "$oid": "6a846ada549f8fd9794be675"
+  },
+  "department_id": {
+    "$oid": "6a846bd455606940181beaf7"
+  },
+  "degree_id": {
+    "$oid": "6a846da6b2ac8cee871bb186"
+  },
+  "semester_id": {
+    "$oid": "6a846fa0a935a39cf70b9724"
+  },
+  "courseType": "Compulsory",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-18T14:57:27.362Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-18T14:57:27.362Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a88b242221e93c92b18d253"
+  },
+  "courseCode": "cs-301",
+  "courseTitle": "introduction to computing",
+  "creditHours": "3(2-1)",
+  "campus_id": {
+    "$oid": "6a88ab60c07bbdd165241f87"
+  },
+  "faculty_id": {
+    "$oid": "6a88ab60c07bbdd165241f88"
+  },
+  "department_id": {
+    "$oid": "6a88ab60c07bbdd165241f89"
+  },
+  "degree_id": {
+    "$oid": "6a88ab61c07bbdd165241f8a"
+  },
+  "semester_id": {
+    "$oid": "6a88af63c46398c8d7d17c70"
+  },
+  "courseType": "Compulsory",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-21T20:17:06.966Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-21T20:17:06.966Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a88b398221e93c92b18d254"
+  },
+  "courseCode": "cs-301",
+  "courseTitle": "introduction to computing",
+  "creditHours": "3(2-1)",
+  "campus_id": {
+    "$oid": "6a88ab60c07bbdd165241f87"
+  },
+  "faculty_id": {
+    "$oid": "6a88ab60c07bbdd165241f88"
+  },
+  "department_id": {
+    "$oid": "6a88ab60c07bbdd165241f89"
+  },
+  "degree_id": {
+    "$oid": "6a88ab61c07bbdd165241f8a"
+  },
+  "semester_id": {
+    "$oid": "6a88af63c46398c8d7d17c70"
+  },
+  "courseType": "Compulsory",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-21T20:22:48.512Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-21T20:22:48.512Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8955dd3007629a79543951"
+  },
+  "courseCode": "CS-301",
+  "courseTitle": "Introduction to Computing",
+  "creditHours": "3(2-1)",
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a577b1aa0b3c10b1df25"
+  },
+  "department_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df26"
+  },
+  "degree_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df27"
+  },
+  "semester_id": {
+    "$oid": "6a88b5d5221e93c92b18d255"
+  },
+  "courseType": "Compulsory",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-22T07:55:09.102Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T06:58:00.294Z"
+  },
+  "__v": 0,
+  "remarks": "",
+  "totalMarks": ""
+},
+{
+  "_id": {
+    "$oid": "6a8960d2a0c60f1ffc9f5253"
+  },
+  "courseCode": "cs-301",
+  "courseTitle": "abs",
+  "creditHours": "3(2-1)",
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a577b1aa0b3c10b1df25"
+  },
+  "department_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df26"
+  },
+  "degree_id": {
+    "$oid": "6a89609ba0c60f1ffc9f5251"
+  },
+  "semester_id": {
+    "$oid": "6a8960d2a0c60f1ffc9f5252"
+  },
+  "courseType": "Compulsory",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-22T08:41:54.382Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-22T08:41:54.382Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8bfc140a28c5d59e117c39"
+  },
+  "courseCode": "CSI-302",
+  "courseTitle": "Communication",
+  "creditHours": "3(3-0)",
+  "totalMarks": "60",
+  "remarks": "N/A",
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a577b1aa0b3c10b1df25"
+  },
+  "department_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df26"
+  },
+  "degree_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df27"
+  },
+  "semester_id": {
+    "$oid": "6a88b5d5221e93c92b18d255"
+  },
+  "courseType": "Compulsory",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-24T08:08:52.129Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T06:58:00.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8d3d80a2ee66542fa1567b"
+  },
+  "courseCode": "jav-334",
+  "courseTitle": "website",
+  "creditHours": "3(2-1)",
+  "totalMarks": "60",
+  "remarks": "N/A",
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a577b1aa0b3c10b1df25"
+  },
+  "department_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df26"
+  },
+  "degree_id": {
+    "$oid": "6a8d3d2ca2ee66542fa15679"
+  },
+  "semester_id": {
+    "$oid": "6a8d3d80a2ee66542fa1567a"
+  },
+  "courseType": "Compulsory",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T07:00:16.442Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T07:00:35.450Z"
+  },
+  "__v": 0
+}]

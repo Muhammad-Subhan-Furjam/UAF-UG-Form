@@ -1,0 +1,673 @@
+/* =========================================
+   COORDINATOR DASHBOARD
+========================================= */
+
+.coordinator-dashboard-page {
+  width: 100%;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #111111;
+}
+
+
+/* =========================================
+   COMMON SECTION TITLE
+========================================= */
+
+.coordinator-section-title {
+  margin: 0 0 20px;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  color: #111111;
+}
+
+
+/* =========================================
+   OVERVIEW CARD
+========================================= */
+
+.coordinator-overview-card {
+  width: 100%;
+
+  padding: 26px 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #d7dee6;
+  border-radius: 8px;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   STATS GRID
+========================================= */
+
+.coordinator-stats-grid {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+
+/* =========================================
+   STAT CARD
+========================================= */
+
+.coordinator-stat-card {
+  min-height: 88px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 17px 18px;
+
+  background: #ffffff;
+
+  border: 1px solid #d8dee6;
+  border-radius: 6px;
+
+  box-sizing: border-box;
+}
+
+.coordinator-stat-icon {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #edf4fc;
+
+  color: #083a70;
+}
+
+.coordinator-stat-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.coordinator-stat-card p {
+  margin: 0 0 5px;
+
+  color: #555f6c;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.coordinator-stat-card h3 {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.coordinator-quick-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 18px;
+}
+
+.coordinator-quick-actions button {
+  min-width: 130px;
+  height: 40px;
+
+  padding: 0 18px;
+
+  border: 1px solid #082f5c;
+  border-radius: 5px;
+
+  background: #082f5c;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.coordinator-quick-actions .secondary-action {
+  background: #ffffff;
+
+  color: #082f5c;
+}
+
+.coordinator-dashboard-tip {
+  margin: 12px 0 0;
+
+  color: #555f6c;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   RECENT REQUEST CARD
+========================================= */
+
+.coordinator-recent-card {
+  width: 100%;
+
+  margin-top: 22px;
+
+  padding: 26px 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #d7dee6;
+  border-radius: 8px;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.coordinator-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.coordinator-request-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 760px;
+}
+
+.coordinator-request-table thead {
+  background: #f5f7fa;
+}
+
+.coordinator-request-table th {
+  padding: 17px 14px;
+
+  border-bottom: 1px solid #d6dde5;
+
+  text-align: center;
+
+  color: #111111;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.coordinator-request-table td {
+  padding: 18px 14px;
+
+  border-bottom: 1px solid #e4e8ed;
+
+  text-align: center;
+
+  color: #222222;
+
+  font-size: 13px;
+}
+
+.coordinator-request-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 78px;
+
+  padding: 7px 10px;
+
+  border-radius: 4px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-badge.pending {
+  background: #fff6e8;
+
+  color: #b16b24;
+}
+
+.status-badge.approved {
+  background: #e8f7ec;
+
+  color: #258444;
+}
+
+
+/* =========================================
+   VIEW BUTTON
+========================================= */
+
+.view-request-btn {
+  padding: 7px 16px;
+
+  border: none;
+  border-radius: 4px;
+
+  background: #eaf1ff;
+
+  color: #3467c8;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   1) MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .coordinator-overview-card,
+  .coordinator-recent-card {
+    padding: 18px 15px;
+
+    border-radius: 7px;
+  }
+
+  .coordinator-section-title {
+    margin-bottom: 16px;
+
+    font-size: 16px;
+  }
+
+  .coordinator-stats-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .coordinator-stat-card {
+    min-height: 78px;
+
+    padding: 14px;
+  }
+
+  .coordinator-stat-card p {
+    font-size: 12px;
+  }
+
+  .coordinator-stat-card h3 {
+    font-size: 18px;
+  }
+
+  .coordinator-quick-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .coordinator-quick-actions button {
+    width: 100%;
+  }
+
+  .coordinator-recent-card {
+    margin-top: 16px;
+  }
+
+  .coordinator-request-table th {
+    font-size: 11px;
+  }
+
+  .coordinator-request-table td {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .coordinator-overview-card,
+  .coordinator-recent-card {
+    padding: 22px 20px;
+  }
+
+  .coordinator-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .coordinator-stat-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .coordinator-request-table th {
+    font-size: 11px;
+  }
+
+  .coordinator-request-table td {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP
+   1024px AND ABOVE
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .coordinator-overview-card,
+  .coordinator-recent-card {
+    padding: 26px 24px;
+  }
+
+  .coordinator-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+/* =========================
+   BASE STYLES (Desktop ≥ 1024px)
+========================= */
+.coordinator-dashboard-page {
+  padding: 24px;
+  background-color: #f5f7fb;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.coordinator-overview-card,
+.coordinator-recent-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.coordinator-section-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.coordinator-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.coordinator-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 18px 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.coordinator-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #e0e7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4f46e5;
+  font-size: 1.4rem;
+}
+
+.coordinator-stat-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.coordinator-stat-card h3 {
+  margin: 4px 0 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.coordinator-quick-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.coordinator-quick-actions button {
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #1e3a5f;
+  color: white;
+}
+
+.coordinator-quick-actions button:hover {
+  background-color: #16304f;
+}
+
+.coordinator-quick-actions .secondary-action {
+  background-color: transparent;
+  color: #1e3a5f;
+  border: 1.5px solid #1e3a5f;
+}
+
+.coordinator-quick-actions .secondary-action:hover {
+  background-color: #f1f5f9;
+}
+
+.coordinator-dashboard-tip {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* Recent Requests Table */
+.coordinator-table-wrapper {
+  overflow-x: auto;
+}
+
+.coordinator-request-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.coordinator-request-table th {
+  background: #f1f5f9;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #475569;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.coordinator-request-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+.no-request {
+  text-align: center;
+  padding: 40px 16px !important;
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-badge.submitted {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status-badge.approved {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.status-badge.rejected {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge.draft {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.view-request-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  color: #1e3a5f;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.view-request-btn:hover {
+  background: #f8fafc;
+}
+
+/* =========================
+   TABLET (769px – 1023px)
+========================= */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .coordinator-dashboard-page {
+    padding: 20px;
+  }
+
+  .coordinator-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .coordinator-stat-card {
+    padding: 14px 16px;
+  }
+
+  .coordinator-stat-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+
+  .coordinator-stat-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .coordinator-quick-actions button {
+    padding: 9px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================
+   MOBILE (≤ 768px)
+========================= */
+@media (max-width: 768px) {
+  .coordinator-dashboard-page {
+    padding: 16px;
+  }
+
+  .coordinator-overview-card,
+  .coordinator-recent-card {
+    padding: 18px 16px;
+    margin-bottom: 16px;
+  }
+
+  .coordinator-section-title {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+
+  .coordinator-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .coordinator-stat-card {
+    padding: 14px;
+  }
+
+  .coordinator-quick-actions {
+    flex-direction: column;
+  }
+
+  .coordinator-quick-actions button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .coordinator-request-table th,
+  .coordinator-request-table td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .no-request {
+    padding: 30px 12px !important;
+  }
+}

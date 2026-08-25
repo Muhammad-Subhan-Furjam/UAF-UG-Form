@@ -1,0 +1,172 @@
+[{
+  "_id": {
+    "$oid": "6a894c1c3007629a79543950"
+  },
+  "student_id": {
+    "$oid": "6a88d4dcefb83ea1a5561046"
+  },
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a577b1aa0b3c10b1df25"
+  },
+  "department_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df26"
+  },
+  "degree_id": {
+    "$oid": "6a88a578b1aa0b3c10b1df27"
+  },
+  "semester_id": {
+    "$oid": "6a88b5d5221e93c92b18d255"
+  },
+  "courses": [],
+  "studentName": "fatima",
+  "fatherName": "anwar",
+  "agNumber": "03",
+  "email": "fatima@gmail.com",
+  "phone": "03107299820",
+  "address": "Faisalabad",
+  "voucher": {
+    "fileUrl": "/uploads/vouchers/1787627897459-532955992.jpg",
+    "uploaded": true
+  },
+  "status": "Submitted",
+  "coordinatorRemarks": "",
+  "createdAt": {
+    "$date": "2026-08-22T07:13:32.592Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T03:18:17.606Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8d28b6afd9034c5b4f5aeb"
+  },
+  "student_id": {
+    "$oid": "6a8d22ca99733b2565489206"
+  },
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a57ab1aa0b3c10b1df3c"
+  },
+  "department_id": {
+    "$oid": "6a88a57ab1aa0b3c10b1df3d"
+  },
+  "degree_id": {
+    "$oid": "6a88a57bb1aa0b3c10b1df3f"
+  },
+  "semester_id": {
+    "$oid": "6a8d28b6afd9034c5b4f5aea"
+  },
+  "courses": [],
+  "studentName": "Zainab Nokhaiz",
+  "fatherName": "Muhammad Nokhaiz",
+  "agNumber": "80",
+  "email": "zaini80@gmail.com",
+  "phone": "03012345678",
+  "address": "Model Town",
+  "voucher": {
+    "fileUrl": "/uploads/vouchers/1787638296493-553379628.jpg",
+    "uploaded": true
+  },
+  "status": "Submitted",
+  "coordinatorRemarks": "",
+  "createdAt": {
+    "$date": "2026-08-25T05:31:34.544Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T06:11:36.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8d3434a2ee66542fa15676"
+  },
+  "student_id": {
+    "$oid": "6a8d22ca99733b2565489206"
+  },
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a57ab1aa0b3c10b1df3c"
+  },
+  "department_id": {
+    "$oid": "6a88a57ab1aa0b3c10b1df3d"
+  },
+  "degree_id": {
+    "$oid": "6a88a57bb1aa0b3c10b1df3f"
+  },
+  "semester_id": {
+    "$oid": "6a8d3434a2ee66542fa15675"
+  },
+  "courses": [],
+  "studentName": "Zainab Nokhaiz",
+  "fatherName": "Muhammad Nokhaiz",
+  "agNumber": "80",
+  "email": "zaini80@gmail.com",
+  "phone": "03012345678",
+  "address": "Model Town",
+  "voucher": {
+    "fileUrl": "/uploads/vouchers/1787638843762-60419338.jpg",
+    "uploaded": true
+  },
+  "status": "Submitted",
+  "coordinatorRemarks": "",
+  "createdAt": {
+    "$date": "2026-08-25T06:20:36.310Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T06:26:35.963Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8d3abea2ee66542fa15678"
+  },
+  "student_id": {
+    "$oid": "6a8d22ca99733b2565489206"
+  },
+  "campus_id": {
+    "$oid": "6a88a576b1aa0b3c10b1df1a"
+  },
+  "faculty_id": {
+    "$oid": "6a88a57ab1aa0b3c10b1df3c"
+  },
+  "department_id": {
+    "$oid": "6a88a57ab1aa0b3c10b1df3d"
+  },
+  "degree_id": {
+    "$oid": "6a88a57bb1aa0b3c10b1df3f"
+  },
+  "semester_id": {
+    "$oid": "6a8d3abea2ee66542fa15677"
+  },
+  "courses": [],
+  "studentName": "Zainab Nokhaiz",
+  "fatherName": "Muhammad Nokhaiz",
+  "agNumber": "80",
+  "email": "zaini80@gmail.com",
+  "phone": "0301234",
+  "address": "Model Town",
+  "voucher": {
+    "fileUrl": "/uploads/vouchers/1787640528729-239056677.jpg",
+    "uploaded": true
+  },
+  "status": "Draft",
+  "coordinatorRemarks": "",
+  "createdAt": {
+    "$date": "2026-08-25T06:48:30.433Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T06:48:48.849Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,514 @@
+/* =========================================
+   PROFILE PAGE
+========================================= */
+
+.profile-page {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #17202a;
+}
+
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.profile-card {
+  width: 100%;
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e0e6ec;
+  border-radius: 12px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   COVER
+========================================= */
+
+.profile-cover {
+  width: 100%;
+  height: 125px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #082f5c,
+      #145b9c
+    );
+}
+
+
+/* =========================================
+   PROFILE HEADER
+========================================= */
+
+.profile-header-area {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+
+  gap: 22px;
+
+  padding: 0 42px 28px;
+
+  margin-top: -55px;
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.profile-image-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.profile-image {
+  width: 125px;
+  height: 125px;
+
+  object-fit: cover;
+
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+}
+
+.profile-status-dot {
+  position: absolute;
+
+  right: 7px;
+  bottom: 10px;
+
+  width: 20px;
+  height: 20px;
+
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+
+  background: #19c443;
+}
+
+
+/* =========================================
+   NAME
+========================================= */
+
+.profile-main-info {
+  flex: 1;
+
+  padding-bottom: 6px;
+}
+
+.profile-name {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-id {
+  margin: 6px 0 0;
+
+  color: #69717c;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   EDIT NAME INPUT
+========================================= */
+
+.profile-name-input {
+  width: 260px;
+  height: 44px;
+
+  padding: 0 12px;
+
+  border: 1px solid #cbd3dc;
+  border-radius: 6px;
+
+  outline: none;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.profile-name-input:focus {
+  border-color: #082f5c;
+}
+
+
+/* =========================================
+   TOP EDIT BUTTON
+========================================= */
+
+.top-edit-btn {
+  min-width: 130px;
+  height: 42px;
+
+  margin-bottom: 6px;
+
+  padding: 0 18px;
+
+  border: 1px solid #082f5c;
+  border-radius: 6px;
+
+  background: #082f5c;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.top-edit-btn:hover {
+  background: #124678;
+}
+
+
+/* =========================================
+   INFO SECTION
+========================================= */
+
+.profile-info-section {
+  padding: 8px 42px 38px;
+}
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.profile-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #e4e8ed;
+}
+
+.profile-section-header h3 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.profile-section-header p {
+  margin: 6px 0 0;
+
+  color: #7a838e;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   ACCOUNT BADGE
+========================================= */
+
+.profile-account-badge {
+  padding: 7px 14px;
+
+  border-radius: 20px;
+
+  background: #e9f8ed;
+
+  color: #21823d;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   INFO GRID
+========================================= */
+
+.profile-info-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  column-gap: 35px;
+  row-gap: 25px;
+
+  margin-top: 28px;
+}
+
+
+/* =========================================
+   FIELD
+========================================= */
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.profile-field label {
+  color: #777f89;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.profile-field p {
+  margin: 0;
+
+  color: #151515;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   EDIT INPUT
+========================================= */
+
+.profile-field input {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 13px;
+
+  border: 1px solid #ccd3dc;
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #151515;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+.profile-field input:focus {
+  border-color: #082f5c;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.active-status-text {
+  color: #21823d !important;
+}
+
+
+/* =========================================
+   EDIT ACTIONS
+========================================= */
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  padding: 0 42px 35px;
+}
+
+.profile-cancel-btn,
+.profile-save-btn {
+  min-width: 130px;
+  height: 45px;
+
+  padding: 0 18px;
+
+  border-radius: 6px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.profile-cancel-btn {
+  border: 1px solid #c7cdd4;
+
+  background: #ffffff;
+
+  color: #333333;
+}
+
+.profile-save-btn {
+  border: none;
+
+  background: #082f5c;
+
+  color: #ffffff;
+}
+
+.profile-save-btn:hover {
+  background: #124678;
+}
+
+
+/* =========================================================
+   1) MOBILE <= 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .profile-cover {
+    height: 100px;
+  }
+
+  .profile-header-area {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 18px 25px;
+
+    margin-top: -52px;
+
+    text-align: center;
+  }
+
+  .profile-image {
+    width: 105px;
+    height: 105px;
+  }
+
+  .profile-name {
+    font-size: 20px;
+  }
+
+  .profile-name-input {
+    width: 100%;
+
+    font-size: 17px;
+  }
+
+  .top-edit-btn {
+    width: 100%;
+  }
+
+  .profile-info-section {
+    padding: 5px 18px 30px;
+  }
+
+  .profile-section-header {
+    align-items: flex-start;
+  }
+
+  .profile-section-header h3 {
+    font-size: 17px;
+  }
+
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+
+    row-gap: 20px;
+
+    margin-top: 23px;
+  }
+
+  .profile-field p {
+    font-size: 14px;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+
+    padding: 0 18px 30px;
+  }
+
+  .profile-cancel-btn,
+  .profile-save-btn {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET 769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .profile-header-area {
+    padding: 0 30px 28px;
+  }
+
+  .profile-info-section {
+    padding: 8px 30px 35px;
+  }
+
+  .profile-info-grid {
+    column-gap: 25px;
+  }
+
+  .profile-actions {
+    padding: 0 30px 35px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP >= 1024px
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .profile-card {
+    min-height: 570px;
+  }
+
+  .profile-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.profile-role-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  border: 4px solid white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.profile-role-avatar.student {
+  background: #1e3a5f;   /* Student ke liye dark blue */
+}
+
+.profile-role-avatar.coordinator {
+  background: #0f766e;   /* Coordinator ke liye teal */
+}

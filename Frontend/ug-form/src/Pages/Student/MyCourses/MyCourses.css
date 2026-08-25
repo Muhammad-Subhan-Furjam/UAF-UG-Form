@@ -1,0 +1,333 @@
+/* =========================================
+   MY COURSES PAGE - BASE
+========================================= */
+
+.my-courses-page {
+  width: 100%;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #171717;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.my-courses-card {
+  width: 100%;
+
+  background-color: #ffffff;
+
+  border: 1px solid #dce2e8;
+  border-radius: 9px;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.courses-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.courses-header h2 {
+  margin: 0;
+
+  color: #171717;
+
+  font-weight: 700;
+}
+
+.courses-header p {
+  margin-bottom: 0;
+
+  color: #6c7480;
+
+  font-weight: 400;
+}
+
+
+/* =========================================
+   SEMESTER BADGE
+========================================= */
+
+.semester-badge {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #edf3f9;
+
+  color: #163f70;
+
+  border-radius: 5px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.my-courses-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #d7dde3;
+  border-radius: 7px;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.my-courses-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+.my-courses-table thead {
+  background-color: #f7f9fb;
+}
+
+.my-courses-table th {
+  color: #252525;
+
+  font-weight: 700;
+
+  text-align: left;
+
+  border-bottom: 1px solid #d7dde3;
+}
+
+.my-courses-table td {
+  color: #313131;
+
+  border-bottom: 1px solid #e5e9ed;
+}
+
+.my-courses-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.my-courses-table tbody tr:hover {
+  background-color: #fafbfd;
+}
+
+.course-code {
+  color: #082f5c !important;
+
+  font-weight: 600;
+}
+
+
+/* Column widths */
+
+.my-courses-table th:nth-child(1),
+.my-courses-table td:nth-child(1) {
+  width: 18%;
+}
+
+.my-courses-table th:nth-child(2),
+.my-courses-table td:nth-child(2) {
+  width: 47%;
+}
+
+.my-courses-table th:nth-child(3),
+.my-courses-table td:nth-child(3) {
+  width: 18%;
+}
+
+.my-courses-table th:nth-child(4),
+.my-courses-table td:nth-child(4) {
+  width: 17%;
+}
+
+
+/* =========================================================
+   1) MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .my-courses-card {
+    padding: 18px 14px 22px;
+
+    border-radius: 8px;
+  }
+
+  .courses-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+  }
+
+  .courses-header h2 {
+    font-size: 18px;
+  }
+
+  .courses-header p {
+    margin-top: 7px;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+  }
+
+  .semester-badge {
+    min-width: 105px;
+    height: 34px;
+
+    padding: 0 10px;
+
+    font-size: 12px;
+  }
+
+  .my-courses-table-wrapper {
+    border-radius: 6px;
+  }
+
+  .my-courses-table {
+    min-width: 650px;
+  }
+
+  .my-courses-table th {
+    padding: 14px 12px;
+
+    font-size: 12px;
+  }
+
+  .my-courses-table td {
+    padding: 15px 12px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .my-courses-card {
+    padding: 22px 20px 27px;
+
+    border-radius: 9px;
+  }
+
+  .courses-header {
+    margin-bottom: 22px;
+  }
+
+  .courses-header h2 {
+    font-size: 19px;
+  }
+
+  .courses-header p {
+    margin-top: 7px;
+
+    font-size: 13px;
+  }
+
+  .semester-badge {
+    min-width: 110px;
+    height: 35px;
+
+    padding: 0 11px;
+
+    font-size: 12px;
+  }
+
+  .my-courses-table th {
+    padding: 15px 13px;
+
+    font-size: 13px;
+  }
+
+  .my-courses-table td {
+    padding: 16px 13px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP
+   1024px AND ABOVE
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .my-courses-card {
+    min-height: 500px;
+
+    padding: 27px 25px 32px;
+
+    border-radius: 9px;
+  }
+
+  .courses-header {
+    margin-bottom: 24px;
+  }
+
+  .courses-header h2 {
+    font-size: 18px;
+  }
+
+  .courses-header p {
+    margin-top: 7px;
+
+    font-size: 13px;
+  }
+
+  .semester-badge {
+    min-width: 112px;
+    height: 34px;
+
+    padding: 0 12px;
+
+    font-size: 12px;
+  }
+
+  .my-courses-table th {
+    padding: 15px 15px;
+
+    font-size: 13px;
+  }
+
+  .my-courses-table td {
+    padding: 17px 15px;
+
+    font-size: 13px;
+  }
+}

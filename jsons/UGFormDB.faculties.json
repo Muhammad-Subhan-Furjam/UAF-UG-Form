@@ -1,0 +1,252 @@
+[{
+  "_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "name": "Faculty of Agriculture",
+  "code": "FA1002",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:17.716Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:17.716Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88e112cdfb0613fd094"
+  },
+  "name": "Faculty of Sciences",
+  "code": "FS1012",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:18.451Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:18.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db890112cdfb0613fd0a9"
+  },
+  "name": "Faculty of Animal Husbandry",
+  "code": "FAH1033",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:20.014Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:20.014Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db890112cdfb0613fd0ab"
+  },
+  "name": "Faculty of Food Nutrition and Home Sciences",
+  "code": "FFNAHS1035",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:20.161Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:20.161Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db890112cdfb0613fd0b5"
+  },
+  "name": "Faculty of Veterinary Sciences",
+  "code": "FVS1045",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:20.907Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:20.907Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0bd"
+  },
+  "name": "Faculty of Agricultural Engineering and Technology",
+  "code": "FAEAT1053",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.499Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.499Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0c4"
+  },
+  "name": "Faculty of Social Sciences",
+  "code": "FSS1060",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.023Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.023Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0ca"
+  },
+  "name": "Faculty of Sciences",
+  "code": "FS1066",
+  "campus_id": {
+    "$oid": "6a8db892112cdfb0613fd0c9"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.463Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0d3"
+  },
+  "name": "Faculty of Agriculture",
+  "code": "FA1075",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0d2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.128Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.128Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0d6"
+  },
+  "name": "Faculty of Sciences",
+  "code": "FS1078",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0d2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.353Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.353Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0d8"
+  },
+  "name": "Faculty of Social Sciences",
+  "code": "FSS1080",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0d2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.512Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.512Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0dd"
+  },
+  "name": "Faculty of Arts and Humanities",
+  "code": "FAAH1085",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0d2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.883Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.883Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db894112cdfb0613fd0df"
+  },
+  "name": "Faculty of Agriculture",
+  "code": "FA1087",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0de"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:24.029Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:24.029Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db894112cdfb0613fd0e2"
+  },
+  "name": "Faculty of Food, Nutrition & Home Sciences",
+  "code": "FFNHS1090",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0de"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:24.248Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:24.248Z"
+  },
+  "__v": 0
+}]

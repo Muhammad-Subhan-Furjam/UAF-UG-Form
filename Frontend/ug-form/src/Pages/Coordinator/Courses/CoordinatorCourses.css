@@ -1,0 +1,562 @@
+/* =========================================
+   COORDINATOR COURSES PAGE
+========================================= */
+
+.coordinator-courses-page {
+  width: 100%;
+  min-height: 100%;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #111111;
+}
+
+
+/* =========================================
+   HEADER / NAVIGATION
+========================================= */
+
+.courses-navigation-header {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.courses-navigation-header h2 {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.courses-path {
+  max-width: 850px;
+
+  margin: 8px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.courses-back-btn {
+  flex-shrink: 0;
+
+  min-width: 90px;
+  height: 40px;
+
+  padding: 0 16px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #082f5c;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.courses-back-btn:hover {
+  background: #124678;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   GENERAL CARD GRID
+========================================= */
+
+.course-cards-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 30px;
+}
+
+
+/* =========================================
+   SELECTION CARD
+========================================= */
+
+.course-selection-card {
+  width: 100%;
+  min-height: 200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 25px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 2px 12px
+    rgba(0, 0, 0, 0.11);
+
+  color: #111111;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.course-selection-card small {
+  color: #777777;
+
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.course-selection-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 7px 20px
+    rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   SEMESTER GRID
+========================================= */
+
+.semester-cards-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 30px;
+
+  max-width: 720px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   SEMESTER CARD
+========================================= */
+
+.semester-card {
+  min-height: 190px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 2px 12px
+    rgba(0, 0, 0, 0.11);
+
+  color: #111111;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.semester-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 7px 20px
+    rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   COURSE DETAILS CARD
+========================================= */
+
+.course-details-card {
+  width: 100%;
+
+  max-width: 860px;
+
+  margin: 0 auto;
+
+  padding: 34px;
+
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 2px 12px
+    rgba(0, 0, 0, 0.1);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   COURSE DETAILS HEADING
+========================================= */
+
+.course-details-heading {
+  margin-bottom: 25px;
+
+  text-align: center;
+}
+
+.course-details-heading h3 {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.course-details-heading p {
+  margin: 7px 0 0;
+
+  color: #666666;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.course-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+/* =========================================
+   COURSE TABLE
+========================================= */
+
+.course-details-table {
+  width: 100%;
+
+  min-width: 600px;
+
+  border-collapse: collapse;
+}
+
+.course-details-table th,
+.course-details-table td {
+  border: 1px solid #555555;
+
+  padding: 18px 16px;
+
+  color: #111111;
+
+  font-size: 13px;
+}
+
+.course-details-table th {
+  background: #fafafa;
+
+  text-align: center;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.course-details-table td:first-child {
+  width: 130px;
+
+  text-align: center;
+}
+
+.course-details-table td:last-child {
+  width: 120px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   TOTAL
+========================================= */
+
+.course-total-row td {
+  font-weight: 700;
+}
+
+.course-total-row td:first-child {
+  text-align: center;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.courses-empty-state {
+  width: 100%;
+
+  padding: 50px 25px;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 2px 10px
+    rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+.courses-empty-state h3 {
+  margin: 0;
+
+  font-size: 18px;
+}
+
+.courses-empty-state p {
+  max-width: 500px;
+
+  margin: 12px auto 0;
+
+  color: #666666;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+.course-data-empty {
+  box-shadow: none;
+
+  background: #f8fafc;
+}
+
+
+/* =========================================================
+   1) MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .coordinator-courses-page {
+    padding: 15px;
+  }
+
+  .courses-navigation-header {
+    gap: 12px;
+
+    margin-bottom: 20px;
+  }
+
+  .courses-navigation-header h2 {
+    font-size: 19px;
+  }
+
+  .courses-path {
+    font-size: 10px;
+  }
+
+  .courses-back-btn {
+    min-width: 75px;
+    height: 36px;
+
+    padding: 0 12px;
+
+    font-size: 12px;
+  }
+
+  .course-cards-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .course-selection-card {
+    min-height: 135px;
+
+    padding: 18px;
+
+    font-size: 15px;
+  }
+
+  .semester-cards-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .semester-card {
+    min-height: 125px;
+
+    font-size: 16px;
+  }
+
+  .course-details-card {
+    padding: 20px 14px;
+  }
+
+  .course-details-heading h3 {
+    font-size: 17px;
+  }
+
+  .course-details-table th,
+  .course-details-table td {
+    padding: 13px 10px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .coordinator-courses-page {
+    padding: 20px;
+  }
+
+  .courses-navigation-header h2 {
+    font-size: 21px;
+  }
+
+  .course-cards-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+  }
+
+  .course-selection-card {
+    min-height: 170px;
+
+    font-size: 16px;
+  }
+
+  .semester-cards-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+  }
+
+  .semester-card {
+    min-height: 165px;
+
+    font-size: 18px;
+  }
+
+  .course-details-card {
+    padding: 28px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP
+   1024px AND ABOVE
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .coordinator-courses-page {
+    padding: 24px;
+  }
+
+  .course-cards-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 30px;
+  }
+
+  .course-selection-card {
+    min-height: 200px;
+  }
+
+  .semester-cards-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
+  }
+
+  .semester-card {
+    min-height: 190px;
+  }
+}

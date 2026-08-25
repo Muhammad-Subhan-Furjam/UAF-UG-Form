@@ -1,0 +1,687 @@
+/* =========================================
+   MY FORMS PAGE - BASE
+========================================= */
+
+.my-forms-page {
+  width: 100%;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #111111;
+}
+
+.ug-form-sheet {
+  width: 100%;
+
+  background-color: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   FORM HEADING
+========================================= */
+
+.form-heading {
+  text-align: center;
+
+  border-bottom: 1px solid #555555;
+
+  padding-bottom: 9px;
+}
+
+.form-heading h1 {
+  margin: 0 0 7px;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.form-heading h2 {
+  margin: 0 0 2px;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.form-heading h3 {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   STUDENT INFORMATION
+========================================= */
+
+.student-form-info {
+  width: 100%;
+
+  padding-top: 10px;
+}
+
+.info-row {
+  display: grid;
+
+  gap: 28px;
+
+  margin-bottom: 10px;
+}
+
+.info-row-three {
+  grid-template-columns: 1.2fr 1.05fr 0.95fr;
+}
+
+.info-row-two {
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.info-field {
+  display: flex;
+  align-items: flex-end;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  font-size: 15px;
+}
+
+.info-field strong {
+  flex-shrink: 0;
+
+  font-weight: 700;
+}
+
+.info-field span {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 0 5px 3px;
+
+  border-bottom: 1px solid #555555;
+
+  text-align: center;
+}
+
+.info-field.full-width {
+  width: 100%;
+}
+
+
+/* =========================================
+   CREDIT TABLE
+========================================= */
+
+.credit-table-wrapper {
+  width: 100%;
+
+  margin-top: 14px;
+
+  overflow-x: auto;
+}
+
+.credit-table {
+  width: 100%;
+
+  min-width: 900px;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+.credit-table th {
+  height: 84px;
+
+  border: 1px solid #222222;
+
+  padding: 7px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.credit-table .credit-title-cell {
+  width: 220px;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   COURSES HEADING
+========================================= */
+
+.courses-heading {
+  margin: 10px 0 8px;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   COURSES TABLE
+========================================= */
+
+.courses-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.courses-table {
+  width: 100%;
+
+  min-width: 1050px;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+.courses-table th,
+.courses-table td {
+  border-left: 1px solid #222222;
+  border-right: 1px solid #222222;
+}
+
+.courses-table thead th {
+  height: 58px;
+
+  border-top: 1px solid #222222;
+  border-bottom: 1px solid #222222;
+
+  padding: 8px 7px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-align: center;
+}
+
+.courses-table tbody td {
+  padding: 8px 12px;
+
+  font-size: 13px;
+
+  vertical-align: top;
+}
+
+.courses-table tbody tr:last-child td {
+  border-bottom: 1px solid #222222;
+}
+
+.courses-table th:nth-child(1),
+.courses-table td:nth-child(1) {
+  width: 85px;
+}
+
+.courses-table th:nth-child(2),
+.courses-table td:nth-child(2) {
+  width: 310px;
+}
+
+.courses-table th:nth-child(3),
+.courses-table td:nth-child(3) {
+  width: 80px;
+}
+
+.courses-table th:nth-child(4),
+.courses-table td:nth-child(4) {
+  width: 82px;
+}
+
+.courses-table th:nth-child(5),
+.courses-table td:nth-child(5) {
+  width: 135px;
+}
+
+.courses-table th:nth-child(6),
+.courses-table td:nth-child(6) {
+  width: 150px;
+}
+
+.courses-table th:nth-child(7),
+.courses-table td:nth-child(7) {
+  width: 150px;
+}
+
+.courses-table th:nth-child(8),
+.courses-table td:nth-child(8) {
+  width: 125px;
+}
+
+.total-row td {
+  font-weight: 700;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   SIGNATURES
+========================================= */
+
+.signature-section {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 70px;
+
+  margin-top: 55px;
+}
+
+.signature-box {
+  text-align: center;
+
+  font-size: 14px;
+}
+
+.signature-line {
+  width: 100%;
+
+  border-top: 1px solid #111111;
+
+  margin-bottom: 8px;
+}
+
+
+/* =========================================
+   BOTTOM INFO
+========================================= */
+
+.bottom-info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-top: 15px;
+}
+
+.fees-info {
+  width: 395px;
+}
+
+.fees-row {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 12px;
+
+  font-size: 14px;
+}
+
+.fees-row strong {
+  width: 125px;
+}
+
+.fees-row span {
+  flex: 1;
+
+  border-bottom: 1px solid #555555;
+
+  height: 15px;
+}
+
+.dean-info {
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.form-actions {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 55px;
+
+  margin-top: 20px;
+}
+
+.outline-form-btn,
+.send-request-btn {
+  height: 57px;
+
+  border-radius: 5px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.outline-form-btn {
+  width: 157px;
+
+  border: 3px solid #082f5c;
+
+  background-color: #ffffff;
+
+  color: #082f5c;
+}
+
+.send-request-btn {
+  width: 432px;
+
+  border: none;
+
+  background-color: #082f5c;
+
+  color: #ffffff;
+}
+
+.send-request-btn:hover {
+  background-color: #062748;
+}
+
+
+/* =========================================================
+   1) MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .ug-form-sheet {
+    padding: 15px 10px 25px;
+  }
+
+  .form-heading h1 {
+    font-size: 13px;
+  }
+
+  .form-heading h2 {
+    font-size: 12px;
+  }
+
+  .form-heading h3 {
+    font-size: 17px;
+  }
+
+  .info-row,
+  .info-row-three,
+  .info-row-two {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+  }
+
+  .info-field {
+    font-size: 13px;
+  }
+
+  .info-field span {
+    text-align: left;
+  }
+
+  .credit-table th {
+    font-size: 12px;
+  }
+
+  .courses-heading {
+    font-size: 14px;
+  }
+
+  .courses-table th {
+    font-size: 12px;
+  }
+
+  .courses-table td {
+    font-size: 11px;
+  }
+
+  .signature-section {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    margin-top: 40px;
+  }
+
+  .bottom-info {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    margin-top: 25px;
+  }
+
+  .fees-info {
+    width: 100%;
+  }
+
+  .dean-info {
+    align-self: flex-end;
+  }
+
+  .form-actions {
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 25px;
+  }
+
+  .outline-form-btn,
+  .send-request-btn {
+    width: 100%;
+    height: 50px;
+
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .ug-form-sheet {
+    padding: 18px 15px 28px;
+  }
+
+  .form-heading h1 {
+    font-size: 14px;
+  }
+
+  .form-heading h2 {
+    font-size: 14px;
+  }
+
+  .form-heading h3 {
+    font-size: 18px;
+  }
+
+  .info-row {
+    gap: 18px;
+  }
+
+  .info-field {
+    font-size: 13px;
+  }
+
+  .credit-table th {
+    font-size: 13px;
+  }
+
+  .courses-table thead th {
+    font-size: 13px;
+  }
+
+  .courses-table tbody td {
+    font-size: 12px;
+  }
+
+  .signature-section {
+    gap: 35px;
+  }
+
+  .form-actions {
+    gap: 30px;
+  }
+
+  .outline-form-btn {
+    width: 135px;
+    height: 52px;
+
+    font-size: 17px;
+  }
+
+  .send-request-btn {
+    flex: 1;
+    height: 52px;
+
+    font-size: 17px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP
+   1024px AND ABOVE
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .ug-form-sheet {
+    padding: 20px 20px 30px;
+  }
+
+  .form-heading h1 {
+    font-size: 16px;
+  }
+
+  .form-heading h2 {
+    font-size: 16px;
+  }
+
+  .form-heading h3 {
+    font-size: 20px;
+  }
+
+  .info-field {
+    font-size: 15px;
+  }
+
+  .form-actions {
+    justify-content: flex-start;
+  }
+}
+
+
+/* =========================================
+   PRINT
+========================================= */
+
+@media print {
+
+  .my-forms-page {
+    width: 100%;
+  }
+
+  .ug-form-sheet {
+    padding: 0;
+  }
+
+  .form-actions {
+    display: none;
+  }
+}
+
+/* =========================
+   FORM HEADING TOP
+========================= */
+.form-heading-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0px;
+  margin-bottom: 8px;
+}
+
+.form-heading-top h1 {
+  margin: 0;
+  flex: 1;
+}
+
+.form-copy-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1e3a5f;
+  white-space: nowrap;
+  text-align: right;
+  padding-top: 4px;
+  letter-spacing: 0.3px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* Tablet 769px - 1023px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .form-heading-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .form-copy-label {
+    font-size: 12px;
+    text-align: center;
+    white-space: normal;
+  }
+}
+
+/* Mobile ≤ 768px */
+@media (max-width: 768px) {
+  .form-heading-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .form-heading-top h1 {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .form-copy-label {
+    font-size: 11px;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.4;
+  }
+}

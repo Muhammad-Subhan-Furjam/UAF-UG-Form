@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "name": "Main Campus",
+  "code": "CMC1001",
+  "location": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:17.641Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:17.641Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0c9"
+  },
+  "name": "UAF Sub-Campus PARS",
+  "code": "CUSP1065",
+  "location": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.389Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.389Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0d2"
+  },
+  "name": "UAF Sub-Campus Burewala-Vehari",
+  "code": "CUSB1074",
+  "location": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.054Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.054Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0de"
+  },
+  "name": "UAF Sub-Campus Depalpur",
+  "code": "CUSD1086",
+  "location": "",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.956Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.956Z"
+  },
+  "__v": 0
+}]

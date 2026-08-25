@@ -1,0 +1,1113 @@
+[{
+  "_id": {
+    "$oid": "6a8db88d112cdfb0613fd08b"
+  },
+  "name": "Department of Agronomy",
+  "code": "DA1003",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:17.788Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:17.788Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88d112cdfb0613fd08c"
+  },
+  "name": "Department of Plant Breeding & Genetics",
+  "code": "DPBG1004",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:17.859Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:17.859Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88d112cdfb0613fd08d"
+  },
+  "name": "Department of Entomology",
+  "code": "DE1005",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:17.931Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:17.931Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88e112cdfb0613fd08e"
+  },
+  "name": "Department of Plant Pathology",
+  "code": "DPP1006",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:18.005Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:18.005Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88e112cdfb0613fd08f"
+  },
+  "name": "Department of Forestry and Range Management",
+  "code": "DFARM1007",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:18.079Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:18.079Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88e112cdfb0613fd090"
+  },
+  "name": "Institute of Soil & Environmental Sciences",
+  "code": "DSES1008",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:18.153Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:18.153Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88e112cdfb0613fd091"
+  },
+  "name": "Institute of Horticultural Sciences",
+  "code": "DHS1009",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:18.226Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:18.226Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88e112cdfb0613fd092"
+  },
+  "name": "Centre of Agricultural Biochemistry and Biotechnology",
+  "code": "DABAB1010",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:18.304Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:18.304Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88e112cdfb0613fd093"
+  },
+  "name": "Department of Crop Physiology",
+  "code": "DCP1011",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88d112cdfb0613fd08a"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:18.377Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:18.377Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88e112cdfb0613fd095"
+  },
+  "name": "Department Of Computer Science",
+  "code": "DCS1013",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88e112cdfb0613fd094"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:18.525Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:18.525Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88f112cdfb0613fd09c"
+  },
+  "name": "Department of Botany",
+  "code": "DB1020",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88e112cdfb0613fd094"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:19.034Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:19.034Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88f112cdfb0613fd09e"
+  },
+  "name": "Department of Chemistry",
+  "code": "DC1022",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88e112cdfb0613fd094"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:19.184Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:19.184Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88f112cdfb0613fd0a0"
+  },
+  "name": "Department of Biochemistry",
+  "code": "DB1024",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88e112cdfb0613fd094"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:19.330Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:19.330Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88f112cdfb0613fd0a2"
+  },
+  "name": "Department of Physics",
+  "code": "DP1026",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88e112cdfb0613fd094"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:19.478Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:19.478Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88f112cdfb0613fd0a4"
+  },
+  "name": "Department of Mathematics and Statistics",
+  "code": "DMAS1028",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88e112cdfb0613fd094"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:19.628Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:19.628Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db88f112cdfb0613fd0a7"
+  },
+  "name": "Department of Zoology, Wildlife and Fisheries",
+  "code": "DZWAF1031",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db88e112cdfb0613fd094"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:19.859Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:19.859Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db890112cdfb0613fd0aa"
+  },
+  "name": "Institute of Animal and Dairy Sciences",
+  "code": "DAADS1034",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0a9"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:20.087Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:20.087Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db890112cdfb0613fd0ac"
+  },
+  "name": "National Institute of Food Science and Technology (NIFSAT)",
+  "code": "DNFSATN1036",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0ab"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:20.236Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:20.236Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db890112cdfb0613fd0af"
+  },
+  "name": "Institute of Home Sciences",
+  "code": "DHS1039",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0ab"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:20.461Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:20.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db890112cdfb0613fd0b6"
+  },
+  "name": "Department of Anatomy",
+  "code": "DA1046",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0b5"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:20.980Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:20.980Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0b7"
+  },
+  "name": "Department of Pathology",
+  "code": "DP1047",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0b5"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.054Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.054Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0b8"
+  },
+  "name": "Department of Clinical Medicine & Surgery",
+  "code": "DCMS1048",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0b5"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.128Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.128Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0b9"
+  },
+  "name": "Department of Theriogenology",
+  "code": "DT1049",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0b5"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.203Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.203Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0ba"
+  },
+  "name": "Department of Parasitology",
+  "code": "DP1050",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0b5"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.277Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.277Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0bb"
+  },
+  "name": "Institute of Microbiology",
+  "code": "DM1051",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0b5"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.350Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.350Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0bc"
+  },
+  "name": "Institute of Physiology and Pharmacology",
+  "code": "DPAP1052",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db890112cdfb0613fd0b5"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.424Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.424Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0be"
+  },
+  "name": "Department of Farm Machinery and Power",
+  "code": "DFMAP1054",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db891112cdfb0613fd0bd"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.573Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.573Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0bf"
+  },
+  "name": "Department of Fiber and Textile Technology",
+  "code": "DFATT1055",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db891112cdfb0613fd0bd"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.655Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.655Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0c0"
+  },
+  "name": "Department of Structures & Environmental Engineering",
+  "code": "DSEE1056",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db891112cdfb0613fd0bd"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.729Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.729Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0c1"
+  },
+  "name": "Department of Energy Systems Engineering",
+  "code": "DESE1057",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db891112cdfb0613fd0bd"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.802Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.802Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0c2"
+  },
+  "name": "Department of Food Engineering",
+  "code": "DFE1058",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db891112cdfb0613fd0bd"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.876Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.876Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db891112cdfb0613fd0c3"
+  },
+  "name": "Department of Irrigation and Drainage",
+  "code": "DIAD1059",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db891112cdfb0613fd0bd"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:21.949Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:21.949Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0c5"
+  },
+  "name": "Institute of Agricultural Extension, Education and Rural Development",
+  "code": "DAEEARD1061",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0c4"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.096Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.096Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0c6"
+  },
+  "name": "Institute of Agricultural and Resource Economics",
+  "code": "DAARE1062",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0c4"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.169Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.169Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0c7"
+  },
+  "name": "Institute of Business Management Sciences",
+  "code": "DBMS1063",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0c4"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.243Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.243Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0c8"
+  },
+  "name": "Department of English and Linguistics",
+  "code": "DEAL1064",
+  "campus_id": {
+    "$oid": "6a8db88d112cdfb0613fd089"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0c4"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.316Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.316Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0cb"
+  },
+  "name": "Department Of Computer Science",
+  "code": "DCS1067",
+  "campus_id": {
+    "$oid": "6a8db892112cdfb0613fd0c9"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0ca"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.537Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.537Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0cc"
+  },
+  "name": "Department of Botany",
+  "code": "DB1068",
+  "campus_id": {
+    "$oid": "6a8db892112cdfb0613fd0c9"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0ca"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.610Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.610Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0cd"
+  },
+  "name": "Department of Chemistry",
+  "code": "DC1069",
+  "campus_id": {
+    "$oid": "6a8db892112cdfb0613fd0c9"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0ca"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.686Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.686Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0ce"
+  },
+  "name": "Department of Biochemistry",
+  "code": "DB1070",
+  "campus_id": {
+    "$oid": "6a8db892112cdfb0613fd0c9"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0ca"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.760Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.760Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0cf"
+  },
+  "name": "Department of Physics",
+  "code": "DP1071",
+  "campus_id": {
+    "$oid": "6a8db892112cdfb0613fd0c9"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0ca"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.833Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.833Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0d0"
+  },
+  "name": "Department of Mathematics and Statistics",
+  "code": "DMAS1072",
+  "campus_id": {
+    "$oid": "6a8db892112cdfb0613fd0c9"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0ca"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.906Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.906Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db892112cdfb0613fd0d1"
+  },
+  "name": "Department of Zoology, Wildlife and Fisheries",
+  "code": "DZWAF1073",
+  "campus_id": {
+    "$oid": "6a8db892112cdfb0613fd0c9"
+  },
+  "faculty_id": {
+    "$oid": "6a8db892112cdfb0613fd0ca"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:22.981Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:22.981Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0d4"
+  },
+  "name": "Department of Agricultural Sciences (BSc Hons)",
+  "code": "DASBH1076",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0d2"
+  },
+  "faculty_id": {
+    "$oid": "6a8db893112cdfb0613fd0d3"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.203Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.203Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0d7"
+  },
+  "name": "Department of Computer Science",
+  "code": "DCS1079",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0d2"
+  },
+  "faculty_id": {
+    "$oid": "6a8db893112cdfb0613fd0d6"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.428Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.428Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0d9"
+  },
+  "name": "Department of BBA (Agribusiness)",
+  "code": "DBA1081",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0d2"
+  },
+  "faculty_id": {
+    "$oid": "6a8db893112cdfb0613fd0d8"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.585Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.585Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0db"
+  },
+  "name": "Department of MBA (Regular)",
+  "code": "DMR1083",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0d2"
+  },
+  "faculty_id": {
+    "$oid": "6a8db893112cdfb0613fd0d8"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:23.733Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:23.733Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db894112cdfb0613fd0e0"
+  },
+  "name": "Agriculture (BSc Hons)",
+  "code": "DABH1088",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0de"
+  },
+  "faculty_id": {
+    "$oid": "6a8db894112cdfb0613fd0df"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:24.103Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:24.103Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db894112cdfb0613fd0e3"
+  },
+  "name": "Food Science & Technology",
+  "code": "DFST1091",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0de"
+  },
+  "faculty_id": {
+    "$oid": "6a8db894112cdfb0613fd0e2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:24.321Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:24.321Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db894112cdfb0613fd0e5"
+  },
+  "name": "Human Nutrition & Dietetics",
+  "code": "DHND1093",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0de"
+  },
+  "faculty_id": {
+    "$oid": "6a8db894112cdfb0613fd0e2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:24.467Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:24.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db894112cdfb0613fd0e7"
+  },
+  "name": "Home Economics (BSc Hons)",
+  "code": "DHEBH1095",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0de"
+  },
+  "faculty_id": {
+    "$oid": "6a8db894112cdfb0613fd0e2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:24.615Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:24.615Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db894112cdfb0613fd0e9"
+  },
+  "name": "Human Development & Family Studies",
+  "code": "DHDFS1097",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0de"
+  },
+  "faculty_id": {
+    "$oid": "6a8db894112cdfb0613fd0e2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:24.761Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:24.761Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db894112cdfb0613fd0eb"
+  },
+  "name": "Dairy Technology (MSc Hons)",
+  "code": "DDTMH1099",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0de"
+  },
+  "faculty_id": {
+    "$oid": "6a8db894112cdfb0613fd0e2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-25T15:45:24.907Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-25T15:45:24.907Z"
+  },
+  "__v": 0
+}]

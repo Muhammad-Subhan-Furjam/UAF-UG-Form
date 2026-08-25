@@ -1,0 +1,336 @@
+/* =========================================
+   UG FORM PAGE
+========================================= */
+
+.ug-form-page {
+  width: 100%;
+  min-height: 100%;
+
+  padding: 25px 28px 40px;
+
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #111111;
+}
+
+
+/* =========================================
+   TOP
+========================================= */
+
+.ug-form-top {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+
+  align-items: start;
+
+  margin-bottom: 35px;
+}
+
+.ug-form-top h2 {
+  margin: 0;
+
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.ug-university-title {
+  text-align: center;
+}
+
+.ug-university-title h3,
+.ug-university-title h4 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.ug-form-card {
+  width: 100%;
+
+  padding: 34px 40px;
+
+  background-color: #ffffff;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.09);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.ug-main-form {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  column-gap: 45px;
+  row-gap: 16px;
+}
+
+
+/* =========================================
+   GROUP
+========================================= */
+
+.ug-form-group {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.ug-form-group label {
+  margin-bottom: 7px;
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   INPUT / SELECT
+========================================= */
+
+.ug-form-group input,
+.ug-form-group select {
+  width: 100%;
+  height: 62px;
+
+  padding: 0 14px;
+
+  border: 1px solid #b8b8b8;
+  border-radius: 5px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 15px;
+
+  box-sizing: border-box;
+}
+
+.ug-form-group input:focus,
+.ug-form-group select:focus {
+  border-color: #082f5c;
+}
+
+
+/* =========================================
+   ADDRESS
+========================================= */
+
+.ug-address-group {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.ug-form-actions {
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: 290px 290px;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-top: 10px;
+}
+
+.ug-action-btn {
+  height: 57px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 5px;
+
+  background: #082f5c;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ug-action-btn:hover {
+  background: #124678;
+
+  transform: translateY(-2px);
+}
+
+.ug-upload-symbol {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+
+/* =========================================
+   MOBILE <= 768px
+========================================= */
+
+@media (max-width: 768px) {
+
+  .ug-form-page {
+    padding: 18px 14px 30px;
+  }
+
+  .ug-form-top {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+  }
+
+  .ug-form-top h2 {
+    font-size: 19px;
+  }
+
+  .ug-university-title h3,
+  .ug-university-title h4 {
+    font-size: 16px;
+  }
+
+  .ug-form-card {
+    padding: 23px 18px;
+
+    border-radius: 12px;
+  }
+
+  .ug-main-form {
+    grid-template-columns: 1fr;
+
+    gap: 17px;
+  }
+
+  .ug-form-group label {
+    font-size: 15px;
+  }
+
+  .ug-form-group input,
+  .ug-form-group select {
+    height: 55px;
+
+    font-size: 14px;
+  }
+
+  .ug-address-group {
+    grid-column: auto;
+  }
+
+  .ug-form-actions {
+    grid-column: auto;
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .ug-action-btn {
+    width: 100%;
+    height: 53px;
+
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================
+   TABLET 769 - 1023
+========================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .ug-form-page {
+    padding: 22px;
+  }
+
+  .ug-form-card {
+    padding: 30px;
+  }
+
+  .ug-main-form {
+    column-gap: 28px;
+  }
+
+  .ug-form-group label {
+    font-size: 16px;
+  }
+
+  .ug-form-group input,
+  .ug-form-group select {
+    height: 58px;
+
+    font-size: 14px;
+  }
+
+  .ug-form-actions {
+    grid-template-columns: 240px 240px;
+  }
+
+  .ug-action-btn {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================
+   DESKTOP >= 1024
+========================================= */
+
+@media (min-width: 1024px) {
+
+  .ug-form-page {
+    padding: 25px 28px 40px;
+  }
+
+  .ug-main-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

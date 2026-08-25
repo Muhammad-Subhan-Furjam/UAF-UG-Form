@@ -1,0 +1,440 @@
+/* =========================================
+   COORDINATOR NOTIFICATIONS PAGE
+========================================= */
+
+.coordinator-alerts-page {
+  width: 100%;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #161616;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.coordinator-alerts-card {
+  width: 100%;
+
+  background-color: #ffffff;
+
+  border: 1px solid #dce2e8;
+  border-radius: 9px;
+
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.coordinator-alerts-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 25px;
+
+  border-bottom: 1px solid #e1e6eb;
+
+  box-sizing: border-box;
+}
+
+.coordinator-alerts-header h2 {
+  margin: 0;
+
+  color: #171717;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.coordinator-alerts-header p {
+  margin: 7px 0 0;
+
+  color: #6c7480;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   MAIN BELL
+========================================= */
+
+.coordinator-main-bell {
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background-color: #edf3fa;
+
+  color: #082f5c;
+}
+
+.coordinator-main-bell svg {
+  width: 20px;
+  height: 20px;
+}
+
+
+/* =========================================
+   NOTIFICATION LIST
+========================================= */
+
+.coordinator-alerts-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================
+   NOTIFICATION ITEM
+========================================= */
+
+.coordinator-alert-item {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 16px;
+
+  padding: 21px 25px;
+
+  border-bottom: 1px solid #e5e9ed;
+
+  box-sizing: border-box;
+
+  transition: background-color 0.2s ease;
+}
+
+.coordinator-alert-item:last-child {
+  border-bottom: none;
+}
+
+.coordinator-alert-item:hover {
+  background-color: #fafbfd;
+}
+
+.coordinator-alert-item.unread {
+  background-color: #f8fbff;
+}
+
+
+/* =========================================
+   ICON
+========================================= */
+
+.coordinator-alert-icon {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.coordinator-alert-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+
+/* REQUEST */
+
+.coordinator-alert-icon.request {
+  background-color: #edf3ff;
+
+  color: #4875d1;
+}
+
+
+/* APPROVED */
+
+.coordinator-alert-icon.approved {
+  background-color: #e8f7ec;
+
+  color: #258444;
+}
+
+
+/* PENDING */
+
+.coordinator-alert-icon.pending {
+  background-color: #fff6e7;
+
+  color: #b9792c;
+}
+
+
+/* COURSE */
+
+.coordinator-alert-icon.course {
+  background-color: #eef2f7;
+
+  color: #405b78;
+}
+
+
+/* ALERT */
+
+.coordinator-alert-icon.alert {
+  background-color: #fff0f0;
+
+  color: #c64a4a;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.coordinator-alert-content {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.coordinator-alert-title-row {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.coordinator-alert-title-area {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.coordinator-alert-title-area h3 {
+  margin: 0;
+
+  color: #171717;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   UNREAD DOT
+========================================= */
+
+.coordinator-unread-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background-color: #1f6fd1;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.coordinator-alert-content p {
+  margin: 7px 0 0;
+
+  color: #626b75;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   TIME
+========================================= */
+
+.coordinator-alert-time {
+  flex-shrink: 0;
+
+  color: #8a929c;
+
+  font-size: 11px;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   1) MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .coordinator-alerts-card {
+    border-radius: 8px;
+  }
+
+  .coordinator-alerts-header {
+    padding: 18px 15px;
+
+    gap: 12px;
+  }
+
+  .coordinator-alerts-header h2 {
+    font-size: 18px;
+  }
+
+  .coordinator-alerts-header p {
+    font-size: 12px;
+  }
+
+  .coordinator-main-bell {
+    width: 38px;
+    height: 38px;
+  }
+
+  .coordinator-main-bell svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .coordinator-alert-item {
+    padding: 17px 14px;
+
+    gap: 12px;
+  }
+
+  .coordinator-alert-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .coordinator-alert-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .coordinator-alert-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 4px;
+  }
+
+  .coordinator-alert-title-area h3 {
+    font-size: 13px;
+  }
+
+  .coordinator-alert-content p {
+    margin-top: 6px;
+
+    font-size: 12px;
+  }
+
+  .coordinator-alert-time {
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .coordinator-alerts-header {
+    padding: 21px 20px;
+  }
+
+  .coordinator-alerts-header h2 {
+    font-size: 18px;
+  }
+
+  .coordinator-alerts-header p {
+    font-size: 13px;
+  }
+
+  .coordinator-main-bell {
+    width: 42px;
+    height: 42px;
+  }
+
+  .coordinator-alert-item {
+    padding: 19px 20px;
+
+    gap: 14px;
+  }
+
+  .coordinator-alert-icon {
+    width: 41px;
+    height: 41px;
+  }
+
+  .coordinator-alert-title-area h3 {
+    font-size: 14px;
+  }
+
+  .coordinator-alert-content p {
+    font-size: 13px;
+  }
+
+  .coordinator-alert-time {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP
+   1024px AND ABOVE
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .coordinator-alerts-card {
+    min-height: 500px;
+  }
+
+  .coordinator-alerts-header {
+    padding: 25px;
+  }
+
+  .coordinator-alert-item {
+    padding: 21px 25px;
+  }
+}

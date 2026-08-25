@@ -1,0 +1,548 @@
+/* =========================================
+   DASHBOARD BASE
+========================================= */
+
+.student-dashboard {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #161616;
+}
+
+
+/* =========================================
+   COMMON DASHBOARD CARD
+========================================= */
+
+.dashboard-card {
+  width: 100%;
+
+  background-color: #ffffff;
+
+  border: 1px solid #d7dde4;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.dashboard-section-title {
+  margin: 0;
+
+  color: #181818;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   HOW IT WORKS
+========================================= */
+
+.how-it-works {
+  padding: 28px 25px 25px;
+}
+
+
+/* =========================================
+   STEPS CONTAINER
+========================================= */
+
+.steps-container {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+
+/* =========================================
+   STEP CARD
+========================================= */
+
+.step-card {
+  min-height: 94px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 14px;
+
+  padding: 17px 17px;
+
+  border: 1px solid #d4d9df;
+  border-radius: 6px;
+
+  background-color: #ffffff;
+}
+
+
+/* =========================================
+   STEP ICON
+========================================= */
+
+.step-icon {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #0d3b70;
+}
+
+.step-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+
+/* =========================================
+   STEP CONTENT
+========================================= */
+
+.step-content {
+  flex: 1;
+}
+
+.step-content h3 {
+  margin: 0 0 5px;
+
+  color: #151515;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.step-content p {
+  margin: 0;
+
+  color: #303030;
+
+  font-weight: 400;
+
+  line-height: 1.35;
+}
+
+
+/* =========================================
+   DASHBOARD BUTTON AREA
+========================================= */
+
+.dashboard-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* =========================================
+   START FORM BUTTON
+========================================= */
+
+.start-form-btn {
+  border: none;
+
+  border-radius: 6px;
+
+  background-color: #0b3d75;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.start-form-btn:hover {
+  background-color: #082f5c;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   EDIT PROFILE BUTTON
+========================================= */
+
+.edit-profile-btn {
+  border: 1px solid #cbd1d8;
+
+  border-radius: 6px;
+
+  background-color: #ffffff;
+
+  color: #212121;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.edit-profile-btn:hover {
+  background-color: #f6f8fa;
+
+  border-color: #aeb6c0;
+}
+
+
+/* =========================================
+   TIP
+========================================= */
+
+.dashboard-tip {
+  margin-bottom: 0;
+
+  color: #333333;
+}
+
+
+/* =========================================
+   RECENT REQUESTS
+========================================= */
+
+.recent-requests {
+  padding: 27px 25px 32px;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.requests-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.requests-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+.requests-table th {
+  color: #555e6b;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  border-bottom: 1px solid #d4d9df;
+}
+
+.requests-table td {
+  color: #707985;
+
+  text-align: center;
+}
+
+.empty-request-row td {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   1) MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .student-dashboard {
+    gap: 16px;
+  }
+
+  .dashboard-card {
+    border-radius: 7px;
+  }
+
+  .how-it-works {
+    padding: 20px 16px;
+  }
+
+  .dashboard-section-title {
+    font-size: 19px;
+
+    margin-bottom: 18px;
+  }
+
+  .steps-container {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .step-card {
+    min-height: auto;
+
+    padding: 15px;
+
+    gap: 12px;
+  }
+
+  .step-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .step-content h3 {
+    font-size: 15px;
+  }
+
+  .step-content p {
+    font-size: 14px;
+  }
+
+  .step-content p br {
+    display: none;
+  }
+
+  .dashboard-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    margin-top: 20px;
+
+    gap: 10px;
+  }
+
+  .start-form-btn,
+  .edit-profile-btn {
+    width: 100%;
+    height: 45px;
+
+    font-size: 14px;
+  }
+
+  .dashboard-tip {
+    margin-top: 14px;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+  }
+
+  .recent-requests {
+    padding: 20px 16px 25px;
+  }
+
+  .requests-table {
+    min-width: 650px;
+  }
+
+  .requests-table th {
+    padding: 10px 7px;
+
+    font-size: 11px;
+  }
+
+  .requests-table td {
+    padding: 20px 7px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .student-dashboard {
+    gap: 20px;
+  }
+
+  .how-it-works {
+    padding: 24px 20px;
+  }
+
+  .dashboard-section-title {
+    margin-bottom: 20px;
+
+    font-size: 20px;
+  }
+
+  .steps-container {
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+  }
+
+  .step-card {
+    min-height: 105px;
+
+    padding: 14px 12px;
+
+    gap: 10px;
+  }
+
+  .step-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .step-content h3 {
+    font-size: 14px;
+  }
+
+  .step-content p {
+    font-size: 13px;
+  }
+
+  .step-content p br {
+    display: none;
+  }
+
+  .dashboard-actions {
+    margin-top: 20px;
+  }
+
+  .start-form-btn {
+    width: 135px;
+    height: 44px;
+
+    font-size: 14px;
+  }
+
+  .edit-profile-btn {
+    width: 120px;
+    height: 44px;
+
+    font-size: 14px;
+  }
+
+  .dashboard-tip {
+    margin-top: 13px;
+
+    font-size: 12px;
+  }
+
+  .recent-requests {
+    padding: 24px 20px 28px;
+  }
+
+  .requests-table th {
+    padding: 9px 6px;
+
+    font-size: 11px;
+  }
+
+  .requests-table td {
+    padding: 20px 6px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP
+   1024px AND ABOVE
+   REFERENCE DESIGN
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .dashboard-section-title {
+    margin-bottom: 20px;
+
+    font-size: 18px;
+  }
+
+  .steps-container {
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+  }
+
+  .step-card {
+    min-height: 94px;
+
+    padding: 17px;
+
+    gap: 14px;
+  }
+
+  .step-content h3 {
+    font-size: 15px;
+  }
+
+  .step-content p {
+    font-size: 14px;
+  }
+
+  .dashboard-actions {
+    margin-top: 20px;
+  }
+
+  .start-form-btn {
+    width: 141px;
+    height: 43px;
+
+    font-size: 14px;
+  }
+
+  .edit-profile-btn {
+    width: 123px;
+    height: 43px;
+
+    font-size: 14px;
+  }
+
+  .dashboard-tip {
+    margin-top: 12px;
+
+    font-size: 12px;
+  }
+
+  .recent-requests {
+    min-height: 175px;
+  }
+
+  .requests-table th {
+    padding: 9px 0;
+
+    font-size: 11px;
+  }
+
+  .requests-table td {
+    padding: 20px 0;
+
+    font-size: 13px;
+  }
+}

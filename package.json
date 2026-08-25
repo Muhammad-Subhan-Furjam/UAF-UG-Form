@@ -1,0 +1,13 @@
+{
+  "name": "ug-1-form-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:backend": "cd Backend && npm run dev",
+    "dev:frontend": "cd Frontend/ug-form && npm run dev",
+    "build:frontend": "cd Frontend/ug-form && npm run build",
+    "build": "cd Frontend/ug-form && npm run build",
+    "seed": "cd Backend && node seed.js",
+    "start": "cd Backend && npm start"
+  }
+}

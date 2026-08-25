@@ -1,0 +1,570 @@
+/* =========================================
+   COORDINATOR LOGIN PAGE
+========================================= */
+
+.coordinator-login-page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding-top: 65px;
+  padding-bottom: 65px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   LOGIN CARD
+========================================= */
+
+.coordinator-login-card {
+  width: 607px;
+  min-height: 820px;
+
+  padding: 45px 53px 55px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  border-radius: 70px;
+
+  backdrop-filter: blur(1px);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.coordinator-login-header {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.coordinator-login-header h1 {
+  margin: 0;
+
+  color: #000000;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  line-height: 1.15;
+}
+
+.coordinator-login-header p {
+  margin: 14px 0 0;
+
+  color: #000000;
+
+  font-size: 17px;
+  font-weight: 400;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.coordinator-login-logo {
+  width: 100px;
+  height: auto;
+
+  object-fit: contain;
+
+  margin-top: -6px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.coordinator-login-form {
+  width: 100%;
+
+  margin-top: 42px;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.coordinator-form-group {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  margin-bottom: 24px;
+}
+
+.coordinator-form-group label {
+  margin-bottom: 10px;
+
+  color: #000000;
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.coordinator-form-group input {
+  width: 100%;
+  height: 62px;
+
+  padding: 0 16px;
+
+  border: 1px solid #b7b7b7;
+  border-radius: 9px;
+
+  outline: none;
+
+  background-color: #ffffff;
+
+  color: #000000;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 16px;
+
+  box-sizing: border-box;
+}
+
+.coordinator-form-group input::placeholder {
+  color: #b7b7b7;
+}
+
+.coordinator-form-group input:focus {
+  border-color: #082f5b;
+}
+
+
+/* =========================================
+   PASSWORD
+========================================= */
+
+.coordinator-password-group {
+  margin-bottom: 20px;
+}
+
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.coordinator-forgot-password {
+  align-self: flex-end;
+
+  margin-top: 10px;
+
+  color: #062f5c;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.coordinator-forgot-password:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   ROLE SECTION
+========================================= */
+
+.coordinator-role-section {
+  width: 100%;
+
+  margin-top: 0;
+}
+
+.coordinator-role-section h2 {
+  margin: 0 0 18px;
+
+  color: #000000;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.coordinator-role-options {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  gap: 30px;
+}
+
+.coordinator-role-option {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #000000;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.coordinator-role-option input[type="radio"] {
+  width: 17px;
+  height: 17px;
+
+  margin: 0;
+
+  accent-color: #062f5c;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.coordinator-login-btn {
+  width: 210px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 38px auto 0;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #062f5c;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.coordinator-login-btn:hover {
+  background-color: #052748;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 18px rgba(6, 47, 92, 0.22);
+}
+
+
+/* =========================================
+   SIGNUP
+========================================= */
+
+.coordinator-signup-text {
+  margin: 24px 0 0;
+
+  text-align: center;
+
+  color: #000000;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.coordinator-signup-text a {
+  margin-left: 4px;
+
+  color: #062f5c;
+
+  font-weight: 700;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   1) MOBILE
+   0px - 768px
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .coordinator-login-page {
+    min-height: 100vh;
+
+    padding: 25px 14px;
+
+    background-attachment: scroll;
+    background-position: center;
+  }
+
+  .coordinator-login-card {
+    width: 100%;
+    min-height: auto;
+
+    padding: 30px 24px 40px;
+
+    border-radius: 35px;
+  }
+
+  .coordinator-login-header {
+    gap: 15px;
+  }
+
+  .coordinator-login-header h1 {
+    font-size: 25px;
+  }
+
+  .coordinator-login-header p {
+    margin-top: 10px;
+
+    font-size: 15px;
+  }
+
+  .coordinator-login-logo {
+    width: 80px;
+
+    margin-top: -3px;
+  }
+
+  .coordinator-login-form {
+    margin-top: 32px;
+  }
+
+  .coordinator-form-group {
+    margin-bottom: 20px;
+  }
+
+  .coordinator-form-group label {
+    margin-bottom: 8px;
+
+    font-size: 15px;
+  }
+
+  .coordinator-form-group input {
+    height: 56px;
+
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+  }
+
+  .coordinator-forgot-password {
+    margin-top: 9px;
+
+    font-size: 11px;
+  }
+
+  .coordinator-role-section h2 {
+    margin-bottom: 15px;
+
+    font-size: 16px;
+  }
+
+  .coordinator-role-options {
+    justify-content: space-between;
+
+    gap: 15px;
+  }
+
+  .coordinator-role-option {
+    font-size: 14px;
+  }
+
+  .coordinator-role-option input[type="radio"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .coordinator-login-btn {
+    width: 180px;
+    height: 54px;
+
+    margin-top: 32px;
+
+    font-size: 16px;
+  }
+
+  .coordinator-signup-text {
+    margin-top: 22px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   2) TABLET
+   769px - 1023px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+
+  .coordinator-login-page {
+    min-height: 100vh;
+
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+  .coordinator-login-card {
+    width: 570px;
+    min-height: 790px;
+
+    padding: 40px 48px 48px;
+
+    border-radius: 55px;
+  }
+
+  .coordinator-login-header h1 {
+    font-size: 28px;
+  }
+
+  .coordinator-login-header p {
+    margin-top: 12px;
+
+    font-size: 16px;
+  }
+
+  .coordinator-login-logo {
+    width: 92px;
+  }
+
+  .coordinator-login-form {
+    margin-top: 38px;
+  }
+
+  .coordinator-form-group label {
+    font-size: 16px;
+  }
+
+  .coordinator-form-group input {
+    height: 60px;
+
+    font-size: 16px;
+  }
+
+  .coordinator-role-section h2 {
+    font-size: 17px;
+  }
+
+  .coordinator-role-option {
+    font-size: 15px;
+  }
+
+  .coordinator-login-btn {
+    width: 200px;
+    height: 56px;
+
+    margin-top: 35px;
+
+    font-size: 16px;
+  }
+
+  .coordinator-signup-text {
+    margin-top: 23px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP
+   1024px AND ABOVE
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .coordinator-login-page {
+    min-height: 100vh;
+
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+
+  .coordinator-login-card {
+    width: 607px;
+    min-height: 820px;
+
+    padding: 45px 53px 55px;
+
+    border-radius: 70px;
+  }
+
+  .coordinator-login-header h1 {
+    font-size: 30px;
+  }
+
+  .coordinator-login-header p {
+    font-size: 17px;
+  }
+
+  .coordinator-login-logo {
+    width: 100px;
+  }
+
+  .coordinator-form-group label {
+    font-size: 17px;
+  }
+
+  .coordinator-form-group input {
+    height: 62px;
+
+    font-size: 16px;
+  }
+
+  .coordinator-role-section h2 {
+    font-size: 18px;
+  }
+
+  .coordinator-role-option {
+    font-size: 16px;
+  }
+
+  .coordinator-login-btn {
+    width: 210px;
+    height: 58px;
+
+    font-size: 17px;
+  }
+}
