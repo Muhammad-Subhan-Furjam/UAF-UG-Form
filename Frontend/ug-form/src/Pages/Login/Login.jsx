@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 
 import universityBg from "../../assets/university-bg.jpeg";
 import universityLogo from "../../assets/university-logo.jpeg";
 import api from "../../api/api";
+
 const Login = () => {
   const [role, setRole] = useState("student");
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -20,73 +23,44 @@ const Login = () => {
     setPassword("");
   };
 
- const handleLogin = async (e) => {
+  const handleUserIdChange = (e) => {
+    let val = e.target.value;
+    if (role === "coordinator") {
+      val = val.slice(0, 8);
+    }
+    setUserId(val);
+  };
 
-  e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-
-  try {
-
-    const response = await api.post(
-      "/users/login",
-      {
-        userId,
+    try {
+      const response = await api.post("/users/login", {
+        userId: userId.trim(),
         password,
-        role
+        role,
+      });
+
+      console.log(response.data);
+
+      // save token
+      localStorage.setItem("token", response.data.token);
+
+      // save user information
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
+      alert("Login Successful");
+
+      if (response.data.user.role === "student") {
+        navigate("/student/dashboard");
+      } else if (response.data.user.role === "coordinator") {
+        navigate("/coordinator/dashboard");
       }
-    );
-
-
-    console.log(response.data);
-
-
-    // save token
-
-    localStorage.setItem(
-      "token",
-      response.data.token
-    );
-
-
-    // save user information
-
-    localStorage.setItem(
-      "user",
-      JSON.stringify(response.data.user)
-    );
-
-
-    alert("Login Successful");
-
-
-    if(response.data.user.role === "student"){
-
-      navigate("/student/dashboard");
-
+    } catch (error) {
+      console.log(error);
+      alert(error.response?.data?.message || "Login Failed");
     }
-    else if(response.data.user.role === "coordinator"){
-
-      navigate("/coordinator/dashboard");
-
-    }
-
-
-  } catch(error){
-
-
-    console.log(error);
-
-
-    alert(
-      error.response?.data?.message ||
-      "Login Failed"
-    );
-
-
-  }
-
-
-};
+  };
 
   return (
     <main
@@ -120,24 +94,48 @@ const Login = () => {
               id="userId"
               type="text"
               value={userId}
-              onChange={(e) => setUserId(e.target.value)}
+              onChange={handleUserIdChange}
               placeholder={
-                role === "student" ? "Enter AG Number" : "Enter Employee ID"
+                role === "student"
+                  ? "e.g. 2024-ag-1234"
+                  : "e.g. 12345678 (5-8 digits)"
               }
+              maxLength={role === "coordinator" ? 8 : undefined}
+              required
             />
+            {role === "student" ? (
+              <small className="login-hint-text">
+                Format: 4-digit year-ag-4-digit number (e.g. 2024-ag-1234)
+              </small>
+            ) : (
+              <small className="login-hint-text">
+                Must be between 5 and 8 digits/characters long
+              </small>
+            )}
           </div>
 
-          {/* PASSWORD */}
+          {/* PASSWORD WITH EYE TOGGLE */}
           <div className="form-group password-group">
             <label htmlFor="password">Password</label>
 
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter Password"
-            />
+            <div className="password-input-wrapper">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter Password"
+                required
+              />
+              <button
+                type="button"
+                className="password-toggle-btn"
+                onClick={() => setShowPassword(!showPassword)}
+                tabIndex="-1"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
 
             <Link to="/forgot-password" className="forgot-password">
               Forgot Password?

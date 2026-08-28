@@ -560,3 +560,49 @@
     font-size: 17px;
   }
 }
+
+/* =========================================
+   HINT TEXT
+========================================= */
+.login-hint-text {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #555555;
+  font-weight: 500;
+}
+
+/* =========================================
+   PASSWORD INPUT WITH EYE TOGGLE
+========================================= */
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 50px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: #062f5c;
+  font-size: 19px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  color: #041f3d;
+  background-color: rgba(6, 47, 92, 0.08);
+}
