@@ -131,6 +131,16 @@ const Signup = () => {
     setDepartment(e.target.value);
   };
 
+  // User ID Change (AG Number for Student, Employee ID for Coordinator)
+  const handleUserIdChange = (e) => {
+    let val = e.target.value;
+    if (role === "coordinator") {
+      // Restrict employee ID length to 8 max
+      val = val.slice(0, 8);
+    }
+    setUserId(val);
+  };
+
   // CNIC Restrict to 13 Digits
   const handleCnicChange = (e) => {
     const val = e.target.value.replace(/\D/g, "").slice(0, 13);
@@ -178,6 +188,15 @@ const Signup = () => {
       const selectedYear = new Date(admissionDate).getFullYear();
       if (selectedYear < 2021 || selectedYear > currentYear) {
         alert(`Date of admission must be between 2021 and ${currentYear}.`);
+        return;
+      }
+    } else {
+      // Coordinator Employee ID Validation (Greater than 4 digits and <= 8 digits)
+      const empIdTrimmed = userId.trim();
+      if (empIdTrimmed.length <= 4 || empIdTrimmed.length > 8) {
+        alert(
+          "Employee ID must be greater than 4 digits and less than or equal to 8 digits (5 to 8 digits/characters)."
+        );
         return;
       }
     }
@@ -247,10 +266,10 @@ const Signup = () => {
   ];
 
   const coordinatorInstructions = [
-    "Register using your official email address only.",
-    "Use your correct Employee CNIC. Do not use anyone else’s CNIC.",
-    "Once registered, your Employee CNIC cannot be changed.",
-    "Create a strong password and keep it safe.",
+    "Register using your official email address (@gmail.com suffix will be attached).",
+    "Use your correct 8-digit Employee ID (must be 5 to 8 digits/characters long).",
+    "Once registered, your Employee ID cannot be changed.",
+    "Create a strong password following all security rules and keep it safe.",
     "This account will be used for managing student UG forms, so please remember your login details.",
   ];
 
@@ -305,22 +324,27 @@ const Signup = () => {
           {/* AG / Employee ID */}
           <div className="signup-form-group">
             <label>
-              {role === "student" ? "AG Number" : "Employee CNIC"}
+              {role === "student" ? "AG Number" : "Employee ID"}
             </label>
             <input
               type="text"
               value={userId}
-              onChange={(e) => setUserId(e.target.value)}
+              onChange={handleUserIdChange}
               placeholder={
                 role === "student"
                   ? "e.g. 2024-ag-1234"
-                  : "Enter Employee CNIC"
+                  : "e.g. 12345678 (5-8 digits)"
               }
+              maxLength={role === "coordinator" ? 8 : undefined}
               required
             />
-            {role === "student" && (
+            {role === "student" ? (
               <small className="signup-hint-text">
                 Format: 4-digit year-ag-4-digit number (e.g. 2024-ag-1234)
+              </small>
+            ) : (
+              <small className="signup-hint-text">
+                Must be greater than 4 digits and up to 8 digits (5–8 digits)
               </small>
             )}
           </div>
