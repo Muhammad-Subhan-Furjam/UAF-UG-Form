@@ -24,6 +24,7 @@ const CoordinatorCourses = () => {
   const [loading, setLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editCourses, setEditCourses] = useState([]);
+  const [coordInfo, setCoordInfo] = useState(null);
 
   /* =========================================
      SEMESTERS
@@ -54,81 +55,76 @@ const CoordinatorCourses = () => {
   };
 
   /* =========================================
-     LOAD CAMPUSES
+     LOAD COORDINATOR DATA (FILTERED TO REGISTERED HIERARCHY)
   ========================================= */
   useEffect(() => {
-    const fetchCampuses = async () => {
+    const loadCoordinatorStructure = async () => {
       try {
         setLoading(true);
-        const res = await api.get("/campuses");
-        setCampuses(res.data);
+        const userRes = await api.get("/users/profile");
+        const user = userRes.data?.user || {};
+        setCoordInfo(user);
+
+        const [cRes, fRes, dRes] = await Promise.all([
+          api.get("/campuses"),
+          api.get("/faculties"),
+          api.get("/departments"),
+        ]);
+
+        const coordCampusId = user.campus_id?._id || user.campus_id || "";
+        const coordFacultyId = user.faculty_id?._id || user.faculty_id || "";
+        const coordDepartmentId = user.department_id?._id || user.department_id || "";
+
+        // 1. Campuses
+        let campusList = cRes.data || [];
+        if (coordCampusId) {
+          const match = campusList.filter(
+            (c) => String(c._id) === String(coordCampusId)
+          );
+          if (match.length > 0) campusList = match;
+        }
+        setCampuses(campusList);
+
+        // 2. Faculties
+        let facultyList = fRes.data || [];
+        if (coordFacultyId) {
+          const match = facultyList.filter(
+            (f) => String(f._id) === String(coordFacultyId)
+          );
+          if (match.length > 0) facultyList = match;
+        } else if (coordCampusId) {
+          facultyList = facultyList.filter(
+            (f) => String(f.campus_id?._id || f.campus_id) === String(coordCampusId)
+          );
+        }
+        setFaculties(facultyList);
+
+        // 3. Departments
+        let deptList = dRes.data || [];
+        if (coordDepartmentId) {
+          const match = deptList.filter(
+            (d) => String(d._id) === String(coordDepartmentId)
+          );
+          if (match.length > 0) deptList = match;
+        } else if (coordFacultyId) {
+          deptList = deptList.filter(
+            (d) => String(d.faculty_id?._id || d.faculty_id) === String(coordFacultyId)
+          );
+        }
+        setDepartments(deptList);
+
       } catch (error) {
-        console.log("Campus Error:", error);
+        console.log("Coordinator Structure Load Error:", error);
       } finally {
         setLoading(false);
       }
     };
-    fetchCampuses();
+
+    loadCoordinatorStructure();
   }, []);
 
   /* =========================================
-     LOAD FACULTIES
-  ========================================= */
-  useEffect(() => {
-    if (!selectedCampus) {
-      setFaculties([]);
-      return;
-    }
-
-    const fetchFaculties = async () => {
-      try {
-        setLoading(true);
-        const res = await api.get("/faculties");
-        const filtered = res.data.filter(
-          (f) =>
-            f.campus_id === selectedCampus._id ||
-            f.campus_id?._id === selectedCampus._id
-        );
-        setFaculties(filtered);
-      } catch (error) {
-        console.log("Faculty Error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchFaculties();
-  }, [selectedCampus]);
-
-  /* =========================================
-     LOAD DEPARTMENTS
-  ========================================= */
-  useEffect(() => {
-    if (!selectedFaculty) {
-      setDepartments([]);
-      return;
-    }
-
-    const fetchDepartments = async () => {
-      try {
-        setLoading(true);
-        const res = await api.get("/departments");
-        const filtered = res.data.filter(
-          (d) =>
-            d.faculty_id === selectedFaculty._id ||
-            d.faculty_id?._id === selectedFaculty._id
-        );
-        setDepartments(filtered);
-      } catch (error) {
-        console.log("Department Error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchDepartments();
-  }, [selectedFaculty]);
-
-  /* =========================================
-     LOAD DEGREES
+     LOAD DEGREES FOR SELECTED DEPARTMENT
   ========================================= */
   useEffect(() => {
     if (!selectedDepartment) {
@@ -168,7 +164,6 @@ const CoordinatorCourses = () => {
       try {
         setLoading(true);
         const res = await api.get("/courses");
-
         const semesterNumber = getSemesterNumber(selectedSemester);
 
         const filtered = res.data.filter((course) => {
@@ -268,7 +263,6 @@ const CoordinatorCourses = () => {
     try {
       setLoading(true);
 
-      // Har course ko update karo
       for (const course of editCourses) {
         await api.put(`/courses/${course._id}`, {
           courseCode: course.courseCode,
@@ -328,7 +322,6 @@ const CoordinatorCourses = () => {
         </div>
 
         <div style={{ display: "flex", gap: "10px" }}>
-          {/* EDIT BUTTON - sirf courses step pe */}
           {selectedSemester && courses.length > 0 && !isEditing && (
             <button
               type="button"
@@ -356,41 +349,41 @@ const CoordinatorCourses = () => {
         <p style={{ textAlign: "center", padding: "20px" }}>Loading...</p>
       )}
 
-      {/* STEP 1 - CAMPUS */}
+      {/* STEP 1 - CAMPUS (Filtered strictly to Coordinator Campus) */}
       {!selectedCampus && !loading && (
         <div className="course-cards-grid">
           {campuses.length > 0 ? (
-            campuses.map((campus) => (
+            campuses.map((c) => (
               <button
                 type="button"
-                key={campus._id}
+                key={c._id}
                 className="course-selection-card"
-                onClick={() => handleCampusSelect(campus)}
+                onClick={() => handleCampusSelect(c)}
               >
-                {campus.name}
+                {c.name}
               </button>
             ))
           ) : (
             <div className="courses-empty-state">
               <h3>No Campus Found</h3>
-              <p>Please add campuses first.</p>
+              <p>Please register campus first.</p>
             </div>
           )}
         </div>
       )}
 
-      {/* STEP 2 - FACULTY */}
+      {/* STEP 2 - FACULTY (Filtered strictly to Coordinator Faculty) */}
       {selectedCampus && !selectedFaculty && !loading && (
         <div className="course-cards-grid">
           {faculties.length > 0 ? (
-            faculties.map((faculty) => (
+            faculties.map((f) => (
               <button
                 type="button"
-                key={faculty._id}
+                key={f._id}
                 className="course-selection-card"
-                onClick={() => handleFacultySelect(faculty)}
+                onClick={() => handleFacultySelect(f)}
               >
-                {faculty.name}
+                {f.name}
               </button>
             ))
           ) : (
@@ -402,18 +395,18 @@ const CoordinatorCourses = () => {
         </div>
       )}
 
-      {/* STEP 3 - DEPARTMENT */}
+      {/* STEP 3 - DEPARTMENT (Filtered strictly to Coordinator Department) */}
       {selectedCampus && selectedFaculty && !selectedDepartment && !loading && (
         <div className="course-cards-grid">
           {departments.length > 0 ? (
-            departments.map((department) => (
+            departments.map((d) => (
               <button
                 type="button"
-                key={department._id}
+                key={d._id}
                 className="course-selection-card"
-                onClick={() => handleDepartmentSelect(department)}
+                onClick={() => handleDepartmentSelect(d)}
               >
-                {department.name}
+                {d.name}
               </button>
             ))
           ) : (
@@ -534,7 +527,6 @@ const CoordinatorCourses = () => {
                 </table>
               </div>
 
-              {/* Save / Cancel buttons */}
               {isEditing && (
                 <div style={{ marginTop: "16px", display: "flex", gap: "10px", justifyContent: "flex-end" }}>
                   <button
