@@ -466,6 +466,14 @@ const UGForm = () => {
               Upload Voucher
               <span className="ug-upload-symbol">↑</span>
             </button>
+
+            <button
+              type="button"
+              className="ug-action-btn ug-cancel-btn"
+              onClick={() => navigate("/student/dashboard")}
+            >
+              Cancel
+            </button>
           </div>
         </form>
       </section>

@@ -207,6 +207,14 @@
   font-weight: 400;
 }
 
+.ug-cancel-btn {
+  background: #64748b !important;
+}
+
+.ug-cancel-btn:hover {
+  background: #475569 !important;
+}
+
 
 /* =========================================
    MOBILE <= 768px
