@@ -30,16 +30,71 @@ const UGForm = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const semesterOptions = [
-    { number: 1, name: "1st" },
-    { number: 2, name: "2nd" },
-    { number: 3, name: "3rd" },
-    { number: 4, name: "4th" },
-    { number: 5, name: "5th" },
-    { number: 6, name: "6th" },
-    { number: 7, name: "7th" },
-    { number: 8, name: "8th" },
-  ];
+  // Determine available Semester Commencing options based on Current Month
+  const currentMonth = new Date().getMonth(); // 0 = Jan, 1 = Feb, 5 = Jun, 8 = Sep
+  let commencingOptions = ["Fall", "Winter"];
+  if (currentMonth === 1) {
+    // February
+    commencingOptions = ["Spring"];
+  } else if (currentMonth === 5) {
+    // June
+    commencingOptions = ["Summer"];
+  } else {
+    // September / Fall admission period
+    commencingOptions = ["Fall", "Winter"];
+  }
+
+  // Dynamic Semester Options based on selected Semester Commencing
+  const getSemesterOptions = () => {
+    const commencing = formData.semesterCommencing;
+    if (commencing === "Fall") {
+      return [{ number: 1, name: "Semester 1" }];
+    }
+    if (commencing === "Winter") {
+      return [
+        { number: 3, name: "Semester 3" },
+        { number: 5, name: "Semester 5" },
+        { number: 7, name: "Semester 7" },
+        { number: 9, name: "Semester 9" },
+        { number: 11, name: "Semester 11" },
+      ];
+    }
+    if (commencing === "Spring") {
+      return [
+        { number: 2, name: "Semester 2" },
+        { number: 4, name: "Semester 4" },
+        { number: 6, name: "Semester 6" },
+        { number: 8, name: "Semester 8" },
+        { number: 10, name: "Semester 10" },
+        { number: 12, name: "Semester 12" },
+      ];
+    }
+    if (commencing === "Summer") {
+      return [
+        { number: "Summer semester 1", name: "Summer semester 1" },
+        { number: "Summer semester 2", name: "Summer semester 2" },
+        { number: "Summer semester 3", name: "Summer semester 3" },
+        { number: "Summer semester 4", name: "Summer semester 4" },
+        { number: "Summer semester 5", name: "Summer semester 5" },
+        { number: "Summer semester 6", name: "Summer semester 6" },
+      ];
+    }
+    // Default list (if not selected yet)
+    return [
+      { number: 1, name: "Semester 1 (Fall)" },
+      { number: 2, name: "Semester 2 (Spring)" },
+      { number: 3, name: "Semester 3 (Winter)" },
+      { number: 4, name: "Semester 4 (Spring)" },
+      { number: 5, name: "Semester 5 (Winter)" },
+      { number: 6, name: "Semester 6 (Spring)" },
+      { number: 7, name: "Semester 7 (Winter)" },
+      { number: 8, name: "Semester 8 (Spring)" },
+      { number: 9, name: "Semester 9 (Winter)" },
+      { number: 10, name: "Semester 10 (Spring)" },
+      { number: 11, name: "Semester 11 (Winter)" },
+      { number: 12, name: "Semester 12 (Spring)" },
+    ];
+  };
 
   useEffect(() => {
     const loadStudentProfile = async () => {
@@ -98,7 +153,15 @@ const UGForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "semesterCommencing") {
+      setFormData((prev) => ({
+        ...prev,
+        semesterCommencing: value,
+        semesterNumber: "", // Reset semester number when commencing changes
+      }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
     setErrorMsg("");
     setSuccessMsg("");
   };
@@ -106,46 +169,48 @@ const UGForm = () => {
   // ==========================
   // SUBMIT
   // ==========================
-const handleSubmitUGForm = async () => {
-  setErrorMsg("");
-  setSuccessMsg("");
+  const handleSubmitUGForm = async () => {
+    setErrorMsg("");
+    setSuccessMsg("");
 
-  try {
-    if (!formData.semesterNumber) {
-      setErrorMsg("Please select a semester before submitting the form.");
-      return;
-    }
+    try {
+      if (!formData.semesterNumber) {
+        setErrorMsg("Please select a semester before submitting the form.");
+        return;
+      }
 
-    const formsRes = await api.get("/ugforms");
-    const myForms = formsRes.data || [];
+      const formsRes = await api.get("/ugforms");
+      const myForms = formsRes.data || [];
 
-    // Latest Draft jisme voucher uploaded hai
-    const draftWithVoucher = myForms.find(
-      (f) => f.status === "Draft" && f.voucher?.uploaded === true
-    );
-
-    if (!draftWithVoucher) {
-      setErrorMsg(
-        "Please upload your fee voucher before submitting the form."
+      // Latest Draft jisme voucher uploaded hai
+      const draftWithVoucher = myForms.find(
+        (f) => f.status === "Draft" && f.voucher?.uploaded === true
       );
-      return;
+
+      if (!draftWithVoucher) {
+        setErrorMsg(
+          "Please upload your fee voucher before submitting the form."
+        );
+        return;
+      }
+
+      await api.put(`/ugforms/${draftWithVoucher._id}`, {
+        status: "Submitted",
+        fatherName: formData.fatherName,
+        degree: formData.degree,
+        semesterCommencing: formData.semesterCommencing,
+        address: formData.address,
+      });
+
+      setSuccessMsg("UG Form submitted successfully.");
+      setTimeout(() => navigate("/student/requests"), 1000);
+    } catch (error) {
+      console.log(error.response?.data || error);
+      setErrorMsg(
+        error.response?.data?.message || "Submission failed. Please try again."
+      );
     }
-
-    await api.put(`/ugforms/${draftWithVoucher._id}`, {
-      status: "Submitted",
-      fatherName: formData.fatherName,
-      address: formData.address,
-    });
-
-    setSuccessMsg("UG Form submitted successfully.");
-    setTimeout(() => navigate("/student/requests"), 1000);
-  } catch (error) {
-    console.log(error.response?.data || error);
-    setErrorMsg(
-      error.response?.data?.message || "Submission failed. Please try again."
-    );
-  }
-};
+  };
 
   const handleSearchUGForm = () => {
     navigate("/student/forms", {
@@ -159,52 +224,60 @@ const handleSubmitUGForm = async () => {
   // ==========================
   // UPLOAD VOUCHER
   // ==========================
-const handleUploadVoucher = async () => {
-  setErrorMsg("");
-  setSuccessMsg("");
+  const handleUploadVoucher = async () => {
+    setErrorMsg("");
+    setSuccessMsg("");
 
-  if (!formData.semesterNumber) {
-    setErrorMsg("Please select a semester before uploading the voucher.");
-    return;
-  }
+    if (!formData.semesterNumber) {
+      setErrorMsg("Please select a semester before uploading the voucher.");
+      return;
+    }
 
-  try {
-    // Har baar NAYI draft form
-    const createRes = await api.post("/ugforms", {
-      semesterNumber: formData.semesterNumber,
-      courses: selectedCourses,
-      fatherName: formData.fatherName,
-      address: formData.address,
-      voucher: { uploaded: false },
-      status: "Draft",
-    });
+    try {
+      const createRes = await api.post("/ugforms", {
+        semesterNumber: formData.semesterNumber,
+        courses: selectedCourses,
+        fatherName: formData.fatherName,
+        degree: formData.degree,
+        semesterCommencing: formData.semesterCommencing,
+        address: formData.address,
+        voucher: { uploaded: false },
+        status: "Draft",
+      });
 
-    const formId = createRes.data.form._id;
+      const formId = createRes.data.form._id;
 
-    navigate("/student/upload-voucher", {
-      state: {
-        ugFormData: formData,
-        formId: formId,
-      },
-    });
-  } catch (error) {
-    console.log(error);
-    setErrorMsg(
-      error.response?.data?.message ||
-        "Could not prepare form for voucher upload."
-    );
-  }
-};
+      navigate("/student/upload-voucher", {
+        state: {
+          ugFormData: formData,
+          formId: formId,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      setErrorMsg(
+        error.response?.data?.message ||
+          "Could not prepare form for voucher upload."
+      );
+    }
+  };
+
+  const loggedInAgNumber =
+    student?.ag_number || student?.employee_id || student?.name || "Student";
+  const facultyTitle =
+    student?.faculty_id?.name ||
+    student?.department_id?.name ||
+    "Faculty of Sciences";
 
   return (
     <div className="ug-form-page">
       <div className="ug-form-top">
         <div>
-          <h2>Hello,</h2>
+          <h2>Hello, {loggedInAgNumber}</h2>
         </div>
         <div className="ug-university-title">
           <h3>University of Agriculture Faisalabad</h3>
-          <h4>Faculty of Sciences</h4>
+          <h4>{facultyTitle}</h4>
         </div>
       </div>
 
@@ -235,11 +308,50 @@ const handleUploadVoucher = async () => {
             <input type="text" value={formData.agNumber} readOnly />
           </div>
 
+          {/* Manual Degree Input */}
           <div className="ug-form-group">
             <label>Degree</label>
-            <input type="text" value={formData.degree} readOnly />
+            <input
+              type="text"
+              name="degree"
+              value={formData.degree}
+              onChange={handleChange}
+              placeholder="Enter Degree Name (e.g. B.Sc. (Hons.) Agriculture)"
+            />
           </div>
 
+          {/* Semester Commencing Dropdown (Dynamic based on Month) */}
+          <div className="ug-form-group">
+            <label>Semester Commencing</label>
+            <select
+              name="semesterCommencing"
+              value={formData.semesterCommencing}
+              onChange={handleChange}
+            >
+              <option value="">Select Semester Commencing</option>
+              {commencingOptions.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+
+              {/* Fallback to show all options if user wants to select another term */}
+              {!commencingOptions.includes("Spring") && (
+                <option value="Spring">Spring</option>
+              )}
+              {!commencingOptions.includes("Summer") && (
+                <option value="Summer">Summer</option>
+              )}
+              {!commencingOptions.includes("Fall") && (
+                <option value="Fall">Fall</option>
+              )}
+              {!commencingOptions.includes("Winter") && (
+                <option value="Winter">Winter</option>
+              )}
+            </select>
+          </div>
+
+          {/* Semester Number Dropdown (Dynamic based on Semester Commencing) */}
           <div className="ug-form-group">
             <label>Semester</label>
             <select
@@ -248,27 +360,16 @@ const handleUploadVoucher = async () => {
               onChange={handleChange}
               required
             >
-              <option value="">Select Semester</option>
-              {semesterOptions.map((sem) => (
+              <option value="">
+                {formData.semesterCommencing
+                  ? "Select Semester"
+                  : "Select Semester Commencing First"}
+              </option>
+              {getSemesterOptions().map((sem) => (
                 <option key={sem.number} value={sem.number}>
                   {sem.name}
                 </option>
               ))}
-            </select>
-          </div>
-
-          <div className="ug-form-group">
-            <label>Semester Commencing</label>
-            <select
-              name="semesterCommencing"
-              value={formData.semesterCommencing}
-              onChange={handleChange}
-            >
-              <option value="">Select Semester</option>
-              <option value="Winter">Winter</option>
-              <option value="Summer">Summer</option>
-              <option value="Spring">Spring</option>
-              <option value="Fall">Fall</option>
             </select>
           </div>
 
