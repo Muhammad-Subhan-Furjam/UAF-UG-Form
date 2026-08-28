@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Signup.css";
 
 import universityBg from "../../assets/university-bg.jpeg";
@@ -15,28 +16,43 @@ const Signup = () => {
   // Popup
   const [showPopup, setShowPopup] = useState(true);
 
-  // Common states
+  // Form states
   const [name, setName] = useState("");
   const [userId, setUserId] = useState("");
-  const [email, setEmail] = useState("");
+  const [emailPrefix, setEmailPrefix] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [fatherName, setFatherName] = useState("");
   const [cnic, setCnic] = useState("");
   const [admissionDate, setAdmissionDate] = useState("");
   const [phone, setPhone] = useState("");
 
-  // Academic hierarchy
+  // Academic hierarchy (Campus, Faculty, Department)
   const [campus, setCampus] = useState("");
   const [faculty, setFaculty] = useState("");
   const [department, setDepartment] = useState("");
-  const [discipline, setDiscipline] = useState("");
 
   // API Data
   const [campuses, setCampuses] = useState([]);
   const [faculties, setFaculties] = useState([]);
   const [departments, setDepartments] = useState([]);
-  const [disciplines, setDisciplines] = useState([]);
+
+  // Dynamic Date calculation
+  const currentYear = new Date().getFullYear();
+  const minAdmissionDate = "2021-01-01";
+  const maxAdmissionDate = `${currentYear}-12-31`;
+
+  // Password Rules Checklist State
+  const hasUppercase = /[A-Z]/.test(password);
+  const hasLowercase = /[a-z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+  const hasMinLength = password.length >= 8;
+  const isPasswordValid =
+    hasUppercase && hasLowercase && hasNumber && hasSpecialChar && hasMinLength;
 
   // ================================
   // LOAD CAMPUSES
@@ -98,64 +114,100 @@ const Signup = () => {
   }, [faculty]);
 
   // ================================
-  // LOAD DEGREES (Discipline)
-  // ================================
-  useEffect(() => {
-    if (!department) {
-      setDisciplines([]);
-      return;
-    }
-    const fetchDegrees = async () => {
-      try {
-        const res = await api.get("/degrees");
-        const filtered = res.data.filter(
-          (d) =>
-            d.department_id === department || d.department_id?._id === department
-        );
-        setDisciplines(filtered);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchDegrees();
-  }, [department]);
-
-  // ================================
   // HANDLERS
   // ================================
   const handleCampusChange = (e) => {
     setCampus(e.target.value);
     setFaculty("");
     setDepartment("");
-    setDiscipline("");
   };
 
   const handleFacultyChange = (e) => {
     setFaculty(e.target.value);
     setDepartment("");
-    setDiscipline("");
   };
 
   const handleDepartmentChange = (e) => {
     setDepartment(e.target.value);
-    setDiscipline("");
+  };
+
+  // CNIC Restrict to 13 Digits
+  const handleCnicChange = (e) => {
+    const val = e.target.value.replace(/\D/g, "").slice(0, 13);
+    setCnic(val);
+  };
+
+  // Phone Restrict to 11 Digits
+  const handlePhoneChange = (e) => {
+    const val = e.target.value.replace(/\D/g, "").slice(0, 11);
+    setPhone(val);
+  };
+
+  // Email Prefix Change (Removes @gmail.com if user types it)
+  const handleEmailPrefixChange = (e) => {
+    let val = e.target.value;
+    if (val.includes("@")) {
+      val = val.split("@")[0];
+    }
+    setEmailPrefix(val);
   };
 
   // ================================
-  // SIGNUP
+  // SIGNUP SUBMIT
   // ================================
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
+    // 1. Student AG Number Validation (YYYY-ag-XXXX)
+    if (role === "student") {
+      const agPattern = /^\d{4}-ag-\d{4}$/i;
+      if (!agPattern.test(userId.trim())) {
+        alert(
+          "Invalid AG Number format! Standard format is 4-digit year-ag-4-digit number (e.g. 2024-ag-1234)"
+        );
+        return;
+      }
+
+      // CNIC Validation (Exactly 13 Digits)
+      if (cnic.length !== 13) {
+        alert("CNIC / B-Form number must consist of exactly 13 digits.");
+        return;
+      }
+
+      // Admission Date Range Check (2021 to Current Year)
+      const selectedYear = new Date(admissionDate).getFullYear();
+      if (selectedYear < 2021 || selectedYear > currentYear) {
+        alert(`Date of admission must be between 2021 and ${currentYear}.`);
+        return;
+      }
+    }
+
+    // 2. Phone Number Validation (Exactly 11 Digits)
+    if (phone.length !== 11) {
+      alert("Phone number must consist of exactly 11 digits.");
       return;
     }
+
+    // 3. Password Strength Validation
+    if (!isPasswordValid) {
+      alert(
+        "Password does not meet all security requirements. Please check the rules list."
+      );
+      return;
+    }
+
+    // 4. Confirm Password Check
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    const fullEmail = `${emailPrefix.trim()}@gmail.com`;
 
     try {
       const signupData = {
         name,
-        email,
+        email: fullEmail,
         password,
         role,
         phone,
@@ -165,18 +217,17 @@ const Signup = () => {
       };
 
       if (role === "student") {
-        signupData.ag_number = userId;
+        signupData.ag_number = userId.trim();
         signupData.fatherName = fatherName;
         signupData.cnic = cnic;
         signupData.admissionDate = admissionDate;
-        signupData.degree_id = discipline;
       } else {
-        signupData.employee_id = userId;
+        signupData.employee_id = userId.trim();
       }
 
       const response = await api.post("/users/signup", signupData);
       console.log(response.data);
-      alert("Signup Successfully");
+      alert("Signup Successfully!");
       navigate("/login");
     } catch (error) {
       console.log(error);
@@ -189,10 +240,10 @@ const Signup = () => {
   // ================================
   const studentInstructions = [
     "Register your own email address, do not use anyone else’s email because all correspondence will be shared with you on this email.",
-    "Use your own CNIC or B-Form Number. Do not use anyone else’s CNIC or B-Form.",
+    "Use your own CNIC or B-Form Number (13 digits). Do not use anyone else’s CNIC or B-Form.",
     "Once CNIC or B-Form is registered with UAF, you cannot change it.",
-    "Type your own password and remember it carefully.",
-    "This account will be used throughout the whole admission / form process, so please remember your credentials.",
+    "AG Number must follow standard format: YYYY-ag-XXXX (e.g. 2024-ag-1234).",
+    "Type your own password following the strength rules and remember it carefully.",
   ];
 
   const coordinatorInstructions = [
@@ -261,10 +312,17 @@ const Signup = () => {
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
               placeholder={
-                role === "student" ? "Enter AG Number" : "Enter Employee CNIC"
+                role === "student"
+                  ? "e.g. 2024-ag-1234"
+                  : "Enter Employee CNIC"
               }
               required
             />
+            {role === "student" && (
+              <small className="signup-hint-text">
+                Format: 4-digit year-ag-4-digit number (e.g. 2024-ag-1234)
+              </small>
+            )}
           </div>
 
           {/* Name */}
@@ -300,14 +358,18 @@ const Signup = () => {
               </div>
 
               <div className="signup-form-group">
-                <label>CNIC / B-Form</label>
+                <label>CNIC / B-Form (13 Digits)</label>
                 <input
                   type="text"
                   value={cnic}
-                  onChange={(e) => setCnic(e.target.value)}
-                  placeholder="Enter CNIC / B-Form"
+                  onChange={handleCnicChange}
+                  placeholder="Enter 13-digit CNIC (e.g. 3310212345671)"
+                  maxLength={13}
                   required
                 />
+                <small className="signup-hint-text">
+                  Must be exactly 13 digits ({cnic.length}/13)
+                </small>
               </div>
 
               <div className="signup-form-group">
@@ -316,57 +378,112 @@ const Signup = () => {
                   type="date"
                   value={admissionDate}
                   onChange={(e) => setAdmissionDate(e.target.value)}
+                  min={minAdmissionDate}
+                  max={maxAdmissionDate}
                   required
                 />
+                <small className="signup-hint-text">
+                  Allowed range: 2021 to {currentYear}
+                </small>
               </div>
             </>
           )}
 
           {/* Phone */}
           <div className="signup-form-group">
-            <label>Phone Number</label>
+            <label>Phone Number (11 Digits)</label>
             <input
               type="text"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Enter Phone Number"
+              onChange={handlePhoneChange}
+              placeholder="Enter 11-digit phone (e.g. 03001234567)"
+              maxLength={11}
               required
             />
+            <small className="signup-hint-text">
+              Must be exactly 11 digits ({phone.length}/11)
+            </small>
           </div>
 
-          {/* Email */}
+          {/* Email Prefix with @gmail.com addon */}
           <div className="signup-form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter Email"
-              required
-            />
+            <label>Email Address</label>
+            <div className="email-input-wrapper">
+              <input
+                type="text"
+                value={emailPrefix}
+                onChange={handleEmailPrefixChange}
+                placeholder="Enter email username"
+                required
+              />
+              <span className="email-addon">@gmail.com</span>
+            </div>
           </div>
 
-          {/* Password */}
+          {/* Password with Eye Toggle */}
           <div className="signup-form-group">
             <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter Password"
-              required
-            />
+            <div className="password-input-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter Password"
+                required
+              />
+              <button
+                type="button"
+                className="password-toggle-btn"
+                onClick={() => setShowPassword(!showPassword)}
+                tabIndex="-1"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+
+            {/* Interactive Password Rules Box */}
+            <div className="password-rules-box">
+              <p className="password-rules-title">Password must contain:</p>
+              <ul className="password-rules-list">
+                <li className={hasUppercase ? "rule-valid" : "rule-invalid"}>
+                  <span className="rule-icon">{hasUppercase ? "✓" : "○"}</span> At least 1 Uppercase letter (A-Z)
+                </li>
+                <li className={hasLowercase ? "rule-valid" : "rule-invalid"}>
+                  <span className="rule-icon">{hasLowercase ? "✓" : "○"}</span> At least 1 Lowercase letter (a-z)
+                </li>
+                <li className={hasNumber ? "rule-valid" : "rule-invalid"}>
+                  <span className="rule-icon">{hasNumber ? "✓" : "○"}</span> At least 1 Number (0-9)
+                </li>
+                <li className={hasSpecialChar ? "rule-valid" : "rule-invalid"}>
+                  <span className="rule-icon">{hasSpecialChar ? "✓" : "○"}</span> At least 1 Special character (!@#$%^&*)
+                </li>
+                <li className={hasMinLength ? "rule-valid" : "rule-invalid"}>
+                  <span className="rule-icon">{hasMinLength ? "✓" : "○"}</span> At least 8 characters long
+                </li>
+              </ul>
+            </div>
           </div>
 
+          {/* Confirm Password */}
           <div className="signup-form-group">
             <label>Confirm Password</label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm Password"
-              required
-            />
+            <div className="password-input-wrapper">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirm Password"
+                required
+              />
+              <button
+                type="button"
+                className="password-toggle-btn"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                tabIndex="-1"
+              >
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </div>
 
           {/* Campus */}
@@ -415,26 +532,6 @@ const Signup = () => {
                 {faculty ? "Select Department" : "Select Faculty First"}
               </option>
               {departments.map((item) => (
-                <option key={item._id} value={item._id}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Discipline */}
-          <div className="signup-form-group">
-            <label>Discipline</label>
-            <select
-              value={discipline}
-              onChange={(e) => setDiscipline(e.target.value)}
-              disabled={!department}
-              required
-            >
-              <option value="">
-                {department ? "Select Discipline" : "Select Department First"}
-              </option>
-              {disciplines.map((item) => (
                 <option key={item._id} value={item._id}>
                   {item.name}
                 </option>

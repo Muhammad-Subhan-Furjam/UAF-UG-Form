@@ -601,3 +601,138 @@
     font-size: 14px;
   }
 }
+
+/* =========================================
+   HINT TEXT
+========================================= */
+.signup-hint-text {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #555555;
+  font-weight: 500;
+}
+
+/* =========================================
+   EMAIL INPUT WRAPPER WITH @gmail.com
+========================================= */
+.email-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 2px solid #c2c2c2;
+  border-radius: 9px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.email-input-wrapper:focus-within {
+  border-color: #062f5c;
+}
+
+.email-input-wrapper input {
+  flex: 1;
+  border: none !important;
+  outline: none;
+  height: 62px;
+  padding: 0 14px;
+}
+
+.email-addon {
+  padding: 0 16px;
+  background: #f0f4f8;
+  color: #062f5c;
+  font-weight: 700;
+  font-size: 15px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #dcdcdc;
+  user-select: none;
+}
+
+/* =========================================
+   PASSWORD INPUT WITH EYE TOGGLE
+========================================= */
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 50px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: #062f5c;
+  font-size: 19px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  color: #041f3d;
+  background-color: rgba(6, 47, 92, 0.08);
+}
+
+/* =========================================
+   PASSWORD RULES CHECKLIST BOX
+========================================= */
+.password-rules-box {
+  margin-top: 10px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.password-rules-title {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #062f5c;
+}
+
+.password-rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.password-rules-list li {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.rule-invalid {
+  color: #888888;
+}
+
+.rule-valid {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.rule-icon {
+  font-size: 14px;
+  width: 14px;
+  display: inline-block;
+  text-align: center;
+}
