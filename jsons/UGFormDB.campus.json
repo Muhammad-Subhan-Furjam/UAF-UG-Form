@@ -61,4 +61,20 @@
     "$date": "2026-08-25T15:45:23.956Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0f1"
+  },
+  "name": "University of Agriculture Faisalabad, Constituent College Toba Tek Singh",
+  "code": "CUSTTS1090",
+  "location": "Toba Tek Singh",
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "__v": 0
 }]

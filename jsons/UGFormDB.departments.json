@@ -1110,4 +1110,67 @@
     "$date": "2026-08-25T15:45:24.907Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0f5"
+  },
+  "name": "Department of Poultry Sciences",
+  "code": "DPS1094",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0f1"
+  },
+  "faculty_id": {
+    "$oid": "6a8db893112cdfb0613fd0f2"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0f6"
+  },
+  "name": "Department of Home Ecnomics",
+  "code": "DHE1095",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0f1"
+  },
+  "faculty_id": {
+    "$oid": "6a8db893112cdfb0613fd0f3"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0f7"
+  },
+  "name": "Department of Computer Science",
+  "code": "DCS1096",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0f1"
+  },
+  "faculty_id": {
+    "$oid": "6a8db893112cdfb0613fd0f4"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "__v": 0
 }]

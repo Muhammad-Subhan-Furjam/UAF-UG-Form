@@ -249,4 +249,58 @@
     "$date": "2026-08-25T15:45:24.248Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0f2"
+  },
+  "name": "Faculty of Poultry Sciences",
+  "code": "FPS1091",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0f1"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0f3"
+  },
+  "name": "Faculty of Arts & Humantarians",
+  "code": "FAH1092",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0f1"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6a8db893112cdfb0613fd0f4"
+  },
+  "name": "Faculty of Sciences",
+  "code": "FOS1093",
+  "campus_id": {
+    "$oid": "6a8db893112cdfb0613fd0f1"
+  },
+  "status": true,
+  "createdAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2026-08-28T12:00:00.000Z"
+  },
+  "__v": 0
 }]
