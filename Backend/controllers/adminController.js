@@ -227,6 +227,12 @@ const deleteUserByAdmin = async (req, res) => {
 
     await User.findByIdAndDelete(userId);
 
+    res.status(200).json({ message: "User account deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // =========================================
 // GET ALL SUPER ADMINS
 // =========================================

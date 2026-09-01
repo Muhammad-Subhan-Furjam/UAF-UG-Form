@@ -2,23 +2,14 @@ const Campus = require("../models/Campus");
 
 
 const getCampuses = async (req, res) => {
-
-    try {
-
-        const campuses = await Campus.find({
-            status:true
-        });
-
-        res.status(200).json(campuses);
-
-    } catch(error){
-
-        res.status(500).json({
-            message:error.message
-        });
-
-    }
-
+  try {
+    const campuses = await Campus.find({ status: { $ne: false } });
+    res.status(200).json(campuses);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
 

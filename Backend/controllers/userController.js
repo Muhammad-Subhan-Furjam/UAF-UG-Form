@@ -26,6 +26,8 @@ const signup = async (req, res) => {
       faculty_id,
       department_id,
       degree_id,
+    } = req.body;
+
     // 0. Mandatory Fields Check
     if (
       !name ||

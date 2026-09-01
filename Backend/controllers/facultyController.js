@@ -3,23 +3,16 @@ const Faculty = require("../models/Faculty");
 
 // Get all faculties
 const getFaculties = async (req, res) => {
-
-    try {
-
-        const faculties = await Faculty.find({
-            status: true
-        }).populate("campus_id");
-
-        res.status(200).json(faculties);
-
-    } catch(error){
-
-        res.status(500).json({
-            message:error.message
-        });
-
-    }
-
+  try {
+    const faculties = await Faculty.find({ status: { $ne: false } }).populate(
+      "campus_id"
+    );
+    res.status(200).json(faculties);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
 
