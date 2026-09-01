@@ -92,21 +92,24 @@ const addUGForm = async (req, res) => {
       });
     }
 
-    const { semesterNumber, courses, fatherName, address, voucher } = req.body;
+    const { semesterNumber, courses, fatherName, address, voucher, degree, semesterCommencing } = req.body;
 
     if (!semesterNumber) {
       return res.status(400).json({ message: "Semester is required" });
     }
 
+    const semNum = Number(String(semesterNumber).replace(/\D/g, "")) || 1;
     let semester = await Semester.findOne({
       degree_id: student.degree_id,
-      number: Number(semesterNumber),
+      number: semNum,
     });
 
     if (!semester) {
       semester = await Semester.create({
-        name: `Semester ${semesterNumber}`,
-        number: Number(semesterNumber),
+        name: typeof semesterNumber === "string" && semesterNumber.startsWith("Summer")
+          ? semesterNumber
+          : `Semester ${semesterNumber}`,
+        number: semNum,
         degree_id: student.degree_id,
       });
     }
@@ -125,6 +128,8 @@ const addUGForm = async (req, res) => {
       phone: student.phone,
       fatherName: fatherName || student.fatherName || "",
       address: address || "",
+      degree: degree || "",
+      semesterCommencing: semesterCommencing || "",
       voucher: voucher || { uploaded: false },
       status: req.body.status || "Submitted",
     });

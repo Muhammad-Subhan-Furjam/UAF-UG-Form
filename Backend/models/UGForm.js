@@ -102,6 +102,16 @@ const ugFormSchema = new mongoose.Schema(
         default: ""
     },
 
+    degree: {
+        type: String,
+        default: ""
+    },
+
+    semesterCommencing: {
+        type: String,
+        default: ""
+    },
+
 
     // Voucher
 
