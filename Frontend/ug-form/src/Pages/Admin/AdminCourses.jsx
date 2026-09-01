@@ -148,10 +148,10 @@ const AdminCourses = () => {
     setSaving(true);
     setModalMessage("");
 
-    // Course code format regex
-    const courseCodeRegex = /^([A-Z]{3,4}-\d{3,4}|[A-Z]{3,4}-[A-Z]{3,4}-\d{3,4})$/;
+    // Course code format regex: 2-4 alphabets - 2-4 digits OR 2-4 alphabets - 2-4 alphabets - 2-4 digits
+    const courseCodeRegex = /^([A-Z]{2,4}-\d{2,4}|[A-Z]{2,4}-[A-Z]{2,4}-\d{2,4})$/;
     if (!courseCodeRegex.test(formData.courseCode.trim())) {
-      setModalMessage("Invalid Course Code format! Allowed: 'XXX-123', 'XXXX-1234' or 'XXX-YYY-123'");
+      setModalMessage("Invalid Course Code format! Allowed: 2-4 uppercase letters-2-4 digits (e.g. CS-101) or 2-4 uppercase letters-2-4 uppercase letters-2-4 digits (e.g. CS-MATH-101).");
       setSaving(false);
       return;
     }

@@ -46,6 +46,14 @@ const addCourse = async (req, res) => {
 
     const normalizedCode = courseCode.trim().toUpperCase();
 
+    const courseCodeRegex = /^([A-Z]{2,4}-\d{2,4}|[A-Z]{2,4}-[A-Z]{2,4}-\d{2,4})$/;
+    if (!courseCodeRegex.test(normalizedCode)) {
+      return res.status(400).json({
+        message:
+          "Invalid Course Code format! Allowed formats: 2-4 uppercase letters-2-4 digits (e.g. CS-101) or 2-4 uppercase letters-2-4 uppercase letters-2-4 digits (e.g. CS-MATH-101).",
+      });
+    }
+
     // Check for duplicate courseCode for this degree
     const existingCourse = await Course.findOne({
       courseCode: { $regex: new RegExp(`^${normalizedCode}$`, "i") },
@@ -108,6 +116,15 @@ const updateCourse = async (req, res) => {
   try {
     if (req.body.courseCode) {
       const normalizedCode = req.body.courseCode.trim().toUpperCase();
+
+      const courseCodeRegex = /^([A-Z]{2,4}-\d{2,4}|[A-Z]{2,4}-[A-Z]{2,4}-\d{2,4})$/;
+      if (!courseCodeRegex.test(normalizedCode)) {
+        return res.status(400).json({
+          message:
+            "Invalid Course Code format! Allowed formats: 2-4 uppercase letters-2-4 digits (e.g. CS-101) or 2-4 uppercase letters-2-4 uppercase letters-2-4 digits (e.g. CS-MATH-101).",
+        });
+      }
+
       const currentCourse = await Course.findById(req.params.id);
 
       if (currentCourse) {
