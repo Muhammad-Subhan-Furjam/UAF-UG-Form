@@ -14,19 +14,25 @@ const AdminDashboard = () => {
   });
 
   const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const fetchStats = async () => {
+    try {
+      setLoading(true);
+      setErrorMsg("");
+      const res = await api.get("/admin/stats");
+      setStats(res.data);
+    } catch (error) {
+      console.error("Failed to fetch admin stats:", error);
+      setErrorMsg(
+        error.response?.data?.message || "Session error. Please log in again at /ladmin."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const res = await api.get("/admin/stats");
-        setStats(res.data);
-      } catch (error) {
-        console.error("Failed to fetch admin stats:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchStats();
   }, []);
 

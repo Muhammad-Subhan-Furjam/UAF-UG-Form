@@ -227,7 +227,16 @@ const deleteUserByAdmin = async (req, res) => {
 
     await User.findByIdAndDelete(userId);
 
-    res.status(200).json({ message: "User account deleted successfully" });
+// =========================================
+// GET ALL SUPER ADMINS
+// =========================================
+const getSuperAdmins = async (req, res) => {
+  try {
+    const superadmins = await User.find({ role: { $regex: /^superadmin$/i } })
+      .select("-password")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json(superadmins);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -238,6 +247,7 @@ module.exports = {
   getAdminStats,
   getAllStudents,
   getAllCoordinators,
+  getSuperAdmins,
   updateUserByAdmin,
   deleteUserByAdmin,
 };

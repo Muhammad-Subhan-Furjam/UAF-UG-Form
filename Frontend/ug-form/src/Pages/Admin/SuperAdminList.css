@@ -1,0 +1,24 @@
+.superadmin-list-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.superadmin-badge-count {
+  background: #082f5c;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.role-tag.superadmin {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #f59e0b;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+}

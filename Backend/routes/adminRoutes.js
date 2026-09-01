@@ -6,6 +6,7 @@ const {
   getAdminStats,
   getAllStudents,
   getAllCoordinators,
+  getSuperAdmins,
   updateUserByAdmin,
   deleteUserByAdmin,
 } = require("../controllers/adminController");
@@ -26,6 +27,7 @@ router.post("/login", adminLogin);
 router.get("/stats", authMiddleware, requireSuperAdmin, getAdminStats);
 router.get("/students", authMiddleware, requireSuperAdmin, getAllStudents);
 router.get("/coordinators", authMiddleware, requireSuperAdmin, getAllCoordinators);
+router.get("/superadmins", authMiddleware, requireSuperAdmin, getSuperAdmins);
 router.put("/users/:userId", authMiddleware, requireSuperAdmin, updateUserByAdmin);
 router.delete("/users/:userId", authMiddleware, requireSuperAdmin, deleteUserByAdmin);
 
