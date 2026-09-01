@@ -34,6 +34,7 @@ import AdminLogin from "./Pages/Admin/AdminLogin";
 import AdminLayout from "./Layout/AdminLayout/AdminLayout";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
 import StudentsList from "./Pages/Admin/StudentsList";
+import CoordinatorsList from "./Pages/Admin/CoordinatorsList";
 import SuperAdminList from "./Pages/Admin/SuperAdminList";
 import AdminHierarchy from "./Pages/Admin/AdminHierarchy";
 import AdminCourses from "./Pages/Admin/AdminCourses";
