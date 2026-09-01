@@ -28,10 +28,73 @@ const signup = async (req, res) => {
       degree_id,
     } = req.body;
 
-    // Check existing user
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "User already exists" });
+    // 1. Check existing Email (Global across all accounts)
+    const existingEmail = await User.findOne({
+      email: { $regex: new RegExp(`^${email.trim()}$`, "i") },
+    });
+    if (existingEmail) {
+      if (existingEmail.role !== role) {
+        return res.status(400).json({
+          message: `This email is already registered as a ${existingEmail.role}. A student cannot be a coordinator and a coordinator cannot be a student.`,
+        });
+      }
+      return res.status(400).json({
+        message: `Email '${email}' is already registered. Duplicates are not allowed.`,
+      });
+    }
+
+    // 2. Check existing Phone (Global across all accounts)
+    if (phone && phone.trim()) {
+      const existingPhone = await User.findOne({ phone: phone.trim() });
+      if (existingPhone) {
+        if (existingPhone.role !== role) {
+          return res.status(400).json({
+            message: `This phone number is already registered under a ${existingPhone.role} account. A student cannot be a coordinator and a coordinator cannot be a student.`,
+          });
+        }
+        return res.status(400).json({
+          message: `Phone number '${phone}' is already registered. Duplicates are not allowed.`,
+        });
+      }
+    }
+
+    // 3. Check Student CNIC / Coordinator CNIC
+    if (cnic && cnic.trim()) {
+      const existingCnic = await User.findOne({ cnic: cnic.trim() });
+      if (existingCnic) {
+        if (existingCnic.role !== role) {
+          return res.status(400).json({
+            message: `This CNIC number is already registered under a ${existingCnic.role} account. A student cannot be a coordinator and a coordinator cannot be a student.`,
+          });
+        }
+        return res.status(400).json({
+          message: `CNIC number '${cnic}' is already registered. Duplicates are not allowed.`,
+        });
+      }
+    }
+
+    // 4. Check Student AG Number (For Student Role)
+    if (role === "student" && ag_number && ag_number.trim()) {
+      const existingAg = await User.findOne({
+        ag_number: { $regex: new RegExp(`^${ag_number.trim()}$`, "i") },
+      });
+      if (existingAg) {
+        return res.status(400).json({
+          message: `AG Number '${ag_number}' is already registered. Duplicates are not allowed.`,
+        });
+      }
+    }
+
+    // 5. Check Coordinator Employee ID (For Coordinator Role)
+    if (role === "coordinator" && employee_id && employee_id.trim()) {
+      const existingEmpId = await User.findOne({
+        employee_id: { $regex: new RegExp(`^${employee_id.trim()}$`, "i") },
+      });
+      if (existingEmpId) {
+        return res.status(400).json({
+          message: `Employee ID '${employee_id}' is already registered. Duplicates are not allowed.`,
+        });
+      }
     }
 
     // Password Encrypt
@@ -40,14 +103,14 @@ const signup = async (req, res) => {
     // Create User (directly ObjectIds use kar rahe hain)
     const user = await User.create({
       name,
-      email,
+      email: email.trim().toLowerCase(),
       password: hashedPassword,
       role,
-      ag_number: role === "student" ? ag_number : "",
-      employee_id: role === "coordinator" ? employee_id : "",
-      phone,
+      ag_number: role === "student" ? ag_number.trim() : "",
+      employee_id: role === "coordinator" ? employee_id.trim() : "",
+      phone: phone ? phone.trim() : "",
       fatherName: role === "student" ? fatherName : "",
-      cnic: role === "student" ? cnic : "",
+      cnic: role === "student" ? cnic.trim() : "",
       admissionDate: role === "student" ? admissionDate : null,
 
       campus_id: campus_id || null,
@@ -81,13 +144,29 @@ const login = async (req, res) => {
   try {
     const { userId, password, role } = req.body;
 
+    const trimmedId = (userId || "").trim();
+
+    // Check if user exists under ANY role to prevent cross-role login
+    const anyUser = await User.findOne({
+      $or: [
+        { ag_number: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+        { employee_id: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+        { email: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+      ],
+    });
+
+    if (anyUser && anyUser.role !== role) {
+      return res.status(400).json({
+        message: `This account is registered as a ${anyUser.role}. No student can log in as a coordinator and no coordinator can log in as a student.`,
+      });
+    }
+
     let user;
 
     // Student login
-
     if (role === "student") {
       user = await User.findOne({
-        ag_number: userId,
+        ag_number: { $regex: new RegExp(`^${trimmedId}$`, "i") },
         role: "student",
       });
     }
@@ -95,7 +174,7 @@ const login = async (req, res) => {
     // Coordinator login
     else if (role === "coordinator") {
       user = await User.findOne({
-        employee_id: userId,
+        employee_id: { $regex: new RegExp(`^${trimmedId}$`, "i") },
         role: "coordinator",
       });
     }
