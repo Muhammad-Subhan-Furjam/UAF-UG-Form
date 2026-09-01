@@ -44,6 +44,20 @@ const addCourse = async (req, res) => {
       });
     }
 
+    const normalizedCode = courseCode.trim().toUpperCase();
+
+    // Check for duplicate courseCode for this degree
+    const existingCourse = await Course.findOne({
+      courseCode: { $regex: new RegExp(`^${normalizedCode}$`, "i") },
+      degree_id: degree_id,
+    });
+
+    if (existingCourse) {
+      return res.status(400).json({
+        message: `Course code '${normalizedCode}' already exists for this degree. Duplicate entries are not allowed.`,
+      });
+    }
+
     // Find or Create Semester
     const semNum = Number(String(semesterNumber).replace(/\D/g, "")) || 1;
     let semester = await Semester.findOne({
@@ -63,7 +77,7 @@ const addCourse = async (req, res) => {
 
     // Create Course
     const course = await Course.create({
-      courseCode,
+      courseCode: normalizedCode,
       courseTitle,
       creditHours,
       campus_id,
@@ -92,6 +106,26 @@ const addCourse = async (req, res) => {
 // Update Course
 const updateCourse = async (req, res) => {
   try {
+    if (req.body.courseCode) {
+      const normalizedCode = req.body.courseCode.trim().toUpperCase();
+      const currentCourse = await Course.findById(req.params.id);
+
+      if (currentCourse) {
+        const duplicate = await Course.findOne({
+          _id: { $ne: req.params.id },
+          courseCode: { $regex: new RegExp(`^${normalizedCode}$`, "i") },
+          degree_id: currentCourse.degree_id,
+        });
+
+        if (duplicate) {
+          return res.status(400).json({
+            message: `Course code '${normalizedCode}' is already in use by another course under this degree.`,
+          });
+        }
+      }
+      req.body.courseCode = normalizedCode;
+    }
+
     const course = await Course.findByIdAndUpdate(
       req.params.id,
       req.body,
