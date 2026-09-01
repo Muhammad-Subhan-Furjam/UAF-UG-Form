@@ -145,13 +145,15 @@ const CoordinatorsList = () => {
   // FILTERED COORDINATORS
   // =========================================
   const filteredCoordinators = coordinators.filter((c) => {
-    const q = searchQuery.toLowerCase();
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase().trim();
     return (
-      (c.employee_id && c.employee_id.toLowerCase().includes(q)) ||
-      (c.name && c.name.toLowerCase().includes(q)) ||
-      (c.email && c.email.toLowerCase().includes(q)) ||
-      (c.campus_id?.name && c.campus_id.name.toLowerCase().includes(q)) ||
-      (c.department_id?.name && c.department_id.name.toLowerCase().includes(q))
+      (c.employee_id && String(c.employee_id).toLowerCase().includes(q)) ||
+      (c.name && String(c.name).toLowerCase().includes(q)) ||
+      (c.email && String(c.email).toLowerCase().includes(q)) ||
+      (c.phone && String(c.phone).toLowerCase().includes(q)) ||
+      (c.campus_id?.name && String(c.campus_id.name).toLowerCase().includes(q)) ||
+      (c.department_id?.name && String(c.department_id.name).toLowerCase().includes(q))
     );
   });
 

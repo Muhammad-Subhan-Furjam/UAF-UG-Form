@@ -68,8 +68,8 @@ const getAdminStats = async (req, res) => {
   try {
     const [studentsCount, coordinatorsCount, formsCount, coursesCount] =
       await Promise.all([
-        User.countDocuments({ role: "student" }),
-        User.countDocuments({ role: "coordinator" }),
+        User.countDocuments({ role: { $regex: /^student$/i } }),
+        User.countDocuments({ role: { $regex: /^coordinator$/i } }),
         UGForm.countDocuments(),
         Course.countDocuments(),
       ]);
@@ -90,7 +90,7 @@ const getAdminStats = async (req, res) => {
 // =========================================
 const getAllStudents = async (req, res) => {
   try {
-    const students = await User.find({ role: "student" })
+    const students = await User.find({ role: { $regex: /^student$/i } })
       .populate("campus_id")
       .populate("faculty_id")
       .populate("department_id")
@@ -108,7 +108,7 @@ const getAllStudents = async (req, res) => {
 // =========================================
 const getAllCoordinators = async (req, res) => {
   try {
-    const coordinators = await User.find({ role: "coordinator" })
+    const coordinators = await User.find({ role: { $regex: /^coordinator$/i } })
       .populate("campus_id")
       .populate("faculty_id")
       .populate("department_id")

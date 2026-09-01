@@ -162,13 +162,16 @@ const StudentsList = () => {
   // FILTERED STUDENTS
   // =========================================
   const filteredStudents = students.filter((s) => {
-    const q = searchQuery.toLowerCase();
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase().trim();
     return (
-      (s.ag_number && s.ag_number.toLowerCase().includes(q)) ||
-      (s.name && s.name.toLowerCase().includes(q)) ||
-      (s.email && s.email.toLowerCase().includes(q)) ||
-      (s.cnic && s.cnic.includes(q)) ||
-      (s.campus_id?.name && s.campus_id.name.toLowerCase().includes(q))
+      (s.ag_number && String(s.ag_number).toLowerCase().includes(q)) ||
+      (s.name && String(s.name).toLowerCase().includes(q)) ||
+      (s.email && String(s.email).toLowerCase().includes(q)) ||
+      (s.phone && String(s.phone).toLowerCase().includes(q)) ||
+      (s.cnic && String(s.cnic).toLowerCase().includes(q)) ||
+      (s.campus_id?.name && String(s.campus_id.name).toLowerCase().includes(q)) ||
+      (s.department_id?.name && String(s.department_id.name).toLowerCase().includes(q))
     );
   });
 
