@@ -229,30 +229,60 @@ const login = async (req, res) => {
 // Get Logged In User Profile
 // =====================
 
-const getProfile = async (req,res)=>{
+const mongoose = require("mongoose");
 
-try{
+const getProfile = async (req, res) => {
+  try {
+    let user = await User.findById(req.user.id).select("-password");
 
-const user = await User.findById(req.user.id)
-.select("-password")
-.populate("campus_id")
-.populate("faculty_id")
-.populate("department_id")
-.populate("degree_id");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
+    // Resolve string names if any exist on the user document
+    if (user.campus_id && typeof user.campus_id === "string" && !mongoose.Types.ObjectId.isValid(user.campus_id)) {
+      const found = await mongoose.model("Campus").findOne({ name: user.campus_id });
+      if (found) user.campus_id = found._id;
+    }
+    if (user.faculty_id && typeof user.faculty_id === "string" && !mongoose.Types.ObjectId.isValid(user.faculty_id)) {
+      const found = await mongoose.model("Faculty").findOne({ name: user.faculty_id });
+      if (found) user.faculty_id = found._id;
+    }
+    if (user.department_id && typeof user.department_id === "string" && !mongoose.Types.ObjectId.isValid(user.department_id)) {
+      const found = await mongoose.model("Department").findOne({ name: user.department_id });
+      if (found) user.department_id = found._id;
+    }
+    if (user.degree_id && typeof user.degree_id === "string" && !mongoose.Types.ObjectId.isValid(user.degree_id)) {
+      const found = await mongoose.model("Degree").findOne({ name: user.degree_id });
+      if (found) user.degree_id = found._id;
+    }
 
-if(!user){
+    // Default fallback assignment for coordinators without assigned hierarchy
+    if (user.role === "coordinator" && (!user.campus_id || !user.faculty_id || !user.department_id)) {
+      const defaultCampus = await mongoose.model("Campus").findOne({ name: /Main Campus/i }) || await mongoose.model("Campus").findOne();
+      const defaultFaculty = await mongoose.model("Faculty").findOne({ campus_id: defaultCampus?._id }) || await mongoose.model("Faculty").findOne();
+      const defaultDept = await mongoose.model("Department").findOne({ faculty_id: defaultFaculty?._id }) || await mongoose.model("Department").findOne();
+      
+      if (!user.campus_id && defaultCampus) user.campus_id = defaultCampus._id;
+      if (!user.faculty_id && defaultFaculty) user.faculty_id = defaultFaculty._id;
+      if (!user.department_id && defaultDept) user.department_id = defaultDept._id;
+      await user.save();
+    }
 
-return res.status(404).json({
-message:"User not found"
-});
+    await user.populate([
+      "campus_id",
+      "faculty_id",
+      "department_id",
+      "degree_id",
+    ]);
 
-}
-
-
-res.status(200).json({
-user
-});
+    res.status(200).json({
+      user,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 
 }

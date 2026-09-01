@@ -43,9 +43,19 @@ const CoordinatorLayout = () => {
 
   const nameGreeting = coordinator?.name || "Coordinator";
   const campusName =
-    coordinator?.campus_id?.name || "University of Agriculture Faisalabad";
-  const facultyName = coordinator?.faculty_id?.name || "";
-  const departmentName = coordinator?.department_id?.name || "";
+    coordinator?.campus_id?.name ||
+    (typeof coordinator?.campus_id === "string" ? coordinator.campus_id : "") ||
+    "Main Campus";
+
+  const facultyName =
+    coordinator?.faculty_id?.name ||
+    (typeof coordinator?.faculty_id === "string" ? coordinator.faculty_id : "") ||
+    "";
+
+  const departmentName =
+    coordinator?.department_id?.name ||
+    (typeof coordinator?.department_id === "string" ? coordinator.department_id : "") ||
+    "";
 
   let subtitleText = campusName;
   if (facultyName) {

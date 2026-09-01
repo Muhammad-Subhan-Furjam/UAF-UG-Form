@@ -55,7 +55,7 @@ const CoordinatorCourses = () => {
   };
 
   /* =========================================
-     LOAD COORDINATOR DATA (FILTERED TO REGISTERED HIERARCHY)
+     LOAD COORDINATOR PROFILE & LOCK TO REGISTERED DEPARTMENT
   ========================================= */
   useEffect(() => {
     const loadCoordinatorStructure = async () => {
@@ -71,47 +71,54 @@ const CoordinatorCourses = () => {
           api.get("/departments"),
         ]);
 
-        const coordCampusId = user.campus_id?._id || user.campus_id || "";
-        const coordFacultyId = user.faculty_id?._id || user.faculty_id || "";
-        const coordDepartmentId = user.department_id?._id || user.department_id || "";
+        const coordCampusObj =
+          typeof user.campus_id === "object" && user.campus_id
+            ? user.campus_id
+            : cRes.data.find(
+                (c) => String(c._id) === String(user.campus_id) || c.name === user.campus_id
+              );
 
-        // 1. Campuses
-        let campusList = cRes.data || [];
-        if (coordCampusId) {
-          const match = campusList.filter(
-            (c) => String(c._id) === String(coordCampusId)
-          );
-          if (match.length > 0) campusList = match;
-        }
-        setCampuses(campusList);
+        const coordFacultyObj =
+          typeof user.faculty_id === "object" && user.faculty_id
+            ? user.faculty_id
+            : fRes.data.find(
+                (f) => String(f._id) === String(user.faculty_id) || f.name === user.faculty_id
+              );
 
-        // 2. Faculties
-        let facultyList = fRes.data || [];
-        if (coordFacultyId) {
-          const match = facultyList.filter(
-            (f) => String(f._id) === String(coordFacultyId)
-          );
-          if (match.length > 0) facultyList = match;
-        } else if (coordCampusId) {
-          facultyList = facultyList.filter(
-            (f) => String(f.campus_id?._id || f.campus_id) === String(coordCampusId)
-          );
-        }
-        setFaculties(facultyList);
+        const coordDeptObj =
+          typeof user.department_id === "object" && user.department_id
+            ? user.department_id
+            : dRes.data.find(
+                (d) => String(d._id) === String(user.department_id) || d.name === user.department_id
+              );
 
-        // 3. Departments
-        let deptList = dRes.data || [];
-        if (coordDepartmentId) {
-          const match = deptList.filter(
-            (d) => String(d._id) === String(coordDepartmentId)
-          );
-          if (match.length > 0) deptList = match;
-        } else if (coordFacultyId) {
-          deptList = deptList.filter(
-            (d) => String(d.faculty_id?._id || d.faculty_id) === String(coordFacultyId)
-          );
+        // Lock lists strictly to assigned hierarchy
+        if (coordCampusObj) {
+          setCampuses([coordCampusObj]);
+          setSelectedCampus(coordCampusObj);
+        } else {
+          setCampuses(cRes.data || []);
         }
-        setDepartments(deptList);
+
+        if (coordFacultyObj) {
+          setFaculties([coordFacultyObj]);
+          setSelectedFaculty(coordFacultyObj);
+        } else if (coordCampusObj) {
+          const filteredFac = fRes.data.filter(
+            (f) => String(f.campus_id?._id || f.campus_id) === String(coordCampusObj._id)
+          );
+          setFaculties(filteredFac);
+        }
+
+        if (coordDeptObj) {
+          setDepartments([coordDeptObj]);
+          setSelectedDepartment(coordDeptObj);
+        } else if (coordFacultyObj) {
+          const filteredDept = dRes.data.filter(
+            (d) => String(d.faculty_id?._id || d.faculty_id) === String(coordFacultyObj._id)
+          );
+          setDepartments(filteredDept);
+        }
 
       } catch (error) {
         console.log("Coordinator Structure Load Error:", error);
@@ -138,8 +145,7 @@ const CoordinatorCourses = () => {
         const res = await api.get("/degrees");
         const filtered = res.data.filter(
           (d) =>
-            d.department_id === selectedDepartment._id ||
-            d.department_id?._id === selectedDepartment._id
+            String(d.department_id?._id || d.department_id) === String(selectedDepartment._id)
         );
         setDisciplines(filtered);
       } catch (error) {
@@ -168,8 +174,7 @@ const CoordinatorCourses = () => {
 
         const filtered = res.data.filter((course) => {
           const degreeMatch =
-            course.degree_id === selectedDiscipline._id ||
-            course.degree_id?._id === selectedDiscipline._id;
+            String(course.degree_id?._id || course.degree_id) === String(selectedDiscipline._id);
 
           const semesterMatch =
             course.semester_id?.number === semesterNumber ||
@@ -196,23 +201,14 @@ const CoordinatorCourses = () => {
   ========================================= */
   const handleCampusSelect = (campus) => {
     setSelectedCampus(campus);
-    setSelectedFaculty(null);
-    setSelectedDepartment(null);
-    setSelectedDiscipline(null);
-    setSelectedSemester("");
   };
 
   const handleFacultySelect = (faculty) => {
     setSelectedFaculty(faculty);
-    setSelectedDepartment(null);
-    setSelectedDiscipline(null);
-    setSelectedSemester("");
   };
 
   const handleDepartmentSelect = (department) => {
     setSelectedDepartment(department);
-    setSelectedDiscipline(null);
-    setSelectedSemester("");
   };
 
   const handleDisciplineSelect = (discipline) => {
@@ -225,7 +221,7 @@ const CoordinatorCourses = () => {
   };
 
   /* =========================================
-     BACK BUTTON
+     BACK BUTTON (Locked to Coordinator Scope)
   ========================================= */
   const handleBack = () => {
     if (selectedSemester) {
@@ -237,17 +233,7 @@ const CoordinatorCourses = () => {
       setSelectedDiscipline(null);
       return;
     }
-    if (selectedDepartment) {
-      setSelectedDepartment(null);
-      return;
-    }
-    if (selectedFaculty) {
-      setSelectedFaculty(null);
-      return;
-    }
-    if (selectedCampus) {
-      setSelectedCampus(null);
-    }
+    // Cannot go back past assigned department level
   };
 
   /* =========================================
@@ -295,7 +281,7 @@ const CoordinatorCourses = () => {
   const getPageTitle = () => {
     if (selectedSemester) return selectedSemester;
     if (selectedDiscipline) return "Select Semester";
-    if (selectedDepartment) return "Select Discipline";
+    if (selectedDepartment) return "Select Discipline / Degree";
     if (selectedFaculty) return "Select Department";
     if (selectedCampus) return "Select Faculty";
     return "Select Campus";
@@ -333,7 +319,7 @@ const CoordinatorCourses = () => {
             </button>
           )}
 
-          {selectedCampus && (
+          {(selectedSemester || selectedDiscipline) && (
             <button
               type="button"
               className="courses-back-btn"
@@ -349,76 +335,55 @@ const CoordinatorCourses = () => {
         <p style={{ textAlign: "center", padding: "20px" }}>Loading...</p>
       )}
 
-      {/* STEP 1 - CAMPUS (Filtered strictly to Coordinator Campus) */}
+      {/* STEP 1 - CAMPUS (Locked to Coordinator Campus) */}
       {!selectedCampus && !loading && (
         <div className="course-cards-grid">
-          {campuses.length > 0 ? (
-            campuses.map((c) => (
-              <button
-                type="button"
-                key={c._id}
-                className="course-selection-card"
-                onClick={() => handleCampusSelect(c)}
-              >
-                {c.name}
-              </button>
-            ))
-          ) : (
-            <div className="courses-empty-state">
-              <h3>No Campus Found</h3>
-              <p>Please register campus first.</p>
-            </div>
-          )}
+          {campuses.map((c) => (
+            <button
+              type="button"
+              key={c._id}
+              className="course-selection-card"
+              onClick={() => handleCampusSelect(c)}
+            >
+              {c.name}
+            </button>
+          ))}
         </div>
       )}
 
-      {/* STEP 2 - FACULTY (Filtered strictly to Coordinator Faculty) */}
+      {/* STEP 2 - FACULTY (Locked to Coordinator Faculty) */}
       {selectedCampus && !selectedFaculty && !loading && (
         <div className="course-cards-grid">
-          {faculties.length > 0 ? (
-            faculties.map((f) => (
-              <button
-                type="button"
-                key={f._id}
-                className="course-selection-card"
-                onClick={() => handleFacultySelect(f)}
-              >
-                {f.name}
-              </button>
-            ))
-          ) : (
-            <div className="courses-empty-state">
-              <h3>No Faculty Found</h3>
-              <p>No faculty available for this campus.</p>
-            </div>
-          )}
+          {faculties.map((f) => (
+            <button
+              type="button"
+              key={f._id}
+              className="course-selection-card"
+              onClick={() => handleFacultySelect(f)}
+            >
+              {f.name}
+            </button>
+          ))}
         </div>
       )}
 
-      {/* STEP 3 - DEPARTMENT (Filtered strictly to Coordinator Department) */}
+      {/* STEP 3 - DEPARTMENT (Locked to Coordinator Department) */}
       {selectedCampus && selectedFaculty && !selectedDepartment && !loading && (
         <div className="course-cards-grid">
-          {departments.length > 0 ? (
-            departments.map((d) => (
-              <button
-                type="button"
-                key={d._id}
-                className="course-selection-card"
-                onClick={() => handleDepartmentSelect(d)}
-              >
-                {d.name}
-              </button>
-            ))
-          ) : (
-            <div className="courses-empty-state">
-              <h3>No Department Found</h3>
-              <p>No department available for this faculty.</p>
-            </div>
-          )}
+          {departments.map((d) => (
+            <button
+              type="button"
+              key={d._id}
+              className="course-selection-card"
+              onClick={() => handleDepartmentSelect(d)}
+            >
+              {d.name}
+            </button>
+          ))}
         </div>
       )}
 
-      {/* STEP 4 - DISCIPLINE */}
+      {/* STEP 4 - DISCIPLINE (Departmental Degrees) */}
       {selectedDepartment && !selectedDiscipline && !loading && (
         <div className="course-cards-grid">
           {disciplines.length > 0 ? (
@@ -435,7 +400,7 @@ const CoordinatorCourses = () => {
           ) : (
             <div className="courses-empty-state">
               <h3>No Discipline Found</h3>
-              <p>No degree/discipline available. Please add from Dashboard.</p>
+              <p>No degree/discipline available for this department yet.</p>
             </div>
           )}
         </div>
