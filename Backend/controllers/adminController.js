@@ -161,21 +161,81 @@ const updateUserByAdmin = async (req, res) => {
         .json({ message: "Cannot modify primary Super Admin account settings" });
     }
 
-    // Update fields if provided
+    // 1. Check duplicate Email
+    if (email && email.trim() && email.trim().toLowerCase() !== user.email) {
+      const existingEmail = await User.findOne({
+        email: { $regex: new RegExp(`^${email.trim()}$`, "i") },
+        _id: { $ne: userId },
+      });
+      if (existingEmail) {
+        return res.status(400).json({
+          message: `Email '${email}' is already registered to another user. Duplicates are not allowed.`,
+        });
+      }
+      user.email = email.trim().toLowerCase();
+    }
+
+    // 2. Check duplicate Phone
+    if (phone && phone.trim() && phone.trim() !== user.phone) {
+      const existingPhone = await User.findOne({
+        phone: phone.trim(),
+        _id: { $ne: userId },
+      });
+      if (existingPhone) {
+        return res.status(400).json({
+          message: `Phone number '${phone}' is already registered to another user. Duplicates are not allowed.`,
+        });
+      }
+      user.phone = phone.trim();
+    }
+
+    // 3. Check duplicate CNIC
+    if (cnic && cnic.trim() && cnic.trim() !== user.cnic) {
+      const existingCnic = await User.findOne({
+        cnic: cnic.trim(),
+        _id: { $ne: userId },
+      });
+      if (existingCnic) {
+        return res.status(400).json({
+          message: `CNIC '${cnic}' is already registered to another user. Duplicates are not allowed.`,
+        });
+      }
+      user.cnic = cnic.trim();
+    }
+
+    // 4. Check duplicate AG Number (Student)
+    if (user.role === "student" && ag_number && ag_number.trim() && ag_number.trim() !== user.ag_number) {
+      const existingAg = await User.findOne({
+        ag_number: { $regex: new RegExp(`^${ag_number.trim()}$`, "i") },
+        _id: { $ne: userId },
+      });
+      if (existingAg) {
+        return res.status(400).json({
+          message: `AG Number '${ag_number}' is already registered to another student. Duplicates are not allowed.`,
+        });
+      }
+      user.ag_number = ag_number.trim();
+    }
+
+    // 5. Check duplicate Employee ID (Coordinator)
+    if (user.role === "coordinator" && employee_id && employee_id.trim() && employee_id.trim() !== user.employee_id) {
+      const existingEmp = await User.findOne({
+        employee_id: { $regex: new RegExp(`^${employee_id.trim()}$`, "i") },
+        _id: { $ne: userId },
+      });
+      if (existingEmp) {
+        return res.status(400).json({
+          message: `Employee ID '${employee_id}' is already registered to another coordinator. Duplicates are not allowed.`,
+        });
+      }
+      user.employee_id = employee_id.trim();
+    }
+
+    // Update remaining fields if provided
     if (name !== undefined) user.name = name.trim();
-    if (email !== undefined) user.email = email.trim().toLowerCase();
-    if (phone !== undefined) user.phone = phone.trim();
-    if (cnic !== undefined) user.cnic = cnic.trim();
     if (fatherName !== undefined) user.fatherName = fatherName.trim();
     if (admissionDate !== undefined) user.admissionDate = admissionDate;
     if (status !== undefined) user.status = Boolean(status);
-
-    if (user.role === "student" && ag_number !== undefined) {
-      user.ag_number = ag_number.trim();
-    }
-    if (user.role === "coordinator" && employee_id !== undefined) {
-      user.employee_id = employee_id.trim();
-    }
 
     // Academic hierarchy alter
     if (campus_id !== undefined) user.campus_id = campus_id || null;
