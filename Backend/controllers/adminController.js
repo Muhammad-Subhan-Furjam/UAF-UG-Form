@@ -1,3 +1,8 @@
+require("../models/Campus");
+require("../models/Faculty");
+require("../models/Department");
+require("../models/Degree");
+require("../models/Semester");
 const User = require("../models/User");
 const Course = require("../models/Course");
 const UGForm = require("../models/UGForm");
@@ -240,9 +245,22 @@ const getSuperAdmins = async (req, res) => {
   try {
     const superadmins = await User.find({ role: { $regex: /^superadmin$/i } })
       .select("-password")
+    res.status(200).json(superadmins);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+const getAllFormsForAdmin = async (req, res) => {
+  try {
+    const forms = await UGForm.find()
+      .populate("student_id")
+      .populate("campus_id")
+      .populate("faculty_id")
+      .populate("department_id")
+      .populate("degree_id")
       .sort({ createdAt: -1 });
 
-    res.status(200).json(superadmins);
+    res.status(200).json(forms);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -254,6 +272,7 @@ module.exports = {
   getAllStudents,
   getAllCoordinators,
   getSuperAdmins,
+  getAllFormsForAdmin,
   updateUserByAdmin,
   deleteUserByAdmin,
 };

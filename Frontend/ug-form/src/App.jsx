@@ -34,10 +34,10 @@ import AdminLogin from "./Pages/Admin/AdminLogin";
 import AdminLayout from "./Layout/AdminLayout/AdminLayout";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
 import StudentsList from "./Pages/Admin/StudentsList";
-import CoordinatorsList from "./Pages/Admin/CoordinatorsList";
 import SuperAdminList from "./Pages/Admin/SuperAdminList";
 import AdminHierarchy from "./Pages/Admin/AdminHierarchy";
 import AdminCourses from "./Pages/Admin/AdminCourses";
+import AdminForms from "./Pages/Admin/AdminForms";
 
 function App() {
   return (
@@ -60,7 +60,7 @@ function App() {
         <Route path="superadmins" element={<SuperAdminList />} />
         <Route path="hierarchy" element={<AdminHierarchy />} />
         <Route path="courses" element={<AdminCourses />} />
-        <Route path="forms" element={<CoordinatorRequests />} />
+        <Route path="forms" element={<AdminForms />} />
       </Route>
 
       {/* =========================

@@ -4,6 +4,16 @@ require("dotenv").config();
 
 const app = express();
 
+// Pre-register all Mongoose models for populate query safety across serverless invocations
+require("./models/Campus");
+require("./models/Faculty");
+require("./models/Department");
+require("./models/Degree");
+require("./models/Semester");
+require("./models/Course");
+require("./models/UGForm");
+require("./models/User");
+
 const connectDB = require("./config/db");
 const campusRoutes = require("./routes/campusRoutes");
 const departmentRoutes = require("./routes/departmentRoutes");

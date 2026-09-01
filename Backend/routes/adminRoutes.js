@@ -7,6 +7,7 @@ const {
   getAllStudents,
   getAllCoordinators,
   getSuperAdmins,
+  getAllFormsForAdmin,
   updateUserByAdmin,
   deleteUserByAdmin,
 } = require("../controllers/adminController");
@@ -28,6 +29,7 @@ router.get("/stats", authMiddleware, requireSuperAdmin, getAdminStats);
 router.get("/students", authMiddleware, requireSuperAdmin, getAllStudents);
 router.get("/coordinators", authMiddleware, requireSuperAdmin, getAllCoordinators);
 router.get("/superadmins", authMiddleware, requireSuperAdmin, getSuperAdmins);
+router.get("/forms", authMiddleware, requireSuperAdmin, getAllFormsForAdmin);
 router.put("/users/:userId", authMiddleware, requireSuperAdmin, updateUserByAdmin);
 router.delete("/users/:userId", authMiddleware, requireSuperAdmin, deleteUserByAdmin);
 
