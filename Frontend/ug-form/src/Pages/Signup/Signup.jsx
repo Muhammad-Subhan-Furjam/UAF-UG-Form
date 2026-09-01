@@ -168,6 +168,31 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
 
+    // 0. Mandatory Fields Check
+    if (
+      !name.trim() ||
+      !userId.trim() ||
+      !emailPrefix.trim() ||
+      !password ||
+      !confirmPassword ||
+      !phone.trim() ||
+      !campus ||
+      !faculty ||
+      !department
+    ) {
+      alert("All fields are mandatory (*). Please fill out all required fields.");
+      return;
+    }
+
+    if (role === "student") {
+      if (!fatherName.trim() || !cnic.trim() || !admissionDate) {
+        alert(
+          "All student fields (Father Name, CNIC, Admission Date) are mandatory (*)."
+        );
+        return;
+      }
+    }
+
     // 1. Student AG Number Validation (YYYY-ag-XXXX)
     if (role === "student") {
       const agPattern = /^\d{4}-ag-\d{4}$/i;
@@ -325,6 +350,7 @@ const Signup = () => {
           <div className="signup-form-group">
             <label>
               {role === "student" ? "AG Number" : "Employee ID"}
+              <span style={{ color: "red" }}> *</span>
             </label>
             <input
               type="text"
@@ -353,6 +379,7 @@ const Signup = () => {
           <div className="signup-form-group">
             <label>
               {role === "student" ? "Student Name" : "Coordinator Name"}
+              <span style={{ color: "red" }}> *</span>
             </label>
             <input
               type="text"
@@ -371,7 +398,9 @@ const Signup = () => {
           {role === "student" && (
             <>
               <div className="signup-form-group">
-                <label>Father Name</label>
+                <label>
+                  Father Name<span style={{ color: "red" }}> *</span>
+                </label>
                 <input
                   type="text"
                   value={fatherName}
@@ -382,7 +411,9 @@ const Signup = () => {
               </div>
 
               <div className="signup-form-group">
-                <label>CNIC / B-Form (13 Digits)</label>
+                <label>
+                  CNIC / B-Form (13 Digits)<span style={{ color: "red" }}> *</span>
+                </label>
                 <input
                   type="text"
                   value={cnic}
@@ -397,7 +428,9 @@ const Signup = () => {
               </div>
 
               <div className="signup-form-group">
-                <label>Date of Admission</label>
+                <label>
+                  Date of Admission<span style={{ color: "red" }}> *</span>
+                </label>
                 <input
                   type="date"
                   value={admissionDate}
@@ -415,7 +448,9 @@ const Signup = () => {
 
           {/* Phone */}
           <div className="signup-form-group">
-            <label>Phone Number (11 Digits)</label>
+            <label>
+              Phone Number (11 Digits)<span style={{ color: "red" }}> *</span>
+            </label>
             <input
               type="text"
               value={phone}
@@ -431,7 +466,9 @@ const Signup = () => {
 
           {/* Email Prefix with @gmail.com addon */}
           <div className="signup-form-group">
-            <label>Email Address</label>
+            <label>
+              Email Address<span style={{ color: "red" }}> *</span>
+            </label>
             <div className="email-input-wrapper">
               <input
                 type="text"
@@ -446,7 +483,9 @@ const Signup = () => {
 
           {/* Password with Eye Toggle */}
           <div className="signup-form-group">
-            <label>Password</label>
+            <label>
+              Password<span style={{ color: "red" }}> *</span>
+            </label>
             <div className="password-input-wrapper">
               <input
                 type={showPassword ? "text" : "password"}
@@ -490,7 +529,9 @@ const Signup = () => {
 
           {/* Confirm Password */}
           <div className="signup-form-group">
-            <label>Confirm Password</label>
+            <label>
+              Confirm Password<span style={{ color: "red" }}> *</span>
+            </label>
             <div className="password-input-wrapper">
               <input
                 type={showConfirmPassword ? "text" : "password"}
@@ -512,7 +553,9 @@ const Signup = () => {
 
           {/* Campus */}
           <div className="signup-form-group">
-            <label>Campus</label>
+            <label>
+              Campus<span style={{ color: "red" }}> *</span>
+            </label>
             <select value={campus} onChange={handleCampusChange} required>
               <option value="">Select Campus</option>
               {campuses.map((item) => (
@@ -525,7 +568,9 @@ const Signup = () => {
 
           {/* Faculty */}
           <div className="signup-form-group">
-            <label>Faculty</label>
+            <label>
+              Faculty<span style={{ color: "red" }}> *</span>
+            </label>
             <select
               value={faculty}
               onChange={handleFacultyChange}
@@ -545,7 +590,9 @@ const Signup = () => {
 
           {/* Department */}
           <div className="signup-form-group">
-            <label>Department</label>
+            <label>
+              Department<span style={{ color: "red" }}> *</span>
+            </label>
             <select
               value={department}
               onChange={handleDepartmentChange}

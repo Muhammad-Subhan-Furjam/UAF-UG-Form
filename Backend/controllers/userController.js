@@ -26,7 +26,46 @@ const signup = async (req, res) => {
       faculty_id,
       department_id,
       degree_id,
-    } = req.body;
+    // 0. Mandatory Fields Check
+    if (
+      !name ||
+      !name.trim() ||
+      !email ||
+      !email.trim() ||
+      !password ||
+      !phone ||
+      !phone.trim() ||
+      !campus_id ||
+      !faculty_id ||
+      !department_id
+    ) {
+      return res.status(400).json({
+        message: "All fields are mandatory. Please complete all required information.",
+      });
+    }
+
+    if (role === "student") {
+      if (
+        !ag_number ||
+        !ag_number.trim() ||
+        !fatherName ||
+        !fatherName.trim() ||
+        !cnic ||
+        !cnic.trim() ||
+        !admissionDate
+      ) {
+        return res.status(400).json({
+          message:
+            "AG Number, Father Name, CNIC, and Admission Date are mandatory for student signup.",
+        });
+      }
+    } else if (role === "coordinator") {
+      if (!employee_id || !employee_id.trim()) {
+        return res.status(400).json({
+          message: "Employee ID is mandatory for coordinator signup.",
+        });
+      }
+    }
 
     // 1. Check existing Email (Global across all accounts)
     const existingEmail = await User.findOne({
