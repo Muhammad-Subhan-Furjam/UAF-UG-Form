@@ -25,6 +25,7 @@ const CoordinatorForm = () => {
   const [formData, setFormData] = useState({
     semester: "",
     semesterCommencing: "",
+    courseCategory: "",
     courseCode: "",
     courseTitle: "",
     creditHours: "",
@@ -35,6 +36,72 @@ const CoordinatorForm = () => {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
+  // Course Category Options
+  const courseCategories = [
+    "General Course",
+    "Non-Credit Course",
+    "Major Course",
+    "Minor Course",
+    "Allied Course",
+    "Internship",
+    "Capstone Project",
+    "Others",
+  ];
+
+  // Credit Hours Options
+  const creditHoursOptions = [
+    "1 (1-0)",
+    "1 (0-1)",
+    "2 (0-2)",
+    "2 (1-1)",
+    "3 (1-2)",
+    "3 (2-1)",
+    "3 (3-0)",
+    "3 (0-3)",
+    "4 (3-1)",
+    "4 (0-4)",
+  ];
+
+  /* =========================
+      DYNAMIC SEMESTER COMMENCING OPTIONS
+  ========================== */
+  const getCommencingOptions = () => {
+    const selectedSemester = formData.semester;
+    if (selectedSemester === "Fall") {
+      return [{ value: "1", label: "Semester 1" }];
+    }
+    if (selectedSemester === "Spring") {
+      return [
+        { value: "2", label: "Semester 2" },
+        { value: "4", label: "Semester 4" },
+        { value: "6", label: "Semester 6" },
+        { value: "8", label: "Semester 8" },
+        { value: "10", label: "Semester 10" },
+        { value: "12", label: "Semester 12" },
+      ];
+    }
+    if (selectedSemester === "Winter") {
+      return [
+        { value: "3", label: "Semester 3" },
+        { value: "5", label: "Semester 5" },
+        { value: "7", label: "Semester 7" },
+        { value: "9", label: "Semester 9" },
+        { value: "11", label: "Semester 11" },
+      ];
+    }
+    if (selectedSemester === "Summer") {
+      return [
+        { value: "Summer semester 1", label: "Summer semester 1" },
+        { value: "Summer semester 2", label: "Summer semester 2" },
+        { value: "Summer semester 3", label: "Summer semester 3" },
+        { value: "Summer semester 4", label: "Summer semester 4" },
+        { value: "Summer semester 5", label: "Summer semester 5" },
+        { value: "Summer semester 6", label: "Summer semester 6" },
+      ];
+    }
+    return [];
+  };
 
   /* =========================
       LOAD PROFILE + FILTERED HIERARCHY
@@ -129,10 +196,24 @@ const CoordinatorForm = () => {
       INPUT CHANGE
   ========================== */
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    if (name === "semester") {
+      setFormData((prev) => ({
+        ...prev,
+        semester: value,
+        semesterCommencing: "", // reset dependent field
+      }));
+    } else if (name === "courseCode") {
+      setFormData((prev) => ({
+        ...prev,
+        courseCode: value.toUpperCase(),
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   /* =========================
@@ -142,19 +223,49 @@ const CoordinatorForm = () => {
     e.preventDefault();
     setMessage("");
 
+    // Mandatory fields check
+    if (
+      !campus ||
+      !faculty ||
+      !department ||
+      !degree ||
+      !formData.semester ||
+      !formData.semesterCommencing ||
+      !formData.courseCategory ||
+      !formData.courseCode.trim() ||
+      !formData.courseTitle.trim() ||
+      !formData.creditHours
+    ) {
+      setMessage("Please fill in all mandatory fields (*)");
+      return;
+    }
+
+    // Course Code Regex Validation:
+    // Format 1: "3-4 uppercase letters- 3-4 numbers" (e.g. CS-101, CPSC-1001)
+    // Format 2: "3-4 uppercase letters-3-4 uppercase letters-3-4 numbers" (e.g. CS-MATH-101, CPSC-SOFT-1001)
+    const courseCodeRegex = /^([A-Z]{3,4}-\d{3,4}|[A-Z]{3,4}-[A-Z]{3,4}-\d{3,4})$/;
+    if (!courseCodeRegex.test(formData.courseCode.trim())) {
+      setMessage(
+        "Invalid Course Code format! Allowed formats: 'XXX-123', 'XXXX-1234' or 'XXX-YYY-123' (e.g. CS-101 or CS-MATH-101)"
+      );
+      return;
+    }
+
     try {
       const payload = {
         campus_id: campus,
         faculty_id: faculty,
         department_id: department,
         degree_id: degree,
+        semester: formData.semester,
         semesterNumber: formData.semesterCommencing,
-        courseCode: formData.courseCode,
-        courseTitle: formData.courseTitle,
+        courseCategory: formData.courseCategory,
+        courseCode: formData.courseCode.trim(),
+        courseTitle: formData.courseTitle.trim(),
         creditHours: formData.creditHours,
-        teacherName: formData.teacherName,
-        totalMarks: formData.totalMarks,
-        remarks: formData.remarks,
+        teacherName: formData.teacherName.trim(),
+        totalMarks: formData.totalMarks.trim(),
+        remarks: formData.remarks.trim(),
       };
 
       const res = await api.post("/courses", payload);
@@ -164,6 +275,7 @@ const CoordinatorForm = () => {
       setFormData({
         semester: "",
         semesterCommencing: "",
+        courseCategory: "",
         courseCode: "",
         courseTitle: "",
         creditHours: "",
@@ -176,6 +288,8 @@ const CoordinatorForm = () => {
       setMessage(error.response?.data?.message || "Failed to add course");
     }
   };
+
+  const commencingOpts = getCommencingOptions();
 
   return (
     <div className="coordinator-form-page">
@@ -190,9 +304,9 @@ const CoordinatorForm = () => {
           <p style={{ textAlign: "center", padding: "30px" }}>Loading...</p>
         ) : (
           <form className="coordinator-course-form" onSubmit={submitHandler}>
-            {/* CAMPUS */}
+            {/* CAMPUS (MANDATORY) */}
             <div className="form-group">
-              <label>Select Campus</label>
+              <label>Select Campus *</label>
               <select
                 value={campus}
                 onChange={(e) => setCampus(e.target.value)}
@@ -206,9 +320,9 @@ const CoordinatorForm = () => {
               </select>
             </div>
 
-            {/* FACULTY */}
+            {/* FACULTY (MANDATORY) */}
             <div className="form-group">
-              <label>Select Faculty</label>
+              <label>Select Faculty *</label>
               <select
                 value={faculty}
                 onChange={(e) => setFaculty(e.target.value)}
@@ -222,9 +336,9 @@ const CoordinatorForm = () => {
               </select>
             </div>
 
-            {/* DEPARTMENT */}
+            {/* DEPARTMENT (MANDATORY) */}
             <div className="form-group">
-              <label>Select Department</label>
+              <label>Select Department *</label>
               <select
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
@@ -238,9 +352,9 @@ const CoordinatorForm = () => {
               </select>
             </div>
 
-            {/* DEGREE */}
+            {/* DEGREE (MANDATORY) */}
             <div className="form-group">
-              <label>Select Degree</label>
+              <label>Select Degree *</label>
               <select
                 value={degree}
                 disabled={!department}
@@ -256,9 +370,9 @@ const CoordinatorForm = () => {
               </select>
             </div>
 
-            {/* SEMESTER */}
+            {/* SEMESTER (MANDATORY) */}
             <div className="form-group">
-              <label>Semester</label>
+              <label>Semester *</label>
               <select
                 name="semester"
                 value={formData.semester}
@@ -266,46 +380,72 @@ const CoordinatorForm = () => {
                 required
               >
                 <option value="">Select Semester</option>
-                <option value="Spring">Spring</option>
-                <option value="Summer">Summer</option>
-                <option value="Winter">Winter</option>
                 <option value="Fall">Fall</option>
+                <option value="Spring">Spring</option>
+                <option value="Winter">Winter</option>
+                <option value="Summer">Summer</option>
               </select>
             </div>
 
-            {/* SEMESTER COMMENCING */}
+            {/* SEMESTER COMMENCING (MANDATORY, DYNAMIC DEPENDING ON SEMESTER) */}
             <div className="form-group">
-              <label>Semester Commencing</label>
+              <label>Semester Commencing *</label>
               <select
                 name="semesterCommencing"
                 value={formData.semesterCommencing}
                 onChange={handleChange}
+                disabled={!formData.semester}
                 required
               >
-                <option value="">Select Semester</option>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
-                  <option key={num} value={num}>
-                    {num}
+                <option value="">
+                  {formData.semester
+                    ? "Select Semester Commencing"
+                    : "Select Semester First"}
+                </option>
+                {commencingOpts.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
                   </option>
                 ))}
               </select>
             </div>
 
-            {/* COURSE CODE */}
+            {/* COURSE CATEGORY (MANDATORY - Positioned after Semester Commencing and before Course Code) */}
             <div className="form-group">
-              <label>Course Code</label>
+              <label>Course Category *</label>
+              <select
+                name="courseCategory"
+                value={formData.courseCategory}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Course Category</option>
+                {courseCategories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* COURSE CODE (MANDATORY - Formats: XXX-123 or XXX-YYY-123) */}
+            <div className="form-group">
+              <label>Course Code *</label>
               <input
                 name="courseCode"
                 value={formData.courseCode}
                 onChange={handleChange}
-                placeholder="Enter Course Code"
+                placeholder="e.g. CS-101 or CS-MATH-101"
                 required
               />
+              <small className="form-hint-text">
+                Formats: XXX-123, XXXX-1234 or XXX-YYY-123 (e.g. CS-101)
+              </small>
             </div>
 
-            {/* COURSE TITLE */}
+            {/* COURSE TITLE (MANDATORY) */}
             <div className="form-group">
-              <label>Course Title</label>
+              <label>Course Title *</label>
               <input
                 name="courseTitle"
                 value={formData.courseTitle}
@@ -315,21 +455,27 @@ const CoordinatorForm = () => {
               />
             </div>
 
-            {/* CREDIT HOURS */}
+            {/* CREDIT HOURS (MANDATORY DROPDOWN) */}
             <div className="form-group">
-              <label>Credit Hours</label>
-              <input
+              <label>Credit Hours *</label>
+              <select
                 name="creditHours"
                 value={formData.creditHours}
                 onChange={handleChange}
-                placeholder="Enter Credit Hours"
                 required
-              />
+              >
+                <option value="">Select Credit Hours</option>
+                {creditHoursOptions.map((ch) => (
+                  <option key={ch} value={ch}>
+                    {ch}
+                  </option>
+                ))}
+              </select>
             </div>
 
-            {/* TEACHER */}
+            {/* TEACHER NAME (OPTIONAL) */}
             <div className="form-group">
-              <label>Teacher Name</label>
+              <label>Teacher Name (Optional)</label>
               <input
                 name="teacherName"
                 value={formData.teacherName}
@@ -338,9 +484,9 @@ const CoordinatorForm = () => {
               />
             </div>
 
-            {/* TOTAL MARKS */}
+            {/* TOTAL MARKS (OPTIONAL) */}
             <div className="form-group">
-              <label>Total Marks</label>
+              <label>Total Marks (Optional)</label>
               <input
                 name="totalMarks"
                 value={formData.totalMarks}
@@ -349,9 +495,9 @@ const CoordinatorForm = () => {
               />
             </div>
 
-            {/* REMARKS */}
+            {/* REMARKS (OPTIONAL) */}
             <div className="form-group full-width">
-              <label>Remarks</label>
+              <label>Remarks (Optional)</label>
               <textarea
                 name="remarks"
                 value={formData.remarks}
@@ -364,8 +510,10 @@ const CoordinatorForm = () => {
               <p
                 style={{
                   textAlign: "center",
-                  color: message.includes("Success") ? "green" : "red",
+                  color: message.includes("Successfully") ? "green" : "red",
                   marginBottom: "15px",
+                  gridColumn: "span 2",
+                  fontWeight: 600,
                 }}
               >
                 {message}

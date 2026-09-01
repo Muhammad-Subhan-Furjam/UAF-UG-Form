@@ -399,4 +399,9 @@ padding:30px;
 
 
 
-}
+.form-hint-text {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #68727d;
+  font-weight: 500;
+}

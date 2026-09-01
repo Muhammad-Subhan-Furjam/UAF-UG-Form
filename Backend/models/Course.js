@@ -32,6 +32,12 @@ const courseSchema = new mongoose.Schema(
       default: "",
       trim: true,
     },
+
+    courseCategory: {
+      type: String,
+      default: "General Course",
+      trim: true,
+    },
     // ================================
 
     campus_id: {

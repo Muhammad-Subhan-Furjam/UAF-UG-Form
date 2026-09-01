@@ -35,6 +35,7 @@ const addCourse = async (req, res) => {
       totalMarks,
       remarks,
       courseType,
+      courseCategory,
     } = req.body;
 
     if (!courseCode || !courseTitle || !creditHours || !degree_id || !semesterNumber) {
@@ -44,15 +45,18 @@ const addCourse = async (req, res) => {
     }
 
     // Find or Create Semester
+    const semNum = Number(String(semesterNumber).replace(/\D/g, "")) || 1;
     let semester = await Semester.findOne({
       degree_id,
-      number: Number(semesterNumber),
+      number: semNum,
     });
 
     if (!semester) {
       semester = await Semester.create({
-        name: `Semester ${semesterNumber}`,
-        number: Number(semesterNumber),
+        name: typeof semesterNumber === "string" && semesterNumber.startsWith("Summer")
+          ? semesterNumber
+          : `Semester ${semesterNumber}`,
+        number: semNum,
         degree_id,
       });
     }
@@ -68,6 +72,7 @@ const addCourse = async (req, res) => {
       degree_id,
       semester_id: semester._id,
       courseType: courseType || "Compulsory",
+      courseCategory: courseCategory || "General Course",
       totalMarks: totalMarks || "",
       remarks: remarks || "",
     });
