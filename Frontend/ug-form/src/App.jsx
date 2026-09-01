@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
@@ -42,7 +43,8 @@ import AdminForms from "./Pages/Admin/AdminForms";
 
 function App() {
   return (
-    <Routes>
+    <>
+      <Routes>
       {/* PUBLIC ROUTES */}
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
@@ -93,7 +95,9 @@ function App() {
         <Route path="/coordinator/add-degree" element={<AddDegree />} />
         <Route path="/coordinator/request/:id" element={<CoordinatorRequestDetail />} />
       </Route>
-    </Routes>
+      </Routes>
+      <Analytics />
+    </>
   );
 }
 
