@@ -283,18 +283,6 @@ const getProfile = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-
-}
-catch(error){
-
-res.status(500).json({
-message:error.message
-});
-
-}
-
-};
 const updateProfile = async(req,res)=>{
 
 try{
