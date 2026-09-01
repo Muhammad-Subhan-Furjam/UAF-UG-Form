@@ -13,6 +13,7 @@ const semesterRoutes = require("./routes/semesterRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const ugFormRoutes = require("./routes/ugFormRoutes");
 const userRoutes = require("./routes/userRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 // Ensure database connection middleware for serverless invocations
 app.use(async (req, res, next) => {
@@ -34,6 +35,7 @@ app.use("/api/semesters", semesterRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/ugforms", ugFormRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/admin", adminRoutes);
 const path = require("path");
 
 app.use("/uploads", express.static("uploads"));

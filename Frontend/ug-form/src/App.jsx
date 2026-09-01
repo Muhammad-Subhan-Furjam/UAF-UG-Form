@@ -29,6 +29,13 @@ import PrintForm from "./Pages/Student/PrintForm/PrintForm";
 import AddDegree from "./Pages/Coordinator/AddDegree/AddDegree";
 import CoordinatorRequestDetail from "./Pages/Coordinator/CoordinatorRequestDetail/CoordinatorRequestDetail";
 
+/* SUPER ADMIN */
+import AdminLogin from "./Pages/Admin/AdminLogin";
+import AdminLayout from "./Layout/AdminLayout/AdminLayout";
+import AdminDashboard from "./Pages/Admin/AdminDashboard";
+import StudentsList from "./Pages/Admin/StudentsList";
+import CoordinatorsList from "./Pages/Admin/CoordinatorsList";
+
 function App() {
   return (
     <Routes>
@@ -37,23 +44,31 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
 
+      {/* SECRET SUPER ADMIN LOGIN ROUTE */}
+      <Route path="/ladmin" element={<AdminLogin />} />
+
+      {/* =========================
+          SUPER ADMIN ROUTES
+      ========================= */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="students" element={<StudentsList />} />
+        <Route path="coordinators" element={<CoordinatorsList />} />
+        <Route path="forms" element={<CoordinatorRequests />} />
+        <Route path="courses" element={<CoordinatorCourses />} />
+      </Route>
+
       {/* =========================
           STUDENT ROUTES
       ========================= */}
       <Route path="/student" element={<StudentLayout />}>
         <Route path="dashboard" element={<Dashboard />} />
-
         <Route path="requests" element={<MyRequests />} />
-
         <Route path="forms" element={<MyForms />} />
-
         <Route path="courses" element={<MyCourses />} />
-
         <Route path="profile" element={<Profile />} />
-
         <Route path="notifications" element={<Notification />} />
         <Route path="ug-form" element={<UGForm />} />
-
         <Route path="upload-voucher" element={<VoucherUpload />} />
         <Route path="print-form" element={<PrintForm />} />
         <Route path="/student/form-preview/:id" element={<FormPreview />} />
@@ -64,20 +79,13 @@ function App() {
       ========================= */}
       <Route path="/coordinator" element={<CoordinatorLayout />}>
         <Route path="dashboard" element={<CoordinatorDashboard />} />
-
         <Route path="requests" element={<CoordinatorRequests />} />
-
         <Route path="courses" element={<CoordinatorCourses />} />
-
         <Route path="notifications" element={<CoordinatorAlerts />} />
         <Route path="student-form" element={<CoordinatorForm />} />
-
         <Route path="profile" element={<CoordinatorProfile />} />
         <Route path="/coordinator/add-degree" element={<AddDegree />} />
-        <Route
-  path="/coordinator/request/:id"
-  element={<CoordinatorRequestDetail />}
-/>
+        <Route path="/coordinator/request/:id" element={<CoordinatorRequestDetail />} />
       </Route>
     </Routes>
   );

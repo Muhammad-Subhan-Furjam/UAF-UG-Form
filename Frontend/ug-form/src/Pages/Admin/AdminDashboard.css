@@ -1,0 +1,133 @@
+.admin-dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.admin-page-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.admin-page-header p {
+  margin-top: 6px;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.admin-stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card-blue { border-top: 4px solid #2563eb; }
+.card-green { border-top: 4px solid #16a34a; }
+.card-purple { border-top: 4px solid #9333ea; }
+.card-orange { border-top: 4px solid #ea580c; }
+
+.stat-icon-wrapper {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.stat-info h3 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.stat-info p {
+  margin-top: 4px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.stat-footer-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-top: auto;
+}
+
+.admin-quick-actions-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.admin-quick-actions-card h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #082f5c;
+}
+
+.admin-quick-actions-card p {
+  margin-top: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.quick-buttons-row {
+  display: flex;
+  gap: 15px;
+}
+
+.quick-action-btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.quick-action-btn.primary {
+  background: #082f5c;
+  color: #ffffff;
+}
+
+.quick-action-btn.primary:hover {
+  background: #124678;
+}
+
+.quick-action-btn.secondary {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.quick-action-btn.secondary:hover {
+  background: #e2e8f0;
+}
