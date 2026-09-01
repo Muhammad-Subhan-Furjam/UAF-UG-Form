@@ -145,8 +145,22 @@ const updateCourse = async (req, res) => {
   }
 };
 
+// Delete Course
+const deleteCourse = async (req, res) => {
+  try {
+    const course = await Course.findByIdAndDelete(req.params.id);
+    if (!course) {
+      return res.status(404).json({ message: "Course not found" });
+    }
+    res.status(200).json({ message: "Course deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getCourses,
   addCourse,
-  updateCourse,   
+  updateCourse,
+  deleteCourse,
 };

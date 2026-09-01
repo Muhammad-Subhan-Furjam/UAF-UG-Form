@@ -133,8 +133,36 @@ const addWithHierarchy = async (req, res) => {
   }
 };
 
+const updateDegree = async (req, res) => {
+  try {
+    const degree = await Degree.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!degree) {
+      return res.status(404).json({ message: "Degree not found" });
+    }
+    res.status(200).json({ message: "Degree updated successfully", degree });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const deleteDegree = async (req, res) => {
+  try {
+    const degree = await Degree.findByIdAndDelete(req.params.id);
+    if (!degree) {
+      return res.status(404).json({ message: "Degree not found" });
+    }
+    res.status(200).json({ message: "Degree deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getDegrees,
   addDegree,
   addWithHierarchy,
+  updateDegree,
+  deleteDegree,
 };

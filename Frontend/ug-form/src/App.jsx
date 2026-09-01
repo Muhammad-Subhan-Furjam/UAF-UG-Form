@@ -35,6 +35,8 @@ import AdminLayout from "./Layout/AdminLayout/AdminLayout";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
 import StudentsList from "./Pages/Admin/StudentsList";
 import CoordinatorsList from "./Pages/Admin/CoordinatorsList";
+import AdminHierarchy from "./Pages/Admin/AdminHierarchy";
+import AdminCourses from "./Pages/Admin/AdminCourses";
 
 function App() {
   return (
@@ -54,8 +56,9 @@ function App() {
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="students" element={<StudentsList />} />
         <Route path="coordinators" element={<CoordinatorsList />} />
+        <Route path="hierarchy" element={<AdminHierarchy />} />
+        <Route path="courses" element={<AdminCourses />} />
         <Route path="forms" element={<CoordinatorRequests />} />
-        <Route path="courses" element={<CoordinatorCourses />} />
       </Route>
 
       {/* =========================

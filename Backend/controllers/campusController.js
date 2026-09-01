@@ -47,7 +47,35 @@ const addCampus = async (req,res)=>{
 
 
 
+const updateCampus = async (req, res) => {
+  try {
+    const campus = await Campus.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!campus) {
+      return res.status(404).json({ message: "Campus not found" });
+    }
+    res.status(200).json({ message: "Campus updated successfully", campus });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const deleteCampus = async (req, res) => {
+  try {
+    const campus = await Campus.findByIdAndDelete(req.params.id);
+    if (!campus) {
+      return res.status(404).json({ message: "Campus not found" });
+    }
+    res.status(200).json({ message: "Campus deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
-    getCampuses,
-    addCampus
+  getCampuses,
+  addCampus,
+  updateCampus,
+  deleteCampus,
 };

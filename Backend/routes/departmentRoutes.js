@@ -5,15 +5,15 @@ const router = express.Router();
 
 const {
     getDepartments,
-    addDepartment
-}=require("../controllers/departmentController");
+    addDepartment,
+    updateDepartment,
+    deleteDepartment
+} = require("../controllers/departmentController");
 
 
+router.get("/", getDepartments);
+router.post("/", addDepartment);
+router.put("/:id", updateDepartment);
+router.delete("/:id", deleteDepartment);
 
-router.get("/",getDepartments);
-
-router.post("/",addDepartment);
-
-
-
-module.exports=router;
+module.exports = router;

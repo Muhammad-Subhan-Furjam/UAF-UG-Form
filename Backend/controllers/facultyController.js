@@ -47,7 +47,35 @@ const addFaculty = async (req,res)=>{
 };
 
 
+const updateFaculty = async (req, res) => {
+  try {
+    const faculty = await Faculty.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!faculty) {
+      return res.status(404).json({ message: "Faculty not found" });
+    }
+    res.status(200).json({ message: "Faculty updated successfully", faculty });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const deleteFaculty = async (req, res) => {
+  try {
+    const faculty = await Faculty.findByIdAndDelete(req.params.id);
+    if (!faculty) {
+      return res.status(404).json({ message: "Faculty not found" });
+    }
+    res.status(200).json({ message: "Faculty deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
-    getFaculties,
-    addFaculty
+  getFaculties,
+  addFaculty,
+  updateFaculty,
+  deleteFaculty,
 };

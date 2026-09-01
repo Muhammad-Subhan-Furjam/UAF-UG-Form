@@ -58,6 +58,16 @@ const AdminLayout = () => {
           </NavLink>
 
           <NavLink
+            to="/admin/hierarchy"
+            className={({ isActive }) =>
+              `admin-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <span className="nav-icon">🏛️</span>
+            <span>Academic Hierarchy</span>
+          </NavLink>
+
+          <NavLink
             to="/admin/forms"
             className={({ isActive }) =>
               `admin-nav-item ${isActive ? "active" : ""}`
