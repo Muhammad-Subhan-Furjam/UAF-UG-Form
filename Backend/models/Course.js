@@ -8,10 +8,10 @@ const courseSchema = new mongoose.Schema(
       trim: true,
       validate: {
         validator: function (v) {
-          return /^([A-Z]{2,4}-\d{2,4}|[A-Z]{2,4}-[A-Z]{2,4}-\d{2,4})$/.test(v);
+          return /^([A-Z]{2,7}-\d{2,4}|[A-Z]{2,7}-[A-Z]{2,7}-\d{2,4})$/.test(v);
         },
         message: (props) =>
-          `${props.value} is not a valid course code format! Allowed: 2-4 uppercase letters-2-4 digits (e.g. CS-101) or 2-4 uppercase letters-2-4 uppercase letters-2-4 digits (e.g. CS-MATH-101).`,
+          `${props.value} is not a valid course code format! Allowed: 2-7 uppercase letters-2-4 digits (e.g. CS-101) or 2-7 uppercase letters-2-7 uppercase letters-2-4 digits (e.g. CS-MATH-101).`,
       },
     },
 

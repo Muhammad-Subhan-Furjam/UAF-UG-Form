@@ -52,12 +52,14 @@ const AdminCourses = () => {
     "1 (0-1)",
     "2 (0-2)",
     "2 (1-1)",
+    "2 (2-0)",
     "3 (1-2)",
     "3 (2-1)",
     "3 (3-0)",
     "3 (0-3)",
     "4 (3-1)",
     "4 (0-4)",
+    "4 (4-0)",
   ];
 
   // =========================================
@@ -148,10 +150,10 @@ const AdminCourses = () => {
     setSaving(true);
     setModalMessage("");
 
-    // Course code format regex: 2-4 alphabets - 2-4 digits OR 2-4 alphabets - 2-4 alphabets - 2-4 digits
-    const courseCodeRegex = /^([A-Z]{2,4}-\d{2,4}|[A-Z]{2,4}-[A-Z]{2,4}-\d{2,4})$/;
+    // Course code format regex: 2-7 alphabets - 2-4 digits OR 2-7 alphabets - 2-7 alphabets - 2-4 digits
+    const courseCodeRegex = /^([A-Z]{2,7}-\d{2,4}|[A-Z]{2,7}-[A-Z]{2,7}-\d{2,4})$/;
     if (!courseCodeRegex.test(formData.courseCode.trim())) {
-      setModalMessage("Invalid Course Code format! Allowed: 2-4 uppercase letters-2-4 digits (e.g. CS-101) or 2-4 uppercase letters-2-4 uppercase letters-2-4 digits (e.g. CS-MATH-101).");
+      setModalMessage("Invalid Course Code format! Allowed: 2-7 uppercase letters-2-4 digits (e.g. CS-101) or 2-7 uppercase letters-2-7 uppercase letters-2-4 digits (e.g. CS-MATH-101).");
       setSaving(false);
       return;
     }

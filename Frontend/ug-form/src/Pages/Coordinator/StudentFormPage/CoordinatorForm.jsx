@@ -241,12 +241,12 @@ const CoordinatorForm = () => {
     }
 
     // Course Code Regex Validation:
-    // Format 1: "2-4 uppercase letters- 2-4 numbers" (e.g. CS-10, CS-101, CPSC-1001)
-    // Format 2: "2-4 uppercase letters-2-4 uppercase letters-2-4 numbers" (e.g. CS-SE-10, CS-MATH-101)
-    const courseCodeRegex = /^([A-Z]{2,4}-\d{2,4}|[A-Z]{2,4}-[A-Z]{2,4}-\d{2,4})$/;
+    // Format 1: "2-7 uppercase letters- 2-4 numbers" (e.g. CS-10, CS-101, BIOTECH-1001)
+    // Format 2: "2-7 uppercase letters-2-7 uppercase letters-2-4 numbers" (e.g. CS-SE-10, CS-MATH-101)
+    const courseCodeRegex = /^([A-Z]{2,7}-\d{2,4}|[A-Z]{2,7}-[A-Z]{2,7}-\d{2,4})$/;
     if (!courseCodeRegex.test(formData.courseCode.trim())) {
       setMessage(
-        "Invalid Course Code format! Allowed formats: 2-4 uppercase letters-2-4 digits (e.g. CS-101) or 2-4 uppercase letters-2-4 uppercase letters-2-4 digits (e.g. CS-MATH-101)."
+        "Invalid Course Code format! Allowed formats: 2-7 uppercase letters-2-4 digits (e.g. CS-101) or 2-7 uppercase letters-2-7 uppercase letters-2-4 digits (e.g. CS-MATH-101)."
       );
       return;
     }
