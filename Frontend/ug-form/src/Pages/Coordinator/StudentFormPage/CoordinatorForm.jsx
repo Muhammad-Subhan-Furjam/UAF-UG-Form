@@ -428,7 +428,7 @@ const CoordinatorForm = () => {
               </select>
             </div>
 
-            {/* COURSE CODE (MANDATORY - Formats: XXX-123 or XXX-YYY-123) */}
+            {/* COURSE CODE (MANDATORY - Formats: 2-7 Letters-2-4 Digits or 2-7 Letters-2-7 Letters-2-4 Digits) */}
             <div className="form-group">
               <label>Course Code *</label>
               <input
@@ -438,8 +438,10 @@ const CoordinatorForm = () => {
                 placeholder="e.g. CS-101 or CS-MATH-101"
                 required
               />
-              <small className="form-hint-text">
-                Formats: XXX-123, XXXX-1234 or XXX-YYY-123 (e.g. CS-101)
+              <small className="form-hint-text" style={{ color: "#64748b", fontSize: "12px", marginTop: "4px", display: "block", lineHeight: "1.4" }}>
+                <strong>Allowed Formats:</strong><br />
+                • <strong>Format 1:</strong> 2 to 7 Uppercase Letters - 2 to 4 Digits (e.g. <code>CS-101</code>, <code>BIOTECH-301</code>)<br />
+                • <strong>Format 2:</strong> 2 to 7 Uppercase Letters - 2 to 7 Uppercase Letters - 2 to 4 Digits (e.g. <code>CS-MATH-101</code>)
               </small>
             </div>
 

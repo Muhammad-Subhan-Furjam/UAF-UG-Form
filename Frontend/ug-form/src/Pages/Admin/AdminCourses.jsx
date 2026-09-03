@@ -438,6 +438,11 @@ const AdminCourses = () => {
                     placeholder="e.g. CS-101 or CS-MATH-101"
                     required
                   />
+                  <small style={{ color: "#64748b", fontSize: "12px", marginTop: "4px", display: "block", lineHeight: "1.4" }}>
+                    <strong>Allowed Formats:</strong><br />
+                    • <strong>Format 1:</strong> 2 to 7 Uppercase Letters - 2 to 4 Digits (e.g. <code>CS-101</code>, <code>BIOTECH-301</code>)<br />
+                    • <strong>Format 2:</strong> 2 to 7 Uppercase Letters - 2 to 7 Uppercase Letters - 2 to 4 Digits (e.g. <code>CS-MATH-101</code>)
+                  </small>
                 </div>
 
                 {/* COURSE TITLE */}
