@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 
 import Home from "./Pages/Home/Home";
@@ -57,6 +57,7 @@ function App() {
             SUPER ADMIN ROUTES
         ========================= */}
         <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="students" element={<StudentsList />} />
           <Route path="coordinators" element={<CoordinatorsList />} />

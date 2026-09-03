@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   FiGrid,
@@ -14,14 +14,27 @@ import universityLogo from "../../assets/university-logo.jpeg";
 
 const StudentLayout = () => {
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+  useEffect(() => {
+    if (!token || user.role !== "student") {
+      navigate("/login", { replace: true });
+    }
+  }, [token, user, navigate]);
+
+  if (!token || user.role !== "student") {
+    return null;
+  }
+
   const agNumberGreeting = user.ag_number || user.employee_id || user.name || "Student";
   const facultyName = user.faculty_id?.name || user.department_id?.name || "Faculty of Sciences";
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
 
   return (

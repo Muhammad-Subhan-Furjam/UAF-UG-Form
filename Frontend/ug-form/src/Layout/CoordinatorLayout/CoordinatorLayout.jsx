@@ -17,7 +17,15 @@ const CoordinatorLayout = () => {
   const navigate = useNavigate();
   const [coordinator, setCoordinator] = useState(null);
 
+  const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
   useEffect(() => {
+    if (!token || user.role !== "coordinator") {
+      navigate("/login", { replace: true });
+      return;
+    }
+
     const fetchProfile = async () => {
       try {
         const localUser = JSON.parse(localStorage.getItem("user") || "{}");
@@ -33,12 +41,16 @@ const CoordinatorLayout = () => {
       }
     };
     fetchProfile();
-  }, []);
+  }, [token, user.role, navigate]);
+
+  if (!token || user.role !== "coordinator") {
+    return null;
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
 
   const nameGreeting = coordinator?.name || "Coordinator";

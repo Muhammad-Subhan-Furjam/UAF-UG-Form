@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import "./AdminLayout.css";
 import logo from "../../assets/university-logo.jpeg";
@@ -6,12 +6,23 @@ import logo from "../../assets/university-logo.jpeg";
 const AdminLayout = () => {
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+  useEffect(() => {
+    if (!token || user.role !== "superadmin") {
+      navigate("/ladmin", { replace: true });
+    }
+  }, [token, user, navigate]);
+
+  if (!token || user.role !== "superadmin") {
+    return null;
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    navigate("/ladmin");
+    navigate("/ladmin", { replace: true });
   };
 
   return (
