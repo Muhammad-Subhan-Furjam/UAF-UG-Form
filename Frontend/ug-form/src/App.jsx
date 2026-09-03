@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
@@ -42,58 +43,61 @@ import AdminForms from "./Pages/Admin/AdminForms";
 
 function App() {
   return (
-    <Routes>
-      {/* PUBLIC ROUTES */}
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+    <>
+      <Routes>
+        {/* PUBLIC ROUTES */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
-      {/* SECRET SUPER ADMIN LOGIN ROUTE */}
-      <Route path="/ladmin" element={<AdminLogin />} />
+        {/* SECRET SUPER ADMIN LOGIN ROUTE */}
+        <Route path="/ladmin" element={<AdminLogin />} />
 
-      {/* =========================
-          SUPER ADMIN ROUTES
-      ========================= */}
-      <Route path="/admin" element={<AdminLayout />}>
-        <Route path="dashboard" element={<AdminDashboard />} />
-        <Route path="students" element={<StudentsList />} />
-        <Route path="coordinators" element={<CoordinatorsList />} />
-        <Route path="superadmins" element={<SuperAdminList />} />
-        <Route path="hierarchy" element={<AdminHierarchy />} />
-        <Route path="courses" element={<AdminCourses />} />
-        <Route path="forms" element={<AdminForms />} />
-      </Route>
+        {/* =========================
+            SUPER ADMIN ROUTES
+        ========================= */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="students" element={<StudentsList />} />
+          <Route path="coordinators" element={<CoordinatorsList />} />
+          <Route path="superadmins" element={<SuperAdminList />} />
+          <Route path="hierarchy" element={<AdminHierarchy />} />
+          <Route path="courses" element={<AdminCourses />} />
+          <Route path="forms" element={<AdminForms />} />
+        </Route>
 
-      {/* =========================
-          STUDENT ROUTES
-      ========================= */}
-      <Route path="/student" element={<StudentLayout />}>
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="requests" element={<MyRequests />} />
-        <Route path="forms" element={<MyForms />} />
-        <Route path="courses" element={<MyCourses />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="notifications" element={<Notification />} />
-        <Route path="ug-form" element={<UGForm />} />
-        <Route path="upload-voucher" element={<VoucherUpload />} />
-        <Route path="print-form" element={<PrintForm />} />
-        <Route path="/student/form-preview/:id" element={<FormPreview />} />
-      </Route>
+        {/* =========================
+            STUDENT ROUTES
+        ========================= */}
+        <Route path="/student" element={<StudentLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="requests" element={<MyRequests />} />
+          <Route path="forms" element={<MyForms />} />
+          <Route path="courses" element={<MyCourses />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="notifications" element={<Notification />} />
+          <Route path="ug-form" element={<UGForm />} />
+          <Route path="upload-voucher" element={<VoucherUpload />} />
+          <Route path="print-form" element={<PrintForm />} />
+          <Route path="/student/form-preview/:id" element={<FormPreview />} />
+        </Route>
 
-      {/* =========================
-          COORDINATOR ROUTES
-      ========================= */}
-      <Route path="/coordinator" element={<CoordinatorLayout />}>
-        <Route path="dashboard" element={<CoordinatorDashboard />} />
-        <Route path="requests" element={<CoordinatorRequests />} />
-        <Route path="courses" element={<CoordinatorCourses />} />
-        <Route path="notifications" element={<CoordinatorAlerts />} />
-        <Route path="student-form" element={<CoordinatorForm />} />
-        <Route path="profile" element={<CoordinatorProfile />} />
-        <Route path="/coordinator/add-degree" element={<AddDegree />} />
-        <Route path="/coordinator/request/:id" element={<CoordinatorRequestDetail />} />
-      </Route>
-    </Routes>
+        {/* =========================
+            COORDINATOR ROUTES
+        ========================= */}
+        <Route path="/coordinator" element={<CoordinatorLayout />}>
+          <Route path="dashboard" element={<CoordinatorDashboard />} />
+          <Route path="requests" element={<CoordinatorRequests />} />
+          <Route path="courses" element={<CoordinatorCourses />} />
+          <Route path="notifications" element={<CoordinatorAlerts />} />
+          <Route path="student-form" element={<CoordinatorForm />} />
+          <Route path="profile" element={<CoordinatorProfile />} />
+          <Route path="/coordinator/add-degree" element={<AddDegree />} />
+          <Route path="/coordinator/request/:id" element={<CoordinatorRequestDetail />} />
+        </Route>
+      </Routes>
+      <Analytics />
+    </>
   );
 }
 
