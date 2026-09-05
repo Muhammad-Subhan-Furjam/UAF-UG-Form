@@ -4,97 +4,86 @@ import "./Profile.css";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
-
-  const [isEditing, setIsEditing] = useState(false);
-
-  const [editData, setEditData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getProfile = async () => {
       try {
+        setLoading(true);
         const response = await api.get("/users/profile");
-
-        console.log("Profile Data:", response.data);
-
-        setProfile(response.data.user);
-
-        setEditData(response.data.user);
+        if (response.data?.user) {
+          setProfile(response.data.user);
+        } else {
+          const localUser = JSON.parse(localStorage.getItem("user") || "{}");
+          setProfile(localUser);
+        }
       } catch (error) {
-        console.log(error);
+        console.error("Failed to load student profile:", error);
+        const localUser = JSON.parse(localStorage.getItem("user") || "{}");
+        setProfile(localUser);
+      } finally {
+        setLoading(false);
       }
     };
 
     getProfile();
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setEditData((prev) => ({
-      ...prev,
-
-      [name]: value,
-    }));
-  };
-
-  const handleSave = async () => {
-    try {
-      const response = await api.put("/users/profile", {
-        email: editData.email,
-        phone: editData.phone,
-      });
-
-      setProfile(response.data.user);
-      setEditData(response.data.user);
-      setIsEditing(false);
-
-      alert("Profile Updated Successfully");
-    } catch (error) {
-      console.log(error);
-      alert(error.response?.data?.message || "Failed to update profile");
-    }
-  };
-
-  const handleCancel = () => {
-    setEditData(profile);
-
-    setIsEditing(false);
-  };
-
-  if (!profile) {
-    return <h2>Loading...</h2>;
+  if (loading || !profile) {
+    return <div className="student-profile-loading">Loading profile...</div>;
   }
+
+  // Initial letter of first name
+  const initialLetter = profile.name ? profile.name.trim().charAt(0).toUpperCase() : "S";
+
+  // Hierarchy Resolution
+  const campusName =
+    profile.campus_id?.name ||
+    (typeof profile.campus_id === "string" ? profile.campus_id : "") ||
+    "Main Campus";
+
+  const facultyName =
+    profile.faculty_id?.name ||
+    (typeof profile.faculty_id === "string" ? profile.faculty_id : "") ||
+    "Faculty of Sciences";
+
+  const departmentName =
+    profile.department_id?.name ||
+    (typeof profile.department_id === "string" ? profile.department_id : "") ||
+    "Department Of Computer Science";
+
+  const degreeName =
+    profile.degree_id?.name ||
+    (typeof profile.degree_id === "string" ? profile.degree_id : "") ||
+    "B.Sc. (Hons.) Agriculture";
 
   return (
     <div className="profile-page">
       <section className="profile-card">
+        {/* COVER */}
         <div className="profile-cover"></div>
 
+        {/* PROFILE HEADER */}
         <div className="profile-header-area">
-         <div className="profile-image-wrap">
-  <div className={`profile-role-avatar ${profile.role}`}>
-    {profile.role === "student" ? "S" : "C"}
-  </div>
-  <span className="profile-status-dot"></span>
-</div>
+          <div className="profile-image-wrap">
+            <div className="student-profile-avatar-circle">
+              {initialLetter}
+            </div>
+            <span className="profile-status-dot"></span>
+          </div>
 
           <div className="profile-main-info">
             <h2 className="profile-name">{profile.name}</h2>
-
-            <p className="profile-id">{profile.ag_number}</p>
+            <p className="profile-id">AG Number: {profile.ag_number || "N/A"}</p>
           </div>
-
-          <button className="top-edit-btn" onClick={() => setIsEditing(true)}>
-            Edit Profile
-          </button>
         </div>
 
+        {/* INFORMATION SECTION */}
         <div className="profile-info-section">
           <div className="profile-section-header">
             <div>
-              <h3>Personal Information</h3>
-
-              <p>Manage your personal and academic information.</p>
+              <h3>Student Information</h3>
+              <p>Personal and academic information (Managed by Super Admin).</p>
             </div>
 
             <span className="profile-account-badge">
@@ -103,80 +92,131 @@ const Profile = () => {
           </div>
 
           <div className="profile-info-grid">
+            {/* EMAIL */}
             <div className="profile-field">
               <label>Email</label>
-
-              {isEditing ? (
-                <input
-                  name="email"
-                  value={editData.email || ""}
-                  onChange={handleChange}
-                />
-              ) : (
-                <p>{profile.email}</p>
-              )}
+              <input
+                type="email"
+                value={profile.email || ""}
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
             </div>
 
+            {/* PHONE */}
             <div className="profile-field">
-              <label>Phone</label>
-
-              {isEditing ? (
-                <input
-                  name="phone"
-                  value={editData.phone || ""}
-                  onChange={handleChange}
-                />
-              ) : (
-                <p>{profile.phone || "Not Available"}</p>
-              )}
+              <label>Phone Number</label>
+              <input
+                type="text"
+                value={profile.phone || ""}
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
             </div>
 
+            {/* AG NUMBER */}
             <div className="profile-field">
               <label>AG Number</label>
-
-              <p>{profile.ag_number}</p>
+              <input
+                type="text"
+                value={profile.ag_number || ""}
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
             </div>
 
-            <div className="profile-field">
-              <label>Role</label>
-
-              <p>{profile.role}</p>
-            </div>
-
+            {/* FATHER NAME */}
             <div className="profile-field">
               <label>Father Name</label>
-
-              <p>{profile.fatherName || "Not Added"}</p>
+              <input
+                type="text"
+                value={profile.fatherName || "N/A"}
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
             </div>
 
+            {/* CNIC */}
             <div className="profile-field">
-              <label>CNIC</label>
-
-              <p>{profile.cnic || "Not Added"}</p>
+              <label>CNIC / B-Form</label>
+              <input
+                type="text"
+                value={profile.cnic || "N/A"}
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
             </div>
+
+            {/* ADMISSION DATE */}
             <div className="profile-field">
               <label>Date of Admission</label>
+              <input
+                type="text"
+                value={
+                  profile.admissionDate
+                    ? new Date(profile.admissionDate).toLocaleDateString()
+                    : "N/A"
+                }
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
+            </div>
 
-              <p>
-                {profile.admissionDate
-                  ? new Date(profile.admissionDate).toLocaleDateString()
-                  : "Not Added"}
-              </p>
+            {/* CAMPUS */}
+            <div className="profile-field">
+              <label>Campus</label>
+              <input
+                type="text"
+                value={campusName}
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
+            </div>
+
+            {/* FACULTY */}
+            <div className="profile-field">
+              <label>Faculty</label>
+              <input
+                type="text"
+                value={facultyName}
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
+            </div>
+
+            {/* DEPARTMENT */}
+            <div className="profile-field">
+              <label>Department</label>
+              <input
+                type="text"
+                value={departmentName}
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
+            </div>
+
+            {/* DEGREE */}
+            <div className="profile-field">
+              <label>Degree</label>
+              <input
+                type="text"
+                value={degreeName}
+                readOnly
+                disabled
+                className="student-readonly-input"
+              />
             </div>
           </div>
         </div>
-
-        {isEditing && (
-          <div className="profile-actions">
-            <button className="profile-cancel-btn" onClick={handleCancel}>
-              Cancel
-            </button>
-
-            <button className="profile-save-btn" onClick={handleSave}>
-              Save Changes
-            </button>
-          </div>
-        )}
       </section>
     </div>
   );
