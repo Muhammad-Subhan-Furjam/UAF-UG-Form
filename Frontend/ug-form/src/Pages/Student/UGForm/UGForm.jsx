@@ -29,6 +29,8 @@ const UGForm = () => {
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [hasUploadedVoucher, setHasUploadedVoucher] = useState(false);
+  const [hasUploadedDeferment, setHasUploadedDeferment] = useState(false);
 
   // Determine available Semester Commencing options based on Current Month
   const currentMonth = new Date().getMonth(); // 0 = Jan, 1 = Feb, 5 = Jun, 8 = Sep
@@ -143,6 +145,18 @@ const UGForm = () => {
             ? new Date(user.admissionDate).toISOString().split("T")[0]
             : "",
         }));
+
+        // Fetch student's existing forms to check voucher / deferment upload status
+        try {
+          const formsRes = await api.get("/ugforms");
+          const myForms = formsRes.data || [];
+          const hasV = myForms.some((f) => f.voucher?.uploaded === true);
+          const hasD = myForms.some((f) => f.deferment?.uploaded === true);
+          setHasUploadedVoucher(hasV);
+          setHasUploadedDeferment(hasD);
+        } catch (err) {
+          console.log("UGForms fetch error:", err);
+        }
       } catch (error) {
         console.log("Profile Error:", error.response?.data || error);
       }
@@ -202,19 +216,21 @@ const UGForm = () => {
       const formsRes = await api.get("/ugforms");
       const myForms = formsRes.data || [];
 
-      // Latest Draft jisme voucher uploaded hai
-      const draftWithVoucher = myForms.find(
-        (f) => f.status === "Draft" && f.voucher?.uploaded === true
+      // Latest Draft jisme voucher ya deferment uploaded hai
+      const draftWithDoc = myForms.find(
+        (f) =>
+          f.status === "Draft" &&
+          (f.voucher?.uploaded === true || f.deferment?.uploaded === true)
       );
 
-      if (!draftWithVoucher) {
+      if (!draftWithDoc) {
         setErrorMsg(
-          "Please upload your fee voucher before submitting the form."
+          'Please upload either your "Paid Fee Voucher" or "Approved Fee Deferment Application Form" before submitting the form.'
         );
         return;
       }
 
-      await api.put(`/ugforms/${draftWithVoucher._id}`, {
+      await api.put(`/ugforms/${draftWithDoc._id}`, {
         status: "Submitted",
         fatherName: formData.fatherName,
         degree: formData.degree,
@@ -255,6 +271,11 @@ const UGForm = () => {
   // UPLOAD VOUCHER
   // ==========================
   const handleUploadVoucher = async () => {
+    if (hasUploadedDeferment) {
+      setErrorMsg("Fee Deferment Application has already been uploaded. Voucher upload is disabled.");
+      return;
+    }
+
     setErrorMsg("");
     setSuccessMsg("");
 
@@ -285,6 +306,7 @@ const UGForm = () => {
         state: {
           ugFormData: formData,
           formId: formId,
+          uploadType: "voucher",
         },
       });
     } catch (error) {
@@ -292,6 +314,57 @@ const UGForm = () => {
       setErrorMsg(
         error.response?.data?.message ||
           "Could not prepare form for voucher upload."
+      );
+    }
+  };
+
+  // ==========================
+  // UPLOAD DEFERMENT
+  // ==========================
+  const handleUploadDeferment = async () => {
+    if (hasUploadedVoucher) {
+      setErrorMsg("Fee Voucher has already been uploaded. Deferment upload is disabled.");
+      return;
+    }
+
+    setErrorMsg("");
+    setSuccessMsg("");
+
+    const validationError = validateMandatoryFields();
+    if (validationError) {
+      setErrorMsg(validationError);
+      return;
+    }
+
+    try {
+      const createRes = await api.post("/ugforms", {
+        semesterNumber: formData.semesterNumber,
+        courses: selectedCourses,
+        fatherName: formData.fatherName,
+        degree: formData.degree,
+        semesterCommencing: formData.semesterCommencing,
+        firstEnrollmentDate: formData.firstEnrollmentDate,
+        section: formData.section,
+        voucherNumber: formData.voucherNumber,
+        address: formData.address,
+        deferment: { uploaded: false },
+        status: "Draft",
+      });
+
+      const formId = createRes.data.form._id;
+
+      navigate("/student/upload-deferment", {
+        state: {
+          ugFormData: formData,
+          formId: formId,
+          uploadType: "deferment",
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      setErrorMsg(
+        error.response?.data?.message ||
+          "Could not prepare form for fee deferment upload."
       );
     }
   };
@@ -528,10 +601,23 @@ const UGForm = () => {
 
             <button
               type="button"
-              className="ug-action-btn"
+              className={`ug-action-btn ${hasUploadedDeferment ? "disabled-upload-btn" : ""}`}
               onClick={handleUploadVoucher}
+              disabled={hasUploadedDeferment}
+              title={hasUploadedDeferment ? "Disabled: Fee Deferment has already been uploaded" : ""}
             >
               Upload Voucher
+              <span className="ug-upload-symbol">↑</span>
+            </button>
+
+            <button
+              type="button"
+              className={`ug-action-btn ${hasUploadedVoucher ? "disabled-upload-btn" : ""}`}
+              onClick={handleUploadDeferment}
+              disabled={hasUploadedVoucher}
+              title={hasUploadedVoucher ? "Disabled: Fee Voucher has already been uploaded" : ""}
+            >
+              Upload Deferment
               <span className="ug-upload-symbol">↑</span>
             </button>
 
@@ -542,6 +628,21 @@ const UGForm = () => {
             >
               Cancel
             </button>
+
+            <p
+              className="ug-upload-note"
+              style={{
+                color: "red",
+                fontWeight: "600",
+                fontSize: "13px",
+                textAlign: "center",
+                marginTop: "14px",
+                gridColumn: "1 / -1",
+                width: "100%",
+              }}
+            >
+              Please upload either the "Paid Fee Voucher" or the "Approved Fee Deferment Application Form"
+            </p>
           </div>
         </form>
       </section>

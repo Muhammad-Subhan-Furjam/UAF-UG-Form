@@ -215,6 +215,15 @@
   background: #475569 !important;
 }
 
+.disabled-upload-btn,
+.ug-action-btn:disabled {
+  opacity: 0.45 !important;
+  cursor: not-allowed !important;
+  background: #94a3b8 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 
 /* =========================================
    MOBILE <= 768px

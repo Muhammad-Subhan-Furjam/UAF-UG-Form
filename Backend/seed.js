@@ -98,6 +98,12 @@ const universityData = {
       "Institute of Business Management Sciences": [],
       "Department of English and Linguistics": [],
     },
+    "Faculty of Arts and Humanities": {
+      "Department of Fine Arts": [],
+    },
+    "Faculty of Health and Pharmaceutical Sciences": {
+      "Department of Pharmacy": [],
+    },
   },
 
   "UAF Sub-Campus PARS": {

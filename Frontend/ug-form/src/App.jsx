@@ -81,6 +81,7 @@ function App() {
           <Route path="notifications" element={<Notification />} />
           <Route path="ug-form" element={<UGForm />} />
           <Route path="upload-voucher" element={<VoucherUpload />} />
+          <Route path="upload-deferment" element={<VoucherUpload />} />
           <Route path="print-form" element={<PrintForm />} />
           <Route path="/student/form-preview/:id" element={<FormPreview />} />
         </Route>

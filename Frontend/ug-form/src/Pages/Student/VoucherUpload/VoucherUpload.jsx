@@ -9,6 +9,17 @@ const VoucherUpload = () => {
 
   const fileInputRef = useRef(null);
 
+  const isDeferment =
+    location.state?.uploadType === "deferment" ||
+    location.pathname.includes("upload-deferment");
+
+  const documentTitle = isDeferment
+    ? "Upload Approved Fee Deferment Application Form"
+    : "Upload Paid Fee Voucher";
+
+  const fieldName = isDeferment ? "deferment" : "voucher";
+  const apiEndpoint = isDeferment ? "/deferment" : "/voucher";
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [attachedFile, setAttachedFile] = useState(null);
   const [message, setMessage] = useState("");
@@ -26,6 +37,7 @@ const VoucherUpload = () => {
       "application/pdf",
       "image/png",
       "image/jpeg",
+      "image/jpg",
     ];
 
     if (!allowedTypes.includes(file.type)) {
@@ -34,9 +46,9 @@ const VoucherUpload = () => {
       return;
     }
 
-    if (file.size > 25 * 1024) {
+    if (file.size > 50 * 1024) {
       setSelectedFile(null);
-      setMessage("File size must be less than 25KB.");
+      setMessage("File size must be less than or equal to 50KB.");
       return;
     }
 
@@ -60,7 +72,7 @@ const VoucherUpload = () => {
 
   const handleSubmit = async () => {
     if (!attachedFile) {
-      setMessage("Please attach your voucher before submitting.");
+      setMessage(`Please attach your ${isDeferment ? "deferment application" : "voucher"} before submitting.`);
       return;
     }
 
@@ -86,22 +98,22 @@ const VoucherUpload = () => {
       }
 
       const formDataUpload = new FormData();
-      formDataUpload.append("voucher", attachedFile);
+      formDataUpload.append(fieldName, attachedFile);
 
-      await api.put(`/ugforms/${formId}/voucher`, formDataUpload, {
+      await api.put(`/ugforms/${formId}${apiEndpoint}`, formDataUpload, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
-      setMessage("Voucher uploaded successfully. You can now submit your form.");
+      setMessage(`${isDeferment ? "Approved Fee Deferment Application Form" : "Paid Fee Voucher"} uploaded successfully. You can now submit your form.`);
       setTimeout(() => {
         navigate("/student/ug-form");
       }, 1200);
     } catch (error) {
       console.log(error);
       setMessage(
-        error.response?.data?.message || "Failed to upload voucher"
+        error.response?.data?.message || `Failed to upload ${isDeferment ? "deferment application" : "voucher"}`
       );
     } finally {
       setLoading(false);
@@ -112,7 +124,7 @@ const VoucherUpload = () => {
     <div className="voucher-page">
       <div className="voucher-header">
         <h2>University of Agriculture Faisalabad</h2>
-        <h3>Faculty of Sciences</h3>
+        <h3>{documentTitle}</h3>
       </div>
 
       <section className="voucher-upload-card">
@@ -125,7 +137,7 @@ const VoucherUpload = () => {
         />
 
         <p className="voucher-attach-text">
-          Attach PDF, PNG or JPG (Max size: 25KB)
+          Attach PDF, PNG or JPG (Max size: 50KB)
         </p>
 
         <button

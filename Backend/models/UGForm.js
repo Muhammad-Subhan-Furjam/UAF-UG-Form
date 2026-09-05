@@ -142,6 +142,20 @@ const ugFormSchema = new mongoose.Schema(
         }
     },
 
+    // Deferment Application
+
+    deferment: {
+        fileUrl: {
+            type: String,
+            default: ""
+        },
+
+        uploaded: {
+            type: Boolean,
+            default: false
+        }
+    },
+
 
     // Form Status
 

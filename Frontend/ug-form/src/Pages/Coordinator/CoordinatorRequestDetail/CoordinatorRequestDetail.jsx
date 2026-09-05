@@ -230,10 +230,10 @@ const CoordinatorRequestDetail = () => {
       ========================== */}
       <div className="request-detail-card" style={{ marginTop: "24px" }}>
         <div className="detail-section">
-          <h3>Fee Voucher</h3>
+          <h3>Fee Voucher / Deferment Form</h3>
           {form.voucher?.uploaded && form.voucher?.fileUrl ? (
             <div>
-              <p style={{ marginBottom: "10px" }}>Voucher uploaded by student:</p>
+              <p style={{ marginBottom: "10px" }}>Paid Fee Voucher uploaded by student:</p>
               <a
                 href={form.voucher.fileUrl}
                 target="_blank"
@@ -244,11 +244,27 @@ const CoordinatorRequestDetail = () => {
                   textDecoration: "underline",
                 }}
               >
-                View / Download Voucher
+                View / Download Fee Voucher
+              </a>
+            </div>
+          ) : form.deferment?.uploaded && form.deferment?.fileUrl ? (
+            <div>
+              <p style={{ marginBottom: "10px" }}>Approved Fee Deferment Application Form uploaded by student:</p>
+              <a
+                href={form.deferment.fileUrl}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  color: "#1e3a5f",
+                  fontWeight: 500,
+                  textDecoration: "underline",
+                }}
+              >
+                View / Download Deferment Application Form
               </a>
             </div>
           ) : (
-            <p className="no-courses">No voucher uploaded yet</p>
+            <p className="no-courses">No Fee Voucher or Deferment Application uploaded yet</p>
           )}
         </div>
 

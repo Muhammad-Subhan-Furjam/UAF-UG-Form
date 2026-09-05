@@ -259,6 +259,10 @@ const uploadVoucher = async (req, res) => {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
+    if (req.file.size > 50 * 1024) {
+      return res.status(400).json({ message: "File size must be less than or equal to 50KB" });
+    }
+
     let fileUrl = "";
     if (req.file.buffer) {
       const base64Data = req.file.buffer.toString("base64");
@@ -284,6 +288,60 @@ const uploadVoucher = async (req, res) => {
   }
 };
 
+// ==========================
+// Upload Deferment Application
+// ==========================
+const uploadDeferment = async (req, res) => {
+  try {
+    const form = await UGForm.findById(req.params.id);
+
+    if (!form) {
+      return res.status(404).json({ message: "UG Form not found" });
+    }
+
+    const formStudentId = form.student_id?._id
+      ? form.student_id._id.toString()
+      : form.student_id.toString();
+
+    const currentUserId = (req.user.id || req.user._id || "").toString();
+
+    if (formStudentId !== currentUserId) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    if (req.file.size > 50 * 1024) {
+      return res.status(400).json({ message: "File size must be less than or equal to 50KB" });
+    }
+
+    let fileUrl = "";
+    if (req.file.buffer) {
+      const base64Data = req.file.buffer.toString("base64");
+      fileUrl = `data:${req.file.mimetype};base64,${base64Data}`;
+    } else if (req.file.filename) {
+      fileUrl = `/uploads/vouchers/${req.file.filename}`;
+    }
+
+    form.deferment = {
+      fileUrl,
+      uploaded: true,
+    };
+
+    await form.save();
+
+    res.status(200).json({
+      message: "Approved Fee Deferment Application Form uploaded successfully",
+      form,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getUGForms,
   getUGFormById,
@@ -292,4 +350,5 @@ module.exports = {
   deleteUGForm,
   getCoordinatorDashboard,
   uploadVoucher,
+  uploadDeferment,
 };

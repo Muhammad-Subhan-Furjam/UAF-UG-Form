@@ -1,9 +1,53 @@
-const Faculty = require("../models/Faculty");
+const Campus = require("../models/Campus");
 
+const ensureRequiredFaculties = async () => {
+  try {
+    const requiredFaculties = [
+      "Faculty of Arts and Humanities",
+      "Faculty of Health and Pharmaceutical Sciences",
+    ];
+
+    let mainCampus =
+      (await Campus.findOne({ name: /Main Campus/i })) ||
+      (await Campus.findOne());
+    if (!mainCampus) return;
+
+    for (const facName of requiredFaculties) {
+      const exists = await Faculty.findOne({
+        name: new RegExp(
+          `^${facName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`,
+          "i"
+        ),
+      });
+
+      if (!exists) {
+        const code =
+          "F" +
+          facName
+            .replace(/FACULTY OF/i, "")
+            .trim()
+            .substring(0, 4)
+            .toUpperCase() +
+          Math.floor(1000 + Math.random() * 9000);
+
+        await Faculty.create({
+          name: facName,
+          code: code,
+          campus_id: mainCampus._id,
+          status: true,
+        });
+        console.log(`Auto-created required faculty: ${facName}`);
+      }
+    }
+  } catch (err) {
+    console.log("Ensure faculties error:", err.message);
+  }
+};
 
 // Get all faculties
 const getFaculties = async (req, res) => {
   try {
+    await ensureRequiredFaculties();
     const faculties = await Faculty.find({ status: { $ne: false } }).populate(
       "campus_id"
     );

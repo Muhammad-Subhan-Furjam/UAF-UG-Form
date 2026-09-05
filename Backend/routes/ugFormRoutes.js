@@ -12,6 +12,7 @@ const {
   deleteUGForm,
   getCoordinatorDashboard,
   uploadVoucher,
+  uploadDeferment,
 } = require("../controllers/ugFormController");
 
 // Get All Forms (student / coordinator – filtered inside controller)
@@ -42,6 +43,14 @@ router.put(
   authMiddleware,
   upload.single("voucher"),
   uploadVoucher
+);
+
+// Deferment Upload
+router.put(
+  "/:id/deferment",
+  authMiddleware,
+  upload.single("deferment"),
+  uploadDeferment
 );
 
 module.exports = router;
