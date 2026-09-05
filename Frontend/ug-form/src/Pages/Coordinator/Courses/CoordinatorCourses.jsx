@@ -26,6 +26,21 @@ const CoordinatorCourses = () => {
   const [editCourses, setEditCourses] = useState([]);
   const [coordInfo, setCoordInfo] = useState(null);
 
+  const creditHoursOpts = [
+    "1 (1-0)",
+    "1 (0-1)",
+    "2 (0-2)",
+    "2 (1-1)",
+    "2 (2-0)",
+    "3 (1-2)",
+    "3 (2-1)",
+    "3 (3-0)",
+    "3 (0-3)",
+    "4 (3-1)",
+    "4 (0-4)",
+    "4 (4-0)",
+  ];
+
   /* =========================================
      SEMESTERS
   ========================================= */
@@ -249,9 +264,18 @@ const CoordinatorCourses = () => {
     try {
       setLoading(true);
 
+      const courseCodeRegex = /^([A-Z]{2,7}-\d{2,4}|[A-Z]{2,7}-[A-Z]{2,7}-\d{2,4})$/;
+      for (const course of editCourses) {
+        if (!courseCodeRegex.test((course.courseCode || "").trim())) {
+          alert(`Invalid Course Code format for '${course.courseCode}'. Allowed: 2-7 uppercase letters-2-4 digits (e.g. CS-101) or 2-7 uppercase letters-2-7 uppercase letters-2-4 digits (e.g. CS-MATH-101)`);
+          setLoading(false);
+          return;
+        }
+      }
+
       for (const course of editCourses) {
         await api.put(`/courses/${course._id}`, {
-          courseCode: course.courseCode,
+          courseCode: (course.courseCode || "").trim().toUpperCase(),
           courseTitle: course.courseTitle,
           creditHours: course.creditHours,
           totalMarks: course.totalMarks || "",
@@ -298,27 +322,17 @@ const CoordinatorCourses = () => {
             selectedFaculty ||
             selectedDepartment ||
             selectedDiscipline) && (
-            <p className="courses-path">
-              {selectedCampus?.name}
-              {selectedFaculty && ` / ${selectedFaculty.name}`}
-              {selectedDepartment && ` / ${selectedDepartment.name}`}
-              {selectedDiscipline && ` / ${selectedDiscipline.name}`}
+            <p>
+              Navigation: Root{" "}
+              {selectedCampus && `> ${selectedCampus.name}`}
+              {selectedFaculty && `> ${selectedFaculty.name}`}
+              {selectedDepartment && `> ${selectedDepartment.name}`}
+              {selectedDiscipline && `> ${selectedDiscipline.name}`}
             </p>
           )}
         </div>
 
         <div style={{ display: "flex", gap: "10px" }}>
-          {selectedSemester && courses.length > 0 && !isEditing && (
-            <button
-              type="button"
-              className="courses-back-btn"
-              onClick={() => setIsEditing(true)}
-              style={{ background: "#1e3a5f", color: "white" }}
-            >
-              Edit
-            </button>
-          )}
-
           {(selectedSemester || selectedDiscipline) && (
             <button
               type="button"
@@ -474,14 +488,19 @@ const CoordinatorCourses = () => {
                         </td>
                         <td>
                           {isEditing ? (
-                            <input
-                              type="text"
+                            <select
                               value={course.creditHours}
                               onChange={(e) =>
                                 handleEditChange(index, "creditHours", e.target.value)
                               }
                               style={{ width: "100%", padding: "6px" }}
-                            />
+                            >
+                              {creditHoursOpts.map((ch) => (
+                                <option key={ch} value={ch}>
+                                  {ch}
+                                </option>
+                              ))}
+                            </select>
                           ) : (
                             course.creditHours
                           )}
