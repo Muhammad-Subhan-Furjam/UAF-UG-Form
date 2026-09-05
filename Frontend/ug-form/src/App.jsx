@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 
 /* STUDENT */
 import StudentLayout from "./Layout/StudentLayout/StudentLayout";
@@ -49,6 +50,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* SECRET SUPER ADMIN LOGIN ROUTE */}
         <Route path="/ladmin" element={<AdminLogin />} />

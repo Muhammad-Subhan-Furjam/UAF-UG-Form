@@ -430,15 +430,106 @@ message:error.message
 });
 
 }
+};
 
+// =========================================
+// FORGOT PASSWORD (CNIC + Phone Verification)
+// =========================================
+const resetPasswordWithCnicAndPhone = async (req, res) => {
+  try {
+    const { cnic, phone, newPassword } = req.body;
+
+    if (!cnic || !cnic.trim() || !phone || !phone.trim() || !newPassword) {
+      return res.status(400).json({
+        message: "CNIC, Phone Number, and New Password are mandatory.",
+      });
+    }
+
+    const cleanCnic = cnic.trim();
+    const cleanPhone = phone.trim();
+
+    // 1. Find user matching CNIC and Phone
+    const user = await User.findOne({
+      cnic: cleanCnic,
+      phone: cleanPhone,
+    }).populate("campus_id faculty_id department_id degree_id");
+
+    if (!user) {
+      return res.status(400).json({
+        message: "Invalid credentials! No account found matching this CNIC and Phone Number.",
+      });
+    }
+
+    if (user.role === "superadmin") {
+      return res.status(403).json({
+        message: "Super Admin password reset cannot be performed via student/coordinator portal.",
+      });
+    }
+
+    // 2. Weekly rate limit check (Once per week)
+    if (user.lastPasswordChange) {
+      const now = Date.now();
+      const lastChange = new Date(user.lastPasswordChange).getTime();
+      const oneWeekInMs = 7 * 24 * 60 * 60 * 1000;
+      const timeDiff = now - lastChange;
+
+      if (timeDiff < oneWeekInMs) {
+        const remainingMs = oneWeekInMs - timeDiff;
+        const remainingDays = Math.ceil(remainingMs / (24 * 60 * 60 * 1000));
+        return res.status(400).json({
+          message: `Password can only be changed once per week. You can change your password again in ${remainingDays} day(s).`,
+        });
+      }
+    }
+
+    // 3. Password Strength Validation
+    const hasMinLength = newPassword.length >= 8;
+    const hasUppercase = /[A-Z]/.test(newPassword);
+    const hasLowercase = /[a-z]/.test(newPassword);
+    const hasDigit = /[0-9]/.test(newPassword);
+    const hasSpecialChar = /[@#$%!&*]/.test(newPassword);
+
+    if (!hasMinLength || !hasUppercase || !hasLowercase || !hasDigit || !hasSpecialChar) {
+      return res.status(400).json({
+        message: "Password does not meet required security criteria! Must have at least 8 characters, 1 uppercase, 1 lowercase, 1 digit, and 1 special character (@#$%!&*).",
+      });
+    }
+
+    // 4. Update Password & lastPasswordChange timestamp
+    user.password = await bcrypt.hash(newPassword, 10);
+    user.lastPasswordChange = new Date();
+    await user.save();
+
+    // 5. Generate fresh JWT token for immediate auto-login
+    const token = jwt.sign(
+      {
+        id: user._id,
+        role: user.role,
+        department_id: user.department_id?._id || user.department_id || null,
+      },
+      process.env.JWT_SECRET || "UAF_UG_FORM_SECRET_2026",
+      { expiresIn: "7d" }
+    );
+
+    const userObject = user.toObject();
+    delete userObject.password;
+
+    res.status(200).json({
+      message: "Password changed successfully!",
+      token,
+      user: userObject,
+    });
+  } catch (error) {
+    console.error("Forgot Password Reset Error:", error);
+    res.status(500).json({ message: error.message });
+  }
 };
 
 module.exports = {
-
-signup,
-login,
-getProfile,
-updateProfile,
-updateProfileImage
-
+  signup,
+  login,
+  getProfile,
+  updateProfile,
+  updateProfileImage,
+  resetPasswordWithCnicAndPhone,
 };

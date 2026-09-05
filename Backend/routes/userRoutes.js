@@ -7,25 +7,30 @@ const authMiddleware = require("../middleware/authMiddleware");
 const upload = require("../middleware/upload");
 
 const {
- signup,
- login,
- getProfile,
- updateProfile,
- updateProfileImage
+  signup,
+  login,
+  getProfile,
+  updateProfile,
+  updateProfileImage,
+  resetPasswordWithCnicAndPhone,
 } = require("../controllers/userController");
-
 
 // Signup
 router.post(
-"/signup",
-signup
+  "/signup",
+  signup
 );
-
 
 // Login
 router.post(
-"/login",
-login
+  "/login",
+  login
+);
+
+// Forgot Password (CNIC + Phone Verification)
+router.post(
+  "/forgot-password",
+  resetPasswordWithCnicAndPhone
 );
 
 

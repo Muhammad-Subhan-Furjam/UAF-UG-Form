@@ -86,6 +86,11 @@ degree_id: {
   default: null,
 },
 
+    lastPasswordChange: {
+      type: Date,
+      default: null,
+    },
+
     status: {
       type: Boolean,
       default: true,
