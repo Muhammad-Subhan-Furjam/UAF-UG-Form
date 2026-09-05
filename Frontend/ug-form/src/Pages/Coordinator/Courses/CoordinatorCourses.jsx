@@ -41,6 +41,17 @@ const CoordinatorCourses = () => {
     "4 (4-0)",
   ];
 
+  const categories = [
+    "General Course",
+    "Non-Credit Course",
+    "Major Course",
+    "Minor Course",
+    "Allied Course",
+    "Internship",
+    "Capstone Project",
+    "Others",
+  ];
+
   /* =========================================
      SEMESTERS
   ========================================= */
@@ -299,6 +310,7 @@ const CoordinatorCourses = () => {
       for (const course of editCourses) {
         await api.put(`/courses/${course._id}`, {
           courseCode: (course.courseCode || "").trim().toUpperCase(),
+          courseCategory: course.courseCategory || "General Course",
           courseTitle: course.courseTitle,
           creditHours: course.creditHours,
           totalMarks: course.totalMarks || "",
@@ -356,6 +368,16 @@ const CoordinatorCourses = () => {
         </div>
 
         <div style={{ display: "flex", gap: "10px" }}>
+          {selectedSemester && courses.length > 0 && !isEditing && (
+            <button
+              type="button"
+              className="courses-back-btn"
+              onClick={() => setIsEditing(true)}
+              style={{ background: "#1e3a5f" }}
+            >
+              Edit Form
+            </button>
+          )}
           {(selectedSemester || selectedDiscipline) && (
             <button
               type="button"
@@ -481,9 +503,21 @@ const CoordinatorCourses = () => {
       {/* STEP 6 - COURSE DETAILS */}
       {selectedSemester && (
         <div className="course-details-card">
-          <div className="course-details-heading">
-            <h3>{selectedDiscipline?.name}</h3>
-            <p>{selectedSemester}</p>
+          <div className="course-details-heading" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "25px", flexWrap: "wrap", gap: "15px" }}>
+            <div style={{ textAlign: "left" }}>
+              <h3 style={{ margin: 0 }}>{selectedDiscipline?.name}</h3>
+              <p style={{ margin: "5px 0 0" }}>{selectedSemester}</p>
+            </div>
+            {courses.length > 0 && !isEditing && (
+              <button
+                type="button"
+                className="courses-back-btn"
+                onClick={() => setIsEditing(true)}
+                style={{ background: "#082f5c", display: "inline-flex", alignItems: "center", gap: "6px" }}
+              >
+                Edit Form
+              </button>
+            )}
           </div>
 
           {courses.length > 0 ? (
@@ -492,7 +526,8 @@ const CoordinatorCourses = () => {
                 <table className="course-details-table">
                   <thead>
                     <tr>
-                      <th>Course #</th>
+                      <th>Course Code</th>
+                      <th>Course Category</th>
                       <th>Course Title</th>
                       <th>Credit Hours</th>
                     </tr>
@@ -504,11 +539,11 @@ const CoordinatorCourses = () => {
                           {isEditing ? (
                             <input
                               type="text"
-                              value={course.courseCode}
+                              value={course.courseCode || ""}
                               onChange={(e) =>
                                 handleEditChange(index, "courseCode", e.target.value)
                               }
-                              style={{ width: "100%", padding: "6px" }}
+                              style={{ width: "100%", padding: "6px", boxSizing: "border-box" }}
                             />
                           ) : (
                             course.courseCode
@@ -516,13 +551,32 @@ const CoordinatorCourses = () => {
                         </td>
                         <td>
                           {isEditing ? (
+                            <select
+                              value={course.courseCategory || "General Course"}
+                              onChange={(e) =>
+                                handleEditChange(index, "courseCategory", e.target.value)
+                              }
+                              style={{ width: "100%", padding: "6px", boxSizing: "border-box" }}
+                            >
+                              {categories.map((cat) => (
+                                <option key={cat} value={cat}>
+                                  {cat}
+                                </option>
+                              ))}
+                            </select>
+                          ) : (
+                            course.courseCategory || "General Course"
+                          )}
+                        </td>
+                        <td>
+                          {isEditing ? (
                             <input
                               type="text"
-                              value={course.courseTitle}
+                              value={course.courseTitle || ""}
                               onChange={(e) =>
                                 handleEditChange(index, "courseTitle", e.target.value)
                               }
-                              style={{ width: "100%", padding: "6px" }}
+                              style={{ width: "100%", padding: "6px", boxSizing: "border-box" }}
                             />
                           ) : (
                             course.courseTitle
@@ -531,11 +585,11 @@ const CoordinatorCourses = () => {
                         <td>
                           {isEditing ? (
                             <select
-                              value={course.creditHours}
+                              value={course.creditHours || ""}
                               onChange={(e) =>
                                 handleEditChange(index, "creditHours", e.target.value)
                               }
-                              style={{ width: "100%", padding: "6px" }}
+                              style={{ width: "100%", padding: "6px", boxSizing: "border-box" }}
                             >
                               {creditHoursOpts.map((ch) => (
                                 <option key={ch} value={ch}>
