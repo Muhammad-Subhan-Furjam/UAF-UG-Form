@@ -166,6 +166,25 @@ const UGForm = () => {
     setSuccessMsg("");
   };
 
+  const validateMandatoryFields = () => {
+    if (
+      !formData.studentName?.trim() ||
+      !formData.fatherName?.trim() ||
+      !formData.phoneNumber?.trim() ||
+      !formData.agNumber?.trim() ||
+      !formData.degree?.trim() ||
+      !formData.semesterCommencing?.trim() ||
+      !formData.semesterNumber ||
+      !formData.firstEnrollmentDate ||
+      !formData.section?.trim() ||
+      !formData.voucherNumber?.trim() ||
+      !formData.address?.trim()
+    ) {
+      return "All fields marked with * are mandatory. Please complete all fields before proceeding.";
+    }
+    return null;
+  };
+
   // ==========================
   // SUBMIT
   // ==========================
@@ -173,12 +192,13 @@ const UGForm = () => {
     setErrorMsg("");
     setSuccessMsg("");
 
-    try {
-      if (!formData.semesterNumber) {
-        setErrorMsg("Please select a semester before submitting the form.");
-        return;
-      }
+    const validationError = validateMandatoryFields();
+    if (validationError) {
+      setErrorMsg(validationError);
+      return;
+    }
 
+    try {
       const formsRes = await api.get("/ugforms");
       const myForms = formsRes.data || [];
 
@@ -199,6 +219,9 @@ const UGForm = () => {
         fatherName: formData.fatherName,
         degree: formData.degree,
         semesterCommencing: formData.semesterCommencing,
+        firstEnrollmentDate: formData.firstEnrollmentDate,
+        section: formData.section,
+        voucherNumber: formData.voucherNumber,
         address: formData.address,
       });
 
@@ -213,6 +236,13 @@ const UGForm = () => {
   };
 
   const handleSearchUGForm = () => {
+    setErrorMsg("");
+    const validationError = validateMandatoryFields();
+    if (validationError) {
+      setErrorMsg(validationError);
+      return;
+    }
+
     navigate("/student/forms", {
       state: {
         previewData: formData,
@@ -228,8 +258,9 @@ const UGForm = () => {
     setErrorMsg("");
     setSuccessMsg("");
 
-    if (!formData.semesterNumber) {
-      setErrorMsg("Please select a semester before uploading the voucher.");
+    const validationError = validateMandatoryFields();
+    if (validationError) {
+      setErrorMsg(validationError);
       return;
     }
 
@@ -240,6 +271,9 @@ const UGForm = () => {
         fatherName: formData.fatherName,
         degree: formData.degree,
         semesterCommencing: formData.semesterCommencing,
+        firstEnrollmentDate: formData.firstEnrollmentDate,
+        section: formData.section,
+        voucherNumber: formData.voucherNumber,
         address: formData.address,
         voucher: { uploaded: false },
         status: "Draft",
@@ -284,49 +318,65 @@ const UGForm = () => {
       <section className="ug-form-card">
         <form className="ug-main-form" onSubmit={(e) => e.preventDefault()}>
           <div className="ug-form-group">
-            <label>Student Name</label>
+            <label>
+              Student Name <span style={{ color: "red" }}> *</span>
+            </label>
             <input type="text" value={formData.studentName} readOnly />
           </div>
 
           <div className="ug-form-group">
-            <label>Father Name</label>
+            <label>
+              Father Name <span style={{ color: "red" }}> *</span>
+            </label>
             <input
               type="text"
               name="fatherName"
               value={formData.fatherName}
               onChange={handleChange}
+              placeholder="Enter Father Name"
+              required
             />
           </div>
 
           <div className="ug-form-group">
-            <label>Phone Number</label>
+            <label>
+              Phone Number <span style={{ color: "red" }}> *</span>
+            </label>
             <input type="text" value={formData.phoneNumber} readOnly />
           </div>
 
           <div className="ug-form-group">
-            <label>AG Number</label>
+            <label>
+              AG Number <span style={{ color: "red" }}> *</span>
+            </label>
             <input type="text" value={formData.agNumber} readOnly />
           </div>
 
           {/* Manual Degree Input */}
           <div className="ug-form-group">
-            <label>Degree</label>
+            <label>
+              Degree <span style={{ color: "red" }}> *</span>
+            </label>
             <input
               type="text"
               name="degree"
               value={formData.degree}
               onChange={handleChange}
               placeholder="Enter Degree Name (e.g. B.Sc. (Hons.) Agriculture)"
+              required
             />
           </div>
 
           {/* Semester Commencing Dropdown (Dynamic based on Month) */}
           <div className="ug-form-group">
-            <label>Semester Commencing</label>
+            <label>
+              Semester Commencing <span style={{ color: "red" }}> *</span>
+            </label>
             <select
               name="semesterCommencing"
               value={formData.semesterCommencing}
               onChange={handleChange}
+              required
             >
               <option value="">Select Semester Commencing</option>
               {commencingOptions.map((opt) => (
@@ -353,7 +403,9 @@ const UGForm = () => {
 
           {/* Semester Number Dropdown (Dynamic based on Semester Commencing) */}
           <div className="ug-form-group">
-            <label>Semester</label>
+            <label>
+              Semester <span style={{ color: "red" }}> *</span>
+            </label>
             <select
               name="semesterNumber"
               value={formData.semesterNumber}
@@ -374,42 +426,58 @@ const UGForm = () => {
           </div>
 
           <div className="ug-form-group">
-            <label>Date of First Enrollment (as per fee voucher)</label>
+            <label>
+              Date of First Enrollment (as per fee voucher){" "}
+              <span style={{ color: "red" }}> *</span>
+            </label>
             <input
               type="date"
               name="firstEnrollmentDate"
               value={formData.firstEnrollmentDate}
               onChange={handleChange}
+              required
             />
           </div>
 
           <div className="ug-form-group">
-            <label>Section</label>
+            <label>
+              Section <span style={{ color: "red" }}> *</span>
+            </label>
             <input
               type="text"
               name="section"
               value={formData.section}
               onChange={handleChange}
+              placeholder="e.g. Section A"
+              required
             />
           </div>
 
           <div className="ug-form-group">
-            <label>Voucher Number</label>
+            <label>
+              Voucher Number <span style={{ color: "red" }}> *</span>
+            </label>
             <input
               type="text"
               name="voucherNumber"
               value={formData.voucherNumber}
               onChange={handleChange}
+              placeholder="Enter Fee Voucher Number"
+              required
             />
           </div>
 
           <div className="ug-form-group ug-address-group">
-            <label>Address</label>
+            <label>
+              Address <span style={{ color: "red" }}> *</span>
+            </label>
             <input
               type="text"
               name="address"
               value={formData.address}
               onChange={handleChange}
+              placeholder="Enter Complete Address"
+              required
             />
           </div>
 

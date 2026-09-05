@@ -112,6 +112,21 @@ const ugFormSchema = new mongoose.Schema(
         default: ""
     },
 
+    firstEnrollmentDate: {
+        type: String,
+        default: ""
+    },
+
+    section: {
+        type: String,
+        default: ""
+    },
+
+    voucherNumber: {
+        type: String,
+        default: ""
+    },
+
 
     // Voucher
 

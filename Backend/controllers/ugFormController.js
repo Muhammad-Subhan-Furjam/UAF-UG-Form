@@ -92,7 +92,18 @@ const addUGForm = async (req, res) => {
       });
     }
 
-    const { semesterNumber, courses, fatherName, address, voucher, degree, semesterCommencing } = req.body;
+    const {
+      semesterNumber,
+      courses,
+      fatherName,
+      address,
+      voucher,
+      degree,
+      semesterCommencing,
+      firstEnrollmentDate,
+      section,
+      voucherNumber,
+    } = req.body;
 
     if (!semesterNumber) {
       return res.status(400).json({ message: "Semester is required" });
@@ -130,6 +141,9 @@ const addUGForm = async (req, res) => {
       address: address || "",
       degree: degree || "",
       semesterCommencing: semesterCommencing || "",
+      firstEnrollmentDate: firstEnrollmentDate || "",
+      section: section || "",
+      voucherNumber: voucherNumber || "",
       voucher: voucher || { uploaded: false },
       status: req.body.status || "Submitted",
     });
