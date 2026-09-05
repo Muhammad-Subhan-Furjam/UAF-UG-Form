@@ -170,6 +170,28 @@
 
 
 /* =========================================
+   SEMESTER SECTION
+========================================= */
+
+.semester-selection-section {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.semester-section-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: #082f5c;
+  margin: 0 0 22px 0;
+  text-align: left;
+}
+
+.summer-heading {
+  margin-top: 45px;
+}
+
+/* =========================================
    SEMESTER GRID
 ========================================= */
 

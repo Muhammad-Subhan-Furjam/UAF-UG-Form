@@ -44,7 +44,7 @@ const CoordinatorCourses = () => {
   /* =========================================
      SEMESTERS
   ========================================= */
-  const semesters = [
+  const regularSemesters = [
     "Semester I",
     "Semester II",
     "Semester III",
@@ -53,6 +53,19 @@ const CoordinatorCourses = () => {
     "Semester VI",
     "Semester VII",
     "Semester VIII",
+    "Semester IX",
+    "Semester X",
+    "Semester XI",
+    "Semester XII",
+  ];
+
+  const summerSemesters = [
+    "Summer Semester I",
+    "Summer Semester II",
+    "Summer Semester III",
+    "Summer Semester IV",
+    "Summer Semester V",
+    "Summer Semester VI",
   ];
 
   const getSemesterNumber = (semesterName) => {
@@ -65,6 +78,16 @@ const CoordinatorCourses = () => {
       "Semester VI": 6,
       "Semester VII": 7,
       "Semester VIII": 8,
+      "Semester IX": 9,
+      "Semester X": 10,
+      "Semester XI": 11,
+      "Semester XII": 12,
+      "Summer Semester I": 101,
+      "Summer Semester II": 102,
+      "Summer Semester III": 103,
+      "Summer Semester IV": 104,
+      "Summer Semester V": 105,
+      "Summer Semester VI": 106,
     };
     return map[semesterName] || 1;
   };
@@ -422,17 +445,36 @@ const CoordinatorCourses = () => {
 
       {/* STEP 5 - SEMESTER */}
       {selectedDiscipline && !selectedSemester && (
-        <div className="semester-cards-grid">
-          {semesters.map((semester) => (
-            <button
-              type="button"
-              key={semester}
-              className="semester-card"
-              onClick={() => handleSemesterSelect(semester)}
-            >
-              {semester}
-            </button>
-          ))}
+        <div className="semester-selection-section">
+          <h3 className="semester-section-heading">Regular Semesters</h3>
+          <div className="semester-cards-grid">
+            {regularSemesters.map((semester) => (
+              <button
+                type="button"
+                key={semester}
+                className="semester-card"
+                onClick={() => handleSemesterSelect(semester)}
+              >
+                {semester}
+              </button>
+            ))}
+          </div>
+
+          <h3 className="semester-section-heading summer-heading">
+            Summer Semesters
+          </h3>
+          <div className="semester-cards-grid">
+            {summerSemesters.map((semester) => (
+              <button
+                type="button"
+                key={semester}
+                className="semester-card"
+                onClick={() => handleSemesterSelect(semester)}
+              >
+                {semester}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
