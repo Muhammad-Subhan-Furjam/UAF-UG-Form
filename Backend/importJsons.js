@@ -1,6 +1,6 @@
-require("dotenv").config();
-const fs = require("fs");
 const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, ".env") });
+const fs = require("fs");
 const mongoose = require("mongoose");
 
 const Campus = require("./models/Campus");
@@ -115,9 +115,16 @@ const importData = async () => {
         }
       }
 
-      await User.deleteMany({});
-      await User.insertMany(parsedUsers);
-      console.log(`📥 Imported ${parsedUsers.length} records into [User] collection`);
+      for (const u of parsedUsers) {
+        const query = u._id ? { _id: u._id } : { email: u.email };
+        const existing = await User.findOne(query);
+        if (!existing) {
+          await User.create(u);
+        } else {
+          await User.updateOne({ _id: existing._id }, { $set: u });
+        }
+      }
+      console.log(`📥 Processed ${parsedUsers.length} records into [User] collection non-destructively`);
     }
 
     // 3. Import UGForms
@@ -127,9 +134,16 @@ const importData = async () => {
       const json = JSON.parse(raw);
       const parsedForms = parseExtendedJson(json);
 
-      await UGForm.deleteMany({});
-      await UGForm.insertMany(parsedForms);
-      console.log(`📥 Imported ${parsedForms.length} records into [UGForm] collection`);
+      for (const f of parsedForms) {
+        const query = f._id ? { _id: f._id } : { student_id: f.student_id };
+        const existing = await UGForm.findOne(query);
+        if (!existing) {
+          await UGForm.create(f);
+        } else {
+          await UGForm.updateOne({ _id: existing._id }, { $set: f });
+        }
+      }
+      console.log(`📥 Processed ${parsedForms.length} records into [UGForm] collection non-destructively`);
     }
 
     console.log("\n🎉 ALL DATA FROM JSON FILES IMPORTED SUCCESSFULLY INTO YOUR MONGODB DATABASE!");
