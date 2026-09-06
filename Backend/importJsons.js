@@ -68,6 +68,21 @@ const importData = async () => {
         const json = JSON.parse(raw);
         const parsedData = parseExtendedJson(json);
 
+        if (item.name === "Course") {
+          for (const c of parsedData) {
+            if (c.courseCode) {
+              let codeStr = String(c.courseCode).trim().toUpperCase();
+              if (!codeStr.includes("-")) {
+                codeStr = codeStr.replace(/^([A-Z]+)\s*(\d+)$/, "$1-$2");
+              }
+              c.courseCode = codeStr;
+            }
+            if (typeof c.creditHours === "number") {
+              c.creditHours = `${c.creditHours} (${c.creditHours}-0)`;
+            }
+          }
+        }
+
         await item.model.deleteMany({});
         await item.model.insertMany(parsedData);
         console.log(`📥 Imported ${parsedData.length} records into [${item.name}] collection`);

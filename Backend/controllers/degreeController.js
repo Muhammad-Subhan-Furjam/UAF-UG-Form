@@ -11,9 +11,40 @@ const generateCode = (name) => {
     .substring(0, 12);
 };
 
+const path = require("path");
+const fs = require("fs");
+const mongoose = require("mongoose");
+
+const ensureDegrees = async () => {
+  try {
+    const count = await Degree.countDocuments();
+    if (count === 0) {
+      const filePath = path.join(__dirname, "../../jsons/UGFormDB.degrees.json");
+      if (fs.existsSync(filePath)) {
+        const raw = fs.readFileSync(filePath, "utf-8");
+        const parseExt = (obj) => {
+          if (obj === null || obj === undefined) return obj;
+          if (Array.isArray(obj)) return obj.map(parseExt);
+          if (typeof obj === "object") {
+            if (obj.$oid && Object.keys(obj).length === 1) return new mongoose.Types.ObjectId(obj.$oid);
+            const n = {};
+            for (const [k, v] of Object.entries(obj)) n[k] = parseExt(v);
+            return n;
+          }
+          return obj;
+        };
+        await Degree.insertMany(parseExt(JSON.parse(raw)));
+      }
+    }
+  } catch (err) {
+    console.log("Ensure degrees error:", err);
+  }
+};
+
 // Get All Degrees
 const getDegrees = async (req, res) => {
   try {
+    await ensureDegrees();
     const degrees = await Degree.find()
       .populate("campus_id")
       .populate("faculty_id")

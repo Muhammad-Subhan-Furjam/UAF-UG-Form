@@ -1,13 +1,16 @@
+const Faculty = require("../models/Faculty");
 const Campus = require("../models/Campus");
 
 const ensureRequiredFaculties = async () => {
   try {
     const requiredFaculties = [
       "Faculty of Arts and Humanities",
+      "Faculty of Health and Pharmaceutical",
       "Faculty of Health and Pharmaceutical Sciences",
     ];
 
     let mainCampus =
+      (await Campus.findOne({ name: /^Main Campus$/i })) ||
       (await Campus.findOne({ name: /Main Campus/i })) ||
       (await Campus.findOne());
     if (!mainCampus) return;
@@ -36,7 +39,11 @@ const ensureRequiredFaculties = async () => {
           campus_id: mainCampus._id,
           status: true,
         });
-        console.log(`Auto-created required faculty: ${facName}`);
+        console.log(`Auto-created required faculty under Main Campus: ${facName}`);
+      } else if (exists && String(exists.campus_id) !== String(mainCampus._id)) {
+        // Ensure it's assigned to Main Campus
+        exists.campus_id = mainCampus._id;
+        await exists.save();
       }
     }
   } catch (err) {
