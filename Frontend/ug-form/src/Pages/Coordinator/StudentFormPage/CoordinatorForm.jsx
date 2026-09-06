@@ -383,9 +383,9 @@ const CoordinatorForm = () => {
               >
                 <option value="">Select Semester</option>
                 <option value="Fall">Fall</option>
-                <option value="Spring">Spring</option>
-                <option value="Winter">Winter</option>
                 <option value="Summer">Summer</option>
+                <option value="Winter">Winter</option>
+                <option value="Spring">Spring</option>
               </select>
             </div>
 

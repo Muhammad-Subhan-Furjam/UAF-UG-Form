@@ -440,10 +440,10 @@ const UGForm = () => {
             />
           </div>
 
-          {/* Semester Commencing Dropdown (Dynamic based on Month) */}
+          {/* Semester Dropdown (Fall, Summer, Winter, Spring) */}
           <div className="ug-form-group">
             <label>
-              Semester Commencing <span style={{ color: "red" }}> *</span>
+              Semester <span style={{ color: "red" }}> *</span>
             </label>
             <select
               name="semesterCommencing"
@@ -451,44 +451,30 @@ const UGForm = () => {
               onChange={handleChange}
               required
             >
-              <option value="">Select Semester Commencing</option>
-              {commencingOptions.map((opt) => (
-                <option key={opt} value={opt}>
-                  {opt}
-                </option>
-              ))}
-
-              {/* Fallback to show all options if user wants to select another term */}
-              {!commencingOptions.includes("Spring") && (
-                <option value="Spring">Spring</option>
-              )}
-              {!commencingOptions.includes("Summer") && (
-                <option value="Summer">Summer</option>
-              )}
-              {!commencingOptions.includes("Fall") && (
-                <option value="Fall">Fall</option>
-              )}
-              {!commencingOptions.includes("Winter") && (
-                <option value="Winter">Winter</option>
-              )}
+              <option value="">Select Semester</option>
+              <option value="Fall">Fall</option>
+              <option value="Summer">Summer</option>
+              <option value="Winter">Winter</option>
+              <option value="Spring">Spring</option>
             </select>
           </div>
 
-          {/* Semester Number Dropdown (Dynamic based on Semester Commencing) */}
+          {/* Semester Commencing Dropdown (Respective Semester Numbers) */}
           <div className="ug-form-group">
             <label>
-              Semester <span style={{ color: "red" }}> *</span>
+              Semester Commencing <span style={{ color: "red" }}> *</span>
             </label>
             <select
               name="semesterNumber"
               value={formData.semesterNumber}
               onChange={handleChange}
+              disabled={!formData.semesterCommencing}
               required
             >
               <option value="">
                 {formData.semesterCommencing
-                  ? "Select Semester"
-                  : "Select Semester Commencing First"}
+                  ? "Select Semester Commencing"
+                  : "Select Semester First"}
               </option>
               {getSemesterOptions().map((sem) => (
                 <option key={sem.number} value={sem.number}>
