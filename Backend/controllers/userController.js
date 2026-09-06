@@ -204,18 +204,24 @@ const login = async (req, res) => {
 
     let user;
 
-    // Student login
+    // Student login (by AG Number or Email)
     if (role === "student") {
       user = await User.findOne({
-        ag_number: { $regex: new RegExp(`^${trimmedId}$`, "i") },
+        $or: [
+          { ag_number: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+          { email: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+        ],
         role: "student",
       });
     }
 
-    // Coordinator login
+    // Coordinator login (by Employee ID or Email)
     else if (role === "coordinator") {
       user = await User.findOne({
-        employee_id: { $regex: new RegExp(`^${trimmedId}$`, "i") },
+        $or: [
+          { employee_id: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+          { email: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+        ],
         role: "coordinator",
       });
     }
