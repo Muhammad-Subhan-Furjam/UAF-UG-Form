@@ -1,725 +1,1003 @@
-[{
-  "_id": {
-    "$oid": "6a8db88e112cdfb0613fd096"
-  },
-  "name": "Computer Science",
-  "code": "DGCS1014",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88e112cdfb0613fd095"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:18.597Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:18.597Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88e112cdfb0613fd097"
-  },
-  "name": "Information Technology",
-  "code": "DGIT1015",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88e112cdfb0613fd095"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:18.672Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:18.672Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88e112cdfb0613fd098"
-  },
-  "name": "Software Engineering",
-  "code": "DGSE1016",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88e112cdfb0613fd095"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:18.745Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:18.745Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88e112cdfb0613fd099"
-  },
-  "name": "Bioinformatics",
-  "code": "DGB1017",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88e112cdfb0613fd095"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:18.817Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:18.817Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88e112cdfb0613fd09a"
-  },
-  "name": "Data Science",
-  "code": "DGDS1018",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88e112cdfb0613fd095"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:18.888Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:18.888Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88e112cdfb0613fd09b"
-  },
-  "name": "Artificial Intelligence",
-  "code": "DGAI1019",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88e112cdfb0613fd095"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:18.961Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:18.961Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88f112cdfb0613fd09d"
-  },
-  "name": "BS Botany",
-  "code": "DGBB1021",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88f112cdfb0613fd09c"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:19.108Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:19.108Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88f112cdfb0613fd09f"
-  },
-  "name": "BS Chemistry",
-  "code": "DGBC1023",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88f112cdfb0613fd09e"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:19.257Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:19.257Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a1"
-  },
-  "name": "BS Bio-Chemistry",
-  "code": "DGBB1025",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a0"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:19.404Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:19.404Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a3"
-  },
-  "name": "BS Physics",
-  "code": "DGBP1027",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a2"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:19.553Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:19.553Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a5"
-  },
-  "name": "BS Data Analytics",
-  "code": "DGBDA1029",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a4"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:19.707Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:19.707Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a6"
-  },
-  "name": "BS Bio-Statistics",
-  "code": "DGBB1030",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a4"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:19.782Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:19.782Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a8"
-  },
-  "name": "BS Aquaculture",
-  "code": "DGBA1032",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db88e112cdfb0613fd094"
-  },
-  "department_id": {
-    "$oid": "6a8db88f112cdfb0613fd0a7"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:19.938Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:19.938Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db890112cdfb0613fd0ad"
-  },
-  "name": "BS (Hons.) HND",
-  "code": "DGBHH1037",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db890112cdfb0613fd0ab"
-  },
-  "department_id": {
-    "$oid": "6a8db890112cdfb0613fd0ac"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:20.316Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:20.316Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db890112cdfb0613fd0ae"
-  },
-  "name": "BS Food Science",
-  "code": "DGBFS1038",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db890112cdfb0613fd0ab"
-  },
-  "department_id": {
-    "$oid": "6a8db890112cdfb0613fd0ac"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:20.389Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:20.389Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db890112cdfb0613fd0b0"
-  },
-  "name": "BS Home Economics",
-  "code": "DGBHE1040",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db890112cdfb0613fd0ab"
-  },
-  "department_id": {
-    "$oid": "6a8db890112cdfb0613fd0af"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:20.534Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:20.534Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db890112cdfb0613fd0b1"
-  },
-  "name": "BS Fashion Designing",
-  "code": "DGBFD1041",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db890112cdfb0613fd0ab"
-  },
-  "department_id": {
-    "$oid": "6a8db890112cdfb0613fd0af"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:20.609Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:20.609Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db890112cdfb0613fd0b2"
-  },
-  "name": "BS Clothing and Textile",
-  "code": "DGBCAT1042",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db890112cdfb0613fd0ab"
-  },
-  "department_id": {
-    "$oid": "6a8db890112cdfb0613fd0af"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:20.684Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:20.684Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db890112cdfb0613fd0b3"
-  },
-  "name": "BS Human Development and Family Studies",
-  "code": "DGBHDAFS1043",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db890112cdfb0613fd0ab"
-  },
-  "department_id": {
-    "$oid": "6a8db890112cdfb0613fd0af"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:20.760Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:20.760Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db890112cdfb0613fd0b4"
-  },
-  "name": "BS Fine Arts",
-  "code": "DGBFA1044",
-  "campus_id": {
-    "$oid": "6a8db88d112cdfb0613fd089"
-  },
-  "faculty_id": {
-    "$oid": "6a8db890112cdfb0613fd0ab"
-  },
-  "department_id": {
-    "$oid": "6a8db890112cdfb0613fd0af"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:20.833Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:20.833Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db893112cdfb0613fd0d5"
-  },
-  "name": "BSc (Hons.) Agriculture",
-  "code": "DGBHA1077",
-  "campus_id": {
-    "$oid": "6a8db893112cdfb0613fd0d2"
-  },
-  "faculty_id": {
-    "$oid": "6a8db893112cdfb0613fd0d3"
-  },
-  "department_id": {
-    "$oid": "6a8db893112cdfb0613fd0d4"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:23.278Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:23.278Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db893112cdfb0613fd0da"
-  },
-  "name": "BBA Agribusiness",
-  "code": "DGBA1082",
-  "campus_id": {
-    "$oid": "6a8db893112cdfb0613fd0d2"
-  },
-  "faculty_id": {
-    "$oid": "6a8db893112cdfb0613fd0d8"
-  },
-  "department_id": {
-    "$oid": "6a8db893112cdfb0613fd0d9"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:23.658Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:23.658Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db893112cdfb0613fd0dc"
-  },
-  "name": "MBA Regular",
-  "code": "DGMR1084",
-  "campus_id": {
-    "$oid": "6a8db893112cdfb0613fd0d2"
-  },
-  "faculty_id": {
-    "$oid": "6a8db893112cdfb0613fd0d8"
-  },
-  "department_id": {
-    "$oid": "6a8db893112cdfb0613fd0db"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:23.807Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:23.807Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db894112cdfb0613fd0e1"
-  },
-  "name": "BSc (Hons.) Agriculture",
-  "code": "DGBHA1089",
-  "campus_id": {
-    "$oid": "6a8db893112cdfb0613fd0de"
-  },
-  "faculty_id": {
-    "$oid": "6a8db894112cdfb0613fd0df"
-  },
-  "department_id": {
-    "$oid": "6a8db894112cdfb0613fd0e0"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:24.174Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:24.174Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db894112cdfb0613fd0e4"
-  },
-  "name": "Food Science & Technology",
-  "code": "DGFST1092",
-  "campus_id": {
-    "$oid": "6a8db893112cdfb0613fd0de"
-  },
-  "faculty_id": {
-    "$oid": "6a8db894112cdfb0613fd0e2"
-  },
-  "department_id": {
-    "$oid": "6a8db894112cdfb0613fd0e3"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:24.395Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:24.395Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db894112cdfb0613fd0e6"
-  },
-  "name": "Human Nutrition & Dietetics",
-  "code": "DGHND1094",
-  "campus_id": {
-    "$oid": "6a8db893112cdfb0613fd0de"
-  },
-  "faculty_id": {
-    "$oid": "6a8db894112cdfb0613fd0e2"
-  },
-  "department_id": {
-    "$oid": "6a8db894112cdfb0613fd0e5"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:24.540Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:24.540Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db894112cdfb0613fd0e8"
-  },
-  "name": "BSc (Hons.) Home Economics",
-  "code": "DGBHHE1096",
-  "campus_id": {
-    "$oid": "6a8db893112cdfb0613fd0de"
-  },
-  "faculty_id": {
-    "$oid": "6a8db894112cdfb0613fd0e2"
-  },
-  "department_id": {
-    "$oid": "6a8db894112cdfb0613fd0e7"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:24.688Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:24.688Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db894112cdfb0613fd0ea"
-  },
-  "name": "Human Development & Family Studies",
-  "code": "DGHDFS1098",
-  "campus_id": {
-    "$oid": "6a8db893112cdfb0613fd0de"
-  },
-  "faculty_id": {
-    "$oid": "6a8db894112cdfb0613fd0e2"
-  },
-  "department_id": {
-    "$oid": "6a8db894112cdfb0613fd0e9"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:24.835Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:24.835Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6a8db894112cdfb0613fd0ec"
-  },
-  "name": "MSc (Hons.) Dairy Technology",
-  "code": "DGMHDT1100",
-  "campus_id": {
-    "$oid": "6a8db893112cdfb0613fd0de"
-  },
-  "faculty_id": {
-    "$oid": "6a8db894112cdfb0613fd0e2"
-  },
-  "department_id": {
-    "$oid": "6a8db894112cdfb0613fd0eb"
-  },
-  "duration": "",
-  "status": true,
-  "createdAt": {
-    "$date": "2026-08-25T15:45:24.981Z"
-  },
-  "updatedAt": {
-    "$date": "2026-08-25T15:45:24.981Z"
-  },
-  "__v": 0
-}]
+[
+  {
+    "_id": "6a8db88e112cdfb0613fd096",
+    "name": "Computer Science",
+    "code": "DGCS1014",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88e112cdfb0613fd095",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:18.597Z",
+    "updatedAt": "2026-08-25T15:45:18.597Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88e112cdfb0613fd097",
+    "name": "Information Technology",
+    "code": "DGIT1015",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88e112cdfb0613fd095",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:18.672Z",
+    "updatedAt": "2026-08-25T15:45:18.672Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88e112cdfb0613fd098",
+    "name": "Software Engineering",
+    "code": "DGSE1016",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88e112cdfb0613fd095",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:18.745Z",
+    "updatedAt": "2026-08-25T15:45:18.745Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88e112cdfb0613fd099",
+    "name": "Bioinformatics",
+    "code": "DGB1017",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88e112cdfb0613fd095",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:18.817Z",
+    "updatedAt": "2026-08-25T15:45:18.817Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88e112cdfb0613fd09a",
+    "name": "Data Science",
+    "code": "DGDS1018",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88e112cdfb0613fd095",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:18.888Z",
+    "updatedAt": "2026-08-25T15:45:18.888Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88e112cdfb0613fd09b",
+    "name": "Artificial Intelligence",
+    "code": "DGAI1019",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88e112cdfb0613fd095",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:18.961Z",
+    "updatedAt": "2026-08-25T15:45:18.961Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88f112cdfb0613fd09d",
+    "name": "BS Botany",
+    "code": "DGBB1021",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd09c",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:19.108Z",
+    "updatedAt": "2026-08-25T15:45:19.108Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88f112cdfb0613fd09f",
+    "name": "BS Chemistry",
+    "code": "DGBC1023",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd09e",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:19.257Z",
+    "updatedAt": "2026-08-25T15:45:19.257Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88f112cdfb0613fd0a1",
+    "name": "BS Bio-Chemistry",
+    "code": "DGBB1025",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a0",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:19.404Z",
+    "updatedAt": "2026-08-25T15:45:19.404Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88f112cdfb0613fd0a3",
+    "name": "BS Physics",
+    "code": "DGBP1027",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a2",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:19.553Z",
+    "updatedAt": "2026-08-25T15:45:19.553Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88f112cdfb0613fd0a5",
+    "name": "BS Data Analytics",
+    "code": "DGBDA1029",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a4",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:19.707Z",
+    "updatedAt": "2026-08-25T15:45:19.707Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88f112cdfb0613fd0a6",
+    "name": "BS Bio-Statistics",
+    "code": "DGBB1030",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a4",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:19.782Z",
+    "updatedAt": "2026-08-25T15:45:19.782Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db88f112cdfb0613fd0a8",
+    "name": "BS Aquaculture",
+    "code": "DGBA1032",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a7",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:19.938Z",
+    "updatedAt": "2026-08-25T15:45:19.938Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db890112cdfb0613fd0ad",
+    "name": "BS (Hons.) HND",
+    "code": "DGBHH1037",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0ac",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:20.316Z",
+    "updatedAt": "2026-08-25T15:45:20.316Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db890112cdfb0613fd0ae",
+    "name": "BS Food Science",
+    "code": "DGBFS1038",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0ac",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:20.389Z",
+    "updatedAt": "2026-08-25T15:45:20.389Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db890112cdfb0613fd0b0",
+    "name": "BS Home Economics",
+    "code": "DGBHE1040",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0af",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:20.534Z",
+    "updatedAt": "2026-08-25T15:45:20.534Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db890112cdfb0613fd0b1",
+    "name": "BS Fashion Designing",
+    "code": "DGBFD1041",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0af",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:20.609Z",
+    "updatedAt": "2026-08-25T15:45:20.609Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db890112cdfb0613fd0b2",
+    "name": "BS Clothing and Textile",
+    "code": "DGBCAT1042",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0af",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:20.684Z",
+    "updatedAt": "2026-08-25T15:45:20.684Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db890112cdfb0613fd0b3",
+    "name": "BS Human Development and Family Studies",
+    "code": "DGBHDAFS1043",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0af",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:20.760Z",
+    "updatedAt": "2026-08-25T15:45:20.760Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db890112cdfb0613fd0b4",
+    "name": "BS Fine Arts",
+    "code": "DGBFA1044",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0af",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:20.833Z",
+    "updatedAt": "2026-08-25T15:45:20.833Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db893112cdfb0613fd0d5",
+    "name": "BSc (Hons.) Agriculture",
+    "code": "DGBHA1077",
+    "campus_id": "6a8db893112cdfb0613fd0d2",
+    "faculty_id": "6a8db893112cdfb0613fd0d3",
+    "department_id": "6a8db893112cdfb0613fd0d4",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:23.278Z",
+    "updatedAt": "2026-08-25T15:45:23.278Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db893112cdfb0613fd0da",
+    "name": "BBA Agribusiness",
+    "code": "DGBA1082",
+    "campus_id": "6a8db893112cdfb0613fd0d2",
+    "faculty_id": "6a8db893112cdfb0613fd0d8",
+    "department_id": "6a8db893112cdfb0613fd0d9",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:23.658Z",
+    "updatedAt": "2026-08-25T15:45:23.658Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db893112cdfb0613fd0dc",
+    "name": "MBA Regular",
+    "code": "DGMR1084",
+    "campus_id": "6a8db893112cdfb0613fd0d2",
+    "faculty_id": "6a8db893112cdfb0613fd0d8",
+    "department_id": "6a8db893112cdfb0613fd0db",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:23.807Z",
+    "updatedAt": "2026-08-25T15:45:23.807Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db894112cdfb0613fd0e1",
+    "name": "BSc (Hons.) Agriculture",
+    "code": "DGBHA1089",
+    "campus_id": "6a8db893112cdfb0613fd0de",
+    "faculty_id": "6a8db894112cdfb0613fd0df",
+    "department_id": "6a8db894112cdfb0613fd0e0",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:24.174Z",
+    "updatedAt": "2026-08-25T15:45:24.174Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db894112cdfb0613fd0e4",
+    "name": "Food Science & Technology",
+    "code": "DGFST1092",
+    "campus_id": "6a8db893112cdfb0613fd0de",
+    "faculty_id": "6a8db894112cdfb0613fd0e2",
+    "department_id": "6a8db894112cdfb0613fd0e3",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:24.395Z",
+    "updatedAt": "2026-08-25T15:45:24.395Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db894112cdfb0613fd0e6",
+    "name": "Human Nutrition & Dietetics",
+    "code": "DGHND1094",
+    "campus_id": "6a8db893112cdfb0613fd0de",
+    "faculty_id": "6a8db894112cdfb0613fd0e2",
+    "department_id": "6a8db894112cdfb0613fd0e5",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:24.540Z",
+    "updatedAt": "2026-08-25T15:45:24.540Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db894112cdfb0613fd0e8",
+    "name": "BSc (Hons.) Home Economics",
+    "code": "DGBHHE1096",
+    "campus_id": "6a8db893112cdfb0613fd0de",
+    "faculty_id": "6a8db894112cdfb0613fd0e2",
+    "department_id": "6a8db894112cdfb0613fd0e7",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:24.688Z",
+    "updatedAt": "2026-08-25T15:45:24.688Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db894112cdfb0613fd0ea",
+    "name": "Human Development & Family Studies",
+    "code": "DGHDFS1098",
+    "campus_id": "6a8db893112cdfb0613fd0de",
+    "faculty_id": "6a8db894112cdfb0613fd0e2",
+    "department_id": "6a8db894112cdfb0613fd0e9",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:24.835Z",
+    "updatedAt": "2026-08-25T15:45:24.835Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a8db894112cdfb0613fd0ec",
+    "name": "MSc (Hons.) Dairy Technology",
+    "code": "DGMHDT1100",
+    "campus_id": "6a8db893112cdfb0613fd0de",
+    "faculty_id": "6a8db894112cdfb0613fd0e2",
+    "department_id": "6a8db894112cdfb0613fd0eb",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-08-25T15:45:24.981Z",
+    "updatedAt": "2026-08-25T15:45:24.981Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d869c6e8e50121a2c3954",
+    "name": "Agriculture",
+    "code": "DGAGRICULT406",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88d112cdfb0613fd08a",
+    "department_id": "6a8db88d112cdfb0613fd08b",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:28.557Z",
+    "updatedAt": "2026-09-06T15:28:28.557Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d869d6e8e50121a2c3955",
+    "name": "Biotechnology",
+    "code": "DGBIOTECHN736",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88d112cdfb0613fd08a",
+    "department_id": "6a8db88e112cdfb0613fd092",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:29.260Z",
+    "updatedAt": "2026-09-06T15:28:29.260Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d869e6e8e50121a2c3956",
+    "name": "Environmental Science",
+    "code": "DGENVIRONM701",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88d112cdfb0613fd08a",
+    "department_id": "6a8db88e112cdfb0613fd090",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:30.139Z",
+    "updatedAt": "2026-09-06T15:28:30.139Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d869e6e8e50121a2c3957",
+    "name": "Forestry",
+    "code": "DGFORESTRY718",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88d112cdfb0613fd08a",
+    "department_id": "6a8db88e112cdfb0613fd08f",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:30.774Z",
+    "updatedAt": "2026-09-06T15:28:30.774Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d869f6e8e50121a2c3958",
+    "name": "Associate Degree in Horticultural Technology",
+    "code": "DGASSOCIAT385",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88d112cdfb0613fd08a",
+    "department_id": "6a8db88e112cdfb0613fd091",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:31.409Z",
+    "updatedAt": "2026-09-06T15:28:31.409Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a06e8e50121a2c3959",
+    "name": "Associate Degree in Agriculture",
+    "code": "DGASSOCIAT801",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88d112cdfb0613fd08a",
+    "department_id": "6a8db88d112cdfb0613fd08b",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:32.073Z",
+    "updatedAt": "2026-09-06T15:28:32.073Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a06e8e50121a2c395a",
+    "name": "Associate Degree in Seed Production of Crop Plants",
+    "code": "DGASSOCIAT381",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88d112cdfb0613fd08a",
+    "department_id": "6a8db88d112cdfb0613fd08c",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:32.713Z",
+    "updatedAt": "2026-09-06T15:28:32.713Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a16e8e50121a2c395b",
+    "name": "Associate Degree in Crop Production and Business Management",
+    "code": "DGASSOCIAT319",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88d112cdfb0613fd08a",
+    "department_id": "6a8db88d112cdfb0613fd08b",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:33.363Z",
+    "updatedAt": "2026-09-06T15:28:33.363Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a26e8e50121a2c395c",
+    "name": "Associate Degree in Plant Protection and Quarantine",
+    "code": "DGASSOCIAT748",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88d112cdfb0613fd08a",
+    "department_id": "6a8db88e112cdfb0613fd08e",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:34.305Z",
+    "updatedAt": "2026-09-06T15:28:34.305Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a46e8e50121a2c395d",
+    "name": "Animal Sciences",
+    "code": "DGANIMALSC163",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0a9",
+    "department_id": "6a8db890112cdfb0613fd0aa",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:36.037Z",
+    "updatedAt": "2026-09-06T15:28:36.037Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a46e8e50121a2c395e",
+    "name": "Dairy Science",
+    "code": "DGDAIRYSCI449",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0a9",
+    "department_id": "6a8db890112cdfb0613fd0aa",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:36.710Z",
+    "updatedAt": "2026-09-06T15:28:36.710Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a56e8e50121a2c395f",
+    "name": "Human Nutrition & Dietetics",
+    "code": "DGHUMANNUT721",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0ac",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:37.457Z",
+    "updatedAt": "2026-09-06T15:28:37.457Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a66e8e50121a2c3960",
+    "name": "Food Science & Technology",
+    "code": "DGFOODSCIE459",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0ac",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:38.157Z",
+    "updatedAt": "2026-09-06T15:28:38.157Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a66e8e50121a2c3961",
+    "name": "Home Economics",
+    "code": "DGHOMEECON561",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0af",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:38.808Z",
+    "updatedAt": "2026-09-06T15:28:38.808Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a76e8e50121a2c3962",
+    "name": "Fashion Design (BFD)",
+    "code": "DGFASHIOND864",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0ab",
+    "department_id": "6a8db890112cdfb0613fd0af",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:39.452Z",
+    "updatedAt": "2026-09-06T15:28:39.452Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a86e8e50121a2c3963",
+    "name": "Physics",
+    "code": "DGPHYSICS958",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a2",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:40.098Z",
+    "updatedAt": "2026-09-06T15:28:40.098Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a86e8e50121a2c3964",
+    "name": "Chemistry",
+    "code": "DGCHEMISTR285",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd09e",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:40.752Z",
+    "updatedAt": "2026-09-06T15:28:40.752Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86a96e8e50121a2c3965",
+    "name": "Botany",
+    "code": "DGBOTANY269",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd09c",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:41.460Z",
+    "updatedAt": "2026-09-06T15:28:41.460Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86aa6e8e50121a2c3966",
+    "name": "Zoology",
+    "code": "DGZOOLOGY782",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a7",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:42.110Z",
+    "updatedAt": "2026-09-06T15:28:42.110Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86aa6e8e50121a2c3967",
+    "name": "Mathematics",
+    "code": "DGMATHEMAT580",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a4",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:42.786Z",
+    "updatedAt": "2026-09-06T15:28:42.786Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86ac6e8e50121a2c3968",
+    "name": "Biochemistry",
+    "code": "DGBIOCHEMI656",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a0",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:44.194Z",
+    "updatedAt": "2026-09-06T15:28:44.194Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86ac6e8e50121a2c3969",
+    "name": "Biostatistics",
+    "code": "DGBIOSTATI763",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a4",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:44.854Z",
+    "updatedAt": "2026-09-06T15:28:44.854Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86ad6e8e50121a2c396a",
+    "name": "Statistics",
+    "code": "DGSTATISTI222",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a4",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:45.501Z",
+    "updatedAt": "2026-09-06T15:28:45.501Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86af6e8e50121a2c396b",
+    "name": "Data Analytics",
+    "code": "DGDATAANAL925",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a4",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:47.040Z",
+    "updatedAt": "2026-09-06T15:28:47.040Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86af6e8e50121a2c396c",
+    "name": "Fisheries & Aquaculture",
+    "code": "DGFISHERIE121",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db88e112cdfb0613fd094",
+    "department_id": "6a8db88f112cdfb0613fd0a7",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:47.688Z",
+    "updatedAt": "2026-09-06T15:28:47.688Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b06e8e50121a2c396d",
+    "name": "Agri. & Resource Economics",
+    "code": "DGAGRIRESO493",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c6",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:48.978Z",
+    "updatedAt": "2026-09-06T15:28:48.978Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b16e8e50121a2c396e",
+    "name": "BBA (Agribusiness)",
+    "code": "DGBBAAGRIB320",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c7",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:49.624Z",
+    "updatedAt": "2026-09-06T15:28:49.624Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b26e8e50121a2c3970",
+    "name": "Criminology",
+    "code": "DGCRIMINOL763",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a9d86b26e8e50121a2c396f",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:50.434Z",
+    "updatedAt": "2026-09-06T15:28:50.434Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b36e8e50121a2c3971",
+    "name": "Sociology",
+    "code": "DGSOCIOLOG806",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a9d86b26e8e50121a2c396f",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:51.069Z",
+    "updatedAt": "2026-09-06T15:28:51.069Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b36e8e50121a2c3972",
+    "name": "Development Studies",
+    "code": "DGDEVELOPM140",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c5",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:51.724Z",
+    "updatedAt": "2026-09-06T15:28:51.724Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b46e8e50121a2c3973",
+    "name": "Commerce",
+    "code": "DGCOMMERCE206",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c7",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:52.800Z",
+    "updatedAt": "2026-09-06T15:28:52.800Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b56e8e50121a2c3974",
+    "name": "Business Administration (BBA)",
+    "code": "DGBUSINESS595",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c7",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:53.450Z",
+    "updatedAt": "2026-09-06T15:28:53.450Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b66e8e50121a2c3975",
+    "name": "B.Ed (Hons)",
+    "code": "DGBEDHONS609",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c5",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:54.094Z",
+    "updatedAt": "2026-09-06T15:28:54.094Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b66e8e50121a2c3976",
+    "name": "Economics",
+    "code": "DGECONOMIC458",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c6",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:54.731Z",
+    "updatedAt": "2026-09-06T15:28:54.731Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b76e8e50121a2c3977",
+    "name": "English (Language and Literature)",
+    "code": "DGENGLISHL422",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c8",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:55.372Z",
+    "updatedAt": "2026-09-06T15:28:55.372Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b86e8e50121a2c3978",
+    "name": "International Relations",
+    "code": "DGINTERNAT260",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c8",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:56.011Z",
+    "updatedAt": "2026-09-06T15:28:56.011Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b86e8e50121a2c3979",
+    "name": "B.Ed 1.5 Year (Regular + Weekend)",
+    "code": "DGBED15YEA642",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db892112cdfb0613fd0c4",
+    "department_id": "6a8db892112cdfb0613fd0c5",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:56.651Z",
+    "updatedAt": "2026-09-06T15:28:56.651Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86b96e8e50121a2c397a",
+    "name": "Agricultural Engineering",
+    "code": "DGAGRICULT622",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db891112cdfb0613fd0bd",
+    "department_id": "6a8db891112cdfb0613fd0be",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:57.444Z",
+    "updatedAt": "2026-09-06T15:28:57.444Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86ba6e8e50121a2c397b",
+    "name": "Food Engineering",
+    "code": "DGFOODENGI266",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db891112cdfb0613fd0bd",
+    "department_id": "6a8db891112cdfb0613fd0c2",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:58.090Z",
+    "updatedAt": "2026-09-06T15:28:58.090Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86ba6e8e50121a2c397c",
+    "name": "Textile Technology",
+    "code": "DGTEXTILET638",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db891112cdfb0613fd0bd",
+    "department_id": "6a8db891112cdfb0613fd0bf",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:58.739Z",
+    "updatedAt": "2026-09-06T15:28:58.739Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86bb6e8e50121a2c397d",
+    "name": "Energy Systems Engineering",
+    "code": "DGENERGYSY817",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db891112cdfb0613fd0bd",
+    "department_id": "6a8db891112cdfb0613fd0c1",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:28:59.386Z",
+    "updatedAt": "2026-09-06T15:28:59.386Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86bc6e8e50121a2c397e",
+    "name": "Environmental Engineering",
+    "code": "DGENVIRONM187",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db891112cdfb0613fd0bd",
+    "department_id": "6a8db891112cdfb0613fd0c0",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:29:00.031Z",
+    "updatedAt": "2026-09-06T15:29:00.031Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86bc6e8e50121a2c3980",
+    "name": "Fine Arts (BFA)",
+    "code": "DGFINEARTS622",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db893112cdfb0613fd0dd",
+    "department_id": "6a9d86bc6e8e50121a2c397f",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:29:00.996Z",
+    "updatedAt": "2026-09-06T15:29:00.996Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86bd6e8e50121a2c3982",
+    "name": "Pakistan Studies",
+    "code": "DGPAKISTAN452",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db893112cdfb0613fd0dd",
+    "department_id": "6a9d86bd6e8e50121a2c3981",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:29:01.815Z",
+    "updatedAt": "2026-09-06T15:29:01.815Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86be6e8e50121a2c3983",
+    "name": "DVM",
+    "code": "DGDVM889",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0b5",
+    "department_id": "6a8db891112cdfb0613fd0b8",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:29:02.451Z",
+    "updatedAt": "2026-09-06T15:29:02.451Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86bf6e8e50121a2c3984",
+    "name": "Microbiology",
+    "code": "DGMICROBIO858",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0b5",
+    "department_id": "6a8db891112cdfb0613fd0bb",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:29:03.104Z",
+    "updatedAt": "2026-09-06T15:29:03.104Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86bf6e8e50121a2c3986",
+    "name": "Pharm-D",
+    "code": "DGPHARMD938",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a9cfc105e1738f7b9cc8def",
+    "department_id": "6a9d86bf6e8e50121a2c3985",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:29:03.910Z",
+    "updatedAt": "2026-09-06T15:29:03.910Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a9d86c06e8e50121a2c3987",
+    "name": "Pharmacy Technician Course (Category B)",
+    "code": "DGPHARMACY736",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a9cfc105e1738f7b9cc8def",
+    "department_id": "6a9d86bf6e8e50121a2c3985",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-06T15:29:04.558Z",
+    "updatedAt": "2026-09-06T15:29:04.558Z",
+    "__v": 0
+  }
+]
