@@ -4,8 +4,13 @@ import "./StudentsList.css";
 
 const StudentsList = () => {
   const [students, setStudents] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [filterBatch, setFilterBatch] = useState("all");
+  const [filterCampus, setFilterCampus] = useState("");
+  const [filterFaculty, setFilterFaculty] = useState("");
+  const [filterDepartment, setFilterDepartment] = useState("");
+  const [filterDegree, setFilterDegree] = useState("");
+  const [filterStatus, setFilterStatus] = useState("all");
 
   // Hierarchy Data
   const [campuses, setCampuses] = useState([]);
@@ -159,23 +164,130 @@ const StudentsList = () => {
   };
 
   // =========================================
+  // FILTER HANDLERS
+  // =========================================
+  const handleFilterCampusChange = (e) => {
+    setFilterCampus(e.target.value);
+    setFilterFaculty("");
+    setFilterDepartment("");
+    setFilterDegree("");
+  };
+
+  const handleFilterFacultyChange = (e) => {
+    setFilterFaculty(e.target.value);
+    setFilterDepartment("");
+    setFilterDegree("");
+  };
+
+  const handleFilterDepartmentChange = (e) => {
+    setFilterDepartment(e.target.value);
+    setFilterDegree("");
+  };
+
+  const resetAllFilters = () => {
+    setSearchQuery("");
+    setFilterBatch("all");
+    setFilterCampus("");
+    setFilterFaculty("");
+    setFilterDepartment("");
+    setFilterDegree("");
+    setFilterStatus("all");
+  };
+
+  const hasActiveFilters =
+    Boolean(searchQuery.trim()) ||
+    filterBatch !== "all" ||
+    Boolean(filterCampus) ||
+    Boolean(filterFaculty) ||
+    Boolean(filterDepartment) ||
+    Boolean(filterDegree) ||
+    filterStatus !== "all";
+
+  // =========================================
   // FILTERED STUDENTS
   // =========================================
   const filteredStudents = students.filter((s) => {
-    if (!searchQuery.trim()) return true;
-    const q = searchQuery.toLowerCase().trim();
-    return (
-      (s.ag_number && String(s.ag_number).toLowerCase().includes(q)) ||
-      (s.name && String(s.name).toLowerCase().includes(q)) ||
-      (s.email && String(s.email).toLowerCase().includes(q)) ||
-      (s.phone && String(s.phone).toLowerCase().includes(q)) ||
-      (s.cnic && String(s.cnic).toLowerCase().includes(q)) ||
-      (s.campus_id?.name && String(s.campus_id.name).toLowerCase().includes(q)) ||
-      (s.department_id?.name && String(s.department_id.name).toLowerCase().includes(q))
-    );
+    // 1. Text Search Query Filter
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch =
+        (s.ag_number && String(s.ag_number).toLowerCase().includes(q)) ||
+        (s.name && String(s.name).toLowerCase().includes(q)) ||
+        (s.fatherName && String(s.fatherName).toLowerCase().includes(q)) ||
+        (s.email && String(s.email).toLowerCase().includes(q)) ||
+        (s.phone && String(s.phone).toLowerCase().includes(q)) ||
+        (s.cnic && String(s.cnic).toLowerCase().includes(q)) ||
+        (s.session && String(s.session).toLowerCase().includes(q)) ||
+        (s.campus_id?.name && String(s.campus_id.name).toLowerCase().includes(q)) ||
+        (s.faculty_id?.name && String(s.faculty_id.name).toLowerCase().includes(q)) ||
+        (s.department_id?.name && String(s.department_id.name).toLowerCase().includes(q)) ||
+        (s.degree_id?.name && String(s.degree_id.name).toLowerCase().includes(q));
+
+      if (!matchesSearch) return false;
+    }
+
+    // 2. Batch / Session Dropdown Filter
+    if (filterBatch !== "all") {
+      if (String(s.session || "").trim() !== filterBatch) return false;
+    }
+
+    // 3. Campus Dropdown Filter
+    if (filterCampus) {
+      const cId = s.campus_id?._id || s.campus_id;
+      if (String(cId) !== String(filterCampus)) return false;
+    }
+
+    // 4. Faculty Dropdown Filter
+    if (filterFaculty) {
+      const fId = s.faculty_id?._id || s.faculty_id;
+      if (String(fId) !== String(filterFaculty)) return false;
+    }
+
+    // 5. Department Dropdown Filter
+    if (filterDepartment) {
+      const dId = s.department_id?._id || s.department_id;
+      if (String(dId) !== String(filterDepartment)) return false;
+    }
+
+    // 6. Degree Dropdown Filter
+    if (filterDegree) {
+      const degId = s.degree_id?._id || s.degree_id;
+      if (String(degId) !== String(filterDegree)) return false;
+    }
+
+    // 7. Status Dropdown Filter
+    if (filterStatus !== "all") {
+      const isAct = s.status !== false;
+      if (filterStatus === "active" && !isAct) return false;
+      if (filterStatus === "disabled" && isAct) return false;
+    }
+
+    return true;
   });
 
-  // Filtered dropdown lists for Edit Modal
+  // Filtered dropdown lists for Filter Toolbar & Edit Modal
+  const availableFilterFaculties = filterCampus
+    ? faculties.filter(
+        (f) =>
+          String(f.campus_id?._id || f.campus_id) === String(filterCampus)
+      )
+    : faculties;
+
+  const availableFilterDepartments = filterFaculty
+    ? departments.filter(
+        (d) =>
+          String(d.faculty_id?._id || d.faculty_id) === String(filterFaculty)
+      )
+    : departments;
+
+  const availableFilterDegrees = filterDepartment
+    ? degrees.filter(
+        (deg) =>
+          String(deg.department_id?._id || deg.department_id) ===
+          String(filterDepartment)
+      )
+    : degrees;
+
   const availableFaculties = editFormData.campus_id
     ? faculties.filter(
         (f) =>
@@ -208,19 +320,106 @@ const StudentsList = () => {
         <p>View, alter, and manage all registered student accounts system-wide.</p>
       </div>
 
-      {/* TOOLBAR */}
-      <div className="admin-table-toolbar">
-        <div className="search-input-wrapper">
-          <span className="search-icon">🔍</span>
-          <input
-            type="text"
-            placeholder="Search by AG Number, Name, CNIC, Email, Campus..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+      {/* TOOLBAR & FILTERS */}
+      <div className="admin-table-toolbar-container">
+        <div className="admin-table-toolbar">
+          <div className="search-input-wrapper">
+            <span className="search-icon">🔍</span>
+            <input
+              type="text"
+              placeholder="Search by AG Number, Name, Father Name, CNIC, Email, Phone..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <div className="table-count-badge">
+            Total Students: <strong>{filteredStudents.length}</strong>
+          </div>
         </div>
-        <div className="table-count-badge">
-          Total Students: <strong>{filteredStudents.length}</strong>
+
+        <div className="admin-filters-grid">
+          <div className="filter-item">
+            <label>Batch / Session</label>
+            <select
+              value={filterBatch}
+              onChange={(e) => setFilterBatch(e.target.value)}
+            >
+              <option value="all">All Batches</option>
+              <option value="2023-2027">2023-2027</option>
+              <option value="2024-2028">2024-2028</option>
+              <option value="2025-2029">2025-2029</option>
+              <option value="2026-2030">2026-2030</option>
+            </select>
+          </div>
+
+          <div className="filter-item">
+            <label>Campus Filter</label>
+            <select value={filterCampus} onChange={handleFilterCampusChange}>
+              <option value="">All Campuses</option>
+              {campuses.map((c) => (
+                <option key={c._id} value={c._id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-item">
+            <label>Faculty Filter</label>
+            <select value={filterFaculty} onChange={handleFilterFacultyChange}>
+              <option value="">All Faculties</option>
+              {availableFilterFaculties.map((f) => (
+                <option key={f._id} value={f._id}>
+                  {f.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-item">
+            <label>Department Filter</label>
+            <select value={filterDepartment} onChange={handleFilterDepartmentChange}>
+              <option value="">All Departments</option>
+              {availableFilterDepartments.map((d) => (
+                <option key={d._id} value={d._id}>
+                  {d.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-item">
+            <label>Degree Filter</label>
+            <select
+              value={filterDegree}
+              onChange={(e) => setFilterDegree(e.target.value)}
+            >
+              <option value="">All Degrees</option>
+              {availableFilterDegrees.map((deg) => (
+                <option key={deg._id} value={deg._id}>
+                  {deg.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-item">
+            <label>Account Status</label>
+            <select
+              value={filterStatus}
+              onChange={(e) => setFilterStatus(e.target.value)}
+            >
+              <option value="all">All Statuses</option>
+              <option value="active">Active Only</option>
+              <option value="disabled">Disabled Only</option>
+            </select>
+          </div>
+
+          {hasActiveFilters && (
+            <button className="reset-filters-btn" onClick={resetAllFilters}>
+              🔄 Reset Filters
+            </button>
+          )}
         </div>
       </div>
 
