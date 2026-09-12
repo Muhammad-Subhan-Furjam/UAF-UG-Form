@@ -30,15 +30,17 @@ const Signup = () => {
   const [session, setSession] = useState("");
   const [phone, setPhone] = useState("");
 
-  // Academic hierarchy (Campus, Faculty, Department)
+  // Academic hierarchy (Campus, Faculty, Department, Degree)
   const [campus, setCampus] = useState("");
   const [faculty, setFaculty] = useState("");
   const [department, setDepartment] = useState("");
+  const [degree, setDegree] = useState("");
 
   // API Data
   const [campuses, setCampuses] = useState([]);
   const [faculties, setFaculties] = useState([]);
   const [departments, setDepartments] = useState([]);
+  const [degrees, setDegrees] = useState([]);
 
   // Dynamic Date calculation
   const currentYear = new Date().getFullYear();
@@ -114,21 +116,51 @@ const Signup = () => {
   }, [faculty]);
 
   // ================================
+  // LOAD DEGREES
+  // ================================
+  useEffect(() => {
+    if (!department) {
+      setDegrees([]);
+      return;
+    }
+    const fetchDegrees = async () => {
+      try {
+        const res = await api.get("/degrees");
+        const filtered = res.data.filter(
+          (deg) =>
+            String(deg.department_id?._id || deg.department_id) === String(department)
+        );
+        setDegrees(filtered);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDegrees();
+  }, [department]);
+
+  // ================================
   // HANDLERS
   // ================================
   const handleCampusChange = (e) => {
     setCampus(e.target.value);
     setFaculty("");
     setDepartment("");
+    setDegree("");
   };
 
   const handleFacultyChange = (e) => {
     setFaculty(e.target.value);
     setDepartment("");
+    setDegree("");
   };
 
   const handleDepartmentChange = (e) => {
     setDepartment(e.target.value);
+    setDegree("");
+  };
+
+  const handleDegreeChange = (e) => {
+    setDegree(e.target.value);
   };
 
   // User ID Change (AG Number for Student, Employee ID for Coordinator)
@@ -185,9 +217,9 @@ const Signup = () => {
     }
 
     if (role === "student") {
-      if (!fatherName.trim() || !cnic.trim() || !admissionDate) {
+      if (!fatherName.trim() || !cnic.trim() || !session || !degree) {
         alert(
-          "All student fields (Father Name, CNIC, Admission Date) are mandatory (*)."
+          "All student fields (Father Name, CNIC, Batch, and Degree) are mandatory (*)."
         );
         return;
       }
@@ -206,13 +238,6 @@ const Signup = () => {
       // CNIC Validation (Exactly 13 Digits)
       if (cnic.length !== 13) {
         alert("CNIC / B-Form number must consist of exactly 13 digits.");
-        return;
-      }
-
-      // Admission Date Range Check (2021 to Current Year)
-      const selectedYear = new Date(admissionDate).getFullYear();
-      if (selectedYear < 2021 || selectedYear > currentYear) {
-        alert(`Date of admission must be between 2021 and ${currentYear}.`);
         return;
       }
     } else {
@@ -265,12 +290,20 @@ const Signup = () => {
           alert("Please select your Batch");
           return;
         }
+        if (!degree) {
+          alert("Please select your Degree");
+          return;
+        }
         signupData.ag_number = userId.trim();
         signupData.fatherName = fatherName;
         signupData.cnic = cnic;
         signupData.session = session;
+        signupData.degree_id = degree;
       } else {
         signupData.employee_id = userId.trim();
+        if (degree) {
+          signupData.degree_id = degree;
+        }
       }
 
       const response = await api.post("/users/signup", signupData);
@@ -615,6 +648,33 @@ const Signup = () => {
                 </option>
               ))}
             </select>
+          </div>
+
+          {/* Degree */}
+          <div className="signup-form-group">
+            <label>
+              Degree / Discipline{role === "student" && <span style={{ color: "red" }}> *</span>}
+            </label>
+            <select
+              value={degree}
+              onChange={handleDegreeChange}
+              disabled={!department}
+              required={role === "student"}
+            >
+              <option value="">
+                {department ? "Select Degree" : "Select Department First"}
+              </option>
+              {degrees.map((item) => (
+                <option key={item._id} value={item._id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+            {role === "student" && (
+              <small className="signup-hint-text">
+                Select your degree program to enroll in your degree courses
+              </small>
+            )}
           </div>
 
           <button type="submit" className="signup-btn">

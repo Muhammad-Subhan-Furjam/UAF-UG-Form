@@ -56,11 +56,12 @@ const signup = async (req, res) => {
         !cnic ||
         !cnic.trim() ||
         !session ||
-        !session.trim()
+        !session.trim() ||
+        !degree_id
       ) {
         return res.status(400).json({
           message:
-            "AG Number, Father Name, CNIC, and Batch selection are mandatory for student signup.",
+            "AG Number, Father Name, CNIC, Batch, and Degree selection are mandatory for student signup.",
         });
       }
     } else if (role === "coordinator") {
