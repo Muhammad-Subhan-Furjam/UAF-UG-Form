@@ -11,6 +11,7 @@ const CoordinatorsList = () => {
   const [campuses, setCampuses] = useState([]);
   const [faculties, setFaculties] = useState([]);
   const [departments, setDepartments] = useState([]);
+  const [degrees, setDegrees] = useState([]);
 
   // Edit Modal State
   const [editingCoord, setEditingCoord] = useState(null);
@@ -22,6 +23,7 @@ const CoordinatorsList = () => {
     campus_id: "",
     faculty_id: "",
     department_id: "",
+    degree_id: "",
     status: true,
     newPassword: "",
   });
@@ -49,14 +51,16 @@ const CoordinatorsList = () => {
 
     const fetchHierarchy = async () => {
       try {
-        const [cRes, fRes, dRes] = await Promise.all([
+        const [cRes, fRes, dRes, degRes] = await Promise.all([
           api.get("/campuses"),
           api.get("/faculties"),
           api.get("/departments"),
+          api.get("/degrees"),
         ]);
         setCampuses(cRes.data || []);
         setFaculties(fRes.data || []);
         setDepartments(dRes.data || []);
+        setDegrees(degRes.data || []);
       } catch (err) {
         console.error("Failed to load academic hierarchy:", err);
       }
@@ -77,6 +81,7 @@ const CoordinatorsList = () => {
       campus_id: coord.campus_id?._id || coord.campus_id || "",
       faculty_id: coord.faculty_id?._id || coord.faculty_id || "",
       department_id: coord.department_id?._id || coord.department_id || "",
+      degree_id: coord.degree_id?._id || coord.degree_id || "",
       status: coord.status !== undefined ? coord.status : true,
       newPassword: "",
     });
@@ -100,6 +105,7 @@ const CoordinatorsList = () => {
         campus_id: editFormData.campus_id || null,
         faculty_id: editFormData.faculty_id || null,
         department_id: editFormData.department_id || null,
+        degree_id: editFormData.degree_id || null,
         status: editFormData.status,
       };
 
@@ -153,7 +159,8 @@ const CoordinatorsList = () => {
       (c.email && String(c.email).toLowerCase().includes(q)) ||
       (c.phone && String(c.phone).toLowerCase().includes(q)) ||
       (c.campus_id?.name && String(c.campus_id.name).toLowerCase().includes(q)) ||
-      (c.department_id?.name && String(c.department_id.name).toLowerCase().includes(q))
+      (c.department_id?.name && String(c.department_id.name).toLowerCase().includes(q)) ||
+      (c.degree_id?.name && String(c.degree_id.name).toLowerCase().includes(q))
     );
   });
 
@@ -174,6 +181,14 @@ const CoordinatorsList = () => {
       )
     : departments;
 
+  const availableDegrees = editFormData.department_id
+    ? degrees.filter(
+        (deg) =>
+          String(deg.department_id?._id || deg.department_id) ===
+          String(editFormData.department_id)
+      )
+    : degrees;
+
   return (
     <div className="admin-coordinators-page">
       {/* HEADER */}
@@ -188,7 +203,7 @@ const CoordinatorsList = () => {
           <span className="search-icon">🔍</span>
           <input
             type="text"
-            placeholder="Search by Employee ID, Name, Email, Campus, Department..."
+            placeholder="Search by Employee ID, Name, Email, Campus, Department, Degree..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -214,6 +229,7 @@ const CoordinatorsList = () => {
                   <th>Campus</th>
                   <th>Faculty</th>
                   <th>Department</th>
+                  <th>Degree</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -231,6 +247,7 @@ const CoordinatorsList = () => {
                       <td>{coord.campus_id?.name || "Not Assigned"}</td>
                       <td>{coord.faculty_id?.name || "Not Assigned"}</td>
                       <td>{coord.department_id?.name || "Not Assigned"}</td>
+                      <td>{coord.degree_id?.name || "Not Assigned"}</td>
                       <td>
                         <span
                           className={`status-pill ${
@@ -264,7 +281,7 @@ const CoordinatorsList = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="9" style={{ textAlign: "center", padding: "30px" }}>
+                    <td colSpan="10" style={{ textAlign: "center", padding: "30px" }}>
                       No coordinator records found matching your search.
                     </td>
                   </tr>
@@ -413,6 +430,7 @@ const CoordinatorsList = () => {
                       setEditFormData({
                         ...editFormData,
                         department_id: e.target.value,
+                        degree_id: "",
                       })
                     }
                   >
@@ -420,6 +438,27 @@ const CoordinatorsList = () => {
                     {availableDepartments.map((d) => (
                       <option key={d._id} value={d._id}>
                         {d.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* ALTER DEGREE */}
+                <div className="form-group">
+                  <label>Assigned Degree</label>
+                  <select
+                    value={editFormData.degree_id}
+                    onChange={(e) =>
+                      setEditFormData({
+                        ...editFormData,
+                        degree_id: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="">Select Degree (Optional)</option>
+                    {availableDegrees.map((deg) => (
+                      <option key={deg._id} value={deg._id}>
+                        {deg.name}
                       </option>
                     ))}
                   </select>
