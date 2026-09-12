@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const Campus = require("../models/Campus");
 const Faculty = require("../models/Faculty");
 const Department = require("../models/Department");
+const { validatePasswordStrength } = require("../middleware/securityMiddleware");
 
 // =====================
 // Signup Student / Coordinator
@@ -45,6 +46,12 @@ const signup = async (req, res) => {
       return res.status(400).json({
         message: "All fields are mandatory. Please complete all required information.",
       });
+    }
+
+    // Password Policy Validation
+    const passwordError = validatePasswordStrength(password);
+    if (passwordError) {
+      return res.status(400).json({ message: passwordError });
     }
 
     if (role === "student") {

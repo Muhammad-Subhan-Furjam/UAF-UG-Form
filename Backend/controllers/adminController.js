@@ -8,6 +8,7 @@ const Course = require("../models/Course");
 const UGForm = require("../models/UGForm");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { validatePasswordStrength } = require("../middleware/securityMiddleware");
 
 // =========================================
 // SUPER ADMIN LOGIN (/ladmin endpoint)
@@ -337,6 +338,11 @@ const createUserByAdmin = async (req, res) => {
       return res.status(400).json({
         message: "Name, email, password, and role are required.",
       });
+    }
+
+    const passwordError = validatePasswordStrength(password);
+    if (passwordError) {
+      return res.status(400).json({ message: passwordError });
     }
 
     if (role !== "student" && role !== "coordinator") {

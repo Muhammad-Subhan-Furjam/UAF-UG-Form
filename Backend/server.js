@@ -25,7 +25,7 @@ const ugFormRoutes = require("./routes/ugFormRoutes");
 const userRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
-const { securityHeaders, sanitizeNoSQL } = require("./middleware/securityMiddleware");
+const { securityHeaders, sanitizeNoSQL, rateLimiter } = require("./middleware/securityMiddleware");
 
 // Ensure database connection middleware for serverless invocations
 app.use(async (req, res, next) => {
@@ -43,6 +43,9 @@ app.use(cors());
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true, limit: "1mb" }));
 app.use(sanitizeNoSQL);
+
+// Global API Rate Limiter (Max 150 requests per 15 mins per IP)
+app.use("/api", rateLimiter(150, 15 * 60 * 1000, "global_api"));
 app.use("/api/campuses", campusRoutes);
 app.use("/api/departments", departmentRoutes);
 app.use("/api/faculties", facultyRoutes);
