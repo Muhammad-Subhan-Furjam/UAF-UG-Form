@@ -138,10 +138,21 @@ const securityHeaders = (req, res, next) => {
   next();
 };
 
+/**
+ * Regex Escape Utility
+ * Prevents ReDoS and Regex Injection attacks when compiling user input into RegExp
+ */
+const escapeRegex = (str) => {
+  if (typeof str !== "string") return "";
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+};
+
 module.exports = {
   rateLimiter,
   sanitizeNoSQL,
   securityHeaders,
   validatePasswordStrength,
   sanitizeString,
+  escapeRegex,
 };
+

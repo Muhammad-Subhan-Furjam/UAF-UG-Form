@@ -8,7 +8,7 @@ const Course = require("../models/Course");
 const UGForm = require("../models/UGForm");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { validatePasswordStrength } = require("../middleware/securityMiddleware");
+const { validatePasswordStrength, escapeRegex } = require("../middleware/securityMiddleware");
 
 // =========================================
 // SUPER ADMIN LOGIN (/ladmin endpoint)
@@ -165,7 +165,7 @@ const updateUserByAdmin = async (req, res) => {
     // 1. Check duplicate Email
     if (email && email.trim() && email.trim().toLowerCase() !== user.email) {
       const existingEmail = await User.findOne({
-        email: { $regex: new RegExp(`^${email.trim()}$`, "i") },
+        email: { $regex: new RegExp(`^${escapeRegex(email.trim())}$`, "i") },
         _id: { $ne: userId },
       });
       if (existingEmail) {
@@ -207,7 +207,7 @@ const updateUserByAdmin = async (req, res) => {
     // 4. Check duplicate AG Number (Student)
     if (user.role === "student" && ag_number && ag_number.trim() && ag_number.trim() !== user.ag_number) {
       const existingAg = await User.findOne({
-        ag_number: { $regex: new RegExp(`^${ag_number.trim()}$`, "i") },
+        ag_number: { $regex: new RegExp(`^${escapeRegex(ag_number.trim())}$`, "i") },
         _id: { $ne: userId },
       });
       if (existingAg) {
@@ -221,7 +221,7 @@ const updateUserByAdmin = async (req, res) => {
     // 5. Check duplicate Employee ID (Coordinator)
     if (user.role === "coordinator" && employee_id && employee_id.trim() && employee_id.trim() !== user.employee_id) {
       const existingEmp = await User.findOne({
-        employee_id: { $regex: new RegExp(`^${employee_id.trim()}$`, "i") },
+        employee_id: { $regex: new RegExp(`^${escapeRegex(employee_id.trim())}$`, "i") },
         _id: { $ne: userId },
       });
       if (existingEmp) {
@@ -353,7 +353,7 @@ const createUserByAdmin = async (req, res) => {
 
     // Email check
     const existingEmail = await User.findOne({
-      email: { $regex: new RegExp(`^${email.trim()}$`, "i") },
+      email: { $regex: new RegExp(`^${escapeRegex(email.trim())}$`, "i") },
     });
     if (existingEmail) {
       return res.status(400).json({
@@ -384,7 +384,7 @@ const createUserByAdmin = async (req, res) => {
       }
 
       const existingAg = await User.findOne({
-        ag_number: { $regex: new RegExp(`^${ag_number.trim()}$`, "i") },
+        ag_number: { $regex: new RegExp(`^${escapeRegex(ag_number.trim())}$`, "i") },
       });
       if (existingAg) {
         return res.status(400).json({
@@ -406,7 +406,7 @@ const createUserByAdmin = async (req, res) => {
       }
 
       const existingEmp = await User.findOne({
-        employee_id: { $regex: new RegExp(`^${employee_id.trim()}$`, "i") },
+        employee_id: { $regex: new RegExp(`^${escapeRegex(employee_id.trim())}$`, "i") },
       });
       if (existingEmp) {
         return res.status(400).json({

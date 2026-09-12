@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const Campus = require("../models/Campus");
 const Faculty = require("../models/Faculty");
 const Department = require("../models/Department");
-const { validatePasswordStrength } = require("../middleware/securityMiddleware");
+const { validatePasswordStrength, escapeRegex } = require("../middleware/securityMiddleware");
 
 // =====================
 // Signup Student / Coordinator
@@ -81,7 +81,7 @@ const signup = async (req, res) => {
 
     // 1. Check existing Email (Global across all accounts)
     const existingEmail = await User.findOne({
-      email: { $regex: new RegExp(`^${email.trim()}$`, "i") },
+      email: { $regex: new RegExp(`^${escapeRegex(email.trim())}$`, "i") },
     });
     if (existingEmail) {
       if (existingEmail.role !== role) {
@@ -135,7 +135,7 @@ const signup = async (req, res) => {
       }
 
       const existingAg = await User.findOne({
-        ag_number: { $regex: new RegExp(`^${ag_number.trim()}$`, "i") },
+        ag_number: { $regex: new RegExp(`^${escapeRegex(ag_number.trim())}$`, "i") },
       });
       if (existingAg) {
         return res.status(400).json({
@@ -147,7 +147,7 @@ const signup = async (req, res) => {
     // 5. Check Coordinator Employee ID (For Coordinator Role)
     if (role === "coordinator" && employee_id && employee_id.trim()) {
       const existingEmpId = await User.findOne({
-        employee_id: { $regex: new RegExp(`^${employee_id.trim()}$`, "i") },
+        employee_id: { $regex: new RegExp(`^${escapeRegex(employee_id.trim())}$`, "i") },
       });
       if (existingEmpId) {
         return res.status(400).json({
@@ -205,13 +205,14 @@ const login = async (req, res) => {
     const { userId, password, role } = req.body;
 
     const trimmedId = (userId || "").trim();
+    const safeId = escapeRegex(trimmedId);
 
     // Check if user exists under ANY role to prevent cross-role login
     const anyUser = await User.findOne({
       $or: [
-        { ag_number: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
-        { employee_id: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
-        { email: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+        { ag_number: { $regex: new RegExp(`^${safeId}$`, "i") } },
+        { employee_id: { $regex: new RegExp(`^${safeId}$`, "i") } },
+        { email: { $regex: new RegExp(`^${safeId}$`, "i") } },
       ],
     });
 
@@ -227,8 +228,8 @@ const login = async (req, res) => {
     if (role === "student") {
       user = await User.findOne({
         $or: [
-          { ag_number: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
-          { email: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+          { ag_number: { $regex: new RegExp(`^${safeId}$`, "i") } },
+          { email: { $regex: new RegExp(`^${safeId}$`, "i") } },
         ],
         role: "student",
       });
@@ -238,8 +239,8 @@ const login = async (req, res) => {
     else if (role === "coordinator") {
       user = await User.findOne({
         $or: [
-          { employee_id: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
-          { email: { $regex: new RegExp(`^${trimmedId}$`, "i") } },
+          { employee_id: { $regex: new RegExp(`^${safeId}$`, "i") } },
+          { email: { $regex: new RegExp(`^${safeId}$`, "i") } },
         ],
         role: "coordinator",
       });
