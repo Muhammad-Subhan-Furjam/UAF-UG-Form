@@ -6,18 +6,23 @@ const mongoose = require("mongoose");
 const ensureCampuses = async () => {
   try {
     const count = await Campus.countDocuments();
-    if (count === 0) {
+    if (count < 5) {
       const filePath = path.join(__dirname, "../../jsons/UGFormDB.campus.json");
       if (fs.existsSync(filePath)) {
         const raw = fs.readFileSync(filePath, "utf-8");
         const json = JSON.parse(raw);
-        const parsed = json.map((item) => ({
-          _id: item._id?.$oid ? new mongoose.Types.ObjectId(item._id.$oid) : item._id,
-          name: item.name,
-          code: item.code || "C100",
-          status: item.status !== false,
-        }));
-        await Campus.insertMany(parsed);
+        for (const item of json) {
+          const exists = await Campus.findOne({ name: item.name });
+          if (!exists) {
+            await Campus.create({
+              _id: item._id?.$oid ? new mongoose.Types.ObjectId(item._id.$oid) : item._id,
+              name: item.name,
+              code: item.code || "C100",
+              location: item.location || "",
+              status: item.status !== false,
+            });
+          }
+        }
       }
     }
   } catch (err) {

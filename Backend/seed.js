@@ -144,6 +144,12 @@ const universityData = {
       "Dairy Technology (MSc Hons)": ["MSc (Hons.) Dairy Technology"],
     },
   },
+
+  "University of Agriculture Faisalabad, Constituent College Toba Tek Singh": {
+    "Faculty of Sciences": {
+      "Department of Computer Science": ["BS Computer Science"],
+    },
+  },
 };
 
 // ======================
