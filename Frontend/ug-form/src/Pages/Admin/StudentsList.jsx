@@ -4,6 +4,7 @@ import "./StudentsList.css";
 
 const StudentsList = () => {
   const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterBatch, setFilterBatch] = useState("all");
   const [filterCampus, setFilterCampus] = useState("");
@@ -206,7 +207,7 @@ const StudentsList = () => {
   // =========================================
   // FILTERED STUDENTS
   // =========================================
-  const filteredStudents = students.filter((s) => {
+  const filteredStudents = (students || []).filter((s) => {
     // 1. Text Search Query Filter
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
@@ -267,50 +268,50 @@ const StudentsList = () => {
 
   // Filtered dropdown lists for Filter Toolbar & Edit Modal
   const availableFilterFaculties = filterCampus
-    ? faculties.filter(
+    ? (faculties || []).filter(
         (f) =>
           String(f.campus_id?._id || f.campus_id) === String(filterCampus)
       )
-    : faculties;
+    : faculties || [];
 
   const availableFilterDepartments = filterFaculty
-    ? departments.filter(
+    ? (departments || []).filter(
         (d) =>
           String(d.faculty_id?._id || d.faculty_id) === String(filterFaculty)
       )
-    : departments;
+    : departments || [];
 
   const availableFilterDegrees = filterDepartment
-    ? degrees.filter(
+    ? (degrees || []).filter(
         (deg) =>
           String(deg.department_id?._id || deg.department_id) ===
           String(filterDepartment)
       )
-    : degrees;
+    : degrees || [];
 
   const availableFaculties = editFormData.campus_id
-    ? faculties.filter(
+    ? (faculties || []).filter(
         (f) =>
           String(f.campus_id?._id || f.campus_id) ===
           String(editFormData.campus_id)
       )
-    : faculties;
+    : faculties || [];
 
   const availableDepartments = editFormData.faculty_id
-    ? departments.filter(
+    ? (departments || []).filter(
         (d) =>
           String(d.faculty_id?._id || d.faculty_id) ===
           String(editFormData.faculty_id)
       )
-    : departments;
+    : departments || [];
 
   const availableDegrees = editFormData.department_id
-    ? degrees.filter(
+    ? (degrees || []).filter(
         (deg) =>
           String(deg.department_id?._id || deg.department_id) ===
           String(editFormData.department_id)
       )
-    : degrees;
+    : degrees || [];
 
   return (
     <div className="admin-students-page">
