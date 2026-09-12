@@ -90,7 +90,6 @@ const universityData = {
       "Department of Structures & Environmental Engineering": [],
       "Department of Energy Systems Engineering": [],
       "Department of Food Engineering": [],
-      "Department of Irrigation and Drainage": [],
     },
     "Faculty of Social Sciences": {
       "Institute of Agricultural Extension, Education and Rural Development": [],
@@ -100,9 +99,6 @@ const universityData = {
     },
     "Faculty of Arts and Humanities": {
       "Department of Fine Arts": [],
-    },
-    "Faculty of Health and Pharmaceutical Sciences": {
-      "Department of Pharmacy": [],
     },
   },
 

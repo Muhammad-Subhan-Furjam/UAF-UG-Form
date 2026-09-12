@@ -168,25 +168,5 @@
     "createdAt": "2026-08-28T12:00:00.000Z",
     "updatedAt": "2026-08-28T12:00:00.000Z",
     "__v": 0
-  },
-  {
-    "_id": "6a9cfc105e1738f7b9cc8def",
-    "name": "Faculty of Health and Pharmaceutical Sciences",
-    "code": "FHEAL8810",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": true,
-    "createdAt": "2026-09-06T05:37:20.205Z",
-    "updatedAt": "2026-09-06T05:37:20.205Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9cfd1768b5876652ecc99e",
-    "name": "Faculty of Health and Pharmaceutical",
-    "code": "FHEAL1548",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": true,
-    "createdAt": "2026-09-06T05:41:43.886Z",
-    "updatedAt": "2026-09-06T05:41:43.886Z",
-    "__v": 0
   }
 ]

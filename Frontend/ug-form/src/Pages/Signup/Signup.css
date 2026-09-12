@@ -651,6 +651,23 @@
   user-select: none;
 }
 
+.email-domain-select {
+  padding: 0 12px;
+  background: #f0f4f8;
+  color: #062f5c;
+  font-weight: 700;
+  font-size: 15px;
+  height: 62px;
+  border: none;
+  border-left: 1px solid #dcdcdc;
+  outline: none;
+  cursor: pointer;
+}
+
+.email-domain-select:focus {
+  background: #e2eaf4;
+}
+
 /* =========================================
    PASSWORD INPUT WITH EYE TOGGLE
 ========================================= */

@@ -20,6 +20,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [userId, setUserId] = useState("");
   const [emailPrefix, setEmailPrefix] = useState("");
+  const [emailDomain, setEmailDomain] = useState("@gmail.com");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -271,7 +272,7 @@ const Signup = () => {
       return;
     }
 
-    const fullEmail = `${emailPrefix.trim()}@gmail.com`;
+    const fullEmail = `${emailPrefix.trim()}${emailDomain}`;
 
     try {
       const signupData = {
@@ -328,7 +329,7 @@ const Signup = () => {
   ];
 
   const coordinatorInstructions = [
-    "Register using your official email address (@gmail.com suffix will be attached).",
+    "Register using your official email address and select your email domain (@gmail.com, @uaf.edu.pk, @hotmail.com, or @yahoo.com).",
     "Use your correct 8-digit Employee ID (must be 5 to 8 digits/characters long).",
     "Once registered, your Employee ID cannot be changed.",
     "Create a strong password following all security rules and keep it safe.",
@@ -504,7 +505,7 @@ const Signup = () => {
             </small>
           </div>
 
-          {/* Email Prefix with @gmail.com addon */}
+          {/* Email Prefix with Domain select */}
           <div className="signup-form-group">
             <label>
               Email Address<span style={{ color: "red" }}> *</span>
@@ -517,7 +518,16 @@ const Signup = () => {
                 placeholder="Enter email username"
                 required
               />
-              <span className="email-addon">@gmail.com</span>
+              <select
+                className="email-domain-select"
+                value={emailDomain}
+                onChange={(e) => setEmailDomain(e.target.value)}
+              >
+                <option value="@gmail.com">@gmail.com</option>
+                <option value="@uaf.edu.pk">@uaf.edu.pk</option>
+                <option value="@hotmail.com">@hotmail.com</option>
+                <option value="@yahoo.com">@yahoo.com</option>
+              </select>
             </div>
           </div>
 

@@ -341,17 +341,6 @@
     "__v": 0
   },
   {
-    "_id": "6a8db891112cdfb0613fd0c3",
-    "name": "Department of Irrigation and Drainage",
-    "code": "DIAD1059",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db891112cdfb0613fd0bd",
-    "status": true,
-    "createdAt": "2026-08-25T15:45:21.949Z",
-    "updatedAt": "2026-08-25T15:45:21.949Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db892112cdfb0613fd0c5",
     "name": "Institute of Agricultural Extension, Education and Rural Development",
     "code": "DAEEARD1061",

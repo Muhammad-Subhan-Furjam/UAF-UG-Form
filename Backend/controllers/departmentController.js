@@ -5,6 +5,11 @@ const mongoose = require("mongoose");
 
 const ensureDepartments = async () => {
   try {
+    // Delete any existing Department of Irrigation and Drainage
+    await Department.deleteMany({
+      name: { $regex: /Irrigation and Drainage/i },
+    });
+
     const count = await Department.countDocuments();
     if (count === 0) {
       const filePath = path.join(__dirname, "../../jsons/UGFormDB.departments.json");

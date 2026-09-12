@@ -3,10 +3,13 @@ const Campus = require("../models/Campus");
 
 const ensureRequiredFaculties = async () => {
   try {
+    // Delete any existing Faculty of Health and Pharmaceutical
+    await Faculty.deleteMany({
+      name: { $regex: /Health and Pharmaceutical/i },
+    });
+
     const requiredFaculties = [
       "Faculty of Arts and Humanities",
-      "Faculty of Health and Pharmaceutical",
-      "Faculty of Health and Pharmaceutical Sciences",
     ];
 
     let mainCampus =
