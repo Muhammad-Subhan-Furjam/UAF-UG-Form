@@ -632,7 +632,6 @@ const UGForm = () => {
               title={hasUploadedDeferment ? "Disabled: Fee Deferment has already been uploaded" : ""}
             >
               Upload Voucher
-              <span className="ug-upload-symbol">↑</span>
             </button>
 
             <button
@@ -643,7 +642,6 @@ const UGForm = () => {
               title={hasUploadedVoucher ? "Disabled: Fee Voucher has already been uploaded" : ""}
             >
               Upload Deferment
-              <span className="ug-upload-symbol">↑</span>
             </button>
 
             <button

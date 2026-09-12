@@ -255,7 +255,6 @@ const AdminCourses = () => {
       {/* TOOLBAR */}
       <div className="admin-table-toolbar">
         <div className="search-input-wrapper">
-          <span className="search-icon">🔍</span>
           <input
             type="text"
             placeholder="Search by Course Code, Title, Scheme of Study, Degree, Department..."
@@ -303,10 +302,10 @@ const AdminCourses = () => {
                       <td>
                         <div className="action-buttons-group">
                           <button className="admin-edit-btn" onClick={() => handleOpenEdit(c)}>
-                            ✏️ Edit
+                            Edit
                           </button>
                           <button className="admin-delete-btn" onClick={() => handleDeleteCourse(c._id, c.courseCode)}>
-                            🗑️
+                            Delete
                           </button>
                         </div>
                       </td>

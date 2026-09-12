@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { FiUsers, FiUserCheck, FiFileText, FiBookOpen, FiPlus, FiLayers } from "react-icons/fi";
 import api from "../../api/api";
 import "./AdminDashboard.css";
 
@@ -49,42 +50,42 @@ const AdminDashboard = () => {
         <div className="admin-stats-grid">
           {/* STUDENTS CARD */}
           <div className="admin-stat-card card-blue" onClick={() => navigate("/admin/students")}>
-            <div className="stat-icon-wrapper">🎓</div>
+            <div className="stat-icon-wrapper"><FiUsers size={24} /></div>
             <div className="stat-info">
               <h3>{stats.studentsCount}</h3>
               <p>Registered Students</p>
             </div>
-            <div className="stat-footer-link">Add / Manage Students →</div>
+            <div className="stat-footer-link">Add / Manage Students &rarr;</div>
           </div>
 
           {/* COORDINATORS CARD */}
           <div className="admin-stat-card card-green" onClick={() => navigate("/admin/coordinators")}>
-            <div className="stat-icon-wrapper">👔</div>
+            <div className="stat-icon-wrapper"><FiUserCheck size={24} /></div>
             <div className="stat-info">
               <h3>{stats.coordinatorsCount}</h3>
               <p>Registered Coordinators</p>
             </div>
-            <div className="stat-footer-link">Add / Manage Coordinators →</div>
+            <div className="stat-footer-link">Add / Manage Coordinators &rarr;</div>
           </div>
 
           {/* FORMS CARD */}
           <div className="admin-stat-card card-purple" onClick={() => navigate("/admin/forms")}>
-            <div className="stat-icon-wrapper">📋</div>
+            <div className="stat-icon-wrapper"><FiFileText size={24} /></div>
             <div className="stat-info">
               <h3>{stats.formsCount}</h3>
               <p>UG Form Submissions</p>
             </div>
-            <div className="stat-footer-link">View, Edit, Accept, Reject →</div>
+            <div className="stat-footer-link">View, Edit, Accept, Reject &rarr;</div>
           </div>
 
           {/* COURSES CARD */}
           <div className="admin-stat-card card-orange" onClick={() => navigate("/admin/courses")}>
-            <div className="stat-icon-wrapper">📚</div>
+            <div className="stat-icon-wrapper"><FiBookOpen size={24} /></div>
             <div className="stat-info">
               <h3>{stats.coursesCount}</h3>
               <p>System Academic Courses</p>
             </div>
-            <div className="stat-footer-link">Add / Manage Courses →</div>
+            <div className="stat-footer-link">Add / Manage Courses &rarr;</div>
           </div>
         </div>
       )}
@@ -95,19 +96,19 @@ const AdminDashboard = () => {
         <p>You have complete override control to add coordinators, add students, govern campuses/faculties/departments/degrees, manage courses, and view, edit, accept (approve), or reject submitted UG forms.</p>
         <div className="quick-buttons-row" style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginTop: "15px" }}>
           <button className="quick-action-btn primary" onClick={() => navigate("/admin/coordinators?action=add")}>
-            ➕ Add Coordinator
+            + Add Coordinator
           </button>
           <button className="quick-action-btn primary" onClick={() => navigate("/admin/students?action=add")}>
-            ➕ Add Student
+            + Add Student
           </button>
           <button className="quick-action-btn secondary" onClick={() => navigate("/admin/hierarchy")}>
-            🏫 Campuses, Faculties, Depts & Degrees
+            Campuses, Faculties, Depts & Degrees
           </button>
           <button className="quick-action-btn secondary" onClick={() => navigate("/admin/courses")}>
-            📚 Manage Courses
+            Manage Courses
           </button>
           <button className="quick-action-btn primary" onClick={() => navigate("/admin/forms")}>
-            📋 UG Forms (View/Edit/Accept/Reject)
+            UG Forms (View/Edit/Accept/Reject)
           </button>
         </div>
       </div>

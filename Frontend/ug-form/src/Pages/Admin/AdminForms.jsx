@@ -178,7 +178,6 @@ const AdminForms = () => {
       <div className="admin-table-toolbar-container">
         <div className="admin-table-toolbar">
           <div className="search-input-wrapper">
-            <span className="search-icon">🔍</span>
             <input
               type="text"
               placeholder="Search by AG Number, Student Name, Degree, Section, Status..."
@@ -271,7 +270,7 @@ const AdminForms = () => {
                               title="View Full Form Details"
                               onClick={() => setViewingForm(f)}
                             >
-                              👁️ View
+                              View
                             </button>
 
                             {/* EDIT BUTTON */}
@@ -280,7 +279,7 @@ const AdminForms = () => {
                               title="Edit UG Form Data"
                               onClick={() => handleOpenEdit(f)}
                             >
-                              ✏️ Edit
+                              Edit
                             </button>
 
                             {/* ACCEPT / APPROVE BUTTON */}
@@ -290,7 +289,7 @@ const AdminForms = () => {
                                 title="Accept & Approve UG Form"
                                 onClick={() => handleUpdateStatus(f._id, "Approved")}
                               >
-                                ✅ Accept
+                                Accept
                               </button>
                             )}
 
@@ -301,7 +300,7 @@ const AdminForms = () => {
                                 title="Reject UG Form"
                                 onClick={() => handleUpdateStatus(f._id, "Rejected")}
                               >
-                                ❌ Reject
+                                Reject
                               </button>
                             )}
 
@@ -311,7 +310,7 @@ const AdminForms = () => {
                               title="Delete Form Submission"
                               onClick={() => handleDeleteForm(f._id)}
                             >
-                              🗑️
+                              Delete
                             </button>
                           </div>
                         </td>
@@ -339,7 +338,7 @@ const AdminForms = () => {
           <div className="admin-modal-card wide-modal" style={{ maxWidth: "850px", width: "90%" }}>
             <div className="admin-modal-header">
               <div>
-                <h3>📋 UG Form Submission Details</h3>
+                <h3>UG Form Submission Details</h3>
                 <p style={{ margin: 0, fontSize: "13px", color: "#64748b" }}>
                   AG Number: <strong>{viewingForm.agNumber || viewingForm.student_id?.ag_number}</strong> | Form Status:{" "}
                   <strong style={{ color: viewingForm.status === "Approved" ? "#166534" : viewingForm.status === "Rejected" ? "#991b1b" : "#1e40af" }}>
@@ -356,7 +355,7 @@ const AdminForms = () => {
               {/* STUDENT & ACADEMIC INFO CARDS */}
               <div className="view-details-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "15px", marginBottom: "20px" }}>
                 <div className="view-card" style={{ background: "#f8fafc", padding: "12px 16px", borderRadius: "8px", border: "1px solid #e2e8f0" }}>
-                  <h4 style={{ margin: "0 0 10px 0", color: "#082f5c" }}>🎓 Student Profile</h4>
+                  <h4 style={{ margin: "0 0 10px 0", color: "#082f5c" }}>Student Profile</h4>
                   <p style={{ margin: "4px 0" }}><strong>Name:</strong> {viewingForm.studentName || viewingForm.student_id?.name || "N/A"}</p>
                   <p style={{ margin: "4px 0" }}><strong>AG Number:</strong> {viewingForm.agNumber || viewingForm.student_id?.ag_number || "N/A"}</p>
                   <p style={{ margin: "4px 0" }}><strong>Father Name:</strong> {viewingForm.fatherName || viewingForm.student_id?.fatherName || "N/A"}</p>
@@ -366,7 +365,7 @@ const AdminForms = () => {
                 </div>
 
                 <div className="view-card" style={{ background: "#f8fafc", padding: "12px 16px", borderRadius: "8px", border: "1px solid #e2e8f0" }}>
-                  <h4 style={{ margin: "0 0 10px 0", color: "#082f5c" }}>🏫 Academic Placement</h4>
+                  <h4 style={{ margin: "0 0 10px 0", color: "#082f5c" }}>Academic Placement</h4>
                   <p style={{ margin: "4px 0" }}><strong>Campus:</strong> {viewingForm.campus_id?.name || viewingForm.campus || "N/A"}</p>
                   <p style={{ margin: "4px 0" }}><strong>Faculty:</strong> {viewingForm.faculty_id?.name || "N/A"}</p>
                   <p style={{ margin: "4px 0" }}><strong>Department:</strong> {viewingForm.department_id?.name || viewingForm.department || "N/A"}</p>
@@ -376,7 +375,7 @@ const AdminForms = () => {
                 </div>
 
                 <div className="view-card" style={{ background: "#f8fafc", padding: "12px 16px", borderRadius: "8px", border: "1px solid #e2e8f0" }}>
-                  <h4 style={{ margin: "0 0 10px 0", color: "#082f5c" }}>📄 Form & Payment Status</h4>
+                  <h4 style={{ margin: "0 0 10px 0", color: "#082f5c" }}>Form & Payment Status</h4>
                   <p style={{ margin: "4px 0" }}><strong>Voucher No:</strong> {viewingForm.voucherNumber || "N/A"}</p>
                   <p style={{ margin: "4px 0" }}>
                     <strong>Fee Voucher:</strong>{" "}
@@ -402,7 +401,7 @@ const AdminForms = () => {
 
               {/* ENROLLED COURSES */}
               <div className="view-courses-section">
-                <h4 style={{ color: "#082f5c", margin: "15px 0 10px 0" }}>📚 Enrolled Courses ({viewingForm.courses?.length || 0})</h4>
+                <h4 style={{ color: "#082f5c", margin: "15px 0 10px 0" }}>Enrolled Courses ({viewingForm.courses?.length || 0})</h4>
                 {viewingForm.courses && viewingForm.courses.length > 0 ? (
                   <table className="admin-data-table" style={{ fontSize: "13px" }}>
                     <thead>
@@ -441,7 +440,7 @@ const AdminForms = () => {
                   className="admin-action-btn approve-btn"
                   onClick={() => handleUpdateStatus(viewingForm._id, "Approved")}
                 >
-                  ✅ Accept & Approve Form
+                  Accept & Approve Form
                 </button>
               )}
 
@@ -450,7 +449,7 @@ const AdminForms = () => {
                   className="admin-action-btn reject-btn"
                   onClick={() => handleUpdateStatus(viewingForm._id, "Rejected")}
                 >
-                  ❌ Reject Form
+                  Reject Form
                 </button>
               )}
 
@@ -462,7 +461,7 @@ const AdminForms = () => {
                   handleOpenEdit(targetForm);
                 }}
               >
-                ✏️ Edit Form Data
+                Edit Form Data
               </button>
 
               <button className="modal-cancel-btn" onClick={() => setViewingForm(null)}>
@@ -480,7 +479,7 @@ const AdminForms = () => {
         <div className="admin-modal-overlay">
           <div className="admin-modal-card">
             <div className="admin-modal-header">
-              <h3>✏️ Edit UG Form: {editData.agNumber}</h3>
+              <h3>Edit UG Form: {editData.agNumber}</h3>
               <button className="modal-close-btn" onClick={() => setEditingForm(null)}>
                 ✕
               </button>

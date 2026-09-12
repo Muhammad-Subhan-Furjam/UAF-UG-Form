@@ -78,8 +78,9 @@ const AdminLogin = () => {
                   type="button"
                   className="eye-toggle-btn"
                   onClick={() => setShowPassword(!showPassword)}
+                  style={{ fontSize: "13px", fontWeight: "600", color: "#64748b" }}
                 >
-                  {showPassword ? "🙈" : "👁️"}
+                  {showPassword ? "Hide" : "Show"}
                 </button>
               </div>
             </div>
@@ -96,7 +97,7 @@ const AdminLogin = () => {
           </form>
 
           <div className="admin-footer-note">
-            <small>🔒 Authorised Super Admin Access Only</small>
+            <small>Authorised Super Admin Access Only</small>
           </div>
         </div>
       </div>

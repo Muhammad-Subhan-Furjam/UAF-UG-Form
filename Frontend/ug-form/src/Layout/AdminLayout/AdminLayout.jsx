@@ -1,5 +1,15 @@
 import React, { useEffect } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import {
+  FiGrid,
+  FiUsers,
+  FiUserCheck,
+  FiShield,
+  FiLayers,
+  FiFileText,
+  FiBookOpen,
+  FiLogOut,
+} from "react-icons/fi";
 import "./AdminLayout.css";
 import logo from "../../assets/university-logo.jpeg";
 
@@ -44,7 +54,7 @@ const AdminLayout = () => {
               `admin-nav-item ${isActive ? "active" : ""}`
             }
           >
-            <span className="nav-icon">📊</span>
+            <FiGrid style={{ fontSize: "18px" }} />
             <span>Dashboard</span>
           </NavLink>
 
@@ -54,7 +64,7 @@ const AdminLayout = () => {
               `admin-nav-item ${isActive ? "active" : ""}`
             }
           >
-            <span className="nav-icon">🎓</span>
+            <FiUsers style={{ fontSize: "18px" }} />
             <span>Students List</span>
           </NavLink>
 
@@ -64,7 +74,7 @@ const AdminLayout = () => {
               `admin-nav-item ${isActive ? "active" : ""}`
             }
           >
-            <span className="nav-icon">👔</span>
+            <FiUserCheck style={{ fontSize: "18px" }} />
             <span>Coordinators List</span>
           </NavLink>
 
@@ -74,7 +84,7 @@ const AdminLayout = () => {
               `admin-nav-item ${isActive ? "active" : ""}`
             }
           >
-            <span className="nav-icon">🛡️</span>
+            <FiShield style={{ fontSize: "18px" }} />
             <span>Super Admin Table</span>
           </NavLink>
 
@@ -84,7 +94,7 @@ const AdminLayout = () => {
               `admin-nav-item ${isActive ? "active" : ""}`
             }
           >
-            <span className="nav-icon">🏛️</span>
+            <FiLayers style={{ fontSize: "18px" }} />
             <span>Academic Hierarchy</span>
           </NavLink>
 
@@ -94,7 +104,7 @@ const AdminLayout = () => {
               `admin-nav-item ${isActive ? "active" : ""}`
             }
           >
-            <span className="nav-icon">📋</span>
+            <FiFileText style={{ fontSize: "18px" }} />
             <span>UG Forms</span>
           </NavLink>
 
@@ -104,14 +114,14 @@ const AdminLayout = () => {
               `admin-nav-item ${isActive ? "active" : ""}`
             }
           >
-            <span className="nav-icon">📚</span>
+            <FiBookOpen style={{ fontSize: "18px" }} />
             <span>Courses</span>
           </NavLink>
         </nav>
 
         <div className="admin-sidebar-footer">
           <button className="admin-logout-btn" onClick={handleLogout}>
-            <span className="nav-icon">🚪</span>
+            <FiLogOut style={{ fontSize: "18px" }} />
             <span>Logout</span>
           </button>
         </div>

@@ -670,7 +670,7 @@ const CoordinatorCourses = () => {
                                   gap: "4px",
                                 }}
                               >
-                                ✏️ Edit
+                                Edit
                               </button>
                             ) : null}
                             <button
@@ -690,7 +690,7 @@ const CoordinatorCourses = () => {
                                 gap: "4px",
                               }}
                             >
-                              🗑️ Delete
+                              Delete
                             </button>
                           </div>
                         </td>

@@ -448,7 +448,7 @@ const StudentsList = () => {
           style={{ padding: "10px 18px", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}
           onClick={handleOpenAdd}
         >
-          ➕ Add New Student
+          + Add New Student
         </button>
       </div>
 
@@ -456,7 +456,6 @@ const StudentsList = () => {
       <div className="admin-table-toolbar-container">
         <div className="admin-table-toolbar">
           <div className="search-input-wrapper">
-            <span className="search-icon">🔍</span>
             <input
               type="text"
               placeholder="Search by AG Number, Name, Father Name, CNIC, Email, Phone..."
@@ -549,7 +548,7 @@ const StudentsList = () => {
 
           {hasActiveFilters && (
             <button className="reset-filters-btn" onClick={resetAllFilters}>
-              🔄 Reset Filters
+              Reset Filters
             </button>
           )}
         </div>
@@ -611,7 +610,7 @@ const StudentsList = () => {
                             onClick={() => handleOpenEdit(student)}
                             title="Edit / Alter Details"
                           >
-                            ✏️ Edit
+                            Edit
                           </button>
                           <button
                             className="admin-delete-btn"
@@ -620,7 +619,7 @@ const StudentsList = () => {
                             }
                             title="Delete Account"
                           >
-                            🗑️
+                            Delete
                           </button>
                         </div>
                       </td>
@@ -644,7 +643,7 @@ const StudentsList = () => {
         <div className="admin-modal-overlay">
           <div className="admin-modal-card">
             <div className="admin-modal-header">
-              <h3>➕ Add New Student Account</h3>
+              <h3>Add New Student Account</h3>
               <button
                 className="modal-close-btn"
                 onClick={() => setShowAddModal(false)}

@@ -401,7 +401,7 @@ const CoordinatorsList = () => {
           style={{ padding: "10px 18px", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}
           onClick={handleOpenAdd}
         >
-          ➕ Add New Coordinator
+          + Add New Coordinator
         </button>
       </div>
 
@@ -409,7 +409,6 @@ const CoordinatorsList = () => {
       <div className="admin-table-toolbar-container">
         <div className="admin-table-toolbar">
           <div className="search-input-wrapper">
-            <span className="search-icon">🔍</span>
             <input
               type="text"
               placeholder="Search by Employee ID, Name, Email, Campus, Department, Degree..."
@@ -488,7 +487,7 @@ const CoordinatorsList = () => {
 
           {hasActiveFilters && (
             <button className="reset-filters-btn" onClick={resetAllFilters}>
-              🔄 Reset Filters
+              Reset Filters
             </button>
           )}
         </div>
@@ -545,7 +544,7 @@ const CoordinatorsList = () => {
                             onClick={() => handleOpenEdit(coord)}
                             title="Edit / Alter Details"
                           >
-                            ✏️ Edit
+                            Edit
                           </button>
                           <button
                             className="admin-delete-btn"
@@ -554,7 +553,7 @@ const CoordinatorsList = () => {
                             }
                             title="Delete Account"
                           >
-                            🗑️
+                            Delete
                           </button>
                         </div>
                       </td>
@@ -578,7 +577,7 @@ const CoordinatorsList = () => {
         <div className="admin-modal-overlay">
           <div className="admin-modal-card">
             <div className="admin-modal-header">
-              <h3>➕ Add New Coordinator Account</h3>
+              <h3>Add New Coordinator Account</h3>
               <button
                 className="modal-close-btn"
                 onClick={() => setShowAddModal(false)}

@@ -162,25 +162,25 @@ const AdminHierarchy = () => {
           className={`tab-btn ${activeTab === "campuses" ? "active" : ""}`}
           onClick={() => setActiveTab("campuses")}
         >
-          🏛️ Campuses ({campuses.length})
+          Campuses ({campuses.length})
         </button>
         <button
           className={`tab-btn ${activeTab === "faculties" ? "active" : ""}`}
           onClick={() => setActiveTab("faculties")}
         >
-          🏢 Faculties ({faculties.length})
+          Faculties ({faculties.length})
         </button>
         <button
           className={`tab-btn ${activeTab === "departments" ? "active" : ""}`}
           onClick={() => setActiveTab("departments")}
         >
-          📂 Departments ({departments.length})
+          Departments ({departments.length})
         </button>
         <button
           className={`tab-btn ${activeTab === "degrees" ? "active" : ""}`}
           onClick={() => setActiveTab("degrees")}
         >
-          🎓 Disciplines / Degrees ({degrees.length})
+          Disciplines / Degrees ({degrees.length})
         </button>
       </div>
 
@@ -213,10 +213,10 @@ const AdminHierarchy = () => {
                       <td>
                         <div className="action-buttons-group">
                           <button className="admin-edit-btn" onClick={() => handleOpenEdit("edit_campus", item)}>
-                            ✏️ Edit
+                            Edit
                           </button>
                           <button className="admin-delete-btn" onClick={() => handleDelete("campus", item)}>
-                            🗑️ Delete
+                            Delete
                           </button>
                         </div>
                       </td>
@@ -252,10 +252,10 @@ const AdminHierarchy = () => {
                       <td>
                         <div className="action-buttons-group">
                           <button className="admin-edit-btn" onClick={() => handleOpenEdit("edit_faculty", item)}>
-                            ✏️ Edit
+                            Edit
                           </button>
                           <button className="admin-delete-btn" onClick={() => handleDelete("faculty", item)}>
-                            🗑️ Delete
+                            Delete
                           </button>
                         </div>
                       </td>
@@ -293,10 +293,10 @@ const AdminHierarchy = () => {
                       <td>
                         <div className="action-buttons-group">
                           <button className="admin-edit-btn" onClick={() => handleOpenEdit("edit_department", item)}>
-                            ✏️ Edit
+                            Edit
                           </button>
                           <button className="admin-delete-btn" onClick={() => handleDelete("department", item)}>
-                            🗑️ Delete
+                            Delete
                           </button>
                         </div>
                       </td>
@@ -336,10 +336,10 @@ const AdminHierarchy = () => {
                       <td>
                         <div className="action-buttons-group">
                           <button className="admin-edit-btn" onClick={() => handleOpenEdit("edit_degree", item)}>
-                            ✏️ Edit
+                            Edit
                           </button>
                           <button className="admin-delete-btn" onClick={() => handleDelete("degree", item)}>
-                            🗑️ Delete
+                            Delete
                           </button>
                         </div>
                       </td>
