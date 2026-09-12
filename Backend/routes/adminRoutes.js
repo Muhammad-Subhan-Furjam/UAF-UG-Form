@@ -21,8 +21,10 @@ const requireSuperAdmin = (req, res, next) => {
   }
 };
 
-// Public Super Admin Login Route
-router.post("/login", adminLogin);
+const { rateLimiter } = require("../middleware/securityMiddleware");
+
+// Public Super Admin Login Route (Rate Limited)
+router.post("/login", rateLimiter(15, 15 * 60 * 1000), adminLogin);
 
 // Protected Super Admin Routes
 router.get("/stats", authMiddleware, requireSuperAdmin, getAdminStats);

@@ -98,6 +98,7 @@ degree_id: {
   },
   {
     timestamps: true,
+    strict: true,
   },
 );
 

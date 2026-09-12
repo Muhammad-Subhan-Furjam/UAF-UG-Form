@@ -15,21 +15,26 @@ const {
   resetPasswordWithCnicAndPhone,
 } = require("../controllers/userController");
 
-// Signup
+const { rateLimiter } = require("../middleware/securityMiddleware");
+
+// Signup (Rate Limited)
 router.post(
   "/signup",
+  rateLimiter(15, 15 * 60 * 1000),
   signup
 );
 
-// Login
+// Login (Rate Limited)
 router.post(
   "/login",
+  rateLimiter(15, 15 * 60 * 1000),
   login
 );
 
-// Forgot Password (CNIC + Phone Verification)
+// Forgot Password (CNIC + Phone Verification - Rate Limited)
 router.post(
   "/forgot-password",
+  rateLimiter(15, 15 * 60 * 1000),
   resetPasswordWithCnicAndPhone
 );
 

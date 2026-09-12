@@ -25,6 +25,8 @@ const ugFormRoutes = require("./routes/ugFormRoutes");
 const userRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
+const { securityHeaders, sanitizeNoSQL } = require("./middleware/securityMiddleware");
+
 // Ensure database connection middleware for serverless invocations
 app.use(async (req, res, next) => {
   try {
@@ -35,8 +37,12 @@ app.use(async (req, res, next) => {
   }
 });
 
+// Security Middleware Stack
+app.use(securityHeaders);
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: true, limit: "1mb" }));
+app.use(sanitizeNoSQL);
 app.use("/api/campuses", campusRoutes);
 app.use("/api/departments", departmentRoutes);
 app.use("/api/faculties", facultyRoutes);

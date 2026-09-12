@@ -181,7 +181,8 @@ const ugFormSchema = new mongoose.Schema(
 
 },
 {
-    timestamps:true
+    timestamps: true,
+    strict: true,
 });
 
 

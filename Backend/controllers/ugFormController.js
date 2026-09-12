@@ -163,13 +163,35 @@ const addUGForm = async (req, res) => {
 // ==========================
 const updateUGForm = async (req, res) => {
   try {
+    const existingForm = await UGForm.findById(req.params.id);
+
+    if (!existingForm) {
+      return res.status(404).json({ message: "UG Form Not Found" });
+    }
+
+    const currentUserId = (req.user.id || req.user._id || "").toString();
+
+    if (req.user.role === "student") {
+      const formStudentId = existingForm.student_id?._id
+        ? existingForm.student_id._id.toString()
+        : existingForm.student_id.toString();
+
+      if (formStudentId !== currentUserId) {
+        return res.status(403).json({ message: "Access denied. You can only update your own form." });
+      }
+    } else if (req.user.role === "coordinator") {
+      if (
+        req.user.department_id &&
+        existingForm.department_id &&
+        existingForm.department_id.toString() !== req.user.department_id.toString()
+      ) {
+        return res.status(403).json({ message: "Access denied. You can only update forms in your assigned department." });
+      }
+    }
+
     const form = await UGForm.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-
-    if (!form) {
-      return res.status(404).json({ message: "UG Form Not Found" });
-    }
 
     res.status(200).json({
       message: "UG Form Updated Successfully",
@@ -185,6 +207,32 @@ const updateUGForm = async (req, res) => {
 // ==========================
 const deleteUGForm = async (req, res) => {
   try {
+    const existingForm = await UGForm.findById(req.params.id);
+
+    if (!existingForm) {
+      return res.status(404).json({ message: "UG Form Not Found" });
+    }
+
+    const currentUserId = (req.user.id || req.user._id || "").toString();
+
+    if (req.user.role === "student") {
+      const formStudentId = existingForm.student_id?._id
+        ? existingForm.student_id._id.toString()
+        : existingForm.student_id.toString();
+
+      if (formStudentId !== currentUserId) {
+        return res.status(403).json({ message: "Access denied. You can only delete your own form." });
+      }
+    } else if (req.user.role === "coordinator") {
+      if (
+        req.user.department_id &&
+        existingForm.department_id &&
+        existingForm.department_id.toString() !== req.user.department_id.toString()
+      ) {
+        return res.status(403).json({ message: "Access denied. You can only delete forms in your assigned department." });
+      }
+    }
+
     await UGForm.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: "UG Form Deleted Successfully" });
   } catch (error) {
