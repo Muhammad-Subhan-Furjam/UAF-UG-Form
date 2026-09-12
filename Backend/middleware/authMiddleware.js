@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const { getClientIp } = require("./securityMiddleware");
 
 const authMiddleware = (req, res, next) => {
   try {
@@ -26,15 +27,11 @@ const authMiddleware = (req, res, next) => {
 
     // Track active user timestamp and IP address asynchronously
     if (userId) {
-      const rawIp =
-        req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
-        req.ip ||
-        req.connection?.remoteAddress ||
-        "127.0.0.1";
+      const clientIp = getClientIp(req);
 
       User.findByIdAndUpdate(userId, {
         lastActiveAt: new Date(),
-        lastIp: rawIp,
+        lastIp: clientIp,
       }).catch(() => {});
     }
 

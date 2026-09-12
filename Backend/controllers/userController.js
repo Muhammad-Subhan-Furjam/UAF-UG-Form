@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const Campus = require("../models/Campus");
 const Faculty = require("../models/Faculty");
 const Department = require("../models/Department");
-const { validatePasswordStrength, escapeRegex } = require("../middleware/securityMiddleware");
+const { validatePasswordStrength, escapeRegex, getClientIp } = require("../middleware/securityMiddleware");
 
 // =====================
 // Signup Student / Coordinator
@@ -263,14 +263,8 @@ const login = async (req, res) => {
     }
 
     // Update last active time & IP
-    const rawIp =
-      req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
-      req.ip ||
-      req.connection?.remoteAddress ||
-      "127.0.0.1";
-
     user.lastActiveAt = new Date();
-    user.lastIp = rawIp;
+    user.lastIp = getClientIp(req);
     await user.save();
 
     // Create Token

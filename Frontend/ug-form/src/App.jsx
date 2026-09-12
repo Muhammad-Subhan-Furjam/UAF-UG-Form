@@ -41,6 +41,7 @@ import SuperAdminList from "./Pages/Admin/SuperAdminList";
 import AdminHierarchy from "./Pages/Admin/AdminHierarchy";
 import AdminCourses from "./Pages/Admin/AdminCourses";
 import AdminForms from "./Pages/Admin/AdminForms";
+import AdminAnalytics from "./Pages/Admin/AdminAnalytics";
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="analytics" element={<AdminAnalytics />} />
           <Route path="students" element={<StudentsList />} />
           <Route path="coordinators" element={<CoordinatorsList />} />
           <Route path="superadmins" element={<SuperAdminList />} />

@@ -8,7 +8,7 @@ const Course = require("../models/Course");
 const UGForm = require("../models/UGForm");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { validatePasswordStrength, escapeRegex } = require("../middleware/securityMiddleware");
+const { validatePasswordStrength, escapeRegex, getClientIp } = require("../middleware/securityMiddleware");
 
 // =========================================
 // SUPER ADMIN LOGIN (/ladmin endpoint)
@@ -42,14 +42,8 @@ const adminLogin = async (req, res) => {
       });
     }
 
-    const rawIp =
-      req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
-      req.ip ||
-      req.connection?.remoteAddress ||
-      "127.0.0.1";
-
     admin.lastActiveAt = new Date();
-    admin.lastIp = rawIp;
+    admin.lastIp = getClientIp(req);
     await admin.save();
 
     const token = jwt.sign(

@@ -4,6 +4,9 @@ require("dotenv").config();
 
 const app = express();
 
+// Trust reverse proxy headers (Vercel, Cloudflare, Nginx) for accurate client IP detection
+app.set("trust proxy", true);
+
 // Pre-register all Mongoose models for populate query safety across serverless invocations
 require("./models/Campus");
 require("./models/Faculty");

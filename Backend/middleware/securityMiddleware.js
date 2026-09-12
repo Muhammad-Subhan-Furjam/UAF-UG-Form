@@ -139,6 +139,34 @@ const securityHeaders = (req, res, next) => {
 };
 
 /**
+ * Real Client IP Extraction Helper
+ * Extracts real IP from reverse proxy headers (Vercel, Cloudflare, Nginx)
+ */
+const getClientIp = (req) => {
+  if (!req) return "127.0.0.1";
+  const headers = req.headers || {};
+  const forwarded =
+    headers["x-forwarded-for"] ||
+    headers["x-real-ip"] ||
+    headers["cf-connecting-ip"] ||
+    headers["x-client-ip"];
+
+  if (forwarded) {
+    const ips = String(forwarded).split(",");
+    const clientIp = ips[0].trim().replace(/^::ffff:/, "");
+    if (clientIp && clientIp !== "127.0.0.1" && clientIp !== "::1") {
+      return clientIp;
+    }
+  }
+
+  const rawIp = req.ip || req.connection?.remoteAddress || req.socket?.remoteAddress || "";
+  const cleanIp = String(rawIp).replace(/^::ffff:/, "").trim();
+
+  if (cleanIp && cleanIp !== "::1") return cleanIp;
+  return "127.0.0.1";
+};
+
+/**
  * Regex Escape Utility
  * Prevents ReDoS and Regex Injection attacks when compiling user input into RegExp
  */
@@ -154,5 +182,6 @@ module.exports = {
   validatePasswordStrength,
   sanitizeString,
   escapeRegex,
+  getClientIp,
 };
 

@@ -59,6 +59,16 @@ const AdminLayout = () => {
           </NavLink>
 
           <NavLink
+            to="/admin/analytics"
+            className={({ isActive }) =>
+              `admin-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <FiLayers style={{ fontSize: "18px" }} />
+            <span>Statistics & Analytics</span>
+          </NavLink>
+
+          <NavLink
             to="/admin/students"
             className={({ isActive }) =>
               `admin-nav-item ${isActive ? "active" : ""}`
