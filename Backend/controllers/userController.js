@@ -22,6 +22,7 @@ const signup = async (req, res) => {
       fatherName,
       cnic,
       admissionDate,
+      session,
       campus_id,
       faculty_id,
       department_id,
@@ -54,11 +55,12 @@ const signup = async (req, res) => {
         !fatherName.trim() ||
         !cnic ||
         !cnic.trim() ||
-        !admissionDate
+        !session ||
+        !session.trim()
       ) {
         return res.status(400).json({
           message:
-            "AG Number, Father Name, CNIC, and Admission Date are mandatory for student signup.",
+            "AG Number, Father Name, CNIC, and Session / Batch are mandatory for student signup.",
         });
       }
     } else if (role === "coordinator") {
@@ -153,6 +155,7 @@ const signup = async (req, res) => {
       fatherName: role === "student" ? fatherName : "",
       cnic: role === "student" ? cnic.trim() : "",
       admissionDate: role === "student" ? admissionDate : null,
+      session: role === "student" && session ? session.trim() : "",
 
       campus_id: campus_id || null,
       faculty_id: faculty_id || null,

@@ -27,7 +27,7 @@ const Signup = () => {
 
   const [fatherName, setFatherName] = useState("");
   const [cnic, setCnic] = useState("");
-  const [admissionDate, setAdmissionDate] = useState("");
+  const [session, setSession] = useState("");
   const [phone, setPhone] = useState("");
 
   // Academic hierarchy (Campus, Faculty, Department)
@@ -261,10 +261,14 @@ const Signup = () => {
       };
 
       if (role === "student") {
+        if (!session) {
+          alert("Please select your Session / Batch");
+          return;
+        }
         signupData.ag_number = userId.trim();
         signupData.fatherName = fatherName;
         signupData.cnic = cnic;
-        signupData.admissionDate = admissionDate;
+        signupData.session = session;
       } else {
         signupData.employee_id = userId.trim();
       }
@@ -427,20 +431,24 @@ const Signup = () => {
                 </small>
               </div>
 
-              <div className="signup-form-group">
+              <div className="signup-form-group signup-session-group">
                 <label>
-                  Date of Admission<span style={{ color: "red" }}> *</span>
+                  Session / Batch <span style={{ color: "red" }}> *</span>
                 </label>
-                <input
-                  type="date"
-                  value={admissionDate}
-                  onChange={(e) => setAdmissionDate(e.target.value)}
-                  min={minAdmissionDate}
-                  max={maxAdmissionDate}
-                  required
-                />
+                <div className="session-buttons-container">
+                  {["2023-2027", "2024-2028", "2025-2029", "2026-2030"].map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      className={`session-pill-btn ${session === s ? "active" : ""}`}
+                      onClick={() => setSession(s)}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
                 <small className="signup-hint-text">
-                  Allowed range: 2021 to {currentYear}
+                  Select your enrolled 4-year session batch
                 </small>
               </div>
             </>

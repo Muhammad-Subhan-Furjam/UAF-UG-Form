@@ -735,4 +735,37 @@
   width: 14px;
   display: inline-block;
   text-align: center;
+}
+
+/* Session Batch Select Buttons */
+.session-buttons-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.session-pill-btn {
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e4d2b;
+  background: #ffffff;
+  border: 2px solid #1e4d2b;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+}
+
+.session-pill-btn:hover {
+  background: #e8f5e9;
+}
+
+.session-pill-btn.active {
+  background: #1e4d2b;
+  color: #ffffff;
+  border-color: #1e4d2b;
+  box-shadow: 0 4px 10px rgba(30, 77, 43, 0.3);
 }

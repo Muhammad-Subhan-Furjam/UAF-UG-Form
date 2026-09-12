@@ -152,16 +152,12 @@ const Profile = () => {
               />
             </div>
 
-            {/* ADMISSION DATE */}
+            {/* SESSION / BATCH */}
             <div className="profile-field">
-              <label>Date of Admission</label>
+              <label>Session / Batch</label>
               <input
                 type="text"
-                value={
-                  profile.admissionDate
-                    ? new Date(profile.admissionDate).toLocaleDateString()
-                    : "N/A"
-                }
+                value={profile.session || "N/A"}
                 readOnly
                 disabled
                 className="student-readonly-input"

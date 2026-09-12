@@ -47,22 +47,51 @@ const UGForm = () => {
   }
 
   // Dynamic Semester Options based on selected Semester Commencing
+  const getBatchLimits = () => {
+    let session = student?.session || "";
+
+    if (!session && student?.ag_number) {
+      const match = student.ag_number.match(/^(\d{4})/);
+      if (match) {
+        const year = parseInt(match[1]);
+        session = `${year}-${year + 4}`;
+      }
+    }
+
+    if (session === "2023-2027") {
+      return { maxRegularSemester: 6, maxSummerSemester: 3 };
+    }
+    if (session === "2024-2028") {
+      return { maxRegularSemester: 4, maxSummerSemester: 2 };
+    }
+    if (session === "2025-2029") {
+      return { maxRegularSemester: 2, maxSummerSemester: 1 };
+    }
+    if (session === "2026-2030") {
+      return { maxRegularSemester: 2, maxSummerSemester: 1 };
+    }
+    return { maxRegularSemester: 2, maxSummerSemester: 1 };
+  };
+
+  // Dynamic Semester Options filtered strictly by student's Batch / Session reach
   const getSemesterOptions = () => {
     const commencing = formData.semesterCommencing;
+    const { maxRegularSemester, maxSummerSemester } = getBatchLimits();
+
+    let allOptions = [];
+
     if (commencing === "Fall") {
-      return [{ number: 1, name: "Semester 1" }];
-    }
-    if (commencing === "Winter") {
-      return [
+      allOptions = [{ number: 1, name: "Semester 1" }];
+    } else if (commencing === "Winter") {
+      allOptions = [
         { number: 3, name: "Semester 3" },
         { number: 5, name: "Semester 5" },
         { number: 7, name: "Semester 7" },
         { number: 9, name: "Semester 9" },
         { number: 11, name: "Semester 11" },
       ];
-    }
-    if (commencing === "Spring") {
-      return [
+    } else if (commencing === "Spring") {
+      allOptions = [
         { number: 2, name: "Semester 2" },
         { number: 4, name: "Semester 4" },
         { number: 6, name: "Semester 6" },
@@ -70,32 +99,42 @@ const UGForm = () => {
         { number: 10, name: "Semester 10" },
         { number: 12, name: "Semester 12" },
       ];
-    }
-    if (commencing === "Summer") {
-      return [
-        { number: "Summer semester 1", name: "Summer semester 1" },
-        { number: "Summer semester 2", name: "Summer semester 2" },
-        { number: "Summer semester 3", name: "Summer semester 3" },
-        { number: "Summer semester 4", name: "Summer semester 4" },
-        { number: "Summer semester 5", name: "Summer semester 5" },
-        { number: "Summer semester 6", name: "Summer semester 6" },
+    } else if (commencing === "Summer") {
+      allOptions = [
+        { number: "Summer semester 1", name: "Summer semester 1", summerNum: 1 },
+        { number: "Summer semester 2", name: "Summer semester 2", summerNum: 2 },
+        { number: "Summer semester 3", name: "Summer semester 3", summerNum: 3 },
+        { number: "Summer semester 4", name: "Summer semester 4", summerNum: 4 },
+        { number: "Summer semester 5", name: "Summer semester 5", summerNum: 5 },
+        { number: "Summer semester 6", name: "Summer semester 6", summerNum: 6 },
+      ];
+    } else {
+      allOptions = [
+        { number: 1, name: "Semester 1 (Fall)" },
+        { number: 2, name: "Semester 2 (Spring)" },
+        { number: 3, name: "Semester 3 (Winter)" },
+        { number: 4, name: "Semester 4 (Spring)" },
+        { number: 5, name: "Semester 5 (Winter)" },
+        { number: 6, name: "Semester 6 (Spring)" },
+        { number: 7, name: "Semester 7 (Winter)" },
+        { number: 8, name: "Semester 8 (Spring)" },
+        { number: 9, name: "Semester 9 (Winter)" },
+        { number: 10, name: "Semester 10 (Spring)" },
+        { number: 11, name: "Semester 11 (Winter)" },
+        { number: 12, name: "Semester 12 (Spring)" },
       ];
     }
-    // Default list (if not selected yet)
-    return [
-      { number: 1, name: "Semester 1 (Fall)" },
-      { number: 2, name: "Semester 2 (Spring)" },
-      { number: 3, name: "Semester 3 (Winter)" },
-      { number: 4, name: "Semester 4 (Spring)" },
-      { number: 5, name: "Semester 5 (Winter)" },
-      { number: 6, name: "Semester 6 (Spring)" },
-      { number: 7, name: "Semester 7 (Winter)" },
-      { number: 8, name: "Semester 8 (Spring)" },
-      { number: 9, name: "Semester 9 (Winter)" },
-      { number: 10, name: "Semester 10 (Spring)" },
-      { number: 11, name: "Semester 11 (Winter)" },
-      { number: 12, name: "Semester 12 (Spring)" },
-    ];
+
+    // Filter out future upcoming semesters beyond student batch reach
+    return allOptions.filter((opt) => {
+      if (typeof opt.number === "number") {
+        return opt.number <= maxRegularSemester;
+      }
+      if (opt.summerNum) {
+        return opt.summerNum <= maxSummerSemester;
+      }
+      return true;
+    });
   };
 
   useEffect(() => {

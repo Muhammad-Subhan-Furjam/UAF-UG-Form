@@ -62,6 +62,12 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
 
+    session: {
+      type: String,
+      enum: ["2023-2027", "2024-2028", "2025-2029", "2026-2030", ""],
+      default: "",
+    },
+
 campus_id: {
   type: mongoose.Schema.Types.ObjectId,
   ref: "Campus",
