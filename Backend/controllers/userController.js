@@ -262,17 +262,27 @@ const login = async (req, res) => {
       });
     }
 
-    // Create Token
+    // Update last active time & IP
+    const rawIp =
+      req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+      req.ip ||
+      req.connection?.remoteAddress ||
+      "127.0.0.1";
 
-   const token = jwt.sign(
-  {
-    id: user._id,
-    role: user.role,
-    department_id: user.department_id || null,
-  },
-  process.env.JWT_SECRET || "UAF_UG_FORM_SECRET_2026",
-  { expiresIn: "7d" }
-);
+    user.lastActiveAt = new Date();
+    user.lastIp = rawIp;
+    await user.save();
+
+    // Create Token
+    const token = jwt.sign(
+      {
+        id: user._id,
+        role: user.role,
+        department_id: user.department_id || null,
+      },
+      process.env.JWT_SECRET || "UAF_UG_FORM_SECRET_2026",
+      { expiresIn: "7d" }
+    );
 
     res.status(200).json({
       message: "Login Successfully",

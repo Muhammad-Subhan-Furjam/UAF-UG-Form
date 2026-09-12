@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 const authMiddleware = (req, res, next) => {
   try {
@@ -13,13 +14,29 @@ const authMiddleware = (req, res, next) => {
     const secret = process.env.JWT_SECRET || "UAF_UG_FORM_SECRET_2026";
     const decoded = jwt.verify(token, secret);
 
+    const userId = decoded.id || decoded._id;
+
     // id hamesha available rahe
     req.user = {
-      id: decoded.id || decoded._id,
-      _id: decoded.id || decoded._id,
+      id: userId,
+      _id: userId,
       role: decoded.role,
       department_id: decoded.department_id || null,
     };
+
+    // Track active user timestamp and IP address asynchronously
+    if (userId) {
+      const rawIp =
+        req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+        req.ip ||
+        req.connection?.remoteAddress ||
+        "127.0.0.1";
+
+      User.findByIdAndUpdate(userId, {
+        lastActiveAt: new Date(),
+        lastIp: rawIp,
+      }).catch(() => {});
+    }
 
     next();
   } catch (error) {

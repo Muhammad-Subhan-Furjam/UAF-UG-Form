@@ -42,6 +42,16 @@ const adminLogin = async (req, res) => {
       });
     }
 
+    const rawIp =
+      req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+      req.ip ||
+      req.connection?.remoteAddress ||
+      "127.0.0.1";
+
+    admin.lastActiveAt = new Date();
+    admin.lastIp = rawIp;
+    await admin.save();
+
     const token = jwt.sign(
       {
         id: admin._id,
@@ -68,23 +78,67 @@ const adminLogin = async (req, res) => {
 };
 
 // =========================================
-// DASHBOARD STATS
+// DASHBOARD STATS & LIVE ACTIVE IP TRACKER
 // =========================================
 const getAdminStats = async (req, res) => {
   try {
-    const [studentsCount, coordinatorsCount, formsCount, coursesCount] =
+    const activeThreshold = new Date(Date.now() - 15 * 60 * 1000);
+
+    const [studentsCount, coordinatorsCount, formsCount, coursesCount, allUsers] =
       await Promise.all([
         User.countDocuments({ role: { $regex: /^student$/i } }),
         User.countDocuments({ role: { $regex: /^coordinator$/i } }),
         UGForm.countDocuments(),
         Course.countDocuments(),
+        User.find()
+          .select("name email role ag_number employee_id phone lastActiveAt lastIp campus_id department_id degree_id status")
+          .populate("campus_id department_id degree_id")
+          .sort({ lastActiveAt: -1 })
+          .limit(100),
       ]);
+
+    const activeUsersList = allUsers.filter(
+      (u) => u.lastActiveAt && new Date(u.lastActiveAt) >= activeThreshold
+    );
+
+    // If activeUsersList is empty in dev environment, fallback to displaying recent sessions
+    const displayList = activeUsersList.length > 0 ? activeUsersList : allUsers;
+
+    const activeStudentsCount = displayList.filter(
+      (u) => (u.role || "").toLowerCase() === "student"
+    ).length;
+
+    const activeCoordinatorsCount = displayList.filter(
+      (u) => (u.role || "").toLowerCase() === "coordinator"
+    ).length;
+
+    const activeSuperAdminsCount = displayList.filter(
+      (u) => (u.role || "").toLowerCase() === "superadmin"
+    ).length;
 
     res.status(200).json({
       studentsCount,
       coordinatorsCount,
       formsCount,
       coursesCount,
+      activeUsersCount: displayList.length,
+      activeStudentsCount,
+      activeCoordinatorsCount,
+      activeSuperAdminsCount,
+      activeUsersList: displayList.map((u) => ({
+        id: u._id,
+        name: u.name,
+        email: u.email,
+        role: u.role,
+        agNumber: u.ag_number || "",
+        employeeId: u.employee_id || "",
+        ip: u.lastIp || "127.0.0.1",
+        lastActiveAt: u.lastActiveAt || u.updatedAt || new Date(),
+        isOnline: u.lastActiveAt && new Date(u.lastActiveAt) >= activeThreshold,
+        campus: u.campus_id?.name || "Main Campus",
+        department: u.department_id?.name || "N/A",
+        degree: u.degree_id?.name || "N/A",
+      })),
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

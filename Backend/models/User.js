@@ -97,6 +97,16 @@ degree_id: {
       default: null,
     },
 
+    lastActiveAt: {
+      type: Date,
+      default: Date.now,
+    },
+
+    lastIp: {
+      type: String,
+      default: "127.0.0.1",
+    },
+
     status: {
       type: Boolean,
       default: true,
