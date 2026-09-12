@@ -262,7 +262,7 @@ const Signup = () => {
 
       if (role === "student") {
         if (!session) {
-          alert("Please select your Session / Batch");
+          alert("Please select your Batch");
           return;
         }
         signupData.ag_number = userId.trim();
@@ -431,24 +431,23 @@ const Signup = () => {
                 </small>
               </div>
 
-              <div className="signup-form-group signup-session-group">
+              <div className="signup-form-group">
                 <label>
-                  Session / Batch <span style={{ color: "red" }}> *</span>
+                  Select Batch <span style={{ color: "red" }}> *</span>
                 </label>
-                <div className="session-buttons-container">
-                  {["2023-2027", "2024-2028", "2025-2029", "2026-2030"].map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      className={`session-pill-btn ${session === s ? "active" : ""}`}
-                      onClick={() => setSession(s)}
-                    >
-                      {s}
-                    </button>
-                  ))}
-                </div>
+                <select
+                  value={session}
+                  onChange={(e) => setSession(e.target.value)}
+                  required
+                >
+                  <option value="">Select Batch</option>
+                  <option value="2023-2027">2023-2027</option>
+                  <option value="2024-2028">2024-2028</option>
+                  <option value="2025-2029">2025-2029</option>
+                  <option value="2026-2030">2026-2030</option>
+                </select>
                 <small className="signup-hint-text">
-                  Select your enrolled 4-year session batch
+                  Select your enrolled 4-year batch
                 </small>
               </div>
             </>

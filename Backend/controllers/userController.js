@@ -60,7 +60,7 @@ const signup = async (req, res) => {
       ) {
         return res.status(400).json({
           message:
-            "AG Number, Father Name, CNIC, and Session / Batch are mandatory for student signup.",
+            "AG Number, Father Name, CNIC, and Batch selection are mandatory for student signup.",
         });
       }
     } else if (role === "coordinator") {
