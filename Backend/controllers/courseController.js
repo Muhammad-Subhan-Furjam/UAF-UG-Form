@@ -70,27 +70,25 @@ const addCourse = async (req, res) => {
       });
     }
 
-    // 1. Check for duplicate courseCode for this degree
+    // 1. Check for duplicate courseCode in the database
     const existingCode = await Course.findOne({
       courseCode: { $regex: new RegExp(`^${normalizedCode.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
-      degree_id: degree_id,
     });
 
     if (existingCode) {
       return res.status(400).json({
-        message: `Course Code '${normalizedCode}' already exists under the selected degree. Duplicate course codes are not allowed.`,
+        message: `Course Code '${normalizedCode}' is already present in the database. Duplicate course codes are not allowed.`,
       });
     }
 
-    // 2. Check for duplicate courseTitle for this degree
+    // 2. Check for duplicate courseTitle in the database
     const existingTitle = await Course.findOne({
       courseTitle: { $regex: new RegExp(`^${normalizedTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
-      degree_id: degree_id,
     });
 
     if (existingTitle) {
       return res.status(400).json({
-        message: `Course Title '${normalizedTitle}' already exists under the selected degree. Duplicate course titles are not allowed.`,
+        message: `Course Title '${normalizedTitle}' is already present in the database. Duplicate course titles are not allowed.`,
       });
     }
 
@@ -149,8 +147,6 @@ const updateCourse = async (req, res) => {
       return res.status(404).json({ message: "Course not found" });
     }
 
-    const degreeId = req.body.degree_id || currentCourse.degree_id;
-
     if (req.body.courseCode) {
       const normalizedCode = req.body.courseCode.trim().toUpperCase();
 
@@ -165,12 +161,11 @@ const updateCourse = async (req, res) => {
       const duplicateCode = await Course.findOne({
         _id: { $ne: req.params.id },
         courseCode: { $regex: new RegExp(`^${normalizedCode.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
-        degree_id: degreeId,
       });
 
       if (duplicateCode) {
         return res.status(400).json({
-          message: `Course Code '${normalizedCode}' is already in use by another course under this degree. Duplicate course codes are not allowed.`,
+          message: `Course Code '${normalizedCode}' is already present in the database. Duplicate course codes are not allowed.`,
         });
       }
       req.body.courseCode = normalizedCode;
@@ -182,12 +177,11 @@ const updateCourse = async (req, res) => {
       const duplicateTitle = await Course.findOne({
         _id: { $ne: req.params.id },
         courseTitle: { $regex: new RegExp(`^${normalizedTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
-        degree_id: degreeId,
       });
 
       if (duplicateTitle) {
         return res.status(400).json({
-          message: `Course Title '${normalizedTitle}' is already in use by another course under this degree. Duplicate course titles are not allowed.`,
+          message: `Course Title '${normalizedTitle}' is already present in the database. Duplicate course titles are not allowed.`,
         });
       }
       req.body.courseTitle = normalizedTitle;

@@ -345,6 +345,30 @@ const CoordinatorCourses = () => {
     setIsEditing(false);
   };
 
+  const handleDeleteSingleCourse = async (courseId, courseCode) => {
+    if (window.confirm(`Are you sure you want to delete course '${courseCode}'?`)) {
+      try {
+        setLoading(true);
+        await api.delete(`/courses/${courseId}`);
+
+        const updated = courses.filter((c) => String(c._id) !== String(courseId));
+        setCourses(updated);
+        setEditCourses(updated.map((c) => ({ ...c })));
+
+        if (updated.length === 0) {
+          setIsEditing(false);
+        }
+
+        alert(`Course '${courseCode}' deleted successfully.`);
+      } catch (error) {
+        console.error(error);
+        alert(error.response?.data?.message || "Failed to delete course");
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   /* =========================================
      PAGE TITLE
   ========================================= */
@@ -537,6 +561,7 @@ const CoordinatorCourses = () => {
                       <th>Scheme of Study</th>
                       <th>Course Title</th>
                       <th>Credit Hours</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -624,6 +649,50 @@ const CoordinatorCourses = () => {
                           ) : (
                             course.creditHours
                           )}
+                        </td>
+                        <td>
+                          <div style={{ display: "flex", gap: "8px", justifyContent: "center", alignItems: "center" }}>
+                            {!isEditing ? (
+                              <button
+                                type="button"
+                                onClick={() => setIsEditing(true)}
+                                style={{
+                                  padding: "6px 12px",
+                                  fontSize: "12px",
+                                  fontWeight: "600",
+                                  borderRadius: "4px",
+                                  cursor: "pointer",
+                                  backgroundColor: "#0284c7",
+                                  color: "#ffffff",
+                                  border: "none",
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: "4px",
+                                }}
+                              >
+                                ✏️ Edit
+                              </button>
+                            ) : null}
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteSingleCourse(course._id, course.courseCode)}
+                              style={{
+                                padding: "6px 12px",
+                                fontSize: "12px",
+                                fontWeight: "600",
+                                borderRadius: "4px",
+                                cursor: "pointer",
+                                backgroundColor: "#ef4444",
+                                color: "#ffffff",
+                                border: "none",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: "4px",
+                              }}
+                            >
+                              🗑️ Delete
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
