@@ -1,10 +1,19 @@
 const Course = require("../models/Course");
 const Semester = require("../models/Semester");
 
-// Get All Courses
+// Get All Courses (Supports Query Filtering)
 const getCourses = async (req, res) => {
   try {
-    const courses = await Course.find()
+    const { campus_id, faculty_id, department_id, degree_id, schemeOfStudy } = req.query;
+
+    let filter = {};
+    if (campus_id) filter.campus_id = campus_id;
+    if (faculty_id) filter.faculty_id = faculty_id;
+    if (department_id) filter.department_id = department_id;
+    if (degree_id) filter.degree_id = degree_id;
+    if (schemeOfStudy) filter.schemeOfStudy = schemeOfStudy;
+
+    const courses = await Course.find(filter)
       .populate("campus_id")
       .populate("faculty_id")
       .populate("department_id")
@@ -36,6 +45,7 @@ const addCourse = async (req, res) => {
       remarks,
       courseType,
       courseCategory,
+      schemeOfStudy,
     } = req.body;
 
     if (!courseCode || !courseTitle || !creditHours || !degree_id || !semesterNumber) {
@@ -43,6 +53,11 @@ const addCourse = async (req, res) => {
         message: "Required fields are missing",
       });
     }
+
+    const validSchemes = ["2022", "2024", "2026"];
+    const targetScheme = schemeOfStudy && validSchemes.includes(String(schemeOfStudy).trim())
+      ? String(schemeOfStudy).trim()
+      : "2024";
 
     const normalizedCode = courseCode.trim().toUpperCase();
     const normalizedTitle = courseTitle.trim();
@@ -108,6 +123,7 @@ const addCourse = async (req, res) => {
       semester_id: semester._id,
       courseType: courseType || "Compulsory",
       courseCategory: courseCategory || "General Course",
+      schemeOfStudy: targetScheme,
       totalMarks: totalMarks || "",
       remarks: remarks || "",
     });

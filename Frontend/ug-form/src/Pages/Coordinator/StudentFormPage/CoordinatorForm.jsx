@@ -25,6 +25,7 @@ const CoordinatorForm = () => {
   const [formData, setFormData] = useState({
     semester: "",
     semesterCommencing: "",
+    schemeOfStudy: "2024",
     courseCategory: "",
     courseCode: "",
     courseTitle: "",
@@ -243,6 +244,7 @@ const CoordinatorForm = () => {
       !degree ||
       !formData.semester ||
       !formData.semesterCommencing ||
+      !formData.schemeOfStudy ||
       !formData.courseCategory ||
       !formData.courseCode.trim() ||
       !formData.courseTitle.trim() ||
@@ -271,6 +273,7 @@ const CoordinatorForm = () => {
         degree_id: degree,
         semester: formData.semester,
         semesterNumber: formData.semesterCommencing,
+        schemeOfStudy: formData.schemeOfStudy,
         courseCategory: formData.courseCategory,
         courseCode: formData.courseCode.trim(),
         courseTitle: formData.courseTitle.trim(),
@@ -287,6 +290,7 @@ const CoordinatorForm = () => {
       setFormData({
         semester: "",
         semesterCommencing: "",
+        schemeOfStudy: "2024",
         courseCategory: "",
         courseCode: "",
         courseTitle: "",
@@ -419,6 +423,22 @@ const CoordinatorForm = () => {
                     {opt.label}
                   </option>
                 ))}
+              </select>
+            </div>
+
+            {/* SCHEME OF STUDY (MANDATORY - 2022, 2024, 2026) */}
+            <div className="form-group">
+              <label>Scheme of Study *</label>
+              <select
+                name="schemeOfStudy"
+                value={formData.schemeOfStudy}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Scheme of Study</option>
+                <option value="2022">2022</option>
+                <option value="2024">2024</option>
+                <option value="2026">2026</option>
               </select>
             </div>
 

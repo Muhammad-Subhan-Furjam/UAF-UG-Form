@@ -23,6 +23,7 @@ const AdminCourses = () => {
     department_id: "",
     degree_id: "",
     semesterCommencing: "1",
+    schemeOfStudy: "2024",
     courseCategory: "General Course",
     courseCode: "",
     courseTitle: "",
@@ -120,6 +121,7 @@ const AdminCourses = () => {
       department_id: departments[0]?._id || "",
       degree_id: degrees[0]?._id || "",
       semesterCommencing: "1",
+      schemeOfStudy: "2024",
       courseCategory: "General Course",
       courseCode: "",
       courseTitle: "",
@@ -140,6 +142,7 @@ const AdminCourses = () => {
       department_id: course.department_id?._id || course.department_id || "",
       degree_id: course.degree_id?._id || course.degree_id || "",
       semesterCommencing: course.semester_id?.number || "1",
+      schemeOfStudy: course.schemeOfStudy || "2024",
       courseCategory: course.courseCategory || "General Course",
       courseCode: course.courseCode || "",
       courseTitle: course.courseTitle || "",
@@ -175,6 +178,7 @@ const AdminCourses = () => {
         department_id: formData.department_id,
         degree_id: formData.degree_id,
         semesterNumber: formData.semesterCommencing,
+        schemeOfStudy: formData.schemeOfStudy,
         courseCategory: formData.courseCategory,
         courseCode: formData.courseCode.trim().toUpperCase(),
         courseTitle: formData.courseTitle.trim(),
@@ -235,7 +239,8 @@ const AdminCourses = () => {
       (c.courseCode && c.courseCode.toLowerCase().includes(q)) ||
       (c.courseTitle && c.courseTitle.toLowerCase().includes(q)) ||
       (c.degree_id?.name && c.degree_id.name.toLowerCase().includes(q)) ||
-      (c.department_id?.name && c.department_id.name.toLowerCase().includes(q))
+      (c.department_id?.name && c.department_id.name.toLowerCase().includes(q)) ||
+      (c.schemeOfStudy && c.schemeOfStudy.toLowerCase().includes(q))
     );
   });
 
@@ -253,7 +258,7 @@ const AdminCourses = () => {
           <span className="search-icon">🔍</span>
           <input
             type="text"
-            placeholder="Search by Course Code, Title, Degree, Department..."
+            placeholder="Search by Course Code, Title, Scheme of Study, Degree, Department..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -275,6 +280,7 @@ const AdminCourses = () => {
                   <th>Course Code</th>
                   <th>Course Title</th>
                   <th>Credit Hours</th>
+                  <th>Scheme of Study</th>
                   <th>Category</th>
                   <th>Campus</th>
                   <th>Department</th>
@@ -289,6 +295,7 @@ const AdminCourses = () => {
                       <td className="font-bold">{c.courseCode}</td>
                       <td><strong>{c.courseTitle}</strong></td>
                       <td>{c.creditHours}</td>
+                      <td><span className="category-tag" style={{ background: "#e0f2fe", color: "#0369a1" }}>{c.schemeOfStudy || "2024"}</span></td>
                       <td><span className="category-tag">{c.courseCategory || "General"}</span></td>
                       <td>{c.campus_id?.name || "N/A"}</td>
                       <td>{c.department_id?.name || "N/A"}</td>
@@ -307,7 +314,7 @@ const AdminCourses = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="8" style={{ textAlign: "center", padding: "30px" }}>
+                    <td colSpan="9" style={{ textAlign: "center", padding: "30px" }}>
                       No courses found matching your query.
                     </td>
                   </tr>
@@ -417,6 +424,20 @@ const AdminCourses = () => {
                         {item.name}
                       </option>
                     ))}
+                  </select>
+                </div>
+
+                {/* SCHEME OF STUDY */}
+                <div className="form-group">
+                  <label>Scheme of Study *</label>
+                  <select
+                    value={formData.schemeOfStudy}
+                    onChange={(e) => setFormData({ ...formData, schemeOfStudy: e.target.value })}
+                    required
+                  >
+                    <option value="2022">2022</option>
+                    <option value="2024">2024</option>
+                    <option value="2026">2026</option>
                   </select>
                 </div>
 

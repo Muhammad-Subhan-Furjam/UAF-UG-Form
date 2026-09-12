@@ -57,6 +57,30 @@ useEffect(() => {
       setForm(latestForm);
 
       if (latestForm.degree_id && latestForm.semester_id) {
+        const userRes = await api.get("/users/profile");
+        const user = userRes.data?.user || {};
+
+        const userCampusId = user.campus_id?._id || user.campus_id || "";
+        const userFacultyId = user.faculty_id?._id || user.faculty_id || "";
+        const userDeptId = user.department_id?._id || user.department_id || "";
+
+        let studentScheme = "2024";
+        let session = user.session || user.batch || "";
+        if (!session && user.ag_number) {
+          const match = user.ag_number.match(/^(\d{4})/);
+          if (match) {
+            const year = parseInt(match[1]);
+            session = `${year}-${year + 4}`;
+          }
+        }
+        if (session === "2026-2030" || session.startsWith("2026")) {
+          studentScheme = "2026";
+        } else if (session === "2023-2027" || session.startsWith("2023")) {
+          studentScheme = "2022";
+        } else {
+          studentScheme = "2024";
+        }
+
         const coursesRes = await api.get("/courses");
 
         const degreeId =
@@ -70,19 +94,20 @@ useEffect(() => {
             : latestForm.semester_id;
 
         const filtered = coursesRes.data.filter((course) => {
-          const courseDegreeId =
-            typeof course.degree_id === "object"
-              ? course.degree_id?._id
-              : course.degree_id;
-          const courseSemesterId =
-            typeof course.semester_id === "object"
-              ? course.semester_id?._id
-              : course.semester_id;
+          const courseCampusId = course.campus_id?._id || course.campus_id || "";
+          const courseFacultyId = course.faculty_id?._id || course.faculty_id || "";
+          const courseDeptId = course.department_id?._id || course.department_id || "";
+          const courseDegreeId = course.degree_id?._id || course.degree_id || "";
+          const courseSemesterId = course.semester_id?._id || course.semester_id || "";
 
-          return (
-            String(courseDegreeId) === String(degreeId) &&
-            String(courseSemesterId) === String(semesterId)
-          );
+          const campusMatch = !courseCampusId || !userCampusId || String(courseCampusId) === String(userCampusId);
+          const facultyMatch = !courseFacultyId || !userFacultyId || String(courseFacultyId) === String(userFacultyId);
+          const deptMatch = !courseDeptId || !userDeptId || String(courseDeptId) === String(userDeptId);
+          const degreeMatch = String(courseDegreeId) === String(degreeId);
+          const semesterMatch = String(courseSemesterId) === String(semesterId);
+          const schemeMatch = !course.schemeOfStudy || String(course.schemeOfStudy) === String(studentScheme);
+
+          return campusMatch && facultyMatch && deptMatch && degreeMatch && semesterMatch && schemeMatch;
         });
 
         setCourses(filtered);

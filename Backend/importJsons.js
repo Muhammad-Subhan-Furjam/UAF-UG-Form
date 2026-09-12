@@ -80,6 +80,9 @@ const importData = async () => {
             if (typeof c.creditHours === "number") {
               c.creditHours = `${c.creditHours} (${c.creditHours}-0)`;
             }
+            if (!c.schemeOfStudy) {
+              c.schemeOfStudy = "2024";
+            }
           }
         }
 

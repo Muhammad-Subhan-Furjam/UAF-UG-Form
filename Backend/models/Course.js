@@ -45,6 +45,14 @@ const courseSchema = new mongoose.Schema(
       default: "General Course",
       trim: true,
     },
+
+    schemeOfStudy: {
+      type: String,
+      enum: ["2022", "2024", "2026"],
+      default: "2024",
+      required: true,
+      trim: true,
+    },
     // ================================
 
     campus_id: {

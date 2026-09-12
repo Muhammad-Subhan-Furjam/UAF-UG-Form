@@ -321,6 +321,7 @@ const CoordinatorCourses = () => {
         await api.put(`/courses/${course._id}`, {
           courseCode: (course.courseCode || "").trim().toUpperCase(),
           courseCategory: course.courseCategory || "General Course",
+          schemeOfStudy: course.schemeOfStudy || "2024",
           courseTitle: course.courseTitle,
           creditHours: course.creditHours,
           totalMarks: course.totalMarks || "",
@@ -452,33 +453,30 @@ const CoordinatorCourses = () => {
         </div>
       )}
 
-      {/* STEP 4 - DISCIPLINE (Departmental Degrees) */}
-      {selectedDepartment && !selectedDiscipline && !loading && (
-        <div className="course-cards-grid">
-          {disciplines.length > 0 ? (
-            disciplines.map((discipline) => (
+      {/* STEP 4 - DISCIPLINE / DEGREE (Locked to Assigned Degrees) */}
+      {selectedCampus &&
+        selectedFaculty &&
+        selectedDepartment &&
+        !selectedDiscipline &&
+        !loading && (
+          <div className="course-cards-grid">
+            {disciplines.map((deg) => (
               <button
                 type="button"
-                key={discipline._id}
+                key={deg._id}
                 className="course-selection-card"
-                onClick={() => handleDisciplineSelect(discipline)}
+                onClick={() => handleDisciplineSelect(deg)}
               >
-                {discipline.name}
+                {deg.name}
               </button>
-            ))
-          ) : (
-            <div className="courses-empty-state">
-              <h3>No Discipline Found</h3>
-              <p>No degree/discipline available for this department yet.</p>
-            </div>
-          )}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
 
       {/* STEP 5 - SEMESTER */}
       {selectedDiscipline && !selectedSemester && (
         <div className="semester-selection-section">
-          <h3 className="semester-section-heading">Regular Semesters</h3>
+          <h3>Regular Semesters</h3>
           <div className="semester-cards-grid">
             {regularSemesters.map((semester) => (
               <button
@@ -492,9 +490,7 @@ const CoordinatorCourses = () => {
             ))}
           </div>
 
-          <h3 className="semester-section-heading summer-heading">
-            Summer Semesters
-          </h3>
+          <h3 style={{ marginTop: "24px" }}>Summer Semesters</h3>
           <div className="semester-cards-grid">
             {summerSemesters.map((semester) => (
               <button
@@ -538,6 +534,7 @@ const CoordinatorCourses = () => {
                     <tr>
                       <th>Course Code</th>
                       <th>Course Category</th>
+                      <th>Scheme of Study</th>
                       <th>Course Title</th>
                       <th>Credit Hours</th>
                     </tr>
@@ -576,6 +573,23 @@ const CoordinatorCourses = () => {
                             </select>
                           ) : (
                             course.courseCategory || "General Course"
+                          )}
+                        </td>
+                        <td>
+                          {isEditing ? (
+                            <select
+                              value={course.schemeOfStudy || "2024"}
+                              onChange={(e) =>
+                                handleEditChange(index, "schemeOfStudy", e.target.value)
+                              }
+                              style={{ width: "100%", padding: "6px", boxSizing: "border-box" }}
+                            >
+                              <option value="2022">2022</option>
+                              <option value="2024">2024</option>
+                              <option value="2026">2026</option>
+                            </select>
+                          ) : (
+                            course.schemeOfStudy || "2024"
                           )}
                         </td>
                         <td>
