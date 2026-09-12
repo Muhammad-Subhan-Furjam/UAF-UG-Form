@@ -226,12 +226,12 @@ const Signup = () => {
       }
     }
 
-    // 1. Student AG Number Validation (YYYY-ag-XXXX)
+    // 1. Student AG Number Validation (YYYY-ag-XXXXX)
     if (role === "student") {
-      const agPattern = /^\d{4}-ag-\d{4}$/i;
+      const agPattern = /^\d{4}-ag-\d{5}$/i;
       if (!agPattern.test(userId.trim())) {
         alert(
-          "Invalid AG Number format! Standard format is 4-digit year-ag-4-digit number (e.g. 2024-ag-1234)"
+          "Invalid AG Number format! Standard format is 4-digit year-ag-5-digit number (e.g. 2024-ag-12345)"
         );
         return;
       }
@@ -324,7 +324,7 @@ const Signup = () => {
     "Register your own email address, do not use anyone else’s email because all correspondence will be shared with you on this email.",
     "Use your own CNIC or B-Form Number (13 digits). Do not use anyone else’s CNIC or B-Form.",
     "Once CNIC or B-Form is registered with UAF, you cannot change it.",
-    "AG Number must follow standard format: YYYY-ag-XXXX (e.g. 2024-ag-1234).",
+    "AG Number must follow standard format: YYYY-ag-XXXXX (e.g. 2024-ag-12345).",
     "Type your own password following the strength rules and remember it carefully.",
   ];
 
@@ -396,7 +396,7 @@ const Signup = () => {
               onChange={handleUserIdChange}
               placeholder={
                 role === "student"
-                  ? "e.g. 2024-ag-1234"
+                  ? "e.g. 2024-ag-12345"
                   : "e.g. 12345678 (5-8 digits)"
               }
               maxLength={role === "coordinator" ? 8 : undefined}
@@ -404,7 +404,7 @@ const Signup = () => {
             />
             {role === "student" ? (
               <small className="signup-hint-text">
-                Format: 4-digit year-ag-4-digit number (e.g. 2024-ag-1234)
+                Format: 4-digit year-ag-5-digit number (e.g. 2024-ag-12345)
               </small>
             ) : (
               <small className="signup-hint-text">

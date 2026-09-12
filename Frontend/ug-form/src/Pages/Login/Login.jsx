@@ -97,7 +97,7 @@ const Login = () => {
               onChange={handleUserIdChange}
               placeholder={
                 role === "student"
-                  ? "e.g. 2024-ag-1234"
+                  ? "e.g. 2024-ag-12345"
                   : "e.g. 12345678 (5-8 digits)"
               }
               maxLength={role === "coordinator" ? 8 : undefined}
@@ -105,7 +105,7 @@ const Login = () => {
             />
             {role === "student" ? (
               <small className="login-hint-text">
-                Format: 4-digit year-ag-4-digit number (e.g. 2024-ag-1234)
+                Format: 4-digit year-ag-5-digit number (e.g. 2024-ag-12345)
               </small>
             ) : (
               <small className="login-hint-text">

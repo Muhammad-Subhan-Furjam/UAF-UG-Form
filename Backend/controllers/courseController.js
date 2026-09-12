@@ -45,6 +45,7 @@ const addCourse = async (req, res) => {
     }
 
     const normalizedCode = courseCode.trim().toUpperCase();
+    const normalizedTitle = courseTitle.trim();
 
     const courseCodeRegex = /^([A-Z]{2,7}-\d{2,4}|[A-Z]{2,7}-[A-Z]{2,7}-\d{2,4})$/;
     if (!courseCodeRegex.test(normalizedCode)) {
@@ -54,15 +55,27 @@ const addCourse = async (req, res) => {
       });
     }
 
-    // Check for duplicate courseCode for this degree
-    const existingCourse = await Course.findOne({
-      courseCode: { $regex: new RegExp(`^${normalizedCode}$`, "i") },
+    // 1. Check for duplicate courseCode for this degree
+    const existingCode = await Course.findOne({
+      courseCode: { $regex: new RegExp(`^${normalizedCode.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
       degree_id: degree_id,
     });
 
-    if (existingCourse) {
+    if (existingCode) {
       return res.status(400).json({
-        message: `Course code '${normalizedCode}' already exists for this degree. Duplicate entries are not allowed.`,
+        message: `Course Code '${normalizedCode}' already exists under the selected degree. Duplicate course codes are not allowed.`,
+      });
+    }
+
+    // 2. Check for duplicate courseTitle for this degree
+    const existingTitle = await Course.findOne({
+      courseTitle: { $regex: new RegExp(`^${normalizedTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
+      degree_id: degree_id,
+    });
+
+    if (existingTitle) {
+      return res.status(400).json({
+        message: `Course Title '${normalizedTitle}' already exists under the selected degree. Duplicate course titles are not allowed.`,
       });
     }
 
@@ -86,7 +99,7 @@ const addCourse = async (req, res) => {
     // Create Course
     const course = await Course.create({
       courseCode: normalizedCode,
-      courseTitle,
+      courseTitle: normalizedTitle,
       creditHours,
       campus_id,
       faculty_id,
@@ -114,6 +127,14 @@ const addCourse = async (req, res) => {
 // Update Course
 const updateCourse = async (req, res) => {
   try {
+    const currentCourse = await Course.findById(req.params.id);
+
+    if (!currentCourse) {
+      return res.status(404).json({ message: "Course not found" });
+    }
+
+    const degreeId = req.body.degree_id || currentCourse.degree_id;
+
     if (req.body.courseCode) {
       const normalizedCode = req.body.courseCode.trim().toUpperCase();
 
@@ -125,22 +146,35 @@ const updateCourse = async (req, res) => {
         });
       }
 
-      const currentCourse = await Course.findById(req.params.id);
+      const duplicateCode = await Course.findOne({
+        _id: { $ne: req.params.id },
+        courseCode: { $regex: new RegExp(`^${normalizedCode.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
+        degree_id: degreeId,
+      });
 
-      if (currentCourse) {
-        const duplicate = await Course.findOne({
-          _id: { $ne: req.params.id },
-          courseCode: { $regex: new RegExp(`^${normalizedCode}$`, "i") },
-          degree_id: currentCourse.degree_id,
+      if (duplicateCode) {
+        return res.status(400).json({
+          message: `Course Code '${normalizedCode}' is already in use by another course under this degree. Duplicate course codes are not allowed.`,
         });
-
-        if (duplicate) {
-          return res.status(400).json({
-            message: `Course code '${normalizedCode}' is already in use by another course under this degree.`,
-          });
-        }
       }
       req.body.courseCode = normalizedCode;
+    }
+
+    if (req.body.courseTitle) {
+      const normalizedTitle = req.body.courseTitle.trim();
+
+      const duplicateTitle = await Course.findOne({
+        _id: { $ne: req.params.id },
+        courseTitle: { $regex: new RegExp(`^${normalizedTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
+        degree_id: degreeId,
+      });
+
+      if (duplicateTitle) {
+        return res.status(400).json({
+          message: `Course Title '${normalizedTitle}' is already in use by another course under this degree. Duplicate course titles are not allowed.`,
+        });
+      }
+      req.body.courseTitle = normalizedTitle;
     }
 
     const course = await Course.findByIdAndUpdate(

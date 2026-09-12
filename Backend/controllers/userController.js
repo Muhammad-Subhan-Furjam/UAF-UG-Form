@@ -119,6 +119,14 @@ const signup = async (req, res) => {
 
     // 4. Check Student AG Number (For Student Role)
     if (role === "student" && ag_number && ag_number.trim()) {
+      const agPattern = /^\d{4}-ag-\d{5}$/i;
+      if (!agPattern.test(ag_number.trim())) {
+        return res.status(400).json({
+          message:
+            "Invalid AG Number format! Standard format is 4-digit year-ag-5-digit number (e.g. 2024-ag-12345).",
+        });
+      }
+
       const existingAg = await User.findOne({
         ag_number: { $regex: new RegExp(`^${ag_number.trim()}$`, "i") },
       });

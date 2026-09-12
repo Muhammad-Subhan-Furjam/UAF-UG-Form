@@ -539,7 +539,7 @@ const StudentsList = () => {
 
                 {/* AG NUMBER */}
                 <div className="form-group">
-                  <label>AG Number (YYYY-ag-XXXX) *</label>
+                  <label>AG Number (YYYY-ag-XXXXX) *</label>
                   <input
                     type="text"
                     value={editFormData.ag_number}
