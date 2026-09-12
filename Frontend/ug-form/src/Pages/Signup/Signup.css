@@ -222,7 +222,7 @@
    SIGNUP DROPDOWNS
 ========================================= */
 
-.signup-form-group select {
+.signup-form-group select:not(.email-domain-select) {
   width: 100%;
   height: 62px;
 
@@ -249,11 +249,11 @@
   transition: border-color 0.2s ease;
 }
 
-.signup-form-group select:focus {
+.signup-form-group select:not(.email-domain-select):focus {
   border-color: #062f5c;
 }
 
-.signup-form-group select:disabled {
+.signup-form-group select:not(.email-domain-select):disabled {
   background-color: #f3f3f3;
 
   color: #999999;
@@ -619,10 +619,12 @@
   display: flex;
   align-items: center;
   width: 100%;
+  height: 62px;
   border: 2px solid #c2c2c2;
   border-radius: 9px;
   background: #ffffff;
   overflow: hidden;
+  box-sizing: border-box;
   transition: border-color 0.2s ease;
 }
 
@@ -631,20 +633,23 @@
 }
 
 .email-input-wrapper input {
-  flex: 1;
+  flex: 1 !important;
+  min-width: 0 !important;
+  width: auto !important;
   border: none !important;
-  outline: none;
-  height: 62px;
-  padding: 0 14px;
+  outline: none !important;
+  height: 100% !important;
+  padding: 0 14px !important;
+  box-sizing: border-box !important;
 }
 
 .email-addon {
-  padding: 0 16px;
+  padding: 0 14px;
   background: #f0f4f8;
   color: #062f5c;
   font-weight: 700;
   font-size: 15px;
-  height: 62px;
+  height: 100%;
   display: flex;
   align-items: center;
   border-left: 1px solid #dcdcdc;
@@ -652,20 +657,25 @@
 }
 
 .email-domain-select {
-  padding: 0 12px;
-  background: #f0f4f8;
-  color: #062f5c;
-  font-weight: 700;
-  font-size: 15px;
-  height: 62px;
-  border: none;
-  border-left: 1px solid #dcdcdc;
-  outline: none;
-  cursor: pointer;
+  width: 140px !important;
+  max-width: 145px !important;
+  flex-shrink: 0 !important;
+  padding: 0 8px !important;
+  background: #f0f4f8 !important;
+  color: #062f5c !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  height: 100% !important;
+  border: none !important;
+  border-left: 1px solid #dcdcdc !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
 }
 
 .email-domain-select:focus {
-  background: #e2eaf4;
+  background: #e2eaf4 !important;
 }
 
 /* =========================================

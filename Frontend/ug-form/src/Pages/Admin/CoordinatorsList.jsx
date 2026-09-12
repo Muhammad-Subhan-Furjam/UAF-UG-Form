@@ -630,14 +630,15 @@ const CoordinatorsList = () => {
                       }
                       placeholder="username"
                       required
-                      style={{ flex: 1 }}
+                      style={{ flex: 1, minWidth: 0 }}
                     />
                     <select
+                      className="modal-domain-select"
                       value={addFormData.emailDomain}
                       onChange={(e) =>
                         setAddFormData({ ...addFormData, emailDomain: e.target.value })
                       }
-                      style={{ width: "130px" }}
+                      style={{ width: "135px", flexShrink: 0 }}
                     >
                       <option value="@uaf.edu.pk">@uaf.edu.pk</option>
                       <option value="@gmail.com">@gmail.com</option>
