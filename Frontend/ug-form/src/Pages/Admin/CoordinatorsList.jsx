@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import api from "../../api/api";
 import "./CoordinatorsList.css";
 
 const CoordinatorsList = () => {
+  const [searchParams] = useSearchParams();
   const [coordinators, setCoordinators] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,6 +19,21 @@ const CoordinatorsList = () => {
   const [faculties, setFaculties] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [degrees, setDegrees] = useState([]);
+
+  // Add Modal State
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [addFormData, setAddFormData] = useState({
+    name: "",
+    emailPrefix: "",
+    emailDomain: "@uaf.edu.pk",
+    employee_id: "",
+    password: "",
+    phone: "",
+    campus_id: "",
+    faculty_id: "",
+    department_id: "",
+    degree_id: "",
+  });
 
   // Edit Modal State
   const [editingCoord, setEditingCoord] = useState(null);
@@ -66,12 +83,92 @@ const CoordinatorsList = () => {
         setFaculties(fRes.data || []);
         setDepartments(dRes.data || []);
         setDegrees(degRes.data || []);
+
+        if (searchParams.get("action") === "add") {
+          setShowAddModal(true);
+          setAddFormData((prev) => ({
+            ...prev,
+            campus_id: cRes.data?.[0]?._id || "",
+          }));
+        }
       } catch (err) {
         console.error("Failed to load academic hierarchy:", err);
       }
     };
     fetchHierarchy();
-  }, []);
+  }, [searchParams]);
+
+  // =========================================
+  // OPEN ADD MODAL
+  // =========================================
+  const handleOpenAdd = () => {
+    setModalMessage("");
+    setAddFormData({
+      name: "",
+      emailPrefix: "",
+      emailDomain: "@uaf.edu.pk",
+      employee_id: "",
+      password: "",
+      phone: "",
+      campus_id: campuses[0]?._id || "",
+      faculty_id: "",
+      department_id: "",
+      degree_id: "",
+    });
+    setShowAddModal(true);
+  };
+
+  // =========================================
+  // CREATE COORDINATOR
+  // =========================================
+  const handleCreateCoordinator = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    setModalMessage("");
+
+    try {
+      if (!addFormData.name.trim() || !addFormData.emailPrefix.trim() || !addFormData.password || !addFormData.employee_id.trim()) {
+        setModalMessage("Name, Email, Password, and Employee ID are required.");
+        setSaving(false);
+        return;
+      }
+
+      if (addFormData.employee_id.trim().length <= 4 || addFormData.employee_id.trim().length > 8) {
+        setModalMessage("Employee ID must be between 5 and 8 digits/characters long.");
+        setSaving(false);
+        return;
+      }
+
+      const fullEmail = addFormData.emailPrefix.includes("@")
+        ? addFormData.emailPrefix.trim()
+        : `${addFormData.emailPrefix.trim()}${addFormData.emailDomain}`;
+
+      const payload = {
+        name: addFormData.name.trim(),
+        email: fullEmail,
+        password: addFormData.password,
+        employee_id: addFormData.employee_id.trim(),
+        phone: addFormData.phone.trim(),
+        campus_id: addFormData.campus_id || null,
+        faculty_id: addFormData.faculty_id || null,
+        department_id: addFormData.department_id || null,
+        degree_id: addFormData.degree_id || null,
+        role: "coordinator",
+      };
+
+      const res = await api.post("/admin/users", payload);
+      setModalMessage("Coordinator created successfully!");
+
+      fetchCoordinators();
+      setTimeout(() => {
+        setShowAddModal(false);
+      }, 1200);
+    } catch (error) {
+      setModalMessage(error.response?.data?.message || "Failed to create coordinator.");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   // =========================================
   // OPEN EDIT MODAL
@@ -294,9 +391,18 @@ const CoordinatorsList = () => {
   return (
     <div className="admin-coordinators-page">
       {/* HEADER */}
-      <div className="admin-page-header">
-        <h2>Coordinators Governance Directory</h2>
-        <p>View, alter, and manage all departmental coordinator accounts system-wide.</p>
+      <div className="admin-page-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div>
+          <h2>Coordinators Governance Directory</h2>
+          <p>View, alter, and manage all departmental coordinator accounts system-wide.</p>
+        </div>
+        <button
+          className="admin-action-btn edit-btn"
+          style={{ padding: "10px 18px", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}
+          onClick={handleOpenAdd}
+        >
+          ➕ Add New Coordinator
+        </button>
       </div>
 
       {/* TOOLBAR & FILTERS */}
@@ -463,6 +569,251 @@ const CoordinatorsList = () => {
                 )}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {/* ADD COORDINATOR MODAL */}
+      {showAddModal && (
+        <div className="admin-modal-overlay">
+          <div className="admin-modal-card">
+            <div className="admin-modal-header">
+              <h3>➕ Add New Coordinator Account</h3>
+              <button
+                className="modal-close-btn"
+                onClick={() => setShowAddModal(false)}
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateCoordinator} className="admin-modal-form">
+              <div className="modal-form-grid">
+                {/* NAME */}
+                <div className="form-group">
+                  <label>Coordinator Name *</label>
+                  <input
+                    type="text"
+                    value={addFormData.name}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, name: e.target.value })
+                    }
+                    placeholder="Enter full name"
+                    required
+                  />
+                </div>
+
+                {/* EMPLOYEE ID */}
+                <div className="form-group">
+                  <label>Employee ID (5 to 8 digits/chars) *</label>
+                  <input
+                    type="text"
+                    value={addFormData.employee_id}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, employee_id: e.target.value })
+                    }
+                    placeholder="e.g. 12345678"
+                    maxLength={8}
+                    required
+                  />
+                </div>
+
+                {/* EMAIL WITH DOMAIN SELECTOR */}
+                <div className="form-group">
+                  <label>Email Address *</label>
+                  <div style={{ display: "flex", gap: "5px" }}>
+                    <input
+                      type="text"
+                      value={addFormData.emailPrefix}
+                      onChange={(e) =>
+                        setAddFormData({ ...addFormData, emailPrefix: e.target.value })
+                      }
+                      placeholder="username"
+                      required
+                      style={{ flex: 1 }}
+                    />
+                    <select
+                      value={addFormData.emailDomain}
+                      onChange={(e) =>
+                        setAddFormData({ ...addFormData, emailDomain: e.target.value })
+                      }
+                      style={{ width: "130px" }}
+                    >
+                      <option value="@uaf.edu.pk">@uaf.edu.pk</option>
+                      <option value="@gmail.com">@gmail.com</option>
+                      <option value="@hotmail.com">@hotmail.com</option>
+                      <option value="@yahoo.com">@yahoo.com</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* PASSWORD */}
+                <div className="form-group">
+                  <label>Initial Password *</label>
+                  <input
+                    type="password"
+                    value={addFormData.password}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, password: e.target.value })
+                    }
+                    placeholder="Enter account password"
+                    required
+                  />
+                </div>
+
+                {/* PHONE */}
+                <div className="form-group">
+                  <label>Phone Number</label>
+                  <input
+                    type="text"
+                    value={addFormData.phone}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, phone: e.target.value })
+                    }
+                    placeholder="e.g. 03001234567"
+                  />
+                </div>
+
+                {/* ASSIGNED CAMPUS */}
+                <div className="form-group">
+                  <label>Assigned Campus *</label>
+                  <select
+                    value={addFormData.campus_id}
+                    onChange={(e) =>
+                      setAddFormData({
+                        ...addFormData,
+                        campus_id: e.target.value,
+                        faculty_id: "",
+                        department_id: "",
+                        degree_id: "",
+                      })
+                    }
+                    required
+                  >
+                    <option value="">Select Campus</option>
+                    {campuses.map((c) => (
+                      <option key={c._id} value={c._id}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* ASSIGNED FACULTY */}
+                <div className="form-group">
+                  <label>Assigned Faculty</label>
+                  <select
+                    value={addFormData.faculty_id}
+                    onChange={(e) =>
+                      setAddFormData({
+                        ...addFormData,
+                        faculty_id: e.target.value,
+                        department_id: "",
+                        degree_id: "",
+                      })
+                    }
+                  >
+                    <option value="">Select Faculty</option>
+                    {(addFormData.campus_id
+                      ? faculties.filter(
+                          (f) =>
+                            String(f.campus_id?._id || f.campus_id) ===
+                            String(addFormData.campus_id)
+                        )
+                      : faculties
+                    ).map((f) => (
+                      <option key={f._id} value={f._id}>
+                        {f.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* ASSIGNED DEPARTMENT */}
+                <div className="form-group">
+                  <label>Assigned Department</label>
+                  <select
+                    value={addFormData.department_id}
+                    onChange={(e) =>
+                      setAddFormData({
+                        ...addFormData,
+                        department_id: e.target.value,
+                        degree_id: "",
+                      })
+                    }
+                  >
+                    <option value="">Select Department</option>
+                    {(addFormData.faculty_id
+                      ? departments.filter(
+                          (d) =>
+                            String(d.faculty_id?._id || d.faculty_id) ===
+                            String(addFormData.faculty_id)
+                        )
+                      : departments
+                    ).map((d) => (
+                      <option key={d._id} value={d._id}>
+                        {d.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* ASSIGNED DEGREE */}
+                <div className="form-group">
+                  <label>Assigned Degree (Optional)</label>
+                  <select
+                    value={addFormData.degree_id}
+                    onChange={(e) =>
+                      setAddFormData({
+                        ...addFormData,
+                        degree_id: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="">Select Degree (Optional)</option>
+                    {(addFormData.department_id
+                      ? degrees.filter(
+                          (deg) =>
+                            String(deg.department_id?._id || deg.department_id) ===
+                            String(addFormData.department_id)
+                        )
+                      : degrees
+                    ).map((deg) => (
+                      <option key={deg._id} value={deg._id}>
+                        {deg.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {modalMessage && (
+                <p
+                  className={`modal-msg ${
+                    modalMessage.includes("success") ? "success" : "error"
+                  }`}
+                >
+                  {modalMessage}
+                </p>
+              )}
+
+              <div className="modal-actions-row">
+                <button
+                  type="button"
+                  className="modal-cancel-btn"
+                  onClick={() => setShowAddModal(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="modal-save-btn"
+                  disabled={saving}
+                >
+                  {saving ? "Creating Coordinator..." : "Create Coordinator Account"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

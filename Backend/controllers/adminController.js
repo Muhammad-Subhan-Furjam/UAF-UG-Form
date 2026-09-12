@@ -310,6 +310,229 @@ const getSuperAdmins = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+// =========================================
+// CREATE USER BY ADMIN (Coordinator / Student)
+// =========================================
+const createUserByAdmin = async (req, res) => {
+  try {
+    const {
+      name,
+      email,
+      password,
+      role,
+      ag_number,
+      employee_id,
+      phone,
+      fatherName,
+      cnic,
+      admissionDate,
+      session,
+      campus_id,
+      faculty_id,
+      department_id,
+      degree_id,
+    } = req.body;
+
+    if (!name || !name.trim() || !email || !email.trim() || !password || !role) {
+      return res.status(400).json({
+        message: "Name, email, password, and role are required.",
+      });
+    }
+
+    if (role !== "student" && role !== "coordinator") {
+      return res.status(400).json({
+        message: "Invalid role specified. Must be 'student' or 'coordinator'.",
+      });
+    }
+
+    // Email check
+    const existingEmail = await User.findOne({
+      email: { $regex: new RegExp(`^${email.trim()}$`, "i") },
+    });
+    if (existingEmail) {
+      return res.status(400).json({
+        message: `Email '${email}' is already registered as a ${existingEmail.role}.`,
+      });
+    }
+
+    // Phone check
+    if (phone && phone.trim()) {
+      const existingPhone = await User.findOne({ phone: phone.trim() });
+      if (existingPhone) {
+        return res.status(400).json({
+          message: `Phone number '${phone}' is already registered to another account.`,
+        });
+      }
+    }
+
+    if (role === "student") {
+      if (!ag_number || !ag_number.trim()) {
+        return res.status(400).json({ message: "AG Number is mandatory for student creation." });
+      }
+
+      const agPattern = /^\d{4}-ag-\d{5}$/i;
+      if (!agPattern.test(ag_number.trim())) {
+        return res.status(400).json({
+          message: "Invalid AG Number format! Must be 4-digit year-ag-5-digit number (e.g. 2024-ag-12345).",
+        });
+      }
+
+      const existingAg = await User.findOne({
+        ag_number: { $regex: new RegExp(`^${ag_number.trim()}$`, "i") },
+      });
+      if (existingAg) {
+        return res.status(400).json({
+          message: `AG Number '${ag_number}' is already registered to another student.`,
+        });
+      }
+
+      if (cnic && cnic.trim()) {
+        const existingCnic = await User.findOne({ cnic: cnic.trim() });
+        if (existingCnic) {
+          return res.status(400).json({
+            message: `CNIC '${cnic}' is already registered to another account.`,
+          });
+        }
+      }
+    } else if (role === "coordinator") {
+      if (!employee_id || !employee_id.trim()) {
+        return res.status(400).json({ message: "Employee ID is mandatory for coordinator creation." });
+      }
+
+      const existingEmp = await User.findOne({
+        employee_id: { $regex: new RegExp(`^${employee_id.trim()}$`, "i") },
+      });
+      if (existingEmp) {
+        return res.status(400).json({
+          message: `Employee ID '${employee_id}' is already registered to another coordinator.`,
+        });
+      }
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await User.create({
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      password: hashedPassword,
+      role,
+      ag_number: role === "student" ? ag_number.trim() : "",
+      employee_id: role === "coordinator" ? employee_id.trim() : "",
+      phone: phone ? phone.trim() : "",
+      fatherName: role === "student" && fatherName ? fatherName.trim() : "",
+      cnic: role === "student" && cnic ? cnic.trim() : "",
+      admissionDate: role === "student" ? admissionDate : null,
+      session: role === "student" && session ? session.trim() : "",
+      campus_id: campus_id || null,
+      faculty_id: faculty_id || null,
+      department_id: department_id || null,
+      degree_id: degree_id || null,
+      status: true,
+    });
+
+    const populatedUser = await User.findById(user._id)
+      .populate("campus_id")
+      .populate("faculty_id")
+      .populate("department_id")
+      .populate("degree_id");
+
+    res.status(201).json({
+      message: `${role.charAt(0).toUpperCase() + role.slice(1)} account created successfully.`,
+      user: populatedUser,
+    });
+  } catch (error) {
+    console.error("Create User Error:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// =========================================
+// UPDATE UG FORM STATUS BY ADMIN (Approve / Reject)
+// =========================================
+const updateFormStatusByAdmin = async (req, res) => {
+  try {
+    const { formId } = req.params;
+    const { status, remarks } = req.body;
+
+    if (!["Approved", "Accepted", "Rejected", "Submitted", "Pending"].includes(status)) {
+      return res.status(400).json({ message: "Invalid status value provided." });
+    }
+
+    const updatedStatus = status === "Accepted" ? "Approved" : status;
+
+    const form = await UGForm.findById(formId);
+    if (!form) {
+      return res.status(404).json({ message: "UG Form not found." });
+    }
+
+    form.status = updatedStatus;
+    if (remarks !== undefined) {
+      form.remarks = remarks;
+    }
+    await form.save();
+
+    const populatedForm = await UGForm.findById(formId)
+      .populate("student_id")
+      .populate("campus_id")
+      .populate("faculty_id")
+      .populate("department_id")
+      .populate("degree_id")
+      .populate("semester_id")
+      .populate("courses.course_id");
+
+    res.status(200).json({
+      message: `UG Form status changed to '${updatedStatus}' successfully.`,
+      form: populatedForm,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// =========================================
+// UPDATE FULL UG FORM BY ADMIN
+// =========================================
+const updateFormByAdmin = async (req, res) => {
+  try {
+    const { formId } = req.params;
+    const form = await UGForm.findByIdAndUpdate(formId, req.body, { new: true })
+      .populate("student_id")
+      .populate("campus_id")
+      .populate("faculty_id")
+      .populate("department_id")
+      .populate("degree_id")
+      .populate("semester_id")
+      .populate("courses.course_id");
+
+    if (!form) {
+      return res.status(404).json({ message: "UG Form not found." });
+    }
+
+    res.status(200).json({
+      message: "UG Form updated successfully.",
+      form,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// =========================================
+// DELETE UG FORM BY ADMIN
+// =========================================
+const deleteFormByAdmin = async (req, res) => {
+  try {
+    const { formId } = req.params;
+    const form = await UGForm.findByIdAndDelete(formId);
+    if (!form) {
+      return res.status(404).json({ message: "UG Form not found." });
+    }
+    res.status(200).json({ message: "UG Form deleted successfully." });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const getAllFormsForAdmin = async (req, res) => {
   try {
     const forms = await UGForm.find()
@@ -318,6 +541,8 @@ const getAllFormsForAdmin = async (req, res) => {
       .populate("faculty_id")
       .populate("department_id")
       .populate("degree_id")
+      .populate("semester_id")
+      .populate("courses.course_id")
       .sort({ createdAt: -1 });
 
     res.status(200).json(forms);
@@ -333,6 +558,10 @@ module.exports = {
   getAllCoordinators,
   getSuperAdmins,
   getAllFormsForAdmin,
+  createUserByAdmin,
   updateUserByAdmin,
   deleteUserByAdmin,
+  updateFormStatusByAdmin,
+  updateFormByAdmin,
+  deleteFormByAdmin,
 };

@@ -8,8 +8,12 @@ const {
   getAllCoordinators,
   getSuperAdmins,
   getAllFormsForAdmin,
+  createUserByAdmin,
   updateUserByAdmin,
   deleteUserByAdmin,
+  updateFormStatusByAdmin,
+  updateFormByAdmin,
+  deleteFormByAdmin,
 } = require("../controllers/adminController");
 
 // Super Admin Middleware
@@ -32,7 +36,13 @@ router.get("/students", authMiddleware, requireSuperAdmin, getAllStudents);
 router.get("/coordinators", authMiddleware, requireSuperAdmin, getAllCoordinators);
 router.get("/superadmins", authMiddleware, requireSuperAdmin, getSuperAdmins);
 router.get("/forms", authMiddleware, requireSuperAdmin, getAllFormsForAdmin);
+
+router.post("/users", authMiddleware, requireSuperAdmin, createUserByAdmin);
 router.put("/users/:userId", authMiddleware, requireSuperAdmin, updateUserByAdmin);
 router.delete("/users/:userId", authMiddleware, requireSuperAdmin, deleteUserByAdmin);
+
+router.put("/forms/:formId/status", authMiddleware, requireSuperAdmin, updateFormStatusByAdmin);
+router.put("/forms/:formId", authMiddleware, requireSuperAdmin, updateFormByAdmin);
+router.delete("/forms/:formId", authMiddleware, requireSuperAdmin, deleteFormByAdmin);
 
 module.exports = router;

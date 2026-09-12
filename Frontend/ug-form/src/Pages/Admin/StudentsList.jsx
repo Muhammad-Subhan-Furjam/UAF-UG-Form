@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import api from "../../api/api";
 import "./StudentsList.css";
 
 const StudentsList = () => {
+  const [searchParams] = useSearchParams();
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,6 +20,24 @@ const StudentsList = () => {
   const [faculties, setFaculties] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [degrees, setDegrees] = useState([]);
+
+  // Add Modal State
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [addFormData, setAddFormData] = useState({
+    name: "",
+    ag_number: "",
+    emailPrefix: "",
+    emailDomain: "@gmail.com",
+    password: "",
+    phone: "",
+    fatherName: "",
+    cnic: "",
+    session: "2024-2028",
+    campus_id: "",
+    faculty_id: "",
+    department_id: "",
+    degree_id: "",
+  });
 
   // Edit Modal State
   const [editingStudent, setEditingStudent] = useState(null);
@@ -70,12 +90,114 @@ const StudentsList = () => {
         setFaculties(fRes.data || []);
         setDepartments(dRes.data || []);
         setDegrees(degRes.data || []);
+
+        if (searchParams.get("action") === "add") {
+          setShowAddModal(true);
+          setAddFormData((prev) => ({
+            ...prev,
+            campus_id: cRes.data?.[0]?._id || "",
+          }));
+        }
       } catch (err) {
         console.error("Failed to load academic hierarchy:", err);
       }
     };
     fetchHierarchy();
-  }, []);
+  }, [searchParams]);
+
+  // =========================================
+  // OPEN ADD STUDENT MODAL
+  // =========================================
+  const handleOpenAdd = () => {
+    setModalMessage("");
+    setAddFormData({
+      name: "",
+      ag_number: "",
+      emailPrefix: "",
+      emailDomain: "@gmail.com",
+      password: "",
+      phone: "",
+      fatherName: "",
+      cnic: "",
+      session: "2024-2028",
+      campus_id: campuses[0]?._id || "",
+      faculty_id: "",
+      department_id: "",
+      degree_id: "",
+    });
+    setShowAddModal(true);
+  };
+
+  // =========================================
+  // CREATE STUDENT
+  // =========================================
+  const handleCreateStudent = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    setModalMessage("");
+
+    try {
+      if (
+        !addFormData.name.trim() ||
+        !addFormData.ag_number.trim() ||
+        !addFormData.emailPrefix.trim() ||
+        !addFormData.password ||
+        !addFormData.fatherName.trim() ||
+        !addFormData.cnic.trim() ||
+        !addFormData.campus_id ||
+        !addFormData.degree_id
+      ) {
+        setModalMessage("Name, AG Number, Email, Password, Father Name, CNIC, Campus, and Degree are required.");
+        setSaving(false);
+        return;
+      }
+
+      const agPattern = /^\d{4}-ag-\d{5}$/i;
+      if (!agPattern.test(addFormData.ag_number.trim())) {
+        setModalMessage("Invalid AG Number format! Standard format is 4-digit year-ag-5-digit number (e.g. 2024-ag-12345).");
+        setSaving(false);
+        return;
+      }
+
+      if (addFormData.cnic.trim().length !== 13) {
+        setModalMessage("CNIC / B-Form number must consist of exactly 13 digits.");
+        setSaving(false);
+        return;
+      }
+
+      const fullEmail = addFormData.emailPrefix.includes("@")
+        ? addFormData.emailPrefix.trim()
+        : `${addFormData.emailPrefix.trim()}${addFormData.emailDomain}`;
+
+      const payload = {
+        name: addFormData.name.trim(),
+        ag_number: addFormData.ag_number.trim(),
+        email: fullEmail,
+        password: addFormData.password,
+        phone: addFormData.phone.trim(),
+        fatherName: addFormData.fatherName.trim(),
+        cnic: addFormData.cnic.trim(),
+        session: addFormData.session,
+        campus_id: addFormData.campus_id || null,
+        faculty_id: addFormData.faculty_id || null,
+        department_id: addFormData.department_id || null,
+        degree_id: addFormData.degree_id || null,
+        role: "student",
+      };
+
+      await api.post("/admin/users", payload);
+      setModalMessage("Student created successfully!");
+
+      fetchStudents();
+      setTimeout(() => {
+        setShowAddModal(false);
+      }, 1200);
+    } catch (error) {
+      setModalMessage(error.response?.data?.message || "Failed to create student.");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   // =========================================
   // OPEN EDIT MODAL
@@ -316,9 +438,18 @@ const StudentsList = () => {
   return (
     <div className="admin-students-page">
       {/* HEADER */}
-      <div className="admin-page-header">
-        <h2>Students Governance Directory</h2>
-        <p>View, alter, and manage all registered student accounts system-wide.</p>
+      <div className="admin-page-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div>
+          <h2>Students Governance Directory</h2>
+          <p>View, search, edit, and create student accounts system-wide.</p>
+        </div>
+        <button
+          className="admin-action-btn edit-btn"
+          style={{ padding: "10px 18px", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}
+          onClick={handleOpenAdd}
+        >
+          ➕ Add New Student
+        </button>
       </div>
 
       {/* TOOLBAR & FILTERS */}
@@ -504,6 +635,299 @@ const StudentsList = () => {
                 )}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {/* ADD STUDENT MODAL */}
+      {showAddModal && (
+        <div className="admin-modal-overlay">
+          <div className="admin-modal-card">
+            <div className="admin-modal-header">
+              <h3>➕ Add New Student Account</h3>
+              <button
+                className="modal-close-btn"
+                onClick={() => setShowAddModal(false)}
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateStudent} className="admin-modal-form">
+              <div className="modal-form-grid">
+                {/* NAME */}
+                <div className="form-group">
+                  <label>Student Name *</label>
+                  <input
+                    type="text"
+                    value={addFormData.name}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, name: e.target.value })
+                    }
+                    placeholder="Enter student full name"
+                    required
+                  />
+                </div>
+
+                {/* AG NUMBER */}
+                <div className="form-group">
+                  <label>AG Number (YYYY-ag-XXXXX) *</label>
+                  <input
+                    type="text"
+                    value={addFormData.ag_number}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, ag_number: e.target.value })
+                    }
+                    placeholder="e.g. 2024-ag-12345"
+                    required
+                  />
+                </div>
+
+                {/* FATHER NAME */}
+                <div className="form-group">
+                  <label>Father's Name *</label>
+                  <input
+                    type="text"
+                    value={addFormData.fatherName}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, fatherName: e.target.value })
+                    }
+                    placeholder="Enter father's name"
+                    required
+                  />
+                </div>
+
+                {/* CNIC */}
+                <div className="form-group">
+                  <label>CNIC / B-Form (13 digits) *</label>
+                  <input
+                    type="text"
+                    value={addFormData.cnic}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, cnic: e.target.value.replace(/\D/g, "").slice(0, 13) })
+                    }
+                    placeholder="13-digit CNIC without dashes"
+                    maxLength={13}
+                    required
+                  />
+                </div>
+
+                {/* EMAIL WITH DOMAIN SELECTOR */}
+                <div className="form-group">
+                  <label>Email Address *</label>
+                  <div style={{ display: "flex", gap: "5px" }}>
+                    <input
+                      type="text"
+                      value={addFormData.emailPrefix}
+                      onChange={(e) =>
+                        setAddFormData({ ...addFormData, emailPrefix: e.target.value })
+                      }
+                      placeholder="username"
+                      required
+                      style={{ flex: 1 }}
+                    />
+                    <select
+                      value={addFormData.emailDomain}
+                      onChange={(e) =>
+                        setAddFormData({ ...addFormData, emailDomain: e.target.value })
+                      }
+                      style={{ width: "130px" }}
+                    >
+                      <option value="@gmail.com">@gmail.com</option>
+                      <option value="@uaf.edu.pk">@uaf.edu.pk</option>
+                      <option value="@hotmail.com">@hotmail.com</option>
+                      <option value="@yahoo.com">@yahoo.com</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* PASSWORD */}
+                <div className="form-group">
+                  <label>Initial Password *</label>
+                  <input
+                    type="password"
+                    value={addFormData.password}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, password: e.target.value })
+                    }
+                    placeholder="Enter account password"
+                    required
+                  />
+                </div>
+
+                {/* PHONE */}
+                <div className="form-group">
+                  <label>Phone Number</label>
+                  <input
+                    type="text"
+                    value={addFormData.phone}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, phone: e.target.value })
+                    }
+                    placeholder="e.g. 03001234567"
+                  />
+                </div>
+
+                {/* BATCH / SESSION */}
+                <div className="form-group">
+                  <label>Batch / Session *</label>
+                  <select
+                    value={addFormData.session}
+                    onChange={(e) =>
+                      setAddFormData({ ...addFormData, session: e.target.value })
+                    }
+                    required
+                  >
+                    <option value="2023-2027">2023-2027</option>
+                    <option value="2024-2028">2024-2028</option>
+                    <option value="2025-2029">2025-2029</option>
+                    <option value="2026-2030">2026-2030</option>
+                  </select>
+                </div>
+
+                {/* ASSIGNED CAMPUS */}
+                <div className="form-group">
+                  <label>Campus *</label>
+                  <select
+                    value={addFormData.campus_id}
+                    onChange={(e) =>
+                      setAddFormData({
+                        ...addFormData,
+                        campus_id: e.target.value,
+                        faculty_id: "",
+                        department_id: "",
+                        degree_id: "",
+                      })
+                    }
+                    required
+                  >
+                    <option value="">Select Campus</option>
+                    {campuses.map((c) => (
+                      <option key={c._id} value={c._id}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* ASSIGNED FACULTY */}
+                <div className="form-group">
+                  <label>Faculty *</label>
+                  <select
+                    value={addFormData.faculty_id}
+                    onChange={(e) =>
+                      setAddFormData({
+                        ...addFormData,
+                        faculty_id: e.target.value,
+                        department_id: "",
+                        degree_id: "",
+                      })
+                    }
+                    required
+                  >
+                    <option value="">Select Faculty</option>
+                    {(addFormData.campus_id
+                      ? faculties.filter(
+                          (f) =>
+                            String(f.campus_id?._id || f.campus_id) ===
+                            String(addFormData.campus_id)
+                        )
+                      : faculties
+                    ).map((f) => (
+                      <option key={f._id} value={f._id}>
+                        {f.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* ASSIGNED DEPARTMENT */}
+                <div className="form-group">
+                  <label>Department *</label>
+                  <select
+                    value={addFormData.department_id}
+                    onChange={(e) =>
+                      setAddFormData({
+                        ...addFormData,
+                        department_id: e.target.value,
+                        degree_id: "",
+                      })
+                    }
+                    required
+                  >
+                    <option value="">Select Department</option>
+                    {(addFormData.faculty_id
+                      ? departments.filter(
+                          (d) =>
+                            String(d.faculty_id?._id || d.faculty_id) ===
+                            String(addFormData.faculty_id)
+                        )
+                      : departments
+                    ).map((d) => (
+                      <option key={d._id} value={d._id}>
+                        {d.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* ASSIGNED DEGREE */}
+                <div className="form-group">
+                  <label>Degree *</label>
+                  <select
+                    value={addFormData.degree_id}
+                    onChange={(e) =>
+                      setAddFormData({
+                        ...addFormData,
+                        degree_id: e.target.value,
+                      })
+                    }
+                    required
+                  >
+                    <option value="">Select Degree</option>
+                    {(addFormData.department_id
+                      ? degrees.filter(
+                          (deg) =>
+                            String(deg.department_id?._id || deg.department_id) ===
+                            String(addFormData.department_id)
+                        )
+                      : degrees
+                    ).map((deg) => (
+                      <option key={deg._id} value={deg._id}>
+                        {deg.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {modalMessage && (
+                <p
+                  className={`modal-msg ${
+                    modalMessage.includes("success") ? "success" : "error"
+                  }`}
+                >
+                  {modalMessage}
+                </p>
+              )}
+
+              <div className="modal-actions-row">
+                <button
+                  type="button"
+                  className="modal-cancel-btn"
+                  onClick={() => setShowAddModal(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="modal-save-btn"
+                  disabled={saving}
+                >
+                  {saving ? "Creating Student..." : "Create Student Account"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

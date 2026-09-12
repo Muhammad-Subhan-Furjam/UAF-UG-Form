@@ -40,7 +40,7 @@ const AdminDashboard = () => {
     <div className="admin-dashboard-page">
       <div className="admin-page-header">
         <h2>System Executive Overview</h2>
-        <p>Centralized monitoring and governance for UAF UG Form Management System.</p>
+        <p>Centralized monitoring and full super admin governance for UAF UG Form Management System.</p>
       </div>
 
       {loading ? (
@@ -54,7 +54,7 @@ const AdminDashboard = () => {
               <h3>{stats.studentsCount}</h3>
               <p>Registered Students</p>
             </div>
-            <div className="stat-footer-link">Manage Students List →</div>
+            <div className="stat-footer-link">Add / Manage Students →</div>
           </div>
 
           {/* COORDINATORS CARD */}
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
               <h3>{stats.coordinatorsCount}</h3>
               <p>Registered Coordinators</p>
             </div>
-            <div className="stat-footer-link">Manage Coordinators List →</div>
+            <div className="stat-footer-link">Add / Manage Coordinators →</div>
           </div>
 
           {/* FORMS CARD */}
@@ -72,9 +72,9 @@ const AdminDashboard = () => {
             <div className="stat-icon-wrapper">📋</div>
             <div className="stat-info">
               <h3>{stats.formsCount}</h3>
-              <p>Total UG Form Submissions</p>
+              <p>UG Form Submissions</p>
             </div>
-            <div className="stat-footer-link">View UG Forms →</div>
+            <div className="stat-footer-link">View, Edit, Accept, Reject →</div>
           </div>
 
           {/* COURSES CARD */}
@@ -84,21 +84,30 @@ const AdminDashboard = () => {
               <h3>{stats.coursesCount}</h3>
               <p>System Academic Courses</p>
             </div>
-            <div className="stat-footer-link">Manage Courses →</div>
+            <div className="stat-footer-link">Add / Manage Courses →</div>
           </div>
         </div>
       )}
 
       {/* QUICK ACTIONS BANNER */}
       <div className="admin-quick-actions-card">
-        <h3>Administrative Governance Controls</h3>
-        <p>As Super Admin, you have full override power to alter user accounts, re-assign academic campuses/faculties/departments, enable/disable access, and govern system courses.</p>
-        <div className="quick-buttons-row">
-          <button className="quick-action-btn primary" onClick={() => navigate("/admin/students")}>
-            View All Students
+        <h3>Super Admin Governance & Action Panel</h3>
+        <p>You have complete override control to add coordinators, add students, govern campuses/faculties/departments/degrees, manage courses, and view, edit, accept (approve), or reject submitted UG forms.</p>
+        <div className="quick-buttons-row" style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginTop: "15px" }}>
+          <button className="quick-action-btn primary" onClick={() => navigate("/admin/coordinators?action=add")}>
+            ➕ Add Coordinator
           </button>
-          <button className="quick-action-btn secondary" onClick={() => navigate("/admin/coordinators")}>
-            View All Coordinators
+          <button className="quick-action-btn primary" onClick={() => navigate("/admin/students?action=add")}>
+            ➕ Add Student
+          </button>
+          <button className="quick-action-btn secondary" onClick={() => navigate("/admin/hierarchy")}>
+            🏫 Campuses, Faculties, Depts & Degrees
+          </button>
+          <button className="quick-action-btn secondary" onClick={() => navigate("/admin/courses")}>
+            📚 Manage Courses
+          </button>
+          <button className="quick-action-btn primary" onClick={() => navigate("/admin/forms")}>
+            📋 UG Forms (View/Edit/Accept/Reject)
           </button>
         </div>
       </div>
