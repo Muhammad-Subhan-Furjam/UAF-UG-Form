@@ -129,13 +129,15 @@ const ugFormSchema = new mongoose.Schema(
 
 
     // Voucher
-
     voucher: {
         fileUrl: {
             type: String,
             default: ""
         },
-
+        base64Data: {
+            type: String,
+            default: ""
+        },
         uploaded: {
             type: Boolean,
             default: false
@@ -143,13 +145,15 @@ const ugFormSchema = new mongoose.Schema(
     },
 
     // Deferment Application
-
     deferment: {
         fileUrl: {
             type: String,
             default: ""
         },
-
+        base64Data: {
+            type: String,
+            default: ""
+        },
         uploaded: {
             type: Boolean,
             default: false

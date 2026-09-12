@@ -22,6 +22,7 @@ const VoucherUpload = () => {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [attachedFile, setAttachedFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -38,23 +39,37 @@ const VoucherUpload = () => {
       "image/png",
       "image/jpeg",
       "image/jpg",
+      "image/webp",
     ];
 
     if (!allowedTypes.includes(file.type)) {
       setSelectedFile(null);
-      setMessage("Only PDF, PNG, JPG or JPEG files are allowed.");
+      setPreviewUrl(null);
+      setMessage("Only PDF, PNG, JPG, JPEG, or WEBP files are allowed.");
       return;
     }
 
-    if (file.size > 50 * 1024) {
+    if (file.size > 75 * 1024) {
       setSelectedFile(null);
-      setMessage("File size must be less than or equal to 50KB.");
+      setPreviewUrl(null);
+      setMessage("File size exceeds 75KB limit! Please upload an image with a size less than or equal to 75KB.");
       return;
     }
 
     setSelectedFile(file);
     setAttachedFile(null);
-    setMessage(`Selected: ${file.name}`);
+    setMessage(`Selected: ${file.name} (${Math.round(file.size / 1024)} KB)`);
+
+    // Generate live preview for images
+    if (file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewUrl(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPreviewUrl(null);
+    }
   };
 
   const handleAttach = () => {
@@ -131,13 +146,13 @@ const VoucherUpload = () => {
         <input
           ref={fileInputRef}
           type="file"
-          accept=".pdf,.png,.jpg,.jpeg"
+          accept=".pdf,.png,.jpg,.jpeg,.webp"
           className="voucher-hidden-input"
           onChange={handleFileChange}
         />
 
-        <p className="voucher-attach-text">
-          Attach PDF, PNG or JPG (Max size: 50KB)
+        <p className="voucher-attach-text" style={{ fontWeight: 600, color: "#082f5c" }}>
+          Upload image file (JPG, PNG, WEBP, PDF) with file size ≤ 75KB
         </p>
 
         <button
@@ -145,21 +160,56 @@ const VoucherUpload = () => {
           className="voucher-upload-btn"
           onClick={handleUploadClick}
         >
-          Upload File
+          Select File (Max 75KB)
         </button>
 
         {selectedFile && (
-          <div className="voucher-selected-file">
-            <strong>Selected File:</strong>
-            <span>{selectedFile.name}</span>
+          <div className="voucher-selected-file" style={{ marginTop: "12px", textAlign: "center" }}>
+            <strong>Selected File:</strong> <span>{selectedFile.name}</span> ({Math.round(selectedFile.size / 1024)} KB)
+          </div>
+        )}
+
+        {/* Live Document / Image Preview for Student */}
+        {previewUrl && (
+          <div className="voucher-preview-container" style={{ marginTop: "15px", textAlign: "center" }}>
+            <p style={{ fontSize: "13px", fontWeight: "bold", color: "#1e3a5f", marginBottom: "6px" }}>
+              Uploaded Image Preview:
+            </p>
+
+            <img
+              src={previewUrl}
+              alt="Document Preview"
+              style={{
+                maxWidth: "280px",
+                maxHeight: "220px",
+                borderRadius: "8px",
+                border: "2px solid #cbd5e1",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                objectFit: "contain",
+                background: "#f8fafc"
+              }}
+            />
           </div>
         )}
 
         {attachedFile && (
-          <div className="voucher-attached-status">✓ File Attached</div>
+          <div className="voucher-attached-status" style={{ marginTop: "10px", color: "#166534", fontWeight: "bold" }}>
+            ✓ Document Attached & Ready for Upload
+          </div>
         )}
 
-        {message && <p className="voucher-message">{message}</p>}
+        {message && (
+          <p
+            className="voucher-message"
+            style={{
+              marginTop: "12px",
+              fontWeight: 600,
+              color: message.includes("exceeds") || message.includes("Failed") || message.includes("Please") ? "#dc2626" : "#166534"
+            }}
+          >
+            {message}
+          </p>
+        )}
       </section>
 
       <div className="voucher-actions">

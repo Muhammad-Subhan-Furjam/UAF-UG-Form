@@ -31,6 +31,9 @@ const UGForm = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const [hasUploadedVoucher, setHasUploadedVoucher] = useState(false);
   const [hasUploadedDeferment, setHasUploadedDeferment] = useState(false);
+  const [myDocVoucherUrl, setMyDocVoucherUrl] = useState("");
+  const [myDocDefermentUrl, setMyDocDefermentUrl] = useState("");
+  const [previewModalDoc, setPreviewModalDoc] = useState(null);
 
   // Determine available Semester Commencing options based on Current Month
   const currentMonth = new Date().getMonth(); // 0 = Jan, 1 = Feb, 5 = Jun, 8 = Sep
@@ -185,14 +188,22 @@ const UGForm = () => {
             : "",
         }));
 
-        // Fetch student's existing forms to check voucher / deferment upload status
+        // Fetch student's existing forms to check voucher / deferment upload status and URLs for preview
         try {
           const formsRes = await api.get("/ugforms");
           const myForms = formsRes.data || [];
-          const hasV = myForms.some((f) => f.voucher?.uploaded === true);
-          const hasD = myForms.some((f) => f.deferment?.uploaded === true);
-          setHasUploadedVoucher(hasV);
-          setHasUploadedDeferment(hasD);
+          const formWithVoucher = myForms.find((f) => f.voucher?.uploaded === true && (f.voucher?.fileUrl || f.voucher?.base64Data));
+          const formWithDeferment = myForms.find((f) => f.deferment?.uploaded === true && (f.deferment?.fileUrl || f.deferment?.base64Data));
+
+          setHasUploadedVoucher(!!formWithVoucher);
+          setHasUploadedDeferment(!!formWithDeferment);
+
+          if (formWithVoucher) {
+            setMyDocVoucherUrl(formWithVoucher.voucher.fileUrl || formWithVoucher.voucher.base64Data);
+          }
+          if (formWithDeferment) {
+            setMyDocDefermentUrl(formWithDeferment.deferment.fileUrl || formWithDeferment.deferment.base64Data);
+          }
         } catch (err) {
           console.log("UGForms fetch error:", err);
         }
@@ -655,20 +666,249 @@ const UGForm = () => {
             <p
               className="ug-upload-note"
               style={{
-                color: "red",
+                color: "#082f5c",
                 fontWeight: "600",
                 fontSize: "13px",
                 textAlign: "center",
                 marginTop: "14px",
                 gridColumn: "1 / -1",
                 width: "100%",
+                background: "#f1f5f9",
+                padding: "8px 12px",
+                borderRadius: "6px",
+                border: "1px solid #cbd5e1"
               }}
             >
-              Please upload either the "Paid Fee Voucher" or the "Approved Fee Deferment Application Form"
+              Notice: Please upload either the "Paid Fee Voucher" or "Approved Fee Deferment Application Form" image (File size must be ≤ 75KB).
             </p>
           </div>
+
+          {/* STUDENT UPLOADED DOCUMENTS PREVIEW CARD */}
+          {(myDocVoucherUrl || myDocDefermentUrl) && (
+            <div
+              className="student-uploaded-docs-section"
+              style={{
+                marginTop: "25px",
+                padding: "16px",
+                background: "#f8fafc",
+                borderRadius: "10px",
+                border: "1px solid #e2e8f0"
+              }}
+            >
+              <h4 style={{ margin: "0 0 12px 0", color: "#082f5c", display: "flex", alignItems: "center", gap: "8px" }}>
+                <span>📷</span> Your Uploaded Document Previews:
+              </h4>
+
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
+                {myDocVoucherUrl && (
+                  <div
+                    style={{
+                      border: "1px solid #cbd5e1",
+                      borderRadius: "8px",
+                      padding: "10px",
+                      background: "#ffffff",
+                      textAlign: "center",
+                      minWidth: "160px"
+                    }}
+                  >
+                    <p style={{ margin: "0 0 8px 0", fontSize: "12px", fontWeight: "bold", color: "#166534" }}>
+                      ✓ Paid Fee Voucher
+                    </p>
+                    {myDocVoucherUrl.startsWith("data:image") || myDocVoucherUrl.includes("/uploads/") ? (
+                      <img
+                        src={myDocVoucherUrl}
+                        alt="Fee Voucher Thumbnail"
+                        style={{
+                          width: "140px",
+                          height: "100px",
+                          objectFit: "cover",
+                          borderRadius: "6px",
+                          cursor: "pointer",
+                          border: "1px solid #e2e8f0"
+                        }}
+                        onClick={() => setPreviewModalDoc({ title: "Paid Fee Voucher", url: myDocVoucherUrl })}
+                      />
+                    ) : (
+                      <p style={{ fontSize: "11px", color: "#64748b" }}>PDF / Document File Uploaded</p>
+                    )}
+                    <br />
+                    <button
+                      type="button"
+                      style={{
+                        marginTop: "6px",
+                        fontSize: "12px",
+                        padding: "4px 10px",
+                        background: "#082f5c",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "4px",
+                        cursor: "pointer"
+                      }}
+                      onClick={() => setPreviewModalDoc({ title: "Paid Fee Voucher", url: myDocVoucherUrl })}
+                    >
+                      Preview Full Image
+                    </button>
+                  </div>
+                )}
+
+                {myDocDefermentUrl && (
+                  <div
+                    style={{
+                      border: "1px solid #cbd5e1",
+                      borderRadius: "8px",
+                      padding: "10px",
+                      background: "#ffffff",
+                      textAlign: "center",
+                      minWidth: "160px"
+                    }}
+                  >
+                    <p style={{ margin: "0 0 8px 0", fontSize: "12px", fontWeight: "bold", color: "#166534" }}>
+                      ✓ Approved Fee Deferment
+                    </p>
+                    {myDocDefermentUrl.startsWith("data:image") || myDocDefermentUrl.includes("/uploads/") ? (
+                      <img
+                        src={myDocDefermentUrl}
+                        alt="Deferment Form Thumbnail"
+                        style={{
+                          width: "140px",
+                          height: "100px",
+                          objectFit: "cover",
+                          borderRadius: "6px",
+                          cursor: "pointer",
+                          border: "1px solid #e2e8f0"
+                        }}
+                        onClick={() => setPreviewModalDoc({ title: "Approved Fee Deferment Form", url: myDocDefermentUrl })}
+                      />
+                    ) : (
+                      <p style={{ fontSize: "11px", color: "#64748b" }}>PDF / Document File Uploaded</p>
+                    )}
+                    <br />
+                    <button
+                      type="button"
+                      style={{
+                        marginTop: "6px",
+                        fontSize: "12px",
+                        padding: "4px 10px",
+                        background: "#082f5c",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "4px",
+                        cursor: "pointer"
+                      }}
+                      onClick={() => setPreviewModalDoc({ title: "Approved Fee Deferment Form", url: myDocDefermentUrl })}
+                    >
+                      Preview Full Image
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </form>
       </section>
+
+      {/* STUDENT DOCUMENT LIGHTBOX PREVIEW MODAL */}
+      {previewModalDoc && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(15, 23, 42, 0.75)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 99999,
+            padding: "20px"
+          }}
+          onClick={() => setPreviewModalDoc(null)}
+        >
+          <div
+            style={{
+              background: "#ffffff",
+              borderRadius: "12px",
+              maxWidth: "800px",
+              width: "95%",
+              maxHeight: "90vh",
+              overflow: "hidden",
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3)",
+              display: "flex",
+              flexDirection: "column"
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              style={{
+                padding: "16px 20px",
+                background: "#082f5c",
+                color: "#ffffff",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}
+            >
+              <h3 style={{ margin: 0, fontSize: "16px", fontWeight: "600" }}>
+                Uploaded Document Preview: {previewModalDoc.title}
+              </h3>
+              <button
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "#ffffff",
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  fontWeight: "bold"
+                }}
+                onClick={() => setPreviewModalDoc(null)}
+              >
+                ✕
+              </button>
+            </div>
+
+            <div style={{ padding: "20px", overflowY: "auto", textAlign: "center", flex: 1, background: "#f8fafc" }}>
+              {previewModalDoc.url.startsWith("data:image") || previewModalDoc.url.includes("/uploads/") ? (
+                <img
+                  src={previewModalDoc.url}
+                  alt={previewModalDoc.title}
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "65vh",
+                    objectFit: "contain",
+                    borderRadius: "8px",
+                    border: "1px solid #cbd5e1",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+                  }}
+                />
+              ) : (
+                <iframe
+                  src={previewModalDoc.url}
+                  title={previewModalDoc.title}
+                  style={{ width: "100%", height: "60vh", border: "none" }}
+                />
+              )}
+            </div>
+
+            <div style={{ padding: "12px 20px", background: "#f1f5f9", textAlign: "right", borderTop: "1px solid #e2e8f0" }}>
+              <button
+                style={{
+                  padding: "8px 18px",
+                  background: "#475569",
+                  color: "#ffffff",
+                  border: "none",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                  fontWeight: "600"
+                }}
+                onClick={() => setPreviewModalDoc(null)}
+              >
+                Close Preview
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

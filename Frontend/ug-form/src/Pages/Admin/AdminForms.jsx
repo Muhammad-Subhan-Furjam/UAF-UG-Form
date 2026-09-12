@@ -11,6 +11,7 @@ const AdminForms = () => {
   // Modal States
   const [viewingForm, setViewingForm] = useState(null);
   const [editingForm, setEditingForm] = useState(null);
+  const [adminDocPreviewModal, setAdminDocPreviewModal] = useState(null);
 
   const [editData, setEditData] = useState({
     studentName: "",
@@ -399,6 +400,68 @@ const AdminForms = () => {
                 </div>
               </div>
 
+              {/* STUDENT UPLOADED DOCUMENTS PREVIEWS FOR SUPER ADMIN */}
+              {(viewingForm.voucher?.uploaded || viewingForm.deferment?.uploaded) && (
+                <div className="view-card" style={{ background: "#f8fafc", padding: "14px 18px", borderRadius: "8px", border: "1px solid #e2e8f0", marginBottom: "20px" }}>
+                  <h4 style={{ margin: "0 0 12px 0", color: "#082f5c" }}>Uploaded Fee Vouchers & Deferment Forms</h4>
+                  <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+                    {viewingForm.voucher?.uploaded && (viewingForm.voucher?.fileUrl || viewingForm.voucher?.base64Data) && (
+                      <div style={{ background: "#ffffff", padding: "10px 14px", borderRadius: "8px", border: "1px solid #cbd5e1", textAlign: "center" }}>
+                        <p style={{ margin: "0 0 8px 0", fontSize: "13px", fontWeight: "bold", color: "#166534" }}>
+                          ✓ Paid Fee Voucher
+                        </p>
+                        {(viewingForm.voucher.fileUrl || viewingForm.voucher.base64Data).startsWith("data:image") || (viewingForm.voucher.fileUrl || "").includes("/uploads/") ? (
+                          <img
+                            src={viewingForm.voucher.fileUrl || viewingForm.voucher.base64Data}
+                            alt="Fee Voucher"
+                            style={{ width: "160px", height: "110px", objectFit: "cover", borderRadius: "6px", border: "1px solid #e2e8f0", cursor: "pointer" }}
+                            onClick={() => setAdminDocPreviewModal({ title: "Student Paid Fee Voucher", url: viewingForm.voucher.fileUrl || viewingForm.voucher.base64Data })}
+                          />
+                        ) : (
+                          <p style={{ fontSize: "12px", color: "#64748b" }}>Document file uploaded</p>
+                        )}
+                        <br />
+                        <button
+                          type="button"
+                          className="admin-action-btn view-btn"
+                          style={{ marginTop: "8px", fontSize: "12px" }}
+                          onClick={() => setAdminDocPreviewModal({ title: "Student Paid Fee Voucher", url: viewingForm.voucher.fileUrl || viewingForm.voucher.base64Data })}
+                        >
+                          View / Preview Full Voucher
+                        </button>
+                      </div>
+                    )}
+
+                    {viewingForm.deferment?.uploaded && (viewingForm.deferment?.fileUrl || viewingForm.deferment?.base64Data) && (
+                      <div style={{ background: "#ffffff", padding: "10px 14px", borderRadius: "8px", border: "1px solid #cbd5e1", textAlign: "center" }}>
+                        <p style={{ margin: "0 0 8px 0", fontSize: "13px", fontWeight: "bold", color: "#166534" }}>
+                          ✓ Approved Fee Deferment Form
+                        </p>
+                        {(viewingForm.deferment.fileUrl || viewingForm.deferment.base64Data).startsWith("data:image") || (viewingForm.deferment.fileUrl || "").includes("/uploads/") ? (
+                          <img
+                            src={viewingForm.deferment.fileUrl || viewingForm.deferment.base64Data}
+                            alt="Fee Deferment"
+                            style={{ width: "160px", height: "110px", objectFit: "cover", borderRadius: "6px", border: "1px solid #e2e8f0", cursor: "pointer" }}
+                            onClick={() => setAdminDocPreviewModal({ title: "Approved Fee Deferment Application Form", url: viewingForm.deferment.fileUrl || viewingForm.deferment.base64Data })}
+                          />
+                        ) : (
+                          <p style={{ fontSize: "12px", color: "#64748b" }}>Document file uploaded</p>
+                        )}
+                        <br />
+                        <button
+                          type="button"
+                          className="admin-action-btn view-btn"
+                          style={{ marginTop: "8px", fontSize: "12px" }}
+                          onClick={() => setAdminDocPreviewModal({ title: "Approved Fee Deferment Application Form", url: viewingForm.deferment.fileUrl || viewingForm.deferment.base64Data })}
+                        >
+                          View / Preview Deferment Form
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
               {/* ENROLLED COURSES */}
               <div className="view-courses-section">
                 <h4 style={{ color: "#082f5c", margin: "15px 0 10px 0" }}>Enrolled Courses ({viewingForm.courses?.length || 0})</h4>
@@ -583,6 +646,108 @@ const AdminForms = () => {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+      {/* SUPER ADMIN DOCUMENT PREVIEW LIGHTBOX MODAL */}
+      {adminDocPreviewModal && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(15, 23, 42, 0.75)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 99999,
+            padding: "20px"
+          }}
+          onClick={() => setAdminDocPreviewModal(null)}
+        >
+          <div
+            style={{
+              background: "#ffffff",
+              borderRadius: "12px",
+              maxWidth: "850px",
+              width: "95%",
+              maxHeight: "90vh",
+              overflow: "hidden",
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3)",
+              display: "flex",
+              flexDirection: "column"
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              style={{
+                padding: "16px 20px",
+                background: "#082f5c",
+                color: "#ffffff",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}
+            >
+              <h3 style={{ margin: 0, fontSize: "16px", fontWeight: "600" }}>
+                Super Admin Document Inspection: {adminDocPreviewModal.title}
+              </h3>
+              <button
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "#ffffff",
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  fontWeight: "bold"
+                }}
+                onClick={() => setAdminDocPreviewModal(null)}
+              >
+                ✕
+              </button>
+            </div>
+
+            <div style={{ padding: "20px", overflowY: "auto", textAlign: "center", flex: 1, background: "#f8fafc" }}>
+              {adminDocPreviewModal.url.startsWith("data:image") || adminDocPreviewModal.url.includes("/uploads/") ? (
+                <img
+                  src={adminDocPreviewModal.url}
+                  alt={adminDocPreviewModal.title}
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "65vh",
+                    objectFit: "contain",
+                    borderRadius: "8px",
+                    border: "1px solid #cbd5e1",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+                  }}
+                />
+              ) : (
+                <iframe
+                  src={adminDocPreviewModal.url}
+                  title={adminDocPreviewModal.title}
+                  style={{ width: "100%", height: "60vh", border: "none" }}
+                />
+              )}
+            </div>
+
+            <div style={{ padding: "12px 20px", background: "#f1f5f9", textAlign: "right", borderTop: "1px solid #e2e8f0" }}>
+              <button
+                style={{
+                  padding: "8px 18px",
+                  background: "#475569",
+                  color: "#ffffff",
+                  border: "none",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                  fontWeight: "600"
+                }}
+                onClick={() => setAdminDocPreviewModal(null)}
+              >
+                Close Inspection
+              </button>
+            </div>
           </div>
         </div>
       )}

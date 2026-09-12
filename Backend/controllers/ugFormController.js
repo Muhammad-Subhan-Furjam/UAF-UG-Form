@@ -307,20 +307,22 @@ const uploadVoucher = async (req, res) => {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    if (req.file.size > 50 * 1024) {
-      return res.status(400).json({ message: "File size must be less than or equal to 50KB" });
+    if (req.file.size > 75 * 1024) {
+      return res.status(400).json({ message: "File size must be less than or equal to 75KB" });
     }
 
     let fileUrl = "";
+    let base64DataStr = "";
     if (req.file.buffer) {
-      const base64Data = req.file.buffer.toString("base64");
-      fileUrl = `data:${req.file.mimetype};base64,${base64Data}`;
+      base64DataStr = req.file.buffer.toString("base64");
+      fileUrl = `data:${req.file.mimetype};base64,${base64DataStr}`;
     } else if (req.file.filename) {
       fileUrl = `/uploads/vouchers/${req.file.filename}`;
     }
 
     form.voucher = {
       fileUrl,
+      base64Data: base64DataStr,
       uploaded: true,
     };
 
@@ -361,20 +363,22 @@ const uploadDeferment = async (req, res) => {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    if (req.file.size > 50 * 1024) {
-      return res.status(400).json({ message: "File size must be less than or equal to 50KB" });
+    if (req.file.size > 75 * 1024) {
+      return res.status(400).json({ message: "File size must be less than or equal to 75KB" });
     }
 
     let fileUrl = "";
+    let base64DataStr = "";
     if (req.file.buffer) {
-      const base64Data = req.file.buffer.toString("base64");
-      fileUrl = `data:${req.file.mimetype};base64,${base64Data}`;
+      base64DataStr = req.file.buffer.toString("base64");
+      fileUrl = `data:${req.file.mimetype};base64,${base64DataStr}`;
     } else if (req.file.filename) {
       fileUrl = `/uploads/vouchers/${req.file.filename}`;
     }
 
     form.deferment = {
       fileUrl,
+      base64Data: base64DataStr,
       uploaded: true,
     };
 
