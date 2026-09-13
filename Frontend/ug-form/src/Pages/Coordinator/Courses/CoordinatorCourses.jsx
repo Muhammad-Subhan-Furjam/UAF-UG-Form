@@ -71,6 +71,30 @@ const CoordinatorCourses = () => {
     }
   };
 
+  const handleDeleteDegree = async (degreeId, degreeName) => {
+    if (window.confirm(`Are you sure you want to delete degree '${degreeName}'?`)) {
+      try {
+        setLoading(true);
+        await api.delete(`/degrees/${degreeId}`);
+        
+        const degRes = await api.get("/degrees");
+        const selectedDeptId = String(selectedDepartment._id);
+        const filtered = (degRes.data || []).filter(
+          (d) => String(d.department_id?._id || d.department_id) === selectedDeptId
+        );
+        setDisciplines(filtered);
+        if (selectedDiscipline?._id === degreeId) {
+          setSelectedDiscipline(null);
+        }
+        alert(`Degree '${degreeName}' deleted successfully.`);
+      } catch (err) {
+        alert(err.response?.data?.message || "Failed to delete degree");
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   const creditHoursOpts = [
     "1 (1-0)",
     "1 (0-1)",
@@ -562,14 +586,49 @@ const CoordinatorCourses = () => {
 
             <div className="course-cards-grid">
               {disciplines.map((deg) => (
-                <button
-                  type="button"
+                <div
                   key={deg._id}
-                  className="course-selection-card"
-                  onClick={() => handleDisciplineSelect(deg)}
+                  style={{
+                    position: "relative",
+                    display: "flex",
+                    alignItems: "stretch",
+                    width: "100%",
+                  }}
                 >
-                  {deg.name}
-                </button>
+                  <button
+                    type="button"
+                    className="course-selection-card"
+                    onClick={() => handleDisciplineSelect(deg)}
+                    style={{ flex: 1, paddingRight: "45px", margin: 0, textAlign: "left" }}
+                  >
+                    {deg.name}
+                  </button>
+                  <button
+                    type="button"
+                    title={`Delete ${deg.name}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteDegree(deg._id, deg.name);
+                    }}
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      background: "#ef4444",
+                      color: "#ffffff",
+                      border: "none",
+                      borderRadius: "4px",
+                      padding: "4px 8px",
+                      fontSize: "12px",
+                      cursor: "pointer",
+                      fontWeight: "bold",
+                      zIndex: 2,
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
               ))}
             </div>
           </div>

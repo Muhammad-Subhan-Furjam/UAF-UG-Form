@@ -93,6 +93,162 @@ const CoordinatorForm = () => {
     }
   };
 
+  // My Courses Table State
+  const [myCourses, setMyCourses] = useState([]);
+  const [coursesLoading, setCoursesLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Manage Degrees Modal State
+  const [showManageDegreesModal, setShowManageDegreesModal] = useState(false);
+  const [deletingDegreeId, setDeletingDegreeId] = useState("");
+
+  // Edit Course Modal State
+  const [showEditCourseModal, setShowEditCourseModal] = useState(false);
+  const [editingCourse, setEditingCourse] = useState(null);
+  const [editCourseData, setEditCourseData] = useState({
+    courseCode: "",
+    courseTitle: "",
+    creditHours: "",
+    schemeOfStudy: "2024",
+    courseCategory: "General Course",
+    semesterNumber: "1",
+    teacherName: "",
+    totalMarks: "",
+    remarks: "",
+  });
+  const [savingEditCourse, setSavingEditCourse] = useState(false);
+  const [editCourseMsg, setEditCourseMsg] = useState("");
+
+  const fetchMyCourses = async () => {
+    try {
+      setCoursesLoading(true);
+      const res = await api.get("/courses");
+      const filtered = (res.data || []).filter((c) => {
+        const cDeptId = c.department_id?._id || c.department_id;
+        const cCampusId = c.campus_id?._id || c.campus_id;
+        const matchDept = department ? String(cDeptId) === String(department) : true;
+        const matchCampus = campus ? String(cCampusId) === String(campus) : true;
+        return matchDept && matchCampus;
+      });
+      setMyCourses(filtered);
+    } catch (err) {
+      console.log("Fetch my courses error:", err);
+    } finally {
+      setCoursesLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (department) {
+      fetchMyCourses();
+    }
+  }, [department, campus]);
+
+  const handleDeleteCourse = async (courseId, code) => {
+    if (window.confirm(`Are you sure you want to delete course '${code}'?`)) {
+      try {
+        await api.delete(`/courses/${courseId}`);
+        fetchMyCourses();
+      } catch (err) {
+        alert(err.response?.data?.message || "Failed to delete course");
+      }
+    }
+  };
+
+  const handleOpenEditCourse = (course) => {
+    setEditingCourse(course);
+    setEditCourseData({
+      courseCode: course.courseCode || "",
+      courseTitle: course.courseTitle || "",
+      creditHours: course.creditHours || "3 (3-0)",
+      schemeOfStudy: course.schemeOfStudy || "2024",
+      courseCategory: course.courseCategory || "General Course",
+      semesterNumber: course.semester_id?.number || "1",
+      teacherName: course.teacherName || "",
+      totalMarks: course.totalMarks || "",
+      remarks: course.remarks || "",
+    });
+    setEditCourseMsg("");
+    setShowEditCourseModal(true);
+  };
+
+  const handleSaveEditCourse = async (e) => {
+    e.preventDefault();
+    if (!editingCourse) return;
+    setSavingEditCourse(true);
+    setEditCourseMsg("");
+
+    const courseCodeRegex = /^([A-Z]{2,7}-\d{2,4}|[A-Z]{2,7}-[A-Z]{2,7}-\d{2,4})$/;
+    if (!courseCodeRegex.test((editCourseData.courseCode || "").trim())) {
+      setEditCourseMsg("Invalid Course Code format! Allowed: 2-7 uppercase letters-2-4 digits (e.g. CS-101) or 2-7 uppercase letters-2-7 uppercase letters-2-4 digits (e.g. CS-MATH-101).");
+      setSavingEditCourse(false);
+      return;
+    }
+
+    try {
+      await api.put(`/courses/${editingCourse._id}`, {
+        courseCode: editCourseData.courseCode.trim().toUpperCase(),
+        courseTitle: editCourseData.courseTitle.trim(),
+        creditHours: editCourseData.creditHours,
+        schemeOfStudy: editCourseData.schemeOfStudy,
+        courseCategory: editCourseData.courseCategory,
+        semesterNumber: editCourseData.semesterNumber,
+        teacherName: editCourseData.teacherName.trim(),
+        totalMarks: editCourseData.totalMarks.trim(),
+        remarks: editCourseData.remarks.trim(),
+      });
+      setEditCourseMsg("Course updated successfully!");
+      fetchMyCourses();
+      setTimeout(() => {
+        setShowEditCourseModal(false);
+        setEditingCourse(null);
+        setEditCourseMsg("");
+      }, 1000);
+    } catch (err) {
+      setEditCourseMsg(err.response?.data?.message || "Failed to update course");
+    } finally {
+      setSavingEditCourse(false);
+    }
+  };
+
+  const handleDeleteDegree = async (degreeId, degreeName) => {
+    if (window.confirm(`Are you sure you want to delete degree '${degreeName}'? This will remove it from the department.`)) {
+      try {
+        setDeletingDegreeId(degreeId);
+        await api.delete(`/degrees/${degreeId}`);
+        
+        const degRes = await api.get("/degrees");
+        const selectedDeptId = String(department);
+        const filtered = (degRes.data || []).filter((d) => {
+          const getRefId = (ref) => {
+            if (!ref) return "";
+            if (typeof ref === "object") return String(ref._id || ref.id || "");
+            return String(ref);
+          };
+          return getRefId(d.department_id) === selectedDeptId;
+        });
+        setDegrees(filtered);
+        if (degree === degreeId) setDegree("");
+        fetchMyCourses();
+      } catch (err) {
+        alert(err.response?.data?.message || "Failed to delete degree");
+      } finally {
+        setDeletingDegreeId("");
+      }
+    }
+  };
+
+  const filteredMyCourses = myCourses.filter((c) => {
+    const q = searchQuery.toLowerCase();
+    return (
+      (c.courseCode && c.courseCode.toLowerCase().includes(q)) ||
+      (c.courseTitle && c.courseTitle.toLowerCase().includes(q)) ||
+      (c.degree_id?.name && c.degree_id.name.toLowerCase().includes(q)) ||
+      (c.department_id?.name && c.department_id.name.toLowerCase().includes(q)) ||
+      (c.schemeOfStudy && c.schemeOfStudy.toLowerCase().includes(q))
+    );
+  });
+
   // Course Category Options
   const courseCategories = [
     "General Course",
@@ -343,6 +499,7 @@ const CoordinatorForm = () => {
       const res = await api.post("/courses", payload);
 
       setMessage(res.data.message || "Course Added Successfully");
+      fetchMyCourses();
 
       setFormData({
         semester: "",
@@ -429,28 +586,48 @@ const CoordinatorForm = () => {
             <div className="form-group">
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
                 <label style={{ margin: 0 }}>Select Degree *</label>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowDegreeModal(true);
-                    setDegreeMsg("");
-                    setNewDegreeName("");
-                  }}
-                  disabled={!department}
-                  style={{
-                    background: "#0284c7",
-                    color: "#ffffff",
-                    border: "none",
-                    borderRadius: "4px",
-                    padding: "3px 9px",
-                    fontSize: "12px",
-                    cursor: department ? "pointer" : "not-allowed",
-                    fontWeight: "600",
-                    opacity: department ? 1 : 0.6,
-                  }}
-                >
-                  + Add Degree
-                </button>
+                <div style={{ display: "flex", gap: "6px" }}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowDegreeModal(true);
+                      setDegreeMsg("");
+                      setNewDegreeName("");
+                    }}
+                    disabled={!department}
+                    style={{
+                      background: "#0284c7",
+                      color: "#ffffff",
+                      border: "none",
+                      borderRadius: "4px",
+                      padding: "3px 9px",
+                      fontSize: "12px",
+                      cursor: department ? "pointer" : "not-allowed",
+                      fontWeight: "600",
+                      opacity: department ? 1 : 0.6,
+                    }}
+                  >
+                    + Add Degree
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowManageDegreesModal(true)}
+                    disabled={!department || degrees.length === 0}
+                    style={{
+                      background: "#dc2626",
+                      color: "#ffffff",
+                      border: "none",
+                      borderRadius: "4px",
+                      padding: "3px 9px",
+                      fontSize: "12px",
+                      cursor: department && degrees.length > 0 ? "pointer" : "not-allowed",
+                      fontWeight: "600",
+                      opacity: department && degrees.length > 0 ? 1 : 0.6,
+                    }}
+                  >
+                    Manage / Delete Degrees
+                  </button>
+                </div>
               </div>
               <select
                 value={degree}
@@ -654,22 +831,107 @@ const CoordinatorForm = () => {
         )}
       </section>
 
+      {/* MY ADDED COURSES TABLE SECTION */}
+      <section className="coordinator-form-card" style={{ marginTop: "30px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px", flexWrap: "wrap", gap: "10px" }}>
+          <div>
+            <h3 style={{ margin: 0, fontSize: "18px", color: "#1e293b" }}>Department Added Courses Overview ({filteredMyCourses.length})</h3>
+            <p style={{ margin: "4px 0 0 0", fontSize: "13px", color: "#64748b" }}>View, edit, or delete courses added for your department.</p>
+          </div>
+          <input
+            type="text"
+            placeholder="Search added courses..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{ padding: "8px 14px", borderRadius: "6px", border: "1px solid #cbd5e1", fontSize: "14px", width: "260px" }}
+          />
+        </div>
+
+        {coursesLoading ? (
+          <p style={{ textAlign: "center", padding: "20px" }}>Loading courses...</p>
+        ) : (
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px" }}>
+              <thead>
+                <tr style={{ background: "#f1f5f9", textAlign: "left" }}>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0" }}>Sr. No.</th>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0" }}>Course Code</th>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0" }}>Course Title</th>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0" }}>Credit Hours</th>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0" }}>Offering Semester</th>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0" }}>Degree</th>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0" }}>Department</th>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0" }}>Faculty</th>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0" }}>Campus</th>
+                  <th style={{ padding: "12px 10px", borderBottom: "2px solid #e2e8f0", textAlign: "center" }}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredMyCourses.length > 0 ? (
+                  filteredMyCourses.map((course, idx) => (
+                    <tr key={course._id} style={{ borderBottom: "1px solid #e2e8f0" }}>
+                      <td style={{ padding: "12px 10px", fontWeight: "600" }}>{idx + 1}</td>
+                      <td style={{ padding: "12px 10px", fontWeight: "700", color: "#0f172a" }}>{course.courseCode}</td>
+                      <td style={{ padding: "12px 10px", fontWeight: "600" }}>{course.courseTitle}</td>
+                      <td style={{ padding: "12px 10px" }}>{course.creditHours}</td>
+                      <td style={{ padding: "12px 10px" }}>
+                        <span style={{ background: "#e0f2fe", color: "#0369a1", padding: "4px 8px", borderRadius: "4px", fontSize: "12px", fontWeight: "600" }}>
+                          {course.semester_id?.name || (course.semester_id?.number ? `Semester ${course.semester_id.number}` : "N/A")}
+                        </span>
+                      </td>
+                      <td style={{ padding: "12px 10px" }}>{course.degree_id?.name || "N/A"}</td>
+                      <td style={{ padding: "12px 10px" }}>{course.department_id?.name || "N/A"}</td>
+                      <td style={{ padding: "12px 10px" }}>{course.faculty_id?.name || "N/A"}</td>
+                      <td style={{ padding: "12px 10px" }}>{course.campus_id?.name || "N/A"}</td>
+                      <td style={{ padding: "12px 10px", textAlign: "center" }}>
+                        <div style={{ display: "flex", gap: "6px", justifyContent: "center" }}>
+                          <button
+                            type="button"
+                            onClick={() => handleOpenEditCourse(course)}
+                            style={{ background: "#0284c7", color: "#fff", border: "none", borderRadius: "4px", padding: "6px 12px", cursor: "pointer", fontSize: "12px", fontWeight: "600" }}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteCourse(course._id, course.courseCode)}
+                            style={{ background: "#ef4444", color: "#fff", border: "none", borderRadius: "4px", padding: "6px 12px", cursor: "pointer", fontSize: "12px", fontWeight: "600" }}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="10" style={{ textAlign: "center", padding: "30px", color: "#64748b" }}>
+                      No courses found for this department. Add a course above to see it listed here.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+
       {/* ADD DEGREE MODAL */}
       {showDegreeModal && (
         <div className="admin-modal-overlay" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 9999 }}>
-          <div style={{ background: "#ffffff", padding: "24px", borderRadius: "8px", width: "100%", maxWidth: "450px", boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}>
+          <div style={{ background: "#ffffff", padding: "24px", borderRadius: "8px", width: "100%", maxWidth: "480px", boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
               <h3 style={{ margin: 0, fontSize: "18px", color: "#1e293b" }}>Add New Degree to Department</h3>
               <button type="button" onClick={() => setShowDegreeModal(false)} style={{ background: "none", border: "none", fontSize: "18px", cursor: "pointer", color: "#64748b" }}>✕</button>
             </div>
             <form onSubmit={handleAddDegreeSubmit}>
               <div style={{ marginBottom: "16px" }}>
-                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "14px", color: "#334155" }}>Degree Name *</label>
+                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "14px", color: "#334155" }}>Degree Name * (Supports Morning/Evening details)</label>
                 <input
                   type="text"
                   value={newDegreeName}
                   onChange={(e) => setNewDegreeName(e.target.value)}
-                  placeholder="e.g. BS Artificial Intelligence or BS Software Engineering"
+                  placeholder="e.g. BS Biochemistry (Morning) or BS Biochemistry (Evening)"
                   required
                   style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #cbd5e1", fontSize: "14px" }}
                 />
@@ -681,6 +943,157 @@ const CoordinatorForm = () => {
                 <button type="button" onClick={() => setShowDegreeModal(false)} style={{ padding: "8px 16px", borderRadius: "6px", border: "1px solid #cbd5e1", background: "#f8fafc", cursor: "pointer" }}>Cancel</button>
                 <button type="submit" disabled={addingDegree} style={{ padding: "8px 16px", borderRadius: "6px", border: "none", background: "#0284c7", color: "#fff", cursor: "pointer", fontWeight: "600" }}>
                   {addingDegree ? "Saving..." : "Save Degree"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MANAGE / DELETE DEGREES MODAL */}
+      {showManageDegreesModal && (
+        <div className="admin-modal-overlay" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 9999 }}>
+          <div style={{ background: "#ffffff", padding: "24px", borderRadius: "8px", width: "100%", maxWidth: "550px", boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+              <h3 style={{ margin: 0, fontSize: "18px", color: "#1e293b" }}>Department Degrees ({degrees.length})</h3>
+              <button type="button" onClick={() => setShowManageDegreesModal(false)} style={{ background: "none", border: "none", fontSize: "18px", cursor: "pointer", color: "#64748b" }}>✕</button>
+            </div>
+            <div style={{ maxHeight: "350px", overflowY: "auto" }}>
+              {degrees.length > 0 ? (
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {degrees.map((d) => (
+                    <li key={d._id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 12px", borderBottom: "1px solid #e2e8f0" }}>
+                      <span style={{ fontWeight: "600", fontSize: "14px", color: "#1e293b" }}>{d.name}</span>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteDegree(d._id, d.name)}
+                        disabled={deletingDegreeId === d._id}
+                        style={{ background: "#ef4444", color: "#fff", border: "none", borderRadius: "4px", padding: "4px 10px", fontSize: "12px", cursor: "pointer", fontWeight: "600" }}
+                      >
+                        {deletingDegreeId === d._id ? "Deleting..." : "Delete Degree"}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p style={{ textAlign: "center", color: "#64748b", padding: "20px" }}>No degrees found for this department.</p>
+              )}
+            </div>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "16px" }}>
+              <button type="button" onClick={() => setShowManageDegreesModal(false)} style={{ padding: "8px 16px", borderRadius: "6px", border: "1px solid #cbd5e1", background: "#f8fafc", cursor: "pointer" }}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* EDIT COURSE MODAL */}
+      {showEditCourseModal && editingCourse && (
+        <div className="admin-modal-overlay" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 9999 }}>
+          <div style={{ background: "#ffffff", padding: "24px", borderRadius: "8px", width: "100%", maxWidth: "600px", boxShadow: "0 10px 25px rgba(0,0,0,0.2)", maxHeight: "90vh", overflowY: "auto" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+              <h3 style={{ margin: 0, fontSize: "18px", color: "#1e293b" }}>Edit Course: {editingCourse.courseCode}</h3>
+              <button type="button" onClick={() => setShowEditCourseModal(false)} style={{ background: "none", border: "none", fontSize: "18px", cursor: "pointer", color: "#64748b" }}>✕</button>
+            </div>
+            <form onSubmit={handleSaveEditCourse}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+                <div>
+                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px" }}>Course Code *</label>
+                  <input
+                    type="text"
+                    value={editCourseData.courseCode}
+                    onChange={(e) => setEditCourseData({ ...editCourseData, courseCode: e.target.value.toUpperCase() })}
+                    required
+                    style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px" }}>Course Title *</label>
+                  <input
+                    type="text"
+                    value={editCourseData.courseTitle}
+                    onChange={(e) => setEditCourseData({ ...editCourseData, courseTitle: e.target.value })}
+                    required
+                    style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px" }}>Credit Hours *</label>
+                  <select
+                    value={editCourseData.creditHours}
+                    onChange={(e) => setEditCourseData({ ...editCourseData, creditHours: e.target.value })}
+                    required
+                    style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
+                  >
+                    {creditHoursOptions.map((ch) => (
+                      <option key={ch} value={ch}>{ch}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px" }}>Scheme of Study *</label>
+                  <select
+                    value={editCourseData.schemeOfStudy}
+                    onChange={(e) => setEditCourseData({ ...editCourseData, schemeOfStudy: e.target.value })}
+                    required
+                    style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
+                  >
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px" }}>Course Category *</label>
+                  <select
+                    value={editCourseData.courseCategory}
+                    onChange={(e) => setEditCourseData({ ...editCourseData, courseCategory: e.target.value })}
+                    required
+                    style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
+                  >
+                    {courseCategories.map((cat) => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px" }}>Offering Semester Number *</label>
+                  <input
+                    type="text"
+                    value={editCourseData.semesterNumber}
+                    onChange={(e) => setEditCourseData({ ...editCourseData, semesterNumber: e.target.value })}
+                    required
+                    placeholder="e.g. 1, 2, 3..."
+                    style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px" }}>Teacher Name (Optional)</label>
+                  <input
+                    type="text"
+                    value={editCourseData.teacherName}
+                    onChange={(e) => setEditCourseData({ ...editCourseData, teacherName: e.target.value })}
+                    style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px" }}>Total Marks (Optional)</label>
+                  <input
+                    type="text"
+                    value={editCourseData.totalMarks}
+                    onChange={(e) => setEditCourseData({ ...editCourseData, totalMarks: e.target.value })}
+                    style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1" }}
+                  />
+                </div>
+              </div>
+              {editCourseMsg && (
+                <p style={{ color: editCourseMsg.includes("success") ? "green" : "red", fontSize: "14px", marginTop: "12px", fontWeight: "600" }}>{editCourseMsg}</p>
+              )}
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px", marginTop: "16px" }}>
+                <button type="button" onClick={() => setShowEditCourseModal(false)} style={{ padding: "8px 16px", borderRadius: "6px", border: "1px solid #cbd5e1", background: "#f8fafc", cursor: "pointer" }}>Cancel</button>
+                <button type="submit" disabled={savingEditCourse} style={{ padding: "8px 16px", borderRadius: "6px", border: "none", background: "#0284c7", color: "#fff", cursor: "pointer", fontWeight: "600" }}>
+                  {savingEditCourse ? "Saving..." : "Save Changes"}
                 </button>
               </div>
             </form>

@@ -90,6 +90,12 @@ const courseSchema = new mongoose.Schema(
       default: "Compulsory",
     },
 
+    added_by: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
+    },
+
     status: {
       type: Boolean,
       default: true,

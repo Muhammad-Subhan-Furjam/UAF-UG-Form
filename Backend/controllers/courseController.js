@@ -4,7 +4,7 @@ const Semester = require("../models/Semester");
 // Get All Courses (Supports Query Filtering)
 const getCourses = async (req, res) => {
   try {
-    const { campus_id, faculty_id, department_id, degree_id, schemeOfStudy } = req.query;
+    const { campus_id, faculty_id, department_id, degree_id, schemeOfStudy, added_by } = req.query;
 
     let filter = {};
     if (campus_id) filter.campus_id = campus_id;
@@ -12,13 +12,15 @@ const getCourses = async (req, res) => {
     if (department_id) filter.department_id = department_id;
     if (degree_id) filter.degree_id = degree_id;
     if (schemeOfStudy) filter.schemeOfStudy = schemeOfStudy;
+    if (added_by) filter.added_by = added_by;
 
     const courses = await Course.find(filter)
       .populate("campus_id")
       .populate("faculty_id")
       .populate("department_id")
       .populate("degree_id")
-      .populate("semester_id");
+      .populate("semester_id")
+      .populate("added_by", "name email role");
 
     res.status(200).json(courses);
   } catch (error) {
@@ -46,6 +48,7 @@ const addCourse = async (req, res) => {
       courseType,
       courseCategory,
       schemeOfStudy,
+      added_by,
     } = req.body;
 
     if (!courseCode || !courseTitle || !creditHours || !degree_id || !semesterNumber) {
@@ -102,6 +105,7 @@ const addCourse = async (req, res) => {
       schemeOfStudy: targetScheme,
       totalMarks: totalMarks || "",
       remarks: remarks || "",
+      added_by: req.user?._id || added_by || null,
     });
 
     res.status(201).json({
