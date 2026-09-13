@@ -475,13 +475,18 @@ const Signup = () => {
                   required
                 >
                   <option value="">Select Batch</option>
+                  <option value="2022-2026">2022-2026</option>
+                  <option value="2022-2027">2022-2027</option>
                   <option value="2023-2027">2023-2027</option>
+                  <option value="2023-2028">2023-2028</option>
                   <option value="2024-2028">2024-2028</option>
+                  <option value="2024-2029">2024-2029</option>
                   <option value="2025-2029">2025-2029</option>
+                  <option value="2025-2030">2025-2030</option>
                   <option value="2026-2030">2026-2030</option>
                 </select>
                 <small className="signup-hint-text">
-                  Select your enrolled 4-year batch
+                  Select your enrolled batch
                 </small>
               </div>
             </>

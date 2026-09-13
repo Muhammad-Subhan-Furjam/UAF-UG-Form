@@ -93,6 +93,7 @@ const CoordinatorForm = () => {
         { value: "8", label: "Semester 8" },
         { value: "10", label: "Semester 10" },
         { value: "12", label: "Semester 12" },
+        { value: "14", label: "Semester 14" },
       ];
     }
     if (selectedSemester === "Winter") {
@@ -102,6 +103,7 @@ const CoordinatorForm = () => {
         { value: "7", label: "Semester 7" },
         { value: "9", label: "Semester 9" },
         { value: "11", label: "Semester 11" },
+        { value: "13", label: "Semester 13" },
       ];
     }
     if (selectedSemester === "Summer") {
@@ -112,6 +114,7 @@ const CoordinatorForm = () => {
         { value: "Summer semester 4", label: "Summer semester 4" },
         { value: "Summer semester 5", label: "Summer semester 5" },
         { value: "Summer semester 6", label: "Summer semester 6" },
+        { value: "Summer semester 7", label: "Summer semester 7" },
       ];
     }
     return [];

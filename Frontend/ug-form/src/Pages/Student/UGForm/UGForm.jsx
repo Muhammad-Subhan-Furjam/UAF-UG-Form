@@ -92,6 +92,7 @@ const UGForm = () => {
         { number: 7, name: "Semester 7" },
         { number: 9, name: "Semester 9" },
         { number: 11, name: "Semester 11" },
+        { number: 13, name: "Semester 13" },
       ];
     } else if (commencing === "Spring") {
       allOptions = [
@@ -101,6 +102,7 @@ const UGForm = () => {
         { number: 8, name: "Semester 8" },
         { number: 10, name: "Semester 10" },
         { number: 12, name: "Semester 12" },
+        { number: 14, name: "Semester 14" },
       ];
     } else if (commencing === "Summer") {
       allOptions = [
@@ -110,6 +112,7 @@ const UGForm = () => {
         { number: "Summer semester 4", name: "Summer semester 4", summerNum: 4 },
         { number: "Summer semester 5", name: "Summer semester 5", summerNum: 5 },
         { number: "Summer semester 6", name: "Summer semester 6", summerNum: 6 },
+        { number: "Summer semester 7", name: "Summer semester 7", summerNum: 7 },
       ];
     } else {
       allOptions = [
@@ -125,6 +128,8 @@ const UGForm = () => {
         { number: 10, name: "Semester 10 (Spring)" },
         { number: 11, name: "Semester 11 (Winter)" },
         { number: 12, name: "Semester 12 (Spring)" },
+        { number: 13, name: "Semester 13 (Winter)" },
+        { number: 14, name: "Semester 14 (Spring)" },
       ];
     }
 

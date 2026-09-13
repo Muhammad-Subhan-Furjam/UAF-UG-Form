@@ -476,9 +476,14 @@ const StudentsList = () => {
               onChange={(e) => setFilterBatch(e.target.value)}
             >
               <option value="all">All Batches</option>
+              <option value="2022-2026">2022-2026</option>
+              <option value="2022-2027">2022-2027</option>
               <option value="2023-2027">2023-2027</option>
+              <option value="2023-2028">2023-2028</option>
               <option value="2024-2028">2024-2028</option>
+              <option value="2024-2029">2024-2029</option>
               <option value="2025-2029">2025-2029</option>
+              <option value="2025-2030">2025-2030</option>
               <option value="2026-2030">2026-2030</option>
             </select>
           </div>
@@ -778,9 +783,14 @@ const StudentsList = () => {
                     }
                     required
                   >
+                    <option value="2022-2026">2022-2026</option>
+                    <option value="2022-2027">2022-2027</option>
                     <option value="2023-2027">2023-2027</option>
+                    <option value="2023-2028">2023-2028</option>
                     <option value="2024-2028">2024-2028</option>
+                    <option value="2024-2029">2024-2029</option>
                     <option value="2025-2029">2025-2029</option>
+                    <option value="2025-2030">2025-2030</option>
                     <option value="2026-2030">2026-2030</option>
                   </select>
                 </div>

@@ -79,6 +79,8 @@ const CoordinatorCourses = () => {
     "Semester X",
     "Semester XI",
     "Semester XII",
+    "Semester XIII",
+    "Semester XIV",
   ];
 
   const summerSemesters = [
@@ -88,6 +90,7 @@ const CoordinatorCourses = () => {
     "Summer Semester IV",
     "Summer Semester V",
     "Summer Semester VI",
+    "Summer Semester VII",
   ];
 
   const getSemesterNumber = (semesterName) => {
@@ -104,12 +107,15 @@ const CoordinatorCourses = () => {
       "Semester X": 10,
       "Semester XI": 11,
       "Semester XII": 12,
+      "Semester XIII": 13,
+      "Semester XIV": 14,
       "Summer Semester I": 101,
       "Summer Semester II": 102,
       "Summer Semester III": 103,
       "Summer Semester IV": 104,
       "Summer Semester V": 105,
       "Summer Semester VI": 106,
+      "Summer Semester VII": 107,
     };
     return map[semesterName] || 1;
   };
