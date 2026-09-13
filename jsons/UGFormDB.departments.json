@@ -1067,17 +1067,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa6800efed38f0df3a36819",
-    "name": "Faculty of Agriculture",
-    "code": "DEPT_FACULTYOFA_1141",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a9db6f8a5fb1c6ee71b04bd",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:54.162Z",
-    "updatedAt": "2026-09-13T10:50:54.162Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa6800efed38f0df3a3681c",
     "name": "Department of Farm Machinery and Power",
     "code": "DEPT_DEPARTMENT_7750",
