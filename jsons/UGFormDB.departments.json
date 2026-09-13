@@ -737,17 +737,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa68006fed38f0df3a367e8",
-    "name": "Department Agri.Extension",
-    "code": "DEPT_DEPARTMENT_4632",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:46.284Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa68006fed38f0df3a367e9",
     "name": "Faculty Animal Sciences",
     "code": "DEPT_FACULTYANI_7764",
@@ -760,46 +749,46 @@
   },
   {
     "_id": "6aa68006fed38f0df3a367eb",
-    "name": "INST IARE",
+    "name": "Institute of IARE",
     "code": "DEPT_INSTIARE_1911",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6aa68006fed38f0df3a367e7",
     "status": true,
     "createdAt": "2026-09-13T10:50:46.704Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
+    "updatedAt": "2026-09-13T17:28:30.804Z",
     "__v": 0
   },
   {
     "_id": "6aa68006fed38f0df3a367ed",
-    "name": "ISNT NIFSAT",
+    "name": "Institute of NIFSAT",
     "code": "DEPT_ISNTNIFSAT_5479",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6aa68006fed38f0df3a367e7",
     "status": true,
     "createdAt": "2026-09-13T10:50:46.983Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
+    "updatedAt": "2026-09-13T17:28:31.012Z",
     "__v": 0
   },
   {
     "_id": "6aa68007fed38f0df3a367ef",
-    "name": "INST Micro",
+    "name": "Institute of Microbiology",
     "code": "DEPT_INSTMICRO_8172",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6aa68006fed38f0df3a367e7",
     "status": true,
     "createdAt": "2026-09-13T10:50:47.262Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
+    "updatedAt": "2026-09-13T17:28:31.239Z",
     "__v": 0
   },
   {
     "_id": "6aa68007fed38f0df3a367f1",
-    "name": "INST Enviromental Sciences",
+    "name": "Institute of Enviromental Sciences",
     "code": "DEPT_INSTENVIRO_3630",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6aa68006fed38f0df3a367e7",
     "status": true,
     "createdAt": "2026-09-13T10:50:47.545Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
+    "updatedAt": "2026-09-13T17:28:31.445Z",
     "__v": 0
   },
   {
@@ -821,17 +810,6 @@
     "faculty_id": "6aa68006fed38f0df3a367e7",
     "status": true,
     "createdAt": "2026-09-13T10:50:48.268Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68008fed38f0df3a367f9",
-    "name": "Institute of Horticultural Sciences",
-    "code": "DEPT_INSTITUTEO_9775",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:48.695Z",
     "updatedAt": "2026-09-13T17:08:59.900Z",
     "__v": 0
   },
