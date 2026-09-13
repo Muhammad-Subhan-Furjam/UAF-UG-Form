@@ -82,9 +82,6 @@ const CoordinatorForm = () => {
   ========================== */
   const getCommencingOptions = () => {
     const selectedSemester = formData.semester;
-    if (selectedSemester === "Fall") {
-      return [{ value: "1", label: "Semester 1" }];
-    }
     if (selectedSemester === "Spring") {
       return [
         { value: "2", label: "Semester 2" },
@@ -98,6 +95,7 @@ const CoordinatorForm = () => {
     }
     if (selectedSemester === "Winter") {
       return [
+        { value: "1", label: "Semester 1" },
         { value: "3", label: "Semester 3" },
         { value: "5", label: "Semester 5" },
         { value: "7", label: "Semester 7" },
@@ -400,10 +398,9 @@ const CoordinatorForm = () => {
                 required
               >
                 <option value="">Select Semester</option>
-                <option value="Fall">Fall</option>
-                <option value="Summer">Summer</option>
                 <option value="Winter">Winter</option>
                 <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
               </select>
             </div>
 

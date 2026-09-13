@@ -86,10 +86,9 @@ const UGForm = () => {
 
     let allOptions = [];
 
-    if (commencing === "Fall") {
-      allOptions = [{ number: 1, name: "Semester 1" }];
-    } else if (commencing === "Winter") {
+    if (commencing === "Winter") {
       allOptions = [
+        { number: 1, name: "Semester 1" },
         { number: 3, name: "Semester 3" },
         { number: 5, name: "Semester 5" },
         { number: 7, name: "Semester 7" },
@@ -119,7 +118,7 @@ const UGForm = () => {
       ];
     } else {
       allOptions = [
-        { number: 1, name: "Semester 1 (Fall)" },
+        { number: 1, name: "Semester 1 (Winter)" },
         { number: 2, name: "Semester 2 (Spring)" },
         { number: 3, name: "Semester 3 (Winter)" },
         { number: 4, name: "Semester 4 (Spring)" },
@@ -601,10 +600,9 @@ const UGForm = () => {
               required
             >
               <option value="">Select Semester</option>
-              <option value="Fall">Fall</option>
-              <option value="Summer">Summer</option>
               <option value="Winter">Winter</option>
               <option value="Spring">Spring</option>
+              <option value="Summer">Summer</option>
             </select>
           </div>
 
