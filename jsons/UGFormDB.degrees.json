@@ -291,11 +291,11 @@
     "code": "DGASSOCIAT381",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db88d112cdfb0613fd08a",
-    "department_id": "6a8db88d112cdfb0613fd08c",
+    "department_id": "6aa68004fed38f0df3a367dc",
     "duration": "",
     "status": true,
     "createdAt": "2026-09-06T15:28:32.713Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
+    "updatedAt": "2026-09-13T17:13:44.986Z",
     "__v": 0
   },
   {
@@ -1383,11 +1383,11 @@
     "code": "DEG_BSSEEDSCIE_5344",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a9dabf8fa19043c87740b26",
-    "department_id": "6aa68005fed38f0df3a367e1",
+    "department_id": "6aa6d9ca7c195d627610090c",
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:45.440Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
+    "updatedAt": "2026-09-13T17:14:01.012Z",
     "__v": 0
   },
   {

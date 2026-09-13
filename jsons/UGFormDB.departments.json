@@ -33,17 +33,6 @@
     "__v": 0
   },
   {
-    "_id": "6a8db88d112cdfb0613fd08c",
-    "name": "Department of Plant Breeding & Genetics",
-    "code": "DPBG1004",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a9dabf8fa19043c87740b26",
-    "status": true,
-    "createdAt": "2026-08-25T15:45:17.859Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db88f112cdfb0613fd09e",
     "name": "Department of Chemistry",
     "code": "DC1022",
@@ -726,17 +715,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa68005fed38f0df3a367e1",
-    "name": "Seed Science And Technology",
-    "code": "DEPT_SEEDSCIENC_2873",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a9dabf8fa19043c87740b26",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:45.298Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa68005fed38f0df3a367e3",
     "name": "IBMS",
     "code": "DEPT_IBMS_5141",
@@ -1064,6 +1042,28 @@
     "status": true,
     "createdAt": "2026-09-13T17:02:48.214Z",
     "updatedAt": "2026-09-13T17:08:59.900Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6d9c97c195d627610090b",
+    "name": "Department of Plant Pathology",
+    "code": "DEPARTMENT_7436",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a9dabf8fa19043c87740b26",
+    "status": true,
+    "createdAt": "2026-09-13T17:13:45.638Z",
+    "updatedAt": "2026-09-13T17:13:45.638Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6d9ca7c195d627610090c",
+    "name": "Department of Seed Science And Technology",
+    "code": "DEPARTMENT_9293",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a9dabf8fa19043c87740b26",
+    "status": true,
+    "createdAt": "2026-09-13T17:13:46.341Z",
+    "updatedAt": "2026-09-13T17:13:46.341Z",
     "__v": 0
   }
 ]
