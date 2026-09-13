@@ -48,7 +48,7 @@ const courseSchema = new mongoose.Schema(
 
     schemeOfStudy: {
       type: String,
-      enum: ["2022", "2024", "2026"],
+      enum: ["2022", "2023", "2024", "2025", "2026"],
       default: "2024",
       required: true,
       trim: true,

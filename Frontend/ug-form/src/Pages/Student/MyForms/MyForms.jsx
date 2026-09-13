@@ -60,7 +60,11 @@ const MyForms = () => {
         }
         if (session === "2026-2030" || session.startsWith("2026")) {
           studentScheme = "2026";
+        } else if (session === "2025-2029" || session.startsWith("2025")) {
+          studentScheme = "2025";
         } else if (session === "2023-2027" || session.startsWith("2023")) {
+          studentScheme = "2023";
+        } else if (session.startsWith("2022")) {
           studentScheme = "2022";
         } else {
           studentScheme = "2024";
@@ -105,7 +109,11 @@ const MyForms = () => {
             const deptMatch = !courseDeptId || !userDeptId || String(courseDeptId) === String(userDeptId);
             const degreeMatch = String(courseDegreeId) === String(degreeId);
             const semesterMatch = String(courseSemesterId) === String(semesterId);
-            const schemeMatch = !course.schemeOfStudy || String(course.schemeOfStudy) === String(studentScheme);
+            const schemeMatch =
+              !course.schemeOfStudy ||
+              String(course.schemeOfStudy) === String(studentScheme) ||
+              (studentScheme === "2023" && String(course.schemeOfStudy) === "2022") ||
+              (studentScheme === "2025" && String(course.schemeOfStudy) === "2024");
 
             return campusMatch && facultyMatch && deptMatch && degreeMatch && semesterMatch && schemeMatch;
           });

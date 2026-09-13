@@ -54,7 +54,7 @@ const addCourse = async (req, res) => {
       });
     }
 
-    const validSchemes = ["2022", "2024", "2026"];
+    const validSchemes = ["2022", "2023", "2024", "2025", "2026"];
     const targetScheme = schemeOfStudy && validSchemes.includes(String(schemeOfStudy).trim())
       ? String(schemeOfStudy).trim()
       : "2024";
