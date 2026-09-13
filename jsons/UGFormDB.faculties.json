@@ -188,5 +188,14 @@
     "createdAt": "2026-09-13T15:56:50.266Z",
     "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
+  },
+  {
+    "_id": "6aa6e370b151cd0b7f90b4da",
+    "name": "Faculty of Agriculture (Honours)",
+    "code": "FAHON101",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:56.926Z",
+    "updatedAt": "2026-09-13T17:54:56.926Z"
   }
 ]

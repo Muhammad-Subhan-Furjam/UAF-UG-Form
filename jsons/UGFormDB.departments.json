@@ -812,5 +812,85 @@
     "createdAt": "2026-09-13T17:13:46.341Z",
     "updatedAt": "2026-09-13T17:13:46.341Z",
     "__v": 0
+  },
+  {
+    "_id": "6aa6e371b151cd0b7f90b4db",
+    "name": "Faculty Animal Sciences",
+    "code": "DEPT-3604",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:57.069Z",
+    "updatedAt": "2026-09-13T17:54:57.069Z"
+  },
+  {
+    "_id": "6aa6e371b151cd0b7f90b4dd",
+    "name": "Institute of IARE",
+    "code": "DEPT-3795",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:57.354Z",
+    "updatedAt": "2026-09-13T17:54:57.354Z"
+  },
+  {
+    "_id": "6aa6e371b151cd0b7f90b4df",
+    "name": "Institute of NIFSAT",
+    "code": "DEPT-4315",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:57.644Z",
+    "updatedAt": "2026-09-13T17:54:57.644Z"
+  },
+  {
+    "_id": "6aa6e371b151cd0b7f90b4e1",
+    "name": "Institute of Microbiology",
+    "code": "DEPT-7470",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:57.925Z",
+    "updatedAt": "2026-09-13T17:54:57.925Z"
+  },
+  {
+    "_id": "6aa6e372b151cd0b7f90b4e3",
+    "name": "Institute of Enviromental Sciences",
+    "code": "DEPT-3270",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:58.205Z",
+    "updatedAt": "2026-09-13T17:54:58.205Z"
+  },
+  {
+    "_id": "6aa6e372b151cd0b7f90b4e5",
+    "name": "Department of Forestry and Range Management",
+    "code": "DEPT-9690",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:58.483Z",
+    "updatedAt": "2026-09-13T17:54:58.483Z"
+  },
+  {
+    "_id": "6aa6e372b151cd0b7f90b4e8",
+    "name": "Department of CABB",
+    "code": "DEPT-8232",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:58.932Z",
+    "updatedAt": "2026-09-13T17:54:58.932Z"
+  },
+  {
+    "_id": "6aa6e373b151cd0b7f90b4eb",
+    "name": "Institute of Soil & Environmental Sciences",
+    "code": "DEPT-2029",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:59.351Z",
+    "updatedAt": "2026-09-13T17:54:59.351Z"
   }
 ]

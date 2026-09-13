@@ -1714,5 +1714,126 @@
     "createdAt": "2026-09-13T17:21:53.340Z",
     "updatedAt": "2026-09-13T17:21:53.340Z",
     "__v": 0
+  },
+  {
+    "_id": "6aa6e371b151cd0b7f90b4dc",
+    "name": "B.Sc. (Hons) Animal Science",
+    "code": "DEG-53915",
+    "department_id": "6aa6e371b151cd0b7f90b4db",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:57.210Z",
+    "updatedAt": "2026-09-13T17:54:57.210Z"
+  },
+  {
+    "_id": "6aa6e371b151cd0b7f90b4de",
+    "name": "B.Sc. (Hons) Agricultural & Resource Economics",
+    "code": "DEG-71778",
+    "department_id": "6aa6e371b151cd0b7f90b4dd",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:57.497Z",
+    "updatedAt": "2026-09-13T17:54:57.497Z"
+  },
+  {
+    "_id": "6aa6e371b151cd0b7f90b4e0",
+    "name": "B.Sc. (Hons) Food Science & Technology",
+    "code": "DEG-89105",
+    "department_id": "6aa6e371b151cd0b7f90b4df",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:57.784Z",
+    "updatedAt": "2026-09-13T17:54:57.784Z"
+  },
+  {
+    "_id": "6aa6e372b151cd0b7f90b4e2",
+    "name": "B.Sc. (Hons) Microbiology",
+    "code": "DEG-66373",
+    "department_id": "6aa6e371b151cd0b7f90b4e1",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:58.066Z",
+    "updatedAt": "2026-09-13T17:54:58.066Z"
+  },
+  {
+    "_id": "6aa6e372b151cd0b7f90b4e4",
+    "name": "B.Sc. (Hons) Enviromental Science",
+    "code": "DEG-39720",
+    "department_id": "6aa6e372b151cd0b7f90b4e3",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:58.343Z",
+    "updatedAt": "2026-09-13T17:54:58.343Z"
+  },
+  {
+    "_id": "6aa6e372b151cd0b7f90b4e6",
+    "name": "B.Sc. (Hons) Agriculture (Forestry)",
+    "code": "DEG-21656",
+    "department_id": "6aa6e372b151cd0b7f90b4e5",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:58.638Z",
+    "updatedAt": "2026-09-13T17:54:58.638Z"
+  },
+  {
+    "_id": "6aa6e372b151cd0b7f90b4e7",
+    "name": "BS (Forestry)",
+    "code": "DEG-24138",
+    "department_id": "6aa6e372b151cd0b7f90b4e5",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:58.792Z",
+    "updatedAt": "2026-09-13T17:54:58.792Z"
+  },
+  {
+    "_id": "6aa6e373b151cd0b7f90b4e9",
+    "name": "B.Sc. (Hons) Agriculture (Biotechnology)",
+    "code": "DEG-83142",
+    "department_id": "6aa6e372b151cd0b7f90b4e8",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:59.070Z",
+    "updatedAt": "2026-09-13T17:54:59.070Z"
+  },
+  {
+    "_id": "6aa6e373b151cd0b7f90b4ea",
+    "name": "BS (Biotechnology)",
+    "code": "DEG-23391",
+    "department_id": "6aa6e372b151cd0b7f90b4e8",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:59.210Z",
+    "updatedAt": "2026-09-13T17:54:59.210Z"
+  },
+  {
+    "_id": "6aa6e373b151cd0b7f90b4ec",
+    "name": "BS (Environmental Sciences)",
+    "code": "DEG-63449",
+    "department_id": "6aa6e373b151cd0b7f90b4eb",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:59.489Z",
+    "updatedAt": "2026-09-13T17:54:59.489Z"
+  },
+  {
+    "_id": "6aa6e373b151cd0b7f90b4ed",
+    "name": "B.Sc. (Hons) Agriculture ( Soil Science)",
+    "code": "DEG-54396",
+    "department_id": "6aa6e373b151cd0b7f90b4eb",
+    "faculty_id": "6aa6e370b151cd0b7f90b4da",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "status": true,
+    "createdAt": "2026-09-13T17:54:59.638Z",
+    "updatedAt": "2026-09-13T17:54:59.638Z"
   }
 ]
