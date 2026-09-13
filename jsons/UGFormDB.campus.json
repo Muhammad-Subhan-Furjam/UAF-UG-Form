@@ -1,52 +1,62 @@
 [
   {
-    "_id": "6a8db88d112cdfb0613fd089",
-    "name": "Main Campus",
-    "code": "CMC1001",
-    "location": "",
-    "status": true,
-    "createdAt": "2026-08-25T15:45:17.641Z",
-    "updatedAt": "2026-08-25T15:45:17.641Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a8db892112cdfb0613fd0c9",
-    "name": "UAF Sub-Campus PARS",
-    "code": "CUSP1065",
-    "location": "",
-    "status": true,
-    "createdAt": "2026-08-25T15:45:22.389Z",
-    "updatedAt": "2026-08-25T15:45:22.389Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db893112cdfb0613fd0d2",
     "name": "UAF Sub-Campus Burewala-Vehari",
     "code": "CUSB1074",
     "location": "",
     "status": true,
-    "createdAt": "2026-08-25T15:45:23.054Z",
-    "updatedAt": "2026-08-25T15:45:23.054Z",
+    "__v": 0,
+    "createdAt": "2026-09-07T04:08:33.991Z",
+    "updatedAt": "2026-09-07T04:08:33.991Z"
+  },
+  {
+    "_id": "6a8db88d112cdfb0613fd089",
+    "name": "Main Campus",
+    "code": "CMC1001",
+    "location": "",
+    "status": true,
+    "__v": 0,
+    "createdAt": "2026-09-07T04:08:33.991Z",
+    "updatedAt": "2026-09-07T04:08:33.991Z"
+  },
+  {
+    "_id": "6aa53f2e93eba337833862ff",
+    "name": "UAF Sub-Campus PARS",
+    "code": "CUSP1065",
+    "location": "",
+    "status": true,
+    "createdAt": "2026-09-12T12:01:50.935Z",
+    "updatedAt": "2026-09-12T12:01:50.935Z",
     "__v": 0
   },
   {
-    "_id": "6a8db893112cdfb0613fd0de",
+    "_id": "6aa53f2f93eba33783386300",
     "name": "UAF Sub-Campus Depalpur",
     "code": "CUSD1086",
     "location": "",
     "status": true,
-    "createdAt": "2026-08-25T15:45:23.956Z",
-    "updatedAt": "2026-08-25T15:45:23.956Z",
+    "createdAt": "2026-09-12T12:01:51.205Z",
+    "updatedAt": "2026-09-12T12:01:51.205Z",
     "__v": 0
   },
   {
-    "_id": "6a8db893112cdfb0613fd0f1",
-    "name": "University of Agriculture Faisalabad, Constituent College Toba Tek Singh",
+    "_id": "6aa53f2f93eba33783386301",
+    "name": "UAF Sub-Campus Toba Tek Singh",
     "code": "CUSTTS1090",
     "location": "Toba Tek Singh",
     "status": true,
-    "createdAt": "2026-08-28T12:00:00.000Z",
-    "updatedAt": "2026-08-28T12:00:00.000Z",
+    "createdAt": "2026-09-12T12:01:51.350Z",
+    "updatedAt": "2026-09-13T07:52:01.212Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa66525ac38ecbcfb767efa",
+    "name": "UAF Sub-campus T.T.Singh",
+    "code": "CAM-UAF5073",
+    "location": "",
+    "status": true,
+    "createdAt": "2026-09-13T08:56:05.740Z",
+    "updatedAt": "2026-09-13T08:56:05.740Z",
     "__v": 0
   }
 ]

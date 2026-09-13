@@ -269,32 +269,41 @@ const CoordinatorCourses = () => {
                 (d) => String(d._id) === String(user.department_id) || d.name === user.department_id
               );
 
-        // Lock lists strictly to assigned hierarchy
+        setCampuses(cRes.data || []);
         if (coordCampusObj) {
-          setCampuses([coordCampusObj]);
           setSelectedCampus(coordCampusObj);
-        } else {
-          setCampuses(cRes.data || []);
         }
 
+        const allFacs = fRes.data || [];
         if (coordFacultyObj) {
-          setFaculties([coordFacultyObj]);
           setSelectedFaculty(coordFacultyObj);
-        } else if (coordCampusObj) {
-          const filteredFac = fRes.data.filter(
-            (f) => String(f.campus_id?._id || f.campus_id) === String(coordCampusObj._id)
+          const filteredFac = allFacs.filter(
+            (f) => !f.campus_id || String(f.campus_id?._id || f.campus_id) === String(coordCampusObj?._id || user.campus_id)
           );
-          setFaculties(filteredFac);
+          setFaculties(filteredFac.length > 0 ? filteredFac : allFacs);
+        } else if (coordCampusObj) {
+          const filteredFac = allFacs.filter(
+            (f) => !f.campus_id || String(f.campus_id?._id || f.campus_id) === String(coordCampusObj._id)
+          );
+          setFaculties(filteredFac.length > 0 ? filteredFac : allFacs);
+        } else {
+          setFaculties(allFacs);
         }
 
+        const allDepts = dRes.data || [];
         if (coordDeptObj) {
-          setDepartments([coordDeptObj]);
           setSelectedDepartment(coordDeptObj);
-        } else if (coordFacultyObj) {
-          const filteredDept = dRes.data.filter(
-            (d) => String(d.faculty_id?._id || d.faculty_id) === String(coordFacultyObj._id)
+          const filteredDept = allDepts.filter(
+            (d) => !d.faculty_id || String(d.faculty_id?._id || d.faculty_id) === String(coordFacultyObj?._id || user.faculty_id)
           );
-          setDepartments(filteredDept);
+          setDepartments(filteredDept.length > 0 ? filteredDept : allDepts);
+        } else if (coordFacultyObj) {
+          const filteredDept = allDepts.filter(
+            (d) => !d.faculty_id || String(d.faculty_id?._id || d.faculty_id) === String(coordFacultyObj._id)
+          );
+          setDepartments(filteredDept.length > 0 ? filteredDept : allDepts);
+        } else {
+          setDepartments(allDepts);
         }
 
       } catch (error) {
@@ -320,11 +329,12 @@ const CoordinatorCourses = () => {
       try {
         setLoading(true);
         const res = await api.get("/degrees");
-        const filtered = res.data.filter(
+        const allDegs = res.data || [];
+        const filtered = allDegs.filter(
           (d) =>
-            String(d.department_id?._id || d.department_id) === String(selectedDepartment._id)
+            !d.department_id || String(d.department_id?._id || d.department_id) === String(selectedDepartment._id)
         );
-        setDisciplines(filtered);
+        setDisciplines(filtered.length > 0 ? filtered : allDegs);
       } catch (error) {
         console.log("Degree Error:", error);
       } finally {

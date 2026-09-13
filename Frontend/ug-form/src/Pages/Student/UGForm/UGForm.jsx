@@ -204,7 +204,8 @@ const UGForm = () => {
           const userDeptId = user.department_id?._id || user.department_id || "";
           const userDegreeId = user.degree_id?._id || user.degree_id || "";
 
-          const matchedCourses = (coursesRes.data || []).filter((c) => {
+          const allCourses = coursesRes.data || [];
+          const matchedCourses = allCourses.filter((c) => {
             const cCampus = c.campus_id?._id || c.campus_id || "";
             const cFaculty = c.faculty_id?._id || c.faculty_id || "";
             const cDept = c.department_id?._id || c.department_id || "";
@@ -218,7 +219,7 @@ const UGForm = () => {
             return campusMatch && facultyMatch && deptMatch && degreeMatch;
           });
 
-          setAvailableCourses(matchedCourses);
+          setAvailableCourses(matchedCourses.length > 0 ? matchedCourses : allCourses);
         } catch (err) {
           console.log("Error loading available courses:", err);
         } finally {

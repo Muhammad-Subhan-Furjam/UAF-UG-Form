@@ -403,37 +403,25 @@ const CoordinatorForm = () => {
         const coordDepartmentId = user.department_id?._id || user.department_id || "";
 
         // 1. Campus
-        let campusList = cRes.data || [];
+        const allCampuses = cRes.data || [];
+        setCampuses(allCampuses);
         if (coordCampusId) {
-          const match = campusList.filter(
-            (c) => String(c._id) === String(coordCampusId)
-          );
-          if (match.length > 0) campusList = match;
           setCampus(coordCampusId);
         }
-        setCampuses(campusList);
 
         // 2. Faculty
-        let facultyList = fRes.data || [];
+        const allFaculties = fRes.data || [];
+        setFaculties(allFaculties);
         if (coordFacultyId) {
-          const match = facultyList.filter(
-            (f) => String(f._id) === String(coordFacultyId)
-          );
-          if (match.length > 0) facultyList = match;
           setFaculty(coordFacultyId);
         }
-        setFaculties(facultyList);
 
         // 3. Department
-        let deptList = dRes.data || [];
+        const allDepts = dRes.data || [];
+        setDepartments(allDepts);
         if (coordDepartmentId) {
-          const match = deptList.filter(
-            (d) => String(d._id) === String(coordDepartmentId)
-          );
-          if (match.length > 0) deptList = match;
           setDepartment(coordDepartmentId);
         }
-        setDepartments(deptList);
 
       } catch (error) {
         console.log("Initial load error:", error);
@@ -457,11 +445,12 @@ const CoordinatorForm = () => {
     const fetchDegrees = async () => {
       try {
         const res = await api.get("/degrees");
-        const filtered = res.data.filter(
+        const allDegrees = res.data || [];
+        const filtered = allDegrees.filter(
           (d) =>
-            d.department_id === department || d.department_id?._id === department
+            !d.department_id || d.department_id === department || d.department_id?._id === department || String(d.department_id) === String(department)
         );
-        setDegrees(filtered);
+        setDegrees(filtered.length > 0 ? filtered : allDegrees);
       } catch (error) {
         console.log(error);
       }
