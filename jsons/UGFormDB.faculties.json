@@ -4,9 +4,9 @@
     "name": "Faculty of Agriculture(Hons.)",
     "code": "FA1087",
     "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:24.029Z",
-    "updatedAt": "2026-09-13T10:53:56.290Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -16,7 +16,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-08-28T12:00:00.000Z",
-    "updatedAt": "2026-09-13T08:56:06.732Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -26,7 +26,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-08-25T15:45:23.883Z",
-    "updatedAt": "2026-09-07T04:08:35.102Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -36,7 +36,7 @@
     "campus_id": "6aa53f2f93eba33783386301",
     "status": true,
     "createdAt": "2026-08-28T12:00:00.000Z",
-    "updatedAt": "2026-09-12T12:45:55.851Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -46,7 +46,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-08-25T15:45:20.907Z",
-    "updatedAt": "2026-09-13T16:13:28.221Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -56,7 +56,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-08-25T15:45:21.499Z",
-    "updatedAt": "2026-09-13T16:38:37.862Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -66,7 +66,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-08-25T15:45:23.512Z",
-    "updatedAt": "2026-09-07T07:30:57.612Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -76,7 +76,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-08-25T15:45:20.161Z",
-    "updatedAt": "2026-09-13T16:55:19.628Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -86,7 +86,7 @@
     "campus_id": "6a8db893112cdfb0613fd0d2",
     "status": true,
     "createdAt": "2026-08-25T15:45:23.353Z",
-    "updatedAt": "2026-08-25T15:45:23.353Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -96,7 +96,7 @@
     "campus_id": "6a8db893112cdfb0613fd0d2",
     "status": true,
     "createdAt": "2026-08-25T15:45:23.128Z",
-    "updatedAt": "2026-08-25T15:45:23.128Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -106,7 +106,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-09-06T18:07:52.395Z",
-    "updatedAt": "2026-09-06T18:07:52.395Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -116,7 +116,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-09-06T18:54:48.571Z",
-    "updatedAt": "2026-09-07T07:11:33.589Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -126,7 +126,7 @@
     "campus_id": "6a9db7813e3b1b796461d641",
     "status": true,
     "createdAt": "2026-09-06T18:58:23.846Z",
-    "updatedAt": "2026-09-06T18:58:23.846Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -136,7 +136,7 @@
     "campus_id": "6aa53f2e93eba337833862ff",
     "status": true,
     "createdAt": "2026-09-12T13:11:59.352Z",
-    "updatedAt": "2026-09-12T13:11:59.352Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -146,7 +146,7 @@
     "campus_id": "6aa53f2f93eba33783386300",
     "status": true,
     "createdAt": "2026-09-12T13:12:00.092Z",
-    "updatedAt": "2026-09-12T13:12:00.092Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -156,7 +156,7 @@
     "campus_id": "6aa53f2f93eba33783386300",
     "status": true,
     "createdAt": "2026-09-12T13:12:00.855Z",
-    "updatedAt": "2026-09-12T13:12:00.855Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -166,7 +166,7 @@
     "campus_id": "6aa53f2f93eba33783386300",
     "status": true,
     "createdAt": "2026-09-12T13:12:02.298Z",
-    "updatedAt": "2026-09-12T13:12:02.298Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -176,7 +176,7 @@
     "campus_id": "6aa53f2e93eba337833862ff",
     "status": true,
     "createdAt": "2026-09-12T13:12:11.526Z",
-    "updatedAt": "2026-09-12T13:12:11.526Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -186,7 +186,7 @@
     "campus_id": "6aa53f2f93eba33783386301",
     "status": true,
     "createdAt": "2026-09-12T13:12:49.629Z",
-    "updatedAt": "2026-09-12T13:12:49.629Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -196,7 +196,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-09-13T10:50:46.144Z",
-    "updatedAt": "2026-09-13T10:50:46.144Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   },
   {
@@ -206,7 +206,7 @@
     "campus_id": "6a8db88d112cdfb0613fd089",
     "status": true,
     "createdAt": "2026-09-13T15:56:50.266Z",
-    "updatedAt": "2026-09-13T15:56:50.266Z",
+    "updatedAt": "2026-09-13T17:08:59.721Z",
     "__v": 0
   }
 ]

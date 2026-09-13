@@ -9,7 +9,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-08-25T15:45:23.807Z",
-    "updatedAt": "2026-08-25T15:45:23.807Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -22,7 +22,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-08-25T15:45:24.688Z",
-    "updatedAt": "2026-08-25T15:45:24.688Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -33,9 +33,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd0a7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:19.938Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -48,7 +48,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-08-25T15:45:24.835Z",
-    "updatedAt": "2026-08-25T15:45:24.835Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -59,9 +59,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd0a0",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:19.404Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -72,9 +72,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6a8db893112cdfb0613fd0f7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:18.597Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -85,9 +85,9 @@
     "faculty_id": "6a8db890112cdfb0613fd0ab",
     "department_id": "6a8db890112cdfb0613fd0ac",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:20.389Z",
-    "updatedAt": "2026-09-13T16:55:20.818Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -100,7 +100,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-08-25T15:45:24.174Z",
-    "updatedAt": "2026-08-25T15:45:24.174Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -111,9 +111,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd0a2",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:19.553Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -124,9 +124,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88e112cdfb0613fd095",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:18.888Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -137,9 +137,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6a8db893112cdfb0613fd0f7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:18.961Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -150,9 +150,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6a8db893112cdfb0613fd0f7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:18.672Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -163,9 +163,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd09c",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:19.108Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -176,9 +176,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6a8db893112cdfb0613fd0f7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:18.745Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -191,7 +191,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-08-25T15:45:23.658Z",
-    "updatedAt": "2026-08-25T15:45:23.658Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -202,9 +202,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd09e",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:19.257Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -215,9 +215,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88e112cdfb0613fd095",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:18.817Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -228,9 +228,9 @@
     "faculty_id": "6a8db88d112cdfb0613fd08a",
     "department_id": "6a8db88d112cdfb0613fd08b",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:28.557Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -241,9 +241,9 @@
     "faculty_id": "6a8db88d112cdfb0613fd08a",
     "department_id": "6a8db88e112cdfb0613fd090",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:30.139Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -254,9 +254,9 @@
     "faculty_id": "6a8db88d112cdfb0613fd08a",
     "department_id": "6a8db88e112cdfb0613fd08f",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:30.774Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -267,9 +267,9 @@
     "faculty_id": "6a8db88d112cdfb0613fd08a",
     "department_id": "6a8db88e112cdfb0613fd091",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:31.409Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -280,9 +280,9 @@
     "faculty_id": "6a8db88d112cdfb0613fd08a",
     "department_id": "6a8db88d112cdfb0613fd08b",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:32.073Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -293,9 +293,9 @@
     "faculty_id": "6a8db88d112cdfb0613fd08a",
     "department_id": "6a8db88d112cdfb0613fd08c",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:32.713Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -306,9 +306,9 @@
     "faculty_id": "6a8db88d112cdfb0613fd08a",
     "department_id": "6a8db88d112cdfb0613fd08b",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:33.363Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -319,9 +319,9 @@
     "faculty_id": "6a8db88d112cdfb0613fd08a",
     "department_id": "6a8db88e112cdfb0613fd08e",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:34.305Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -332,9 +332,9 @@
     "faculty_id": "6a8db890112cdfb0613fd0a9",
     "department_id": "6a8db890112cdfb0613fd0aa",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:36.037Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -345,9 +345,9 @@
     "faculty_id": "6a8db890112cdfb0613fd0a9",
     "department_id": "6a8db890112cdfb0613fd0aa",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:36.710Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -358,9 +358,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd0a2",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:40.098Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -371,9 +371,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd09e",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:40.752Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -384,9 +384,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd09c",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:41.460Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -397,9 +397,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd0a7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:42.110Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -410,9 +410,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd0a0",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:44.194Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -423,9 +423,9 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "department_id": "6a8db88f112cdfb0613fd0a7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:47.688Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -438,7 +438,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-06T15:28:49.624Z",
-    "updatedAt": "2026-09-13T08:55:49.731Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -449,9 +449,9 @@
     "faculty_id": "6a8db892112cdfb0613fd0c4",
     "department_id": "6a8db892112cdfb0613fd0c7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:52.800Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -462,9 +462,9 @@
     "faculty_id": "6a8db892112cdfb0613fd0c4",
     "department_id": "6a8db892112cdfb0613fd0c7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:53.450Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -475,9 +475,9 @@
     "faculty_id": "6a8db892112cdfb0613fd0c4",
     "department_id": "6a8db892112cdfb0613fd0c8",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:55.372Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -488,9 +488,9 @@
     "faculty_id": "6a8db892112cdfb0613fd0c4",
     "department_id": "6a8db892112cdfb0613fd0c8",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:28:56.011Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -501,9 +501,9 @@
     "faculty_id": "6a9cfc105e1738f7b9cc8def",
     "department_id": "6a9d86bf6e8e50121a2c3985",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:29:03.910Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -514,9 +514,9 @@
     "faculty_id": "6a9cfc105e1738f7b9cc8def",
     "department_id": "6a9d86bf6e8e50121a2c3985",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-06T15:29:04.558Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -527,9 +527,9 @@
     "faculty_id": "6a8db891112cdfb0613fd0bd",
     "department_id": "6a9e62cf8a9457471fbcb0bb",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-07T07:07:59.405Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -542,7 +542,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-07T11:25:56.005Z",
-    "updatedAt": "2026-09-13T08:56:06.206Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -553,9 +553,9 @@
     "faculty_id": "6a8db891112cdfb0613fd0bd",
     "department_id": "6a8db891112cdfb0613fd0bf",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-08T03:12:32.869Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -566,9 +566,9 @@
     "faculty_id": "6a9dabf8fa19043c87740b26",
     "department_id": "6a8db88e112cdfb0613fd08e",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-08T04:58:53.703Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -579,9 +579,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0d8",
     "department_id": "6a8db893112cdfb0613fd0d9",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-08T05:12:36.716Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -592,9 +592,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0d8",
     "department_id": "6a8db893112cdfb0613fd0d9",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-08T05:13:44.766Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -605,9 +605,9 @@
     "faculty_id": "6a9db6f8a5fb1c6ee71b04bd",
     "department_id": "6a8db893112cdfb0613fd0d4",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-08T05:52:46.167Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -618,9 +618,9 @@
     "faculty_id": "6a9db6f8a5fb1c6ee71b04bd",
     "department_id": "6a8db893112cdfb0613fd0d4",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-08T05:53:39.758Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -631,9 +631,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fce434ac401453ec832",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-09T04:35:28.027Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -644,9 +644,9 @@
     "faculty_id": "6a9dabf8fa19043c87740b26",
     "department_id": "6a8db88e112cdfb0613fd08e",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-09T04:36:57.345Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -657,9 +657,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fce434ac401453ec832",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-09T04:37:47.468Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -672,7 +672,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:11:59.628Z",
-    "updatedAt": "2026-09-12T13:11:59.628Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -685,7 +685,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:00.382Z",
-    "updatedAt": "2026-09-12T13:12:00.382Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -698,7 +698,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:01.133Z",
-    "updatedAt": "2026-09-12T13:12:01.133Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -711,7 +711,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:01.838Z",
-    "updatedAt": "2026-09-12T13:12:01.838Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -724,7 +724,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:02.570Z",
-    "updatedAt": "2026-09-12T13:12:02.570Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -737,7 +737,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:03.250Z",
-    "updatedAt": "2026-09-12T13:12:03.250Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -748,9 +748,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0d8",
     "department_id": "6aa54fa3eb00215261fa9d27",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:03.957Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -761,9 +761,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fce434ac401453ec832",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:05.167Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -776,7 +776,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:06.418Z",
-    "updatedAt": "2026-09-12T13:12:06.418Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -787,9 +787,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6aa54fd3434ac401453ec842",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:07.150Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -800,9 +800,9 @@
     "faculty_id": "6a9cfc105e1738f7b9cc8def",
     "department_id": "6a9d86bf6e8e50121a2c3985",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:09.082Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -815,7 +815,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:09.799Z",
-    "updatedAt": "2026-09-13T08:55:49.074Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -828,7 +828,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:10.464Z",
-    "updatedAt": "2026-09-12T13:12:10.464Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -841,7 +841,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:11.056Z",
-    "updatedAt": "2026-09-13T08:56:03.537Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -854,7 +854,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:42.659Z",
-    "updatedAt": "2026-09-12T13:12:42.659Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -865,9 +865,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6aa54fd2434ac401453ec83f",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:43.427Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -880,7 +880,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:44.128Z",
-    "updatedAt": "2026-09-13T08:56:03.739Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -893,7 +893,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:44.886Z",
-    "updatedAt": "2026-09-12T13:12:44.886Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -904,9 +904,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fce434ac401453ec832",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:46.350Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -917,9 +917,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0d8",
     "department_id": "6aa54fa3eb00215261fa9d27",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:47.021Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -932,7 +932,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:47.726Z",
-    "updatedAt": "2026-09-12T13:12:47.726Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -943,9 +943,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6aa54fd0434ac401453ec838",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:49.060Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -958,7 +958,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:49.919Z",
-    "updatedAt": "2026-09-12T13:12:49.919Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -969,9 +969,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6aa54fd2434ac401453ec83f",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:50.678Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -982,9 +982,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6aa54fd4434ac401453ec845",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:52.195Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -995,9 +995,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6aa54fa9eb00215261fa9d3b",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:53.697Z",
-    "updatedAt": "2026-09-13T16:08:54.166Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1008,9 +1008,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6aa54fd6434ac401453ec84e",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:54.457Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1023,7 +1023,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-12T13:12:57.892Z",
-    "updatedAt": "2026-09-12T13:12:57.892Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1034,9 +1034,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0d8",
     "department_id": "6a8db892112cdfb0613fd0c6",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:58.644Z",
-    "updatedAt": "2026-09-13T16:54:09.079Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1047,9 +1047,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fdb434ac401453ec85d",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:12:59.412Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1060,9 +1060,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fdc434ac401453ec860",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:13:00.173Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1073,9 +1073,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0d8",
     "department_id": "6a8db893112cdfb0613fd0d9",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:13:02.704Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1086,9 +1086,9 @@
     "faculty_id": "6a8db891112cdfb0613fd0bd",
     "department_id": "6a8db891112cdfb0613fd0c2",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:13:04.932Z",
-    "updatedAt": "2026-09-13T16:38:43.733Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1099,9 +1099,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0d8",
     "department_id": "6a8db892112cdfb0613fd0c5",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-12T13:13:05.616Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1112,9 +1112,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fdb434ac401453ec85d",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-13T08:55:52.030Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1127,7 +1127,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T08:55:53.741Z",
-    "updatedAt": "2026-09-13T08:55:53.741Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1138,9 +1138,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6a8db893112cdfb0613fd0f7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-13T08:55:59.094Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1151,9 +1151,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6a8db893112cdfb0613fd0f7",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-13T08:55:59.292Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1166,7 +1166,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T08:55:59.991Z",
-    "updatedAt": "2026-09-13T08:55:59.991Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1177,9 +1177,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fce434ac401453ec832",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-13T08:56:01.866Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1192,7 +1192,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T08:56:03.339Z",
-    "updatedAt": "2026-09-13T08:56:03.339Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1205,7 +1205,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T08:56:03.946Z",
-    "updatedAt": "2026-09-13T08:56:03.946Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1216,9 +1216,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6a8db88f112cdfb0613fd0a4",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-13T08:56:05.348Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1229,9 +1229,9 @@
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "department_id": "6aa54fd3434ac401453ec842",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-13T08:56:07.665Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1244,7 +1244,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T08:56:12.502Z",
-    "updatedAt": "2026-09-13T08:56:12.502Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1255,9 +1255,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fdb434ac401453ec85d",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-13T08:56:13.957Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1268,9 +1268,9 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "department_id": "6aa54fdc434ac401453ec860",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-13T08:56:14.687Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1283,7 +1283,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T08:56:21.390Z",
-    "updatedAt": "2026-09-13T08:56:21.390Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1296,7 +1296,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:43.456Z",
-    "updatedAt": "2026-09-13T10:50:43.456Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1309,7 +1309,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:43.739Z",
-    "updatedAt": "2026-09-13T10:50:43.739Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1322,7 +1322,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:44.019Z",
-    "updatedAt": "2026-09-13T10:50:44.019Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1335,7 +1335,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:44.303Z",
-    "updatedAt": "2026-09-13T10:50:44.303Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1348,7 +1348,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:44.583Z",
-    "updatedAt": "2026-09-13T10:50:44.583Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1361,7 +1361,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:44.882Z",
-    "updatedAt": "2026-09-13T10:50:44.882Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1374,7 +1374,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:45.159Z",
-    "updatedAt": "2026-09-13T10:50:45.159Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1387,7 +1387,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:45.440Z",
-    "updatedAt": "2026-09-13T10:50:45.440Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1400,7 +1400,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:45.720Z",
-    "updatedAt": "2026-09-13T10:50:45.720Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1413,7 +1413,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:46.004Z",
-    "updatedAt": "2026-09-13T10:50:46.004Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1426,7 +1426,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:46.564Z",
-    "updatedAt": "2026-09-13T10:50:46.564Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1439,7 +1439,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:46.844Z",
-    "updatedAt": "2026-09-13T10:50:46.844Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1452,7 +1452,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:47.122Z",
-    "updatedAt": "2026-09-13T10:50:47.122Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1465,7 +1465,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:47.405Z",
-    "updatedAt": "2026-09-13T10:50:47.405Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1478,7 +1478,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:47.699Z",
-    "updatedAt": "2026-09-13T10:50:47.699Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1491,7 +1491,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:47.988Z",
-    "updatedAt": "2026-09-13T10:50:47.988Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1504,7 +1504,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:48.130Z",
-    "updatedAt": "2026-09-13T10:50:48.130Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1517,7 +1517,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:48.409Z",
-    "updatedAt": "2026-09-13T10:50:48.409Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1530,7 +1530,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:48.556Z",
-    "updatedAt": "2026-09-13T10:50:48.556Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1543,7 +1543,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:48.834Z",
-    "updatedAt": "2026-09-13T10:50:48.834Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1556,7 +1556,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:49.112Z",
-    "updatedAt": "2026-09-13T10:50:49.112Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1569,7 +1569,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:49.251Z",
-    "updatedAt": "2026-09-13T10:50:49.251Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1582,7 +1582,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:56.529Z",
-    "updatedAt": "2026-09-13T16:44:51.185Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1595,7 +1595,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:58.352Z",
-    "updatedAt": "2026-09-13T16:55:21.461Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1608,7 +1608,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:58.630Z",
-    "updatedAt": "2026-09-13T16:55:21.866Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1619,9 +1619,9 @@
     "faculty_id": "6aa68014fed38f0df3a3683f",
     "department_id": "6aa68014fed38f0df3a36840",
     "duration": "",
-    "status": false,
+    "status": true,
     "createdAt": "2026-09-13T10:51:00.874Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1634,7 +1634,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:53:55.937Z",
-    "updatedAt": "2026-09-13T10:53:55.937Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1647,7 +1647,7 @@
     "duration": "5 Years",
     "status": true,
     "createdAt": "2026-09-13T15:56:50.886Z",
-    "updatedAt": "2026-09-13T15:56:50.886Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1660,7 +1660,7 @@
     "duration": "5 Years",
     "status": true,
     "createdAt": "2026-09-13T15:56:51.063Z",
-    "updatedAt": "2026-09-13T15:56:51.063Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1673,7 +1673,7 @@
     "duration": "5 Years",
     "status": true,
     "createdAt": "2026-09-13T15:56:51.213Z",
-    "updatedAt": "2026-09-13T15:56:51.213Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1686,7 +1686,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:53.183Z",
-    "updatedAt": "2026-09-13T16:08:53.183Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1699,7 +1699,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:53.319Z",
-    "updatedAt": "2026-09-13T16:08:53.319Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1712,7 +1712,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:53.453Z",
-    "updatedAt": "2026-09-13T16:08:53.453Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1725,7 +1725,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:53.588Z",
-    "updatedAt": "2026-09-13T16:08:53.588Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1738,7 +1738,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:53.722Z",
-    "updatedAt": "2026-09-13T16:08:53.722Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1751,7 +1751,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:53.861Z",
-    "updatedAt": "2026-09-13T16:08:53.861Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1764,7 +1764,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:54.937Z",
-    "updatedAt": "2026-09-13T16:08:54.937Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1777,7 +1777,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:56.279Z",
-    "updatedAt": "2026-09-13T16:08:56.279Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1790,7 +1790,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:56.427Z",
-    "updatedAt": "2026-09-13T16:08:56.427Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1803,7 +1803,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:08:56.628Z",
-    "updatedAt": "2026-09-13T16:08:56.628Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1816,7 +1816,7 @@
     "duration": "5 Years",
     "status": true,
     "createdAt": "2026-09-13T16:13:32.051Z",
-    "updatedAt": "2026-09-13T16:13:32.051Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1829,7 +1829,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:18:18.275Z",
-    "updatedAt": "2026-09-13T16:18:18.275Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1842,7 +1842,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:18:18.411Z",
-    "updatedAt": "2026-09-13T16:18:18.411Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1855,7 +1855,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:31:35.656Z",
-    "updatedAt": "2026-09-13T16:31:35.656Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1868,7 +1868,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T16:31:58.620Z",
-    "updatedAt": "2026-09-13T16:31:58.620Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1881,7 +1881,7 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T16:35:22.340Z",
-    "updatedAt": "2026-09-13T16:35:22.340Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1894,7 +1894,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:38:39.996Z",
-    "updatedAt": "2026-09-13T16:38:39.996Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1907,7 +1907,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:38:42.509Z",
-    "updatedAt": "2026-09-13T16:38:42.509Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1920,7 +1920,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:38:42.652Z",
-    "updatedAt": "2026-09-13T16:38:42.652Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1933,7 +1933,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:38:43.420Z",
-    "updatedAt": "2026-09-13T16:38:43.420Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1946,7 +1946,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:48:36.326Z",
-    "updatedAt": "2026-09-13T16:48:36.326Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1959,7 +1959,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:52:40.511Z",
-    "updatedAt": "2026-09-13T16:52:40.511Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1972,7 +1972,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T16:54:09.712Z",
-    "updatedAt": "2026-09-13T16:54:09.712Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1985,7 +1985,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T17:02:47.850Z",
-    "updatedAt": "2026-09-13T17:02:47.850Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1998,7 +1998,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T17:02:48.069Z",
-    "updatedAt": "2026-09-13T17:02:48.069Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -2011,7 +2011,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T17:02:48.142Z",
-    "updatedAt": "2026-09-13T17:02:48.142Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -2024,7 +2024,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T17:02:48.287Z",
-    "updatedAt": "2026-09-13T17:02:48.287Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -2037,7 +2037,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T17:02:48.363Z",
-    "updatedAt": "2026-09-13T17:02:48.363Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -2050,7 +2050,7 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T17:02:48.440Z",
-    "updatedAt": "2026-09-13T17:02:48.440Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -2063,7 +2063,20 @@
     "duration": "4 Years",
     "status": true,
     "createdAt": "2026-09-13T17:02:48.513Z",
-    "updatedAt": "2026-09-13T17:02:48.513Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6d7dd3ae923630ec39d23",
+    "name": "BS COMMERCE",
+    "code": "BSCOMMERCE8697",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db893112cdfb0613fd0d8",
+    "department_id": "6aa54fa3eb00215261fa9d27",
+    "duration": "",
+    "status": true,
+    "createdAt": "2026-09-13T17:05:33.256Z",
+    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   }
 ]
