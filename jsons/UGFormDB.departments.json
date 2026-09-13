@@ -22,17 +22,6 @@
     "__v": 0
   },
   {
-    "_id": "6a8db891112cdfb0613fd0ba",
-    "name": "Department of Parasitology",
-    "code": "DP1050",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:21.277Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db894112cdfb0613fd0e0",
     "name": "Department of Epidemiology and Public Health",
     "code": "DABH1088",
@@ -40,17 +29,6 @@
     "faculty_id": "6a9cfc105e1738f7b9cc8def",
     "status": false,
     "createdAt": "2026-08-25T15:45:24.103Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a8db890112cdfb0613fd0b6",
-    "name": "Department of Anatomy",
-    "code": "DA1046",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:20.980Z",
     "updatedAt": "2026-09-13T10:53:56.376Z",
     "__v": 0
   },
@@ -88,17 +66,6 @@
     "__v": 0
   },
   {
-    "_id": "6a8db891112cdfb0613fd0b9",
-    "name": "Department of Theriogenology",
-    "code": "DT1049",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:21.203Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db891112cdfb0613fd0c2",
     "name": "Department of Food Engineering",
     "code": "DFE1058",
@@ -107,17 +74,6 @@
     "status": false,
     "createdAt": "2026-08-25T15:45:21.876Z",
     "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a8db894112cdfb0613fd0eb",
-    "name": "DVM",
-    "code": "DDTMH1099",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68009fed38f0df3a367fe",
-    "status": true,
-    "createdAt": "2026-08-25T15:45:24.907Z",
-    "updatedAt": "2026-09-13T12:02:03.602Z",
     "__v": 0
   },
   {
@@ -209,17 +165,6 @@
     "__v": 0
   },
   {
-    "_id": "6a8db891112cdfb0613fd0bc",
-    "name": "Institute of Physiology and Pharmacology",
-    "code": "DPAP1052",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:21.424Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db88f112cdfb0613fd0a7",
     "name": "Department of Zoology, Wildlife and Fisheries",
     "code": "DZWAF1031",
@@ -260,17 +205,6 @@
     "faculty_id": "6a8db88e112cdfb0613fd094",
     "status": false,
     "createdAt": "2026-08-25T15:45:19.330Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a8db891112cdfb0613fd0b7",
-    "name": "Department of Pathology",
-    "code": "DP1047",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:21.054Z",
     "updatedAt": "2026-09-13T10:53:56.376Z",
     "__v": 0
   },
@@ -385,17 +319,6 @@
     "__v": 0
   },
   {
-    "_id": "6a8db891112cdfb0613fd0bb",
-    "name": "Institute of Microbiology",
-    "code": "DM1051",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:21.350Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db892112cdfb0613fd0cd",
     "name": "Department of Chemistry",
     "code": "DC1069",
@@ -459,17 +382,6 @@
     "status": true,
     "createdAt": "2026-08-25T15:45:18.226Z",
     "updatedAt": "2026-09-07T07:07:49.169Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a8db891112cdfb0613fd0b8",
-    "name": "Department of Clinical Medicine & Surgery",
-    "code": "DCMS1048",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:21.128Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
     "__v": 0
   },
   {
@@ -1141,28 +1053,6 @@
     "status": true,
     "createdAt": "2026-09-13T10:50:49.673Z",
     "updatedAt": "2026-09-13T12:02:55.508Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6800afed38f0df3a36804",
-    "name": "Institute of Microbiology",
-    "code": "DEPT_INSTITUTEO_7672",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68009fed38f0df3a367fe",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:50.241Z",
-    "updatedAt": "2026-09-13T10:50:50.241Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6800afed38f0df3a36807",
-    "name": "Institute of Physiology and Pharmacology",
-    "code": "DEPT_INSTITUTEO_9415",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68009fed38f0df3a367fe",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:50.662Z",
-    "updatedAt": "2026-09-13T10:50:50.662Z",
     "__v": 0
   },
   {

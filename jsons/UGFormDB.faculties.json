@@ -44,9 +44,9 @@
     "name": "Faculty of Veterinary Sciences",
     "code": "FVS1045",
     "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:20.907Z",
-    "updatedAt": "2026-09-13T10:53:56.290Z",
+    "updatedAt": "2026-09-13T16:13:28.221Z",
     "__v": 0
   },
   {
@@ -227,16 +227,6 @@
     "status": true,
     "createdAt": "2026-09-13T10:50:46.144Z",
     "updatedAt": "2026-09-13T10:50:46.144Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68009fed38f0df3a367fe",
-    "name": "Faculty of Veterinary Science",
-    "code": "FAC_FACULTYOFV_2323",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:49.391Z",
-    "updatedAt": "2026-09-13T10:50:49.391Z",
     "__v": 0
   },
   {

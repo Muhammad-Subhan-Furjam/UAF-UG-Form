@@ -1,18 +1,5 @@
 [
   {
-    "_id": "6a8db894112cdfb0613fd0ec",
-    "name": "MSc (Hons.) Dairy Technology",
-    "code": "DGMHDT1100",
-    "campus_id": "6a8db893112cdfb0613fd0de",
-    "faculty_id": "6a8db894112cdfb0613fd0e2",
-    "department_id": "6a8db894112cdfb0613fd0eb",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-08-25T15:45:24.981Z",
-    "updatedAt": "2026-08-25T15:45:24.981Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db890112cdfb0613fd0b1",
     "name": "BS Fashion Designing",
     "code": "DGBFD1041",
@@ -806,32 +793,6 @@
     "__v": 0
   },
   {
-    "_id": "6a9d86be6e8e50121a2c3983",
-    "name": "DVM",
-    "code": "DGDVM889",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "department_id": "6a8db891112cdfb0613fd0b8",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-06T15:29:02.451Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9d86bf6e8e50121a2c3984",
-    "name": "Microbiology",
-    "code": "DGMICROBIO858",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "department_id": "6a8db891112cdfb0613fd0bb",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-06T15:29:03.104Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
     "_id": "6a9d86bf6e8e50121a2c3986",
     "name": "Pharm-D",
     "code": "DGPHARMD938",
@@ -867,45 +828,6 @@
     "duration": "",
     "status": false,
     "createdAt": "2026-09-07T07:07:59.405Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9e6abd401e8a836fa29a49",
-    "name": "DVM",
-    "code": "DVM",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "department_id": "6a8db891112cdfb0613fd0b7",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-07T07:41:49.086Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9e808c23aed351db0656cc",
-    "name": "B.Sc. (Hons.) Microbiology",
-    "code": "BSCHONSMICRO",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "department_id": "6a8db891112cdfb0613fd0bb",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-07T09:14:52.224Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9e880c94bdbcdcba2d747c",
-    "name": "BS Microbiology",
-    "code": "BSMICROBIOLO",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "department_id": "6a8db891112cdfb0613fd0bb",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-07T09:46:52.362Z",
     "updatedAt": "2026-09-13T10:53:56.462Z",
     "__v": 0
   },
@@ -1375,19 +1297,6 @@
     "status": true,
     "createdAt": "2026-09-12T13:12:44.886Z",
     "updatedAt": "2026-09-12T13:12:44.886Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54fcd434ac401453ec831",
-    "name": "DVM",
-    "code": "DGDVM564392",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0b5",
-    "department_id": "6aa54fcd434ac401453ec830",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-12T13:12:45.644Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
     "__v": 0
   },
   {
@@ -2262,32 +2171,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa6800afed38f0df3a36805",
-    "name": "a) BS Microbiology (Isolated)",
-    "code": "DEG_ABSMICROBI_3947",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68009fed38f0df3a367fe",
-    "department_id": "6aa6800afed38f0df3a36804",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:50.382Z",
-    "updatedAt": "2026-09-13T10:50:50.382Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6800afed38f0df3a36806",
-    "name": "b) B.Sc. (Hons) Microbiology (bridge)",
-    "code": "DEG_BBSCHONSMI_4938",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68009fed38f0df3a367fe",
-    "department_id": "6aa6800afed38f0df3a36804",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:50.521Z",
-    "updatedAt": "2026-09-13T10:50:50.521Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa6800dfed38f0df3a36817",
     "name": "i) BS (Animal Sciences)",
     "code": "DEG_IBSANIMALS_7030",
@@ -2883,6 +2766,19 @@
     "status": true,
     "createdAt": "2026-09-13T16:08:56.628Z",
     "updatedAt": "2026-09-13T16:08:56.628Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6cbac69a42cf035b673a4",
+    "name": "Doctor of Veterinary Medicine",
+    "code": "DVM_2400",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db890112cdfb0613fd0b5",
+    "department_id": "6aa54fcd434ac401453ec830",
+    "duration": "5 Years",
+    "status": true,
+    "createdAt": "2026-09-13T16:13:32.051Z",
+    "updatedAt": "2026-09-13T16:13:32.051Z",
     "__v": 0
   }
 ]
