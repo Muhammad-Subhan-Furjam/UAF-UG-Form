@@ -748,17 +748,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa54fda434ac401453ec85a",
-    "name": "Institute of Agricultural & Resource Economics",
-    "code": "DINSTI850394",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db893112cdfb0613fd0d8",
-    "status": false,
-    "createdAt": "2026-09-12T13:12:58.503Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa54fdb434ac401453ec85d",
     "name": "Institute of Soil and Environmental Sciences",
     "code": "DINSTI927034",
