@@ -180,16 +180,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa68006fed38f0df3a367e7",
-    "name": "Faculty of Agriculture (Honours)",
-    "code": "FAC_FACULTYOFA_8622",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:46.144Z",
-    "updatedAt": "2026-09-13T17:08:59.721Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa6c7c2296e2e3ea375b205",
     "name": "Faculty of Health and Pharmaceutical Sciences",
     "code": "FACULTYOFH_2067",

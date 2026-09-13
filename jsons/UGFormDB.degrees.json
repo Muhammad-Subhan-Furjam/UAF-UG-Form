@@ -533,19 +533,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa0e2101634bf8a89b4464a",
-    "name": "BS Biotechnology",
-    "code": "BSBIOTECHNOL",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fce434ac401453ec832",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-09T04:35:28.027Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa0e26993edc61e7a342d3e",
     "name": "BSc. (Hons.) Environmental Sciences",
     "code": "BSCHONSENVIR",
@@ -556,19 +543,6 @@
     "status": true,
     "createdAt": "2026-09-09T04:36:57.345Z",
     "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa0e29b93edc61e7a342d3f",
-    "name": "BS Forestry",
-    "code": "BSFORESTRY",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fce434ac401453ec832",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-09T04:37:47.468Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
     "__v": 0
   },
   {
@@ -660,19 +634,6 @@
     "status": true,
     "createdAt": "2026-09-12T13:12:03.957Z",
     "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54fa5eb00215261fa9d2c",
-    "name": "B.Sc. (Hons.) Agriculture",
-    "code": "DGBSCHONSA705",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fce434ac401453ec832",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-12T13:12:05.167Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
     "__v": 0
   },
   {
@@ -806,19 +767,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa54fce434ac401453ec833",
-    "name": "B.Sc. (Hons.)Agriculture",
-    "code": "DGBSCHO634971",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fce434ac401453ec832",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-12T13:12:46.350Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa54fcf434ac401453ec834",
     "name": "BBA",
     "code": "DGBBA702019",
@@ -949,32 +897,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa54fdb434ac401453ec85e",
-    "name": "B.Sc. (Hons.) Agriculture",
-    "code": "DGBSCHO941138",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fdb434ac401453ec85d",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-12T13:12:59.412Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54fdc434ac401453ec861",
-    "name": "BS Forestry",
-    "code": "DGBSFOR017296",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fdc434ac401453ec860",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-12T13:13:00.173Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa54fde434ac401453ec865",
     "name": "BBA (Agribusiness)",
     "code": "DGBBAAG270357",
@@ -1011,19 +933,6 @@
     "status": true,
     "createdAt": "2026-09-12T13:13:05.616Z",
     "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa66518ac38ecbcfb767ef0",
-    "name": "BS Soil Science",
-    "code": "DEG-BS 8206",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fdb434ac401453ec85d",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T08:55:52.030Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
     "__v": 0
   },
   {
@@ -1076,19 +985,6 @@
     "status": true,
     "createdAt": "2026-09-13T08:55:59.991Z",
     "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa66521ac38ecbcfb767ef6",
-    "name": "B.Sc. (Hons.) Environmental Sciences",
-    "code": "DEG-B.S3518",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fce434ac401453ec832",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T08:56:01.866Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
     "__v": 0
   },
   {
@@ -1154,32 +1050,6 @@
     "status": true,
     "createdAt": "2026-09-13T08:56:12.502Z",
     "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6652dac38ecbcfb767f01",
-    "name": "BS (Soil Science)",
-    "code": "DEG-BS 7541",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fdb434ac401453ec85d",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T08:56:13.957Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6652eac38ecbcfb767f02",
-    "name": "B.Sc. (Hons.) Agriculture (Forestry)",
-    "code": "DEG-B.S6598",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa54fdc434ac401453ec860",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T08:56:14.687Z",
-    "updatedAt": "2026-09-13T17:32:30.342Z",
     "__v": 0
   },
   {
@@ -1296,71 +1166,6 @@
     "duration": "",
     "status": true,
     "createdAt": "2026-09-13T10:50:46.004Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68006fed38f0df3a367ea",
-    "name": "B.Sc. (Hons) Animal Science",
-    "code": "DEG_BSCHONSANI_1551",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68006fed38f0df3a367e9",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:46.564Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68006fed38f0df3a367ec",
-    "name": "B.Sc. (Hons) Agricultural & Resource Economics",
-    "code": "DEG_BSCHONSAGR_8762",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68006fed38f0df3a367eb",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:46.844Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68007fed38f0df3a367ee",
-    "name": "B.Sc. (Hons) Food Science & Technology",
-    "code": "DEG_BSCHONSFOO_7945",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68006fed38f0df3a367ed",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:47.122Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68007fed38f0df3a367f0",
-    "name": "B.Sc. (Hons) Microbiology",
-    "code": "DEG_BSCHONSMIC_9318",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68007fed38f0df3a367ef",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:47.405Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68007fed38f0df3a367f2",
-    "name": "B.Sc. (Hons) Enviromental Science",
-    "code": "DEG_BSCHONSENV_1534",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68007fed38f0df3a367f1",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:47.699Z",
     "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
@@ -1908,84 +1713,6 @@
     "status": true,
     "createdAt": "2026-09-13T17:21:53.340Z",
     "updatedAt": "2026-09-13T17:21:53.340Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6dd40fc3448bee0224d86",
-    "name": "B.Sc. (Hons) Agriculture (Forestry)",
-    "code": "BSCHONSAGR_2428",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68007fed38f0df3a367f3",
-    "duration": "4 Years",
-    "status": true,
-    "createdAt": "2026-09-13T17:28:32.004Z",
-    "updatedAt": "2026-09-13T17:28:32.004Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6dd40fc3448bee0224d87",
-    "name": "BS (Forestry)",
-    "code": "BSFORESTRY_2908",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68007fed38f0df3a367f3",
-    "duration": "4 Years",
-    "status": true,
-    "createdAt": "2026-09-13T17:28:32.146Z",
-    "updatedAt": "2026-09-13T17:28:32.146Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6dd40fc3448bee0224d88",
-    "name": "B.Sc. (Hons) Agriculture (Biotechnology)",
-    "code": "BSCHONSAGR_4681",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68008fed38f0df3a367f6",
-    "duration": "4 Years",
-    "status": true,
-    "createdAt": "2026-09-13T17:28:32.563Z",
-    "updatedAt": "2026-09-13T17:28:32.563Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6dd40fc3448bee0224d89",
-    "name": "BS (Biotechnology)",
-    "code": "BSBIOTECHN_1542",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68008fed38f0df3a367f6",
-    "duration": "4 Years",
-    "status": true,
-    "createdAt": "2026-09-13T17:28:32.700Z",
-    "updatedAt": "2026-09-13T17:28:32.700Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6dd41fc3448bee0224d8a",
-    "name": "BS (Environmental Sciences)",
-    "code": "BSENVIRONM_6969",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68008fed38f0df3a367fb",
-    "duration": "4 Years",
-    "status": true,
-    "createdAt": "2026-09-13T17:28:33.113Z",
-    "updatedAt": "2026-09-13T17:28:33.113Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6dd41fc3448bee0224d8b",
-    "name": "B.Sc. (Hons) Agriculture ( Soil Science)",
-    "code": "BSCHONSAGR_7817",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "department_id": "6aa68008fed38f0df3a367fb",
-    "duration": "4 Years",
-    "status": true,
-    "createdAt": "2026-09-13T17:28:33.249Z",
-    "updatedAt": "2026-09-13T17:28:33.249Z",
     "__v": 0
   }
 ]

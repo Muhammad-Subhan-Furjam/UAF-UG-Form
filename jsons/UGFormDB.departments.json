@@ -583,17 +583,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa54fce434ac401453ec832",
-    "name": "Department of Plant Pathology",
-    "code": "DDEPAR620463",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-12T13:12:46.204Z",
-    "updatedAt": "2026-09-13T17:32:30.256Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa54fcf434ac401453ec835",
     "name": "Department of Computer Science",
     "code": "DDEPAR758029",
@@ -660,28 +649,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa54fdb434ac401453ec85d",
-    "name": "Institute of Soil and Environmental Sciences",
-    "code": "DINSTI927034",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-12T13:12:59.270Z",
-    "updatedAt": "2026-09-13T17:32:30.256Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54fdc434ac401453ec860",
-    "name": "Department of Forestry and Range Management",
-    "code": "DDEPAR002956",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-12T13:13:00.029Z",
-    "updatedAt": "2026-09-13T17:32:30.256Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa66535ac38ecbcfb767f06",
     "name": "Department of Education",
     "code": "DEP-DEP9358",
@@ -733,94 +700,6 @@
     "faculty_id": "6a9dabf8fa19043c87740b26",
     "status": true,
     "createdAt": "2026-09-13T10:50:45.860Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68006fed38f0df3a367e9",
-    "name": "Faculty Animal Sciences",
-    "code": "DEPT_FACULTYANI_7764",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:46.425Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68006fed38f0df3a367eb",
-    "name": "Institute of IARE",
-    "code": "DEPT_INSTIARE_1911",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:46.704Z",
-    "updatedAt": "2026-09-13T17:28:30.804Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68006fed38f0df3a367ed",
-    "name": "Institute of NIFSAT",
-    "code": "DEPT_ISNTNIFSAT_5479",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:46.983Z",
-    "updatedAt": "2026-09-13T17:28:31.012Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68007fed38f0df3a367ef",
-    "name": "Institute of Microbiology",
-    "code": "DEPT_INSTMICRO_8172",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:47.262Z",
-    "updatedAt": "2026-09-13T17:28:31.239Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68007fed38f0df3a367f1",
-    "name": "Institute of Enviromental Sciences",
-    "code": "DEPT_INSTENVIRO_3630",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:47.545Z",
-    "updatedAt": "2026-09-13T17:28:31.445Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68007fed38f0df3a367f3",
-    "name": "Department of Forestry and Range Management",
-    "code": "DEPT_DEPARTMENT_2132",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:47.841Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68008fed38f0df3a367f6",
-    "name": "Department of CABB",
-    "code": "DEPT_DEPARTMENT_6362",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:48.268Z",
-    "updatedAt": "2026-09-13T17:08:59.900Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68008fed38f0df3a367fb",
-    "name": "Institute of Soil & Environmental Sciences",
-    "code": "DEPT_INSTITUTEO_5563",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68006fed38f0df3a367e7",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:48.973Z",
     "updatedAt": "2026-09-13T17:08:59.900Z",
     "__v": 0
   },
