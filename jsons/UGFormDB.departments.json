@@ -1,13 +1,13 @@
 [
   {
     "_id": "6a8db88f112cdfb0613fd0a4",
-    "name": "Department of Mathematics and Statistics",
+    "name": "Department of Math & Statistics",
     "code": "DMAS1028",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "status": false,
     "createdAt": "2026-08-25T15:45:19.628Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
+    "updatedAt": "2026-09-13T16:08:55.275Z",
     "__v": 0
   },
   {
@@ -705,13 +705,13 @@
   },
   {
     "_id": "6aa54fa9eb00215261fa9d3b",
-    "name": "Department of Biochemistry",
+    "name": "Department of Chemistry",
     "code": "DDEPARTME782",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "status": true,
     "createdAt": "2026-09-12T13:12:09.632Z",
-    "updatedAt": "2026-09-12T13:12:09.632Z",
+    "updatedAt": "2026-09-13T16:08:53.932Z",
     "__v": 0
   },
   {
@@ -804,13 +804,13 @@
   },
   {
     "_id": "6aa54fd3434ac401453ec842",
-    "name": "Department of Zoology, Wildlife & Fisheries",
+    "name": "Department of Zoology, Wildlife and Fisheries",
     "code": "DDEPAR128187",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db893112cdfb0613fd0f4",
     "status": false,
     "createdAt": "2026-09-12T13:12:51.281Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
+    "updatedAt": "2026-09-13T16:08:56.696Z",
     "__v": 0
   },
   {
@@ -833,17 +833,6 @@
     "status": false,
     "createdAt": "2026-09-12T13:12:52.811Z",
     "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54fd5434ac401453ec84b",
-    "name": "Department of Chemistry",
-    "code": "DDEPAR355330",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db893112cdfb0613fd0f4",
-    "status": true,
-    "createdAt": "2026-09-12T13:12:53.554Z",
-    "updatedAt": "2026-09-12T13:12:53.554Z",
     "__v": 0
   },
   {
@@ -1188,28 +1177,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa6800cfed38f0df3a3680f",
-    "name": "Department of Math & Stat",
-    "code": "DEPT_DEPARTMENT_6137",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db893112cdfb0613fd0f4",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:52.480Z",
-    "updatedAt": "2026-09-13T10:50:52.480Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6800dfed38f0df3a36814",
-    "name": "Department of Zoology, Wildlife and Fisheries",
-    "code": "DEPT_DEPARTMENT_8911",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db893112cdfb0613fd0f4",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:53.180Z",
-    "updatedAt": "2026-09-13T10:50:53.180Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa6800efed38f0df3a36819",
     "name": "Faculty of Agriculture",
     "code": "DEPT_FACULTYOFA_1141",
@@ -1386,17 +1353,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa68684490758037de69392",
-    "name": "Computer Science",
-    "code": "COMPUTERSCIE",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db893112cdfb0613fd0f4",
-    "status": true,
-    "createdAt": "2026-09-13T11:18:28.437Z",
-    "updatedAt": "2026-09-13T11:18:28.437Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa6c7c2296e2e3ea375b206",
     "name": "Department of Pharmacy",
     "code": "DEPARTMENT_8270",
@@ -1427,6 +1383,17 @@
     "status": true,
     "createdAt": "2026-09-13T15:56:50.727Z",
     "updatedAt": "2026-09-13T15:56:50.727Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6ca96000be20fab273cf4",
+    "name": "Department of Biochemistry",
+    "code": "DEPARTMENT_7195",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db893112cdfb0613fd0f4",
+    "status": true,
+    "createdAt": "2026-09-13T16:08:54.731Z",
+    "updatedAt": "2026-09-13T16:08:54.731Z",
     "__v": 0
   }
 ]
