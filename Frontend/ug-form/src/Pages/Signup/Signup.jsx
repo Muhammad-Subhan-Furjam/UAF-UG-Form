@@ -57,6 +57,13 @@ const Signup = () => {
   const isPasswordValid =
     hasUppercase && hasLowercase && hasNumber && hasSpecialChar && hasMinLength;
 
+  // Helper to extract string ID from an object or string reference
+  const getRefId = (ref) => {
+    if (!ref) return "";
+    if (typeof ref === "object") return String(ref._id || ref.id || "");
+    return String(ref);
+  };
+
   // ================================
   // LOAD CAMPUSES
   // ================================
@@ -64,7 +71,7 @@ const Signup = () => {
     const fetchCampuses = async () => {
       try {
         const res = await api.get("/campuses");
-        setCampuses(res.data);
+        setCampuses(res.data || []);
       } catch (error) {
         console.log(error);
       }
@@ -73,7 +80,7 @@ const Signup = () => {
   }, []);
 
   // ================================
-  // LOAD FACULTIES
+  // LOAD FACULTIES (Isolated strictly by Selected Campus)
   // ================================
   useEffect(() => {
     if (!campus) {
@@ -83,9 +90,11 @@ const Signup = () => {
     const fetchFaculties = async () => {
       try {
         const res = await api.get("/faculties");
-        const filtered = res.data.filter(
-          (f) => f.campus_id === campus || f.campus_id?._id === campus
-        );
+        const selectedCampusId = String(campus);
+        const filtered = (res.data || []).filter((f) => {
+          const fCampusId = getRefId(f.campus_id);
+          return fCampusId === selectedCampusId;
+        });
         setFaculties(filtered);
       } catch (error) {
         console.log(error);
@@ -95,69 +104,98 @@ const Signup = () => {
   }, [campus]);
 
   // ================================
-  // LOAD DEPARTMENTS
+  // LOAD DEPARTMENTS (Isolated strictly by Selected Faculty & Campus)
   // ================================
   useEffect(() => {
-    if (!faculty) {
+    if (!faculty || !campus) {
       setDepartments([]);
       return;
     }
     const fetchDepartments = async () => {
       try {
         const res = await api.get("/departments");
-        const filtered = res.data.filter(
-          (d) => d.faculty_id === faculty || d.faculty_id?._id === faculty
-        );
+        const selectedCampusId = String(campus);
+        const selectedFacultyId = String(faculty);
+
+        const filtered = (res.data || []).filter((d) => {
+          const dFacultyId = getRefId(d.faculty_id);
+          const dCampusId = getRefId(d.campus_id);
+
+          const facultyMatch = dFacultyId === selectedFacultyId;
+          const campusMatch = !dCampusId || dCampusId === selectedCampusId;
+
+          return facultyMatch && campusMatch;
+        });
         setDepartments(filtered);
       } catch (error) {
         console.log(error);
       }
     };
     fetchDepartments();
-  }, [faculty]);
+  }, [faculty, campus]);
 
   // ================================
-  // LOAD DEGREES
+  // LOAD DEGREES (Isolated strictly by Selected Department, Faculty & Campus)
   // ================================
   useEffect(() => {
-    if (!department) {
+    if (!department || !faculty || !campus) {
       setDegrees([]);
       return;
     }
     const fetchDegrees = async () => {
       try {
         const res = await api.get("/degrees");
-        const filtered = res.data.filter(
-          (deg) =>
-            String(deg.department_id?._id || deg.department_id) === String(department)
-        );
+        const selectedCampusId = String(campus);
+        const selectedFacultyId = String(faculty);
+        const selectedDeptId = String(department);
+
+        const filtered = (res.data || []).filter((deg) => {
+          const degDeptId = getRefId(deg.department_id);
+          const degFacultyId = getRefId(deg.faculty_id);
+          const degCampusId = getRefId(deg.campus_id);
+
+          const deptMatch = degDeptId === selectedDeptId;
+          const facultyMatch = !degFacultyId || degFacultyId === selectedFacultyId;
+          const campusMatch = !degCampusId || degCampusId === selectedCampusId;
+
+          return deptMatch && facultyMatch && campusMatch;
+        });
         setDegrees(filtered);
       } catch (error) {
         console.log(error);
       }
     };
     fetchDegrees();
-  }, [department]);
+  }, [department, faculty, campus]);
 
   // ================================
-  // HANDLERS
+  // HANDLERS (With immediate downstream state reset)
   // ================================
   const handleCampusChange = (e) => {
-    setCampus(e.target.value);
+    const val = e.target.value;
+    setCampus(val);
     setFaculty("");
     setDepartment("");
     setDegree("");
+    setFaculties([]);
+    setDepartments([]);
+    setDegrees([]);
   };
 
   const handleFacultyChange = (e) => {
-    setFaculty(e.target.value);
+    const val = e.target.value;
+    setFaculty(val);
     setDepartment("");
     setDegree("");
+    setDepartments([]);
+    setDegrees([]);
   };
 
   const handleDepartmentChange = (e) => {
-    setDepartment(e.target.value);
+    const val = e.target.value;
+    setDepartment(val);
     setDegree("");
+    setDegrees([]);
   };
 
   const handleDegreeChange = (e) => {
