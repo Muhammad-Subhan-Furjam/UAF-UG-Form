@@ -80,16 +80,6 @@
     "__v": 0
   },
   {
-    "_id": "6a8db893112cdfb0613fd0f3",
-    "name": "Faculty of Arts & Humantarians",
-    "code": "FAH1092",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": false,
-    "createdAt": "2026-08-28T12:00:00.000Z",
-    "updatedAt": "2026-09-13T10:53:56.290Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db893112cdfb0613fd0d6",
     "name": "Faculty of Sciences",
     "code": "FS1078",
