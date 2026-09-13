@@ -221,97 +221,6 @@
     "__v": 0
   },
   {
-    "_id": "6a9d869c6e8e50121a2c3954",
-    "name": "Agriculture",
-    "code": "DGAGRICULT406",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db88d112cdfb0613fd08a",
-    "department_id": "6a8db88d112cdfb0613fd08b",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-06T15:28:28.557Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9d869e6e8e50121a2c3956",
-    "name": "Environmental Science",
-    "code": "DGENVIRONM701",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db88d112cdfb0613fd08a",
-    "department_id": "6a8db88e112cdfb0613fd090",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-06T15:28:30.139Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9d869e6e8e50121a2c3957",
-    "name": "Forestry",
-    "code": "DGFORESTRY718",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db88d112cdfb0613fd08a",
-    "department_id": "6a8db88e112cdfb0613fd08f",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-06T15:28:30.774Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9d869f6e8e50121a2c3958",
-    "name": "Associate Degree in Horticultural Technology",
-    "code": "DGASSOCIAT385",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db88d112cdfb0613fd08a",
-    "department_id": "6a8db88e112cdfb0613fd091",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-06T15:28:31.409Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9d86a06e8e50121a2c3959",
-    "name": "Associate Degree in Agriculture",
-    "code": "DGASSOCIAT801",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db88d112cdfb0613fd08a",
-    "department_id": "6a8db88d112cdfb0613fd08b",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-06T15:28:32.073Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9d86a06e8e50121a2c395a",
-    "name": "Associate Degree in Seed Production of Crop Plants",
-    "code": "DGASSOCIAT381",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db88d112cdfb0613fd08a",
-    "department_id": "6aa68004fed38f0df3a367dc",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-06T15:28:32.713Z",
-    "updatedAt": "2026-09-13T17:13:44.986Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9d86a16e8e50121a2c395b",
-    "name": "Associate Degree in Crop Production and Business Management",
-    "code": "DGASSOCIAT319",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db88d112cdfb0613fd08a",
-    "department_id": "6a8db88d112cdfb0613fd08b",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-06T15:28:33.363Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
     "_id": "6a9d86a26e8e50121a2c395c",
     "name": "Associate Degree in Plant Protection and Quarantine",
     "code": "DGASSOCIAT748",
@@ -1287,19 +1196,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa68003fed38f0df3a367d9",
-    "name": "BS Agri.Biotechnology",
-    "code": "DEG_BSAGRIBIOT_3077",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a9dabf8fa19043c87740b26",
-    "department_id": "6aa68003fed38f0df3a367d8",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:43.456Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa68003fed38f0df3a367da",
     "name": "BS Entomology",
     "code": "DEG_BSENTOMOLO_5819",
@@ -1388,19 +1284,6 @@
     "status": true,
     "createdAt": "2026-09-13T10:50:45.440Z",
     "updatedAt": "2026-09-13T17:14:01.012Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68005fed38f0df3a367e4",
-    "name": "BS Marketing and Agribusiness",
-    "code": "DEG_BSMARKETIN_5564",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a9dabf8fa19043c87740b26",
-    "department_id": "6aa68005fed38f0df3a367e3",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:45.720Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
     "__v": 0
   },
   {
@@ -1859,19 +1742,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa6cffe2227ca35702b8756",
-    "name": "BS Data Analytics",
-    "code": "BSDATAANALYT3353",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a9dabf8fa19043c87740b26",
-    "department_id": "6a8db88d112cdfb0613fd08b",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T16:31:58.620Z",
-    "updatedAt": "2026-09-13T17:09:00.082Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa6d0ca8ece9b8abc5a6010",
     "name": "BS Data Analytics",
     "code": "BSDATAANALYT",
@@ -2077,6 +1947,71 @@
     "status": true,
     "createdAt": "2026-09-13T17:05:33.256Z",
     "updatedAt": "2026-09-13T17:09:00.082Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6dbaeaf98f43812ebca3b",
+    "name": "BS Agronomy",
+    "code": "BSAGRONOMY_5183",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a9dabf8fa19043c87740b26",
+    "department_id": "6a8db88d112cdfb0613fd08b",
+    "duration": "4 Years",
+    "status": true,
+    "createdAt": "2026-09-13T17:21:50.746Z",
+    "updatedAt": "2026-09-13T17:21:50.746Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6dbafaf98f43812ebca3c",
+    "name": "Agri.Biotechnology",
+    "code": "AGRIBIOTEC_4949",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a9dabf8fa19043c87740b26",
+    "department_id": "6aa68003fed38f0df3a367d8",
+    "duration": "4 Years",
+    "status": true,
+    "createdAt": "2026-09-13T17:21:51.084Z",
+    "updatedAt": "2026-09-13T17:21:51.084Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6dbafaf98f43812ebca3d",
+    "name": "BS Biotechnology",
+    "code": "BSBIOTECHN_9462",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a9dabf8fa19043c87740b26",
+    "department_id": "6aa68003fed38f0df3a367d8",
+    "duration": "4 Years",
+    "status": true,
+    "createdAt": "2026-09-13T17:21:51.222Z",
+    "updatedAt": "2026-09-13T17:21:51.222Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6dbafaf98f43812ebca3e",
+    "name": "BS Plant Pathology",
+    "code": "BSPLANTPAT_5872",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a9dabf8fa19043c87740b26",
+    "department_id": "6aa6d9c97c195d627610090b",
+    "duration": "4 Years",
+    "status": true,
+    "createdAt": "2026-09-13T17:21:51.694Z",
+    "updatedAt": "2026-09-13T17:21:51.694Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6dbb1af98f43812ebca3f",
+    "name": "Marketing and Agribusiness",
+    "code": "MARKETINGA_9305",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a9dabf8fa19043c87740b26",
+    "department_id": "6aa68005fed38f0df3a367e3",
+    "duration": "4 Years",
+    "status": true,
+    "createdAt": "2026-09-13T17:21:53.340Z",
+    "updatedAt": "2026-09-13T17:21:53.340Z",
     "__v": 0
   }
 ]
