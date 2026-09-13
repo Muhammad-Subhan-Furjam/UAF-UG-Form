@@ -316,6 +316,42 @@ const updateUserByAdmin = async (req, res) => {
 };
 
 // =========================================
+// TOGGLE USER BLOCK ACCESS BY ADMIN
+// =========================================
+const toggleUserBlockByAdmin = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User account not found." });
+    }
+
+    if (user.role === "superadmin") {
+      return res.status(403).json({ message: "Cannot block Super Admin accounts." });
+    }
+
+    user.status = user.status === false ? true : false;
+    await user.save();
+
+    const populatedUser = await User.findById(userId)
+      .populate("campus_id")
+      .populate("faculty_id")
+      .populate("department_id")
+      .populate("degree_id");
+
+    const statusText = user.status ? "unblocked (login access granted)" : "blocked (login access revoked)";
+    res.status(200).json({
+      message: `Account '${user.name}' login access has been ${statusText} successfully.`,
+      status: user.status,
+      user: populatedUser,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// =========================================
 // DELETE USER BY ADMIN
 // =========================================
 const deleteUserByAdmin = async (req, res) => {
@@ -614,6 +650,7 @@ module.exports = {
   getAllFormsForAdmin,
   createUserByAdmin,
   updateUserByAdmin,
+  toggleUserBlockByAdmin,
   deleteUserByAdmin,
   updateFormStatusByAdmin,
   updateFormByAdmin,

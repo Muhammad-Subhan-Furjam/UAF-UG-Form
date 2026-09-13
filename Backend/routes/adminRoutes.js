@@ -10,6 +10,7 @@ const {
   getAllFormsForAdmin,
   createUserByAdmin,
   updateUserByAdmin,
+  toggleUserBlockByAdmin,
   deleteUserByAdmin,
   updateFormStatusByAdmin,
   updateFormByAdmin,
@@ -39,6 +40,7 @@ router.get("/forms", authMiddleware, requireSuperAdmin, getAllFormsForAdmin);
 
 router.post("/users", authMiddleware, requireSuperAdmin, createUserByAdmin);
 router.put("/users/:userId", authMiddleware, requireSuperAdmin, updateUserByAdmin);
+router.put("/users/:userId/toggle-block", authMiddleware, requireSuperAdmin, toggleUserBlockByAdmin);
 router.delete("/users/:userId", authMiddleware, requireSuperAdmin, deleteUserByAdmin);
 
 router.put("/forms/:formId/status", authMiddleware, requireSuperAdmin, updateFormStatusByAdmin);

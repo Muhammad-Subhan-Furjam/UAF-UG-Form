@@ -252,6 +252,13 @@ const login = async (req, res) => {
       });
     }
 
+    // Check if user account has been blocked by Super Admin
+    if (user.status === false) {
+      return res.status(403).json({
+        message: "Your account access has been blocked by the Super Admin. Please contact administration for assistance.",
+      });
+    }
+
     // Password Check
 
     const isMatch = await bcrypt.compare(password, user.password);

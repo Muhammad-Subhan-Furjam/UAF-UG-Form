@@ -250,6 +250,27 @@ const CoordinatorsList = () => {
   };
 
   // =========================================
+  // TOGGLE BLOCK LOGIN ACCESS
+  // =========================================
+  const handleToggleBlockCoordinator = async (coordId, coordName, currentStatus) => {
+    const isCurrentlyActive = currentStatus !== false;
+    const actionText = isCurrentlyActive ? "BLOCK" : "UNBLOCK";
+    const confirmMessage = isCurrentlyActive
+      ? `Are you sure you want to BLOCK login access for coordinator '${coordName}'? They will be immediately prevented from logging into the portal.`
+      : `Are you sure you want to UNBLOCK login access for coordinator '${coordName}'?`;
+
+    if (window.confirm(confirmMessage)) {
+      try {
+        const res = await api.put(`/admin/users/${coordId}/toggle-block`);
+        alert(res.data?.message || `Coordinator login access ${actionText.toLowerCase()}ed successfully.`);
+        fetchCoordinators();
+      } catch (error) {
+        alert(error.response?.data?.message || `Failed to ${actionText.toLowerCase()} coordinator login access.`);
+      }
+    }
+  };
+
+  // =========================================
   // FILTER HANDLERS
   // =========================================
   const handleFilterCampusChange = (e) => {
@@ -539,6 +560,21 @@ const CoordinatorsList = () => {
                       </td>
                       <td>
                         <div className="action-buttons-group">
+                          <button
+                            className={`admin-toggle-block-btn ${
+                              coord.status !== false ? "block-access" : "unblock-access"
+                            }`}
+                            onClick={() =>
+                              handleToggleBlockCoordinator(coord._id, coord.name, coord.status)
+                            }
+                            title={
+                              coord.status !== false
+                                ? "Click to block coordinator login access"
+                                : "Click to unblock coordinator login access"
+                            }
+                          >
+                            {coord.status !== false ? "🚫 Block Access" : "✅ Unblock Access"}
+                          </button>
                           <button
                             className="admin-edit-btn"
                             onClick={() => handleOpenEdit(coord)}
