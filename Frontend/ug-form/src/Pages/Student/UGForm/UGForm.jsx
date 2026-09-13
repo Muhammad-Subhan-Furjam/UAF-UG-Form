@@ -27,6 +27,9 @@ const UGForm = () => {
 
   const [student, setStudent] = useState(null);
   const [selectedCourses, setSelectedCourses] = useState([]);
+  const [availableCourses, setAvailableCourses] = useState([]);
+  const [activeSchemeFilter, setActiveSchemeFilter] = useState("All");
+  const [coursesLoading, setCoursesLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [hasUploadedVoucher, setHasUploadedVoucher] = useState(false);
@@ -193,6 +196,36 @@ const UGForm = () => {
             : "",
         }));
 
+        // Fetch available courses for student's hierarchy (campus, faculty, department, degree)
+        try {
+          setCoursesLoading(true);
+          const coursesRes = await api.get("/courses");
+          const userCampusId = user.campus_id?._id || user.campus_id || "";
+          const userFacultyId = user.faculty_id?._id || user.faculty_id || "";
+          const userDeptId = user.department_id?._id || user.department_id || "";
+          const userDegreeId = user.degree_id?._id || user.degree_id || "";
+
+          const matchedCourses = (coursesRes.data || []).filter((c) => {
+            const cCampus = c.campus_id?._id || c.campus_id || "";
+            const cFaculty = c.faculty_id?._id || c.faculty_id || "";
+            const cDept = c.department_id?._id || c.department_id || "";
+            const cDegree = c.degree_id?._id || c.degree_id || "";
+
+            const campusMatch = !cCampus || !userCampusId || String(cCampus) === String(userCampusId);
+            const facultyMatch = !cFaculty || !userFacultyId || String(cFaculty) === String(userFacultyId);
+            const deptMatch = !cDept || !userDeptId || String(cDept) === String(userDeptId);
+            const degreeMatch = !cDegree || !userDegreeId || String(cDegree) === String(userDegreeId);
+
+            return campusMatch && facultyMatch && deptMatch && degreeMatch;
+          });
+
+          setAvailableCourses(matchedCourses);
+        } catch (err) {
+          console.log("Error loading available courses:", err);
+        } finally {
+          setCoursesLoading(false);
+        }
+
         // Fetch student's existing forms to check voucher / deferment upload status and URLs for preview
         try {
           const formsRes = await api.get("/ugforms");
@@ -235,6 +268,61 @@ const UGForm = () => {
     setSuccessMsg("");
   };
 
+  // Calculate total selected credit hours
+  const totalSelectedCreditHours = selectedCourses.reduce((sum, c) => {
+    const hrs = parseFloat(c.creditHours) || 0;
+    return sum + hrs;
+  }, 0);
+
+  // Course toggle selection handler with 27 credit hours enforcement
+  const handleToggleCourse = (course) => {
+    const targetId = String(course._id || course.course_id);
+    const isAlreadySelected = selectedCourses.some(
+      (c) => String(c._id || c.course_id) === targetId
+    );
+
+    if (isAlreadySelected) {
+      setSelectedCourses((prev) =>
+        prev.filter((c) => String(c._id || c.course_id) !== targetId)
+      );
+      setErrorMsg("");
+    } else {
+      const courseHrs = parseFloat(course.creditHours) || 0;
+      if (totalSelectedCreditHours + courseHrs > 27) {
+        setErrorMsg(
+          `Cannot select ${course.courseCode}. Total credit hours cannot exceed 27 (Current: ${totalSelectedCreditHours} + ${courseHrs} = ${totalSelectedCreditHours + courseHrs}).`
+        );
+        return;
+      }
+      setErrorMsg("");
+      setSelectedCourses((prev) => [
+        ...prev,
+        {
+          _id: course._id,
+          course_id: course._id,
+          courseCode: course.courseCode,
+          courseTitle: course.courseTitle,
+          creditHours: course.creditHours,
+          courseCategory: course.courseCategory || "General Course",
+          schemeOfStudy: course.schemeOfStudy || "2024",
+          remarks: course.remarks || "",
+          totalMarks: course.totalMarks || "",
+          campus_id: course.campus_id,
+          faculty_id: course.faculty_id,
+          department_id: course.department_id,
+          degree_id: course.degree_id,
+          semester_id: course.semester_id,
+        },
+      ]);
+    }
+  };
+
+  // Filter available courses by selected Scheme of Study
+  const displayedCourses = availableCourses.filter((course) => {
+    if (activeSchemeFilter === "All") return true;
+    return String(course.schemeOfStudy || "2024") === String(activeSchemeFilter);
+  });
+
   const validateMandatoryFields = () => {
     if (
       !formData.studentName?.trim() ||
@@ -250,6 +338,12 @@ const UGForm = () => {
       !formData.address?.trim()
     ) {
       return "All fields marked with * are mandatory. Please complete all fields before proceeding.";
+    }
+    if (selectedCourses.length === 0) {
+      return "Please select at least one course from the course list below for your UG Form.";
+    }
+    if (totalSelectedCreditHours > 27) {
+      return "Total selected courses exceed maximum limit of 27 credit hours.";
     }
     return null;
   };
@@ -593,6 +687,119 @@ const UGForm = () => {
               placeholder="Enter Complete Address"
               required
             />
+          </div>
+
+          {/* COURSE SELECTION SECTION WITH SCHEME OF STUDY FILTERS */}
+          <div className="ug-courses-section">
+            <div className="ug-courses-header">
+              <h3>Select Courses for UG Form</h3>
+              <div className="ug-scheme-filters-bar">
+                <span className="ug-scheme-filter-label">Scheme of Study Filters:</span>
+                {["All", "2022", "2024", "2025", "2026"].map((scheme) => (
+                  <button
+                    key={scheme}
+                    type="button"
+                    className={`ug-scheme-filter-btn ${activeSchemeFilter === scheme ? "active" : ""}`}
+                    onClick={() => setActiveSchemeFilter(scheme)}
+                  >
+                    {scheme === "All" ? "All Schemes" : `Scheme ${scheme}`}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="ug-credits-summary-bar">
+              <div>
+                <strong>Selected Courses:</strong> {selectedCourses.length}
+              </div>
+              <div>
+                <strong>Total Selected Credit Hours:</strong>{" "}
+                <span className={`ug-credits-badge ${totalSelectedCreditHours >= 27 ? "limit" : "normal"}`}>
+                  {totalSelectedCreditHours} / 27 Max Credit Hours
+                </span>
+              </div>
+            </div>
+
+            <div className="ug-courses-table-wrapper">
+              {coursesLoading ? (
+                <div style={{ textAlign: "center", padding: "30px", color: "#64748b" }}>
+                  Loading available courses...
+                </div>
+              ) : displayedCourses.length === 0 ? (
+                <div style={{ textAlign: "center", padding: "30px", color: "#64748b" }}>
+                  No courses found for Scheme of Study: {activeSchemeFilter}.
+                </div>
+              ) : (
+                <table className="ug-courses-table">
+                  <thead>
+                    <tr>
+                      <th style={{ textAlign: "center" }}>Select</th>
+                      <th>Course Code</th>
+                      <th>Course Title</th>
+                      <th>Credit Hours</th>
+                      <th>Category</th>
+                      <th>Scheme</th>
+                      <th>Campus</th>
+                      <th>Faculty</th>
+                      <th>Department</th>
+                      <th>Degree</th>
+                      <th>Semester</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {displayedCourses.map((course) => {
+                      const courseIdStr = String(course._id || course.course_id);
+                      const isSelected = selectedCourses.some(
+                        (c) => String(c._id || c.course_id) === courseIdStr
+                      );
+                      const courseHrs = parseFloat(course.creditHours) || 0;
+                      const isDisabled = !isSelected && totalSelectedCreditHours + courseHrs > 27;
+
+                      const campusName = course.campus_id?.name || student?.campus_id?.name || "Main Campus";
+                      const facultyName = course.faculty_id?.name || student?.faculty_id?.name || "Faculty of Sciences";
+                      const deptName = course.department_id?.name || student?.department_id?.name || "Computer Science";
+                      const degreeName = course.degree_id?.name || formData.degree || "BS Computer Science";
+                      const semesterName = course.semester_id?.name || "Semester 1";
+
+                      return (
+                        <tr key={course._id} className={isSelected ? "selected-row" : ""}>
+                          <td style={{ textAlign: "center" }}>
+                            <input
+                              type="checkbox"
+                              className="ug-course-checkbox"
+                              checked={isSelected}
+                              disabled={isDisabled}
+                              onChange={() => handleToggleCourse(course)}
+                              title={
+                                isDisabled
+                                  ? `Disabled: Adding this course (${courseHrs} CH) exceeds 27 credit hours limit`
+                                  : isSelected
+                                  ? "Click to remove course"
+                                  : "Click to select course"
+                              }
+                            />
+                          </td>
+                          <td style={{ fontWeight: "700", color: "#082f5c" }}>{course.courseCode}</td>
+                          <td>{course.courseTitle}</td>
+                          <td style={{ fontWeight: "600" }}>{course.creditHours}</td>
+                          <td>
+                            <span className="ug-tag-category">{course.courseCategory || "General Course"}</span>
+                          </td>
+                          <td>
+                            <span className="ug-tag-scheme">{course.schemeOfStudy || "2024"}</span>
+                          </td>
+                          <td>{campusName}</td>
+                          <td>{facultyName}</td>
+                          <td>{deptName}</td>
+                          <td>{degreeName}</td>
+                          <td>{semesterName}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              )}
+            </div>
           </div>
 
           {errorMsg && (
