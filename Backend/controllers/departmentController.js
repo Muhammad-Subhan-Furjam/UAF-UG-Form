@@ -46,27 +46,41 @@ const getDepartments = async (req, res) => {
 
 
 
-const addDepartment = async(req,res)=>{
+const generateDeptCode = (name) => {
+  const clean = (name || "").toUpperCase().replace(/[^A-Z0-9]/g, "").substring(0, 10);
+  return clean || "DEPT";
+};
 
-    try{
+const addDepartment = async (req, res) => {
+  try {
+    const { name, campus_id, faculty_id } = req.body;
 
-        const department = await Department.create(req.body);
-
-
-        res.status(201).json({
-            message:"Department Added Successfully",
-            department
-        });
-
-
-    }catch(error){
-
-        res.status(500).json({
-            message:error.message
-        });
-
+    if (!name || !campus_id || !faculty_id) {
+      return res.status(400).json({
+        message: "Department Name, Campus, and Faculty are required",
+      });
     }
 
+    const baseCode =
+      req.body.code || (generateDeptCode(name) + "_" + Math.floor(1000 + Math.random() * 9000));
+
+    const department = await Department.create({
+      name: name.trim(),
+      code: baseCode,
+      campus_id,
+      faculty_id,
+      status: true,
+    });
+
+    res.status(201).json({
+      message: "Department Added Successfully",
+      department,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
 

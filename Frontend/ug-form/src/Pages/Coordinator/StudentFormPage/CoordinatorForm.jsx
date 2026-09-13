@@ -38,6 +38,58 @@ const CoordinatorForm = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  // Add Department State
+  const [showDepartmentModal, setShowDepartmentModal] = useState(false);
+  const [newDepartmentName, setNewDepartmentName] = useState("");
+  const [addingDepartment, setAddingDepartment] = useState(false);
+  const [departmentMsg, setDepartmentMsg] = useState("");
+
+  const handleAddDepartmentSubmit = async (e) => {
+    e.preventDefault();
+    if (!newDepartmentName.trim() || !campus || !faculty) return;
+    setAddingDepartment(true);
+    setDepartmentMsg("");
+    try {
+      const res = await api.post("/departments", {
+        name: newDepartmentName.trim(),
+        campus_id: campus,
+        faculty_id: faculty,
+      });
+      const created = res.data?.department;
+      setDepartmentMsg("Department added successfully!");
+
+      // Refresh departments
+      const deptRes = await api.get("/departments");
+      const selectedCampusId = String(campus);
+      const selectedFacultyId = String(faculty);
+
+      const filtered = (deptRes.data || []).filter((d) => {
+        const getRefId = (ref) => {
+          if (!ref) return "";
+          if (typeof ref === "object") return String(ref._id || ref.id || "");
+          return String(ref);
+        };
+        const dFacultyId = getRefId(d.faculty_id);
+        const dCampusId = getRefId(d.campus_id);
+        return dFacultyId === selectedFacultyId && (!dCampusId || dCampusId === selectedCampusId);
+      });
+      setDepartments(filtered);
+
+      if (created?._id) {
+        setDepartment(created._id);
+      }
+      setTimeout(() => {
+        setShowDepartmentModal(false);
+        setNewDepartmentName("");
+        setDepartmentMsg("");
+      }, 1000);
+    } catch (err) {
+      setDepartmentMsg(err.response?.data?.message || "Failed to add department");
+    } finally {
+      setAddingDepartment(false);
+    }
+  };
+
   // Add Degree State
   const [showDegreeModal, setShowDegreeModal] = useState(false);
   const [newDegreeName, setNewDegreeName] = useState("");
@@ -568,12 +620,37 @@ const CoordinatorForm = () => {
 
             {/* DEPARTMENT (MANDATORY) */}
             <div className="form-group">
-              <label>Select Department *</label>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                <label style={{ margin: 0 }}>Select Department *</label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowDepartmentModal(true);
+                    setDepartmentMsg("");
+                    setNewDepartmentName("");
+                  }}
+                  disabled={!faculty}
+                  style={{
+                    background: "#0284c7",
+                    color: "#ffffff",
+                    border: "none",
+                    borderRadius: "4px",
+                    padding: "3px 9px",
+                    fontSize: "12px",
+                    cursor: faculty ? "pointer" : "not-allowed",
+                    fontWeight: "600",
+                    opacity: faculty ? 1 : 0.6,
+                  }}
+                >
+                  + Add Department
+                </button>
+              </div>
               <select
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
                 required
               >
+                <option value="">Select Department</option>
                 {departments.map((item) => (
                   <option key={item._id} value={item._id}>
                     {item.name}
@@ -915,6 +992,40 @@ const CoordinatorForm = () => {
           </div>
         )}
       </section>
+
+      {/* ADD DEPARTMENT MODAL */}
+      {showDepartmentModal && (
+        <div className="admin-modal-overlay" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 9999 }}>
+          <div style={{ background: "#ffffff", padding: "24px", borderRadius: "8px", width: "100%", maxWidth: "480px", boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+              <h3 style={{ margin: 0, fontSize: "18px", color: "#1e293b" }}>Add New Department to Faculty</h3>
+              <button type="button" onClick={() => setShowDepartmentModal(false)} style={{ background: "none", border: "none", fontSize: "18px", cursor: "pointer", color: "#64748b" }}>✕</button>
+            </div>
+            <form onSubmit={handleAddDepartmentSubmit}>
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "14px", color: "#334155" }}>Department Name *</label>
+                <input
+                  type="text"
+                  value={newDepartmentName}
+                  onChange={(e) => setNewDepartmentName(e.target.value)}
+                  placeholder="e.g. Department of Biochemistry"
+                  required
+                  style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #cbd5e1", fontSize: "14px" }}
+                />
+              </div>
+              {departmentMsg && (
+                <p style={{ color: departmentMsg.includes("success") ? "green" : "red", fontSize: "14px", marginBottom: "12px", fontWeight: "600" }}>{departmentMsg}</p>
+              )}
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
+                <button type="button" onClick={() => setShowDepartmentModal(false)} style={{ padding: "8px 16px", borderRadius: "6px", border: "1px solid #cbd5e1", background: "#f8fafc", cursor: "pointer" }}>Cancel</button>
+                <button type="submit" disabled={addingDepartment} style={{ padding: "8px 16px", borderRadius: "6px", border: "none", background: "#0284c7", color: "#fff", cursor: "pointer", fontWeight: "600" }}>
+                  {addingDepartment ? "Saving..." : "Save Department"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* ADD DEGREE MODAL */}
       {showDegreeModal && (
