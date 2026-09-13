@@ -54,9 +54,9 @@
     "name": "Faculty of Agricultural Engineering and Technology",
     "code": "FAEAT1053",
     "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:21.499Z",
-    "updatedAt": "2026-09-13T10:53:56.290Z",
+    "updatedAt": "2026-09-13T16:38:37.862Z",
     "__v": 0
   },
   {
@@ -190,16 +190,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa54fa7eb00215261fa9d35",
-    "name": "Faculty of Agriculture Engineering and Technology",
-    "code": "FFACULTYO873",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": false,
-    "createdAt": "2026-09-12T13:12:07.614Z",
-    "updatedAt": "2026-09-13T10:53:56.290Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa54fabeb00215261fa9d43",
     "name": "Faculty of Arts and Humanities",
     "code": "FFACULTYO769",
@@ -227,16 +217,6 @@
     "status": true,
     "createdAt": "2026-09-13T10:50:46.144Z",
     "updatedAt": "2026-09-13T10:50:46.144Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6800efed38f0df3a3681b",
-    "name": "Faculty of Agricultural Engineering & Technology",
-    "code": "FAC_FACULTYOFA_5697",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:54.444Z",
-    "updatedAt": "2026-09-13T10:50:54.444Z",
     "__v": 0
   },
   {

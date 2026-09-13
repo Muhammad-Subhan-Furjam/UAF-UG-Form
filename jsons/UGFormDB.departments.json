@@ -38,9 +38,9 @@
     "code": "DFMAP1054",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db891112cdfb0613fd0bd",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:21.573Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
+    "updatedAt": "2026-09-13T16:38:38.892Z",
     "__v": 0
   },
   {
@@ -71,20 +71,20 @@
     "code": "DFE1058",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db891112cdfb0613fd0bd",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:21.876Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
+    "updatedAt": "2026-09-13T16:38:43.493Z",
     "__v": 0
   },
   {
     "_id": "6a8db891112cdfb0613fd0bf",
-    "name": "Department of Fiber and Textile Technology",
+    "name": "Department of Fibre and Textile Technology",
     "code": "DFATT1055",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db891112cdfb0613fd0bd",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:21.655Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
+    "updatedAt": "2026-09-13T16:38:40.074Z",
     "__v": 0
   },
   {
@@ -214,9 +214,9 @@
     "code": "DSEE1056",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db891112cdfb0613fd0bd",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:21.729Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
+    "updatedAt": "2026-09-13T16:38:41.186Z",
     "__v": 0
   },
   {
@@ -225,9 +225,9 @@
     "code": "DESE1057",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db891112cdfb0613fd0bd",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:21.802Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
+    "updatedAt": "2026-09-13T16:38:42.726Z",
     "__v": 0
   },
   {
@@ -382,17 +382,6 @@
     "status": true,
     "createdAt": "2026-08-25T15:45:18.226Z",
     "updatedAt": "2026-09-07T07:07:49.169Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a8db88e112cdfb0613fd092",
-    "name": "Department of Agricultural Engineering",
-    "code": "DABAB1010",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db891112cdfb0613fd0bd",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:18.304Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
     "__v": 0
   },
   {
@@ -605,17 +594,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa54fa7eb00215261fa9d36",
-    "name": "Department of Farm machinery and power",
-    "code": "DDEPARTME553",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa54fa7eb00215261fa9d35",
-    "status": false,
-    "createdAt": "2026-09-12T13:12:07.748Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa54fa9eb00215261fa9d3b",
     "name": "Department of Chemistry",
     "code": "DDEPARTME782",
@@ -810,39 +788,6 @@
     "faculty_id": "6a8db894112cdfb0613fd0df",
     "status": false,
     "createdAt": "2026-09-12T13:13:00.029Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54fdf434ac401453ec867",
-    "name": "Department of Fibre and Textile Technology",
-    "code": "DDEPAR332140",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa54fa7eb00215261fa9d35",
-    "status": false,
-    "createdAt": "2026-09-12T13:13:03.322Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54fe0434ac401453ec869",
-    "name": "Department of Structures and Environmental Engineering",
-    "code": "DDEPAR401163",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa54fa7eb00215261fa9d35",
-    "status": false,
-    "createdAt": "2026-09-12T13:13:04.012Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54fe0434ac401453ec86b",
-    "name": "Department of Food Engineering",
-    "code": "DDEPAR479049",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa54fa7eb00215261fa9d35",
-    "status": false,
-    "createdAt": "2026-09-12T13:13:04.790Z",
     "updatedAt": "2026-09-13T10:53:56.376Z",
     "__v": 0
   },
@@ -1067,61 +1012,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa6800efed38f0df3a3681c",
-    "name": "Department of Farm Machinery and Power",
-    "code": "DEPT_DEPARTMENT_7750",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa6800efed38f0df3a3681b",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:54.584Z",
-    "updatedAt": "2026-09-13T10:50:54.584Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6800efed38f0df3a3681e",
-    "name": "Department of Fibre and Textile Technology",
-    "code": "DEPT_DEPARTMENT_4484",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa6800efed38f0df3a3681b",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:54.864Z",
-    "updatedAt": "2026-09-13T10:50:54.864Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6800ffed38f0df3a36820",
-    "name": "Department of Structures & Environmental Engineering",
-    "code": "DEPT_DEPARTMENT_4243",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa6800efed38f0df3a3681b",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:55.143Z",
-    "updatedAt": "2026-09-13T10:50:55.143Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6800ffed38f0df3a36824",
-    "name": "Department of Energy Systems Engineering",
-    "code": "DEPT_DEPARTMENT_7745",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa6800efed38f0df3a3681b",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:55.697Z",
-    "updatedAt": "2026-09-13T10:50:55.697Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6800ffed38f0df3a36826",
-    "name": "Department of Food Engineering",
-    "code": "DEPT_DEPARTMENT_5846",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa6800efed38f0df3a3681b",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:55.979Z",
-    "updatedAt": "2026-09-13T10:50:55.979Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa68010fed38f0df3a36828",
     "name": "Department of Rural Sociology",
     "code": "DEPT_DEPARTMENT_5137",
@@ -1284,6 +1174,17 @@
     "status": true,
     "createdAt": "2026-09-13T16:18:18.130Z",
     "updatedAt": "2026-09-13T16:18:18.130Z",
+    "__v": 0
+  },
+  {
+    "_id": "6aa6d0c98ece9b8abc5a600f",
+    "name": "Mathematics and Statistics",
+    "code": "MATHEMATICSA",
+    "campus_id": "6a8db88d112cdfb0613fd089",
+    "faculty_id": "6a8db893112cdfb0613fd0f4",
+    "status": true,
+    "createdAt": "2026-09-13T16:35:21.963Z",
+    "updatedAt": "2026-09-13T16:35:21.963Z",
     "__v": 0
   }
 ]
