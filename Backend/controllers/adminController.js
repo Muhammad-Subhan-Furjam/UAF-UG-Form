@@ -6,6 +6,7 @@ require("../models/Semester");
 const User = require("../models/User");
 const Course = require("../models/Course");
 const UGForm = require("../models/UGForm");
+const SystemSetting = require("../models/SystemSetting");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { validatePasswordStrength, escapeRegex, getClientIp } = require("../middleware/securityMiddleware");
@@ -641,6 +642,50 @@ const getAllFormsForAdmin = async (req, res) => {
   }
 };
 
+// =========================================
+// SYSTEM REGISTRATION SETTINGS (TOGGLE SIGNUP ACCESSIBILITY)
+// =========================================
+const getSystemSettings = async (req, res) => {
+  try {
+    let setting = await SystemSetting.findOne();
+    if (!setting) {
+      setting = await SystemSetting.create({
+        studentSignupEnabled: true,
+        coordinatorSignupEnabled: true,
+      });
+    }
+    res.status(200).json(setting);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const updateSystemSettings = async (req, res) => {
+  try {
+    const { studentSignupEnabled, coordinatorSignupEnabled } = req.body;
+    let setting = await SystemSetting.findOne();
+    if (!setting) {
+      setting = new SystemSetting({});
+    }
+
+    if (studentSignupEnabled !== undefined) {
+      setting.studentSignupEnabled = Boolean(studentSignupEnabled);
+    }
+    if (coordinatorSignupEnabled !== undefined) {
+      setting.coordinatorSignupEnabled = Boolean(coordinatorSignupEnabled);
+    }
+
+    await setting.save();
+
+    res.status(200).json({
+      message: "System registration settings updated successfully.",
+      setting,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   adminLogin,
   getAdminStats,
@@ -655,4 +700,6 @@ module.exports = {
   updateFormStatusByAdmin,
   updateFormByAdmin,
   deleteFormByAdmin,
+  getSystemSettings,
+  updateSystemSettings,
 };

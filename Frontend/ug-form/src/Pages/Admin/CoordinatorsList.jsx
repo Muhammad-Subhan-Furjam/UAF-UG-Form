@@ -52,10 +52,36 @@ const CoordinatorsList = () => {
 
   const [saving, setSaving] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const [coordinatorSignupEnabled, setCoordinatorSignupEnabled] = useState(true);
 
   // =========================================
-  // LOAD COORDINATORS & HIERARCHY
+  // LOAD COORDINATORS, HIERARCHY & SETTINGS
   // =========================================
+  const fetchSettings = async () => {
+    try {
+      const res = await api.get("/admin/settings");
+      if (res.data) {
+        setCoordinatorSignupEnabled(res.data.coordinatorSignupEnabled !== false);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleToggleCoordinatorSignup = async () => {
+    const nextState = !coordinatorSignupEnabled;
+    const actionText = nextState ? "ENABLE" : "DISABLE";
+    if (window.confirm(`Are you sure you want to ${actionText} Coordinator Signup globally?`)) {
+      try {
+        const res = await api.put("/admin/settings", { coordinatorSignupEnabled: nextState });
+        setCoordinatorSignupEnabled(nextState);
+        alert(res.data?.message || `Coordinator signup page ${nextState ? "enabled" : "disabled"} successfully.`);
+      } catch (err) {
+        alert(err.response?.data?.message || "Failed to update coordinator signup setting.");
+      }
+    }
+  };
+
   const fetchCoordinators = async () => {
     try {
       setLoading(true);
@@ -70,6 +96,7 @@ const CoordinatorsList = () => {
 
   useEffect(() => {
     fetchCoordinators();
+    fetchSettings();
 
     const fetchHierarchy = async () => {
       try {
@@ -417,13 +444,23 @@ const CoordinatorsList = () => {
           <h2>Coordinators Governance Directory</h2>
           <p>View, alter, and manage all departmental coordinator accounts system-wide.</p>
         </div>
-        <button
-          className="admin-action-btn edit-btn"
-          style={{ padding: "10px 18px", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}
-          onClick={handleOpenAdd}
-        >
-          + Add New Coordinator
-        </button>
+        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <button
+            className={`admin-toggle-block-btn ${coordinatorSignupEnabled ? "block-access" : "unblock-access"}`}
+            style={{ padding: "10px 18px", fontSize: "13px", fontWeight: "bold" }}
+            onClick={handleToggleCoordinatorSignup}
+            title={coordinatorSignupEnabled ? "Click to disable coordinator signup page globally" : "Click to enable coordinator signup page globally"}
+          >
+            {coordinatorSignupEnabled ? "🚫 Disable Coordinator Signup" : "✅ Enable Coordinator Signup"}
+          </button>
+          <button
+            className="admin-action-btn edit-btn"
+            style={{ padding: "10px 18px", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}
+            onClick={handleOpenAdd}
+          >
+            + Add New Coordinator
+          </button>
+        </div>
       </div>
 
       {/* TOOLBAR & FILTERS */}

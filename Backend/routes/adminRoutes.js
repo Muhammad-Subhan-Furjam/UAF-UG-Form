@@ -15,6 +15,8 @@ const {
   updateFormStatusByAdmin,
   updateFormByAdmin,
   deleteFormByAdmin,
+  getSystemSettings,
+  updateSystemSettings,
 } = require("../controllers/adminController");
 
 // Super Admin Middleware
@@ -31,12 +33,17 @@ const { rateLimiter } = require("../middleware/securityMiddleware");
 // Public Super Admin Login Route (Rate Limited)
 router.post("/login", rateLimiter(15, 15 * 60 * 1000), adminLogin);
 
+// Public Settings Route (Readable by public signup forms)
+router.get("/settings", getSystemSettings);
+
 // Protected Super Admin Routes
 router.get("/stats", authMiddleware, requireSuperAdmin, getAdminStats);
 router.get("/students", authMiddleware, requireSuperAdmin, getAllStudents);
 router.get("/coordinators", authMiddleware, requireSuperAdmin, getAllCoordinators);
 router.get("/superadmins", authMiddleware, requireSuperAdmin, getSuperAdmins);
 router.get("/forms", authMiddleware, requireSuperAdmin, getAllFormsForAdmin);
+
+router.put("/settings", authMiddleware, requireSuperAdmin, updateSystemSettings);
 
 router.post("/users", authMiddleware, requireSuperAdmin, createUserByAdmin);
 router.put("/users/:userId", authMiddleware, requireSuperAdmin, updateUserByAdmin);

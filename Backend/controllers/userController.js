@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const SystemSetting = require("../models/SystemSetting");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Campus = require("../models/Campus");
@@ -29,6 +30,20 @@ const signup = async (req, res) => {
       department_id,
       degree_id,
     } = req.body;
+
+    // Check system settings for registration controls
+    const setting = await SystemSetting.findOne();
+    if (role === "student" && setting && setting.studentSignupEnabled === false) {
+      return res.status(403).json({
+        message: "Student signup is currently disabled by the Super Admin. Please contact administration for assistance.",
+      });
+    }
+
+    if (role === "coordinator" && setting && setting.coordinatorSignupEnabled === false) {
+      return res.status(403).json({
+        message: "Coordinator signup is currently disabled by the Super Admin. Please contact administration for assistance.",
+      });
+    }
 
     // 0. Mandatory Fields Check
     if (

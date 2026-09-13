@@ -43,6 +43,28 @@ const Signup = () => {
   const [departments, setDepartments] = useState([]);
   const [degrees, setDegrees] = useState([]);
 
+  // Registration disabled state
+  const [signupDisabled, setSignupDisabled] = useState(false);
+
+  useEffect(() => {
+    const checkSettings = async () => {
+      try {
+        const res = await api.get("/admin/settings");
+        const settings = res.data;
+        if (role === "student" && settings?.studentSignupEnabled === false) {
+          setSignupDisabled(true);
+        } else if (role === "coordinator" && settings?.coordinatorSignupEnabled === false) {
+          setSignupDisabled(true);
+        } else {
+          setSignupDisabled(false);
+        }
+      } catch (err) {
+        console.log("Settings fetch error:", err);
+      }
+    };
+    checkSettings();
+  }, [role]);
+
   // Dynamic Date calculation
   const currentYear = new Date().getFullYear();
   const minAdmissionDate = "2021-01-01";
@@ -242,6 +264,15 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
 
+    if (signupDisabled) {
+      alert(
+        `Registration Closed: ${
+          role === "student" ? "Student" : "Coordinator"
+        } signup is currently disabled by the Super Admin. Please contact administration for assistance.`
+      );
+      return;
+    }
+
     // 0. Mandatory Fields Check
     if (
       !name.trim() ||
@@ -423,6 +454,25 @@ const Signup = () => {
             className="signup-logo"
           />
         </div>
+
+        {signupDisabled && (
+          <div
+            style={{
+              background: "#fff1f2",
+              border: "1.5px solid #fecdd3",
+              color: "#be123c",
+              padding: "16px 20px",
+              borderRadius: "10px",
+              fontWeight: "700",
+              fontSize: "14px",
+              textAlign: "center",
+              margin: "0 0 20px 0",
+              boxShadow: "0 2px 4px rgba(190, 18, 60, 0.08)",
+            }}
+          >
+            ⚠️ Registration Closed: {role === "student" ? "Student" : "Coordinator"} signup is currently disabled by the Super Admin. Please contact administration.
+          </div>
+        )}
 
         <form className="signup-form" onSubmit={handleSignup}>
           {/* AG / Employee ID */}

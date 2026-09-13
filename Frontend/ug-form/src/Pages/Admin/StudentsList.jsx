@@ -59,10 +59,36 @@ const StudentsList = () => {
 
   const [saving, setSaving] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const [studentSignupEnabled, setStudentSignupEnabled] = useState(true);
 
   // =========================================
-  // LOAD STUDENTS & HIERARCHY
+  // LOAD STUDENTS, HIERARCHY & SETTINGS
   // =========================================
+  const fetchSettings = async () => {
+    try {
+      const res = await api.get("/admin/settings");
+      if (res.data) {
+        setStudentSignupEnabled(res.data.studentSignupEnabled !== false);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleToggleStudentSignup = async () => {
+    const nextState = !studentSignupEnabled;
+    const actionText = nextState ? "ENABLE" : "DISABLE";
+    if (window.confirm(`Are you sure you want to ${actionText} Student Signup globally?`)) {
+      try {
+        const res = await api.put("/admin/settings", { studentSignupEnabled: nextState });
+        setStudentSignupEnabled(nextState);
+        alert(res.data?.message || `Student signup page ${nextState ? "enabled" : "disabled"} successfully.`);
+      } catch (err) {
+        alert(err.response?.data?.message || "Failed to update student signup setting.");
+      }
+    }
+  };
+
   const fetchStudents = async () => {
     try {
       setLoading(true);
@@ -77,6 +103,7 @@ const StudentsList = () => {
 
   useEffect(() => {
     fetchStudents();
+    fetchSettings();
 
     const fetchHierarchy = async () => {
       try {
@@ -443,13 +470,23 @@ const StudentsList = () => {
           <h2>Students Governance Directory</h2>
           <p>View, search, edit, and create student accounts system-wide.</p>
         </div>
-        <button
-          className="admin-action-btn edit-btn"
-          style={{ padding: "10px 18px", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}
-          onClick={handleOpenAdd}
-        >
-          + Add New Student
-        </button>
+        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          <button
+            className={`admin-toggle-block-btn ${studentSignupEnabled ? "block-access" : "unblock-access"}`}
+            style={{ padding: "10px 18px", fontSize: "13px", fontWeight: "bold" }}
+            onClick={handleToggleStudentSignup}
+            title={studentSignupEnabled ? "Click to disable student signup page globally" : "Click to enable student signup page globally"}
+          >
+            {studentSignupEnabled ? "🚫 Disable Student Signup" : "✅ Enable Student Signup"}
+          </button>
+          <button
+            className="admin-action-btn edit-btn"
+            style={{ padding: "10px 18px", fontSize: "14px", fontWeight: "bold", cursor: "pointer" }}
+            onClick={handleOpenAdd}
+          >
+            + Add New Student
+          </button>
+        </div>
       </div>
 
       {/* TOOLBAR & FILTERS */}

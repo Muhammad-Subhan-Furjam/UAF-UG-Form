@@ -14,6 +14,11 @@ const AdminDashboard = () => {
     coursesCount: 0,
   });
 
+  const [settings, setSettings] = useState({
+    studentSignupEnabled: true,
+    coordinatorSignupEnabled: true,
+  });
+
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -21,8 +26,12 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
       setErrorMsg("");
-      const res = await api.get("/admin/stats");
-      setStats(res.data);
+      const [resStats, resSettings] = await Promise.all([
+        api.get("/admin/stats"),
+        api.get("/admin/settings"),
+      ]);
+      setStats(resStats.data);
+      if (resSettings.data) setSettings(resSettings.data);
     } catch (error) {
       console.error("Failed to fetch admin stats:", error);
       setErrorMsg(
@@ -30,6 +39,21 @@ const AdminDashboard = () => {
       );
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleToggleSetting = async (key) => {
+    const nextVal = !settings[key];
+    const targetName = key === "studentSignupEnabled" ? "Student Signup" : "Coordinator Signup";
+    const actionText = nextVal ? "ENABLE" : "DISABLE";
+    if (window.confirm(`Are you sure you want to ${actionText} ${targetName} globally?`)) {
+      try {
+        const res = await api.put("/admin/settings", { [key]: nextVal });
+        setSettings(res.data?.setting || { ...settings, [key]: nextVal });
+        alert(res.data?.message || `${targetName} ${nextVal ? "enabled" : "disabled"} successfully.`);
+      } catch (err) {
+        alert(err.response?.data?.message || "Failed to update registration setting.");
+      }
     }
   };
 
@@ -107,6 +131,47 @@ const AdminDashboard = () => {
           </div>
         </div>
       )}
+
+      {/* REGISTRATION CONTROLS CARD */}
+      <div className="admin-quick-actions-card" style={{ background: "#ffffff", border: "1px solid #e2e8f0", marginBottom: "20px" }}>
+        <h3>Portal Registration Governance Controls</h3>
+        <p>Enable or disable public signup pages for students and departmental coordinators with a single click.</p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "15px", marginTop: "15px" }}>
+          {/* STUDENT SIGNUP CONTROL */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flex: 1, minWidth: "280px", background: "#f8fafc", padding: "14px 18px", borderRadius: "8px", border: "1px solid #e2e8f0" }}>
+            <div>
+              <strong style={{ fontSize: "14px", color: "#0f172a", display: "block" }}>Student Registration Page</strong>
+              <span style={{ fontSize: "12px", color: settings.studentSignupEnabled ? "#16a34a" : "#dc2626", fontWeight: "700" }}>
+                Status: {settings.studentSignupEnabled ? "ACTIVE (SIGNUP ENABLED)" : "CLOSED (SIGNUP DISABLED)"}
+              </span>
+            </div>
+            <button
+              className={`admin-toggle-block-btn ${settings.studentSignupEnabled ? "block-access" : "unblock-access"}`}
+              onClick={() => handleToggleSetting("studentSignupEnabled")}
+              style={{ padding: "8px 14px", fontSize: "12px" }}
+            >
+              {settings.studentSignupEnabled ? "🚫 Disable Student Signup" : "✅ Enable Student Signup"}
+            </button>
+          </div>
+
+          {/* COORDINATOR SIGNUP CONTROL */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flex: 1, minWidth: "280px", background: "#f8fafc", padding: "14px 18px", borderRadius: "8px", border: "1px solid #e2e8f0" }}>
+            <div>
+              <strong style={{ fontSize: "14px", color: "#0f172a", display: "block" }}>Coordinator Registration Page</strong>
+              <span style={{ fontSize: "12px", color: settings.coordinatorSignupEnabled ? "#16a34a" : "#dc2626", fontWeight: "700" }}>
+                Status: {settings.coordinatorSignupEnabled ? "ACTIVE (SIGNUP ENABLED)" : "CLOSED (SIGNUP DISABLED)"}
+              </span>
+            </div>
+            <button
+              className={`admin-toggle-block-btn ${settings.coordinatorSignupEnabled ? "block-access" : "unblock-access"}`}
+              onClick={() => handleToggleSetting("coordinatorSignupEnabled")}
+              style={{ padding: "8px 14px", fontSize: "12px" }}
+            >
+              {settings.coordinatorSignupEnabled ? "🚫 Disable Coordinator Signup" : "✅ Enable Coordinator Signup"}
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* QUICK ACTIONS BANNER */}
       <div className="admin-quick-actions-card">
