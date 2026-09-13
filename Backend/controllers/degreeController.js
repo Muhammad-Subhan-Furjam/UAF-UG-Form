@@ -45,7 +45,7 @@ const ensureDegrees = async () => {
 const getDegrees = async (req, res) => {
   try {
     await ensureDegrees();
-    const degrees = await Degree.find()
+    const degrees = await Degree.find({ status: { $ne: false } })
       .populate("campus_id")
       .populate("faculty_id")
       .populate("department_id");

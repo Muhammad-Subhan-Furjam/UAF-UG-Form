@@ -5,11 +5,6 @@ const mongoose = require("mongoose");
 
 const ensureDepartments = async () => {
   try {
-    // Delete any existing Department of Irrigation and Drainage
-    await Department.deleteMany({
-      name: { $regex: /Irrigation and Drainage/i },
-    });
-
     const count = await Department.countDocuments();
     if (count === 0) {
       const filePath = path.join(__dirname, "../../jsons/UGFormDB.departments.json");
@@ -37,7 +32,7 @@ const ensureDepartments = async () => {
 const getDepartments = async (req, res) => {
   try {
     await ensureDepartments();
-    const departments = await Department.find()
+    const departments = await Department.find({ status: { $ne: false } })
       .populate("campus_id")
       .populate("faculty_id");
 
