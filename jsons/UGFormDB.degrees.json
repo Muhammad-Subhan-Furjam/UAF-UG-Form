@@ -1,31 +1,5 @@
 [
   {
-    "_id": "6a8db890112cdfb0613fd0b1",
-    "name": "BS Fashion Designing",
-    "code": "DGBFD1041",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0af",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:20.609Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a8db890112cdfb0613fd0b4",
-    "name": "BS Fine Arts",
-    "code": "DGBFA1044",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0af",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:20.833Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db893112cdfb0613fd0dc",
     "name": "MBA Regular",
     "code": "DGMR1084",
@@ -87,19 +61,6 @@
     "duration": "",
     "status": false,
     "createdAt": "2026-08-25T15:45:19.404Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a8db890112cdfb0613fd0ad",
-    "name": "B.Sc. (Hons.) Human Nutrition and Dietetics",
-    "code": "DGBHH1037",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0ac",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:20.316Z",
     "updatedAt": "2026-09-13T10:53:56.462Z",
     "__v": 0
   },
@@ -221,19 +182,6 @@
     "__v": 0
   },
   {
-    "_id": "6a8db890112cdfb0613fd0b0",
-    "name": "BS Home Economics",
-    "code": "DGBHE1040",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0af",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:20.534Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db893112cdfb0613fd0da",
     "name": "BBA Agribusiness",
     "code": "DGBA1082",
@@ -260,19 +208,6 @@
     "__v": 0
   },
   {
-    "_id": "6a8db890112cdfb0613fd0b3",
-    "name": "BS Human Development and Family Studies",
-    "code": "DGBHDAFS1043",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0af",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:20.760Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db88e112cdfb0613fd099",
     "name": "Bioinformatics",
     "code": "DGB1017",
@@ -282,19 +217,6 @@
     "duration": "",
     "status": false,
     "createdAt": "2026-08-25T15:45:18.817Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a8db890112cdfb0613fd0b2",
-    "name": "BS Clothing and Textile",
-    "code": "DGBCAT1042",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0af",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-08-25T15:45:20.684Z",
     "updatedAt": "2026-09-13T10:53:56.462Z",
     "__v": 0
   },
@@ -425,32 +347,6 @@
     "duration": "",
     "status": false,
     "createdAt": "2026-09-06T15:28:36.710Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9d86a66e8e50121a2c3961",
-    "name": "Home Economics",
-    "code": "DGHOMEECON561",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0af",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-06T15:28:38.808Z",
-    "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6a9d86a76e8e50121a2c3962",
-    "name": "Fashion Design (BFD)",
-    "code": "DGFASHIOND864",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0af",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-06T15:28:39.452Z",
     "updatedAt": "2026-09-13T10:53:56.462Z",
     "__v": 0
   },
@@ -803,19 +699,6 @@
     "status": false,
     "createdAt": "2026-09-09T04:37:47.468Z",
     "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54f9eeb00215261fa9d10",
-    "name": "B.Sc. (Hons.) Food Science",
-    "code": "DGBSCHONSF374",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0ac",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-12T13:11:58.878Z",
-    "updatedAt": "2026-09-13T16:55:20.818Z",
     "__v": 0
   },
   {
@@ -1284,32 +1167,6 @@
     "status": false,
     "createdAt": "2026-09-12T13:13:05.616Z",
     "updatedAt": "2026-09-13T10:53:56.462Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa645a8e5ba3d834ff366ab",
-    "name": "B.Sc. (Hons.) Human Nutrition and Dietetics",
-    "code": "BSCHONSHUMAN",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0ac",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-13T06:41:44.525Z",
-    "updatedAt": "2026-09-13T16:55:21.137Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa66512ac38ecbcfb767eef",
-    "name": "B.S. (Hons.) Human Nutrition & Dietetics",
-    "code": "DEG-B.S2653",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0ac",
-    "duration": "",
-    "status": false,
-    "createdAt": "2026-09-13T08:55:46.681Z",
-    "updatedAt": "2026-09-13T16:55:20.818Z",
     "__v": 0
   },
   {
@@ -1833,19 +1690,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa68012fed38f0df3a36833",
-    "name": "B.Sc. (Hons.) Food Science and Technology",
-    "code": "DEG_BSCHONSFOO_6422",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "department_id": "6a8db890112cdfb0613fd0ac",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:58.210Z",
-    "updatedAt": "2026-09-13T16:55:21.461Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa68012fed38f0df3a36834",
     "name": "B.Sc. (Hons.) Human Nutrition & Dietetics",
     "code": "DEG_BSCHONSHUM_5658",
@@ -1999,32 +1843,6 @@
     "status": true,
     "createdAt": "2026-09-13T10:53:55.937Z",
     "updatedAt": "2026-09-13T10:53:55.937Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6c144527d234f7084e14d",
-    "name": "BS Zoology Wildlife and Fisheries",
-    "code": "BSZOOLOGYWIL",
-    "campus_id": "6aa53f2e93eba337833862ff",
-    "faculty_id": "6aa54f9feb00215261fa9d11",
-    "department_id": "6aa54fa7eb00215261fa9d32",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T15:29:08.678Z",
-    "updatedAt": "2026-09-13T15:29:08.678Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa6c3833b3ffc7e7f3ce6b7",
-    "name": "BS Biochemistry",
-    "code": "BSBIOCHEMIST9012",
-    "campus_id": "6aa53f2e93eba337833862ff",
-    "faculty_id": "6aa54f9feb00215261fa9d11",
-    "department_id": "6aa54fa7eb00215261fa9d32",
-    "duration": "",
-    "status": true,
-    "createdAt": "2026-09-13T15:38:43.591Z",
-    "updatedAt": "2026-09-13T15:38:43.591Z",
     "__v": 0
   },
   {
