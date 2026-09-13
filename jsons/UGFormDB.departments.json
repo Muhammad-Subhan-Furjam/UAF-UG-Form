@@ -155,13 +155,13 @@
   },
   {
     "_id": "6a8db890112cdfb0613fd0ac",
-    "name": "National Institute of Food Science and Technology (NIFSAT)",
+    "name": "National Institute of Food Science and Technology",
     "code": "DNFSATN1036",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:20.236Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
+    "updatedAt": "2026-09-13T16:55:20.585Z",
     "__v": 0
   },
   {
@@ -280,9 +280,9 @@
     "code": "DHS1039",
     "campus_id": "6a8db88d112cdfb0613fd089",
     "faculty_id": "6a8db890112cdfb0613fd0ab",
-    "status": false,
+    "status": true,
     "createdAt": "2026-08-25T15:45:20.461Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
+    "updatedAt": "2026-09-13T16:55:21.627Z",
     "__v": 0
   },
   {
@@ -469,17 +469,6 @@
     "faculty_id": "6aa6651bac38ecbcfb767ef2",
     "status": false,
     "createdAt": "2026-09-06T15:29:03.589Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa54f9eeb00215261fa9d0f",
-    "name": "Institute of Food Science and Technology",
-    "code": "DINSTITUT277",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa54f9eeb00215261fa9d0e",
-    "status": false,
-    "createdAt": "2026-09-12T13:11:58.736Z",
     "updatedAt": "2026-09-13T10:53:56.376Z",
     "__v": 0
   },
@@ -770,17 +759,6 @@
     "__v": 0
   },
   {
-    "_id": "6aa645a8e5ba3d834ff366aa",
-    "name": "National Institute of Food Science and Technology",
-    "code": "NATIONALINST",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa54f9eeb00215261fa9d0e",
-    "status": false,
-    "createdAt": "2026-09-13T06:41:44.146Z",
-    "updatedAt": "2026-09-13T10:53:56.376Z",
-    "__v": 0
-  },
-  {
     "_id": "6aa66535ac38ecbcfb767f06",
     "name": "Department of Education",
     "code": "DEP-DEP9358",
@@ -976,28 +954,6 @@
     "status": true,
     "createdAt": "2026-09-13T10:50:51.213Z",
     "updatedAt": "2026-09-13T11:10:16.465Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68012fed38f0df3a36832",
-    "name": "National Institute of Food Science and Technology",
-    "code": "DEPT_NATIONALIN_2895",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68011fed38f0df3a36831",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:58.071Z",
-    "updatedAt": "2026-09-13T10:50:58.071Z",
-    "__v": 0
-  },
-  {
-    "_id": "6aa68012fed38f0df3a36835",
-    "name": "Institute of Home Sciences",
-    "code": "DEPT_INSTITUTEO_5601",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "faculty_id": "6aa68011fed38f0df3a36831",
-    "status": true,
-    "createdAt": "2026-09-13T10:50:58.491Z",
-    "updatedAt": "2026-09-13T10:50:58.491Z",
     "__v": 0
   },
   {
