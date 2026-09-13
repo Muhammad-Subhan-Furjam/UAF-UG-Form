@@ -1,15 +1,5 @@
 [
   {
-    "_id": "6a8db894112cdfb0613fd0df",
-    "name": "Faculty of Agriculture(Hons.)",
-    "code": "FA1087",
-    "campus_id": "6a8db88d112cdfb0613fd089",
-    "status": true,
-    "createdAt": "2026-08-25T15:45:24.029Z",
-    "updatedAt": "2026-09-13T17:08:59.721Z",
-    "__v": 0
-  },
-  {
     "_id": "6a8db893112cdfb0613fd0f4",
     "name": "Faculty of Sciences",
     "code": "FOS1093",
