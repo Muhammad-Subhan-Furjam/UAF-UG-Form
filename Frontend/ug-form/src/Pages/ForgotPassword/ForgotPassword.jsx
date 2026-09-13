@@ -10,7 +10,9 @@ import api from "../../api/api";
 const ForgotPassword = () => {
   const navigate = useNavigate();
 
+  const [role, setRole] = useState("student"); // "student" or "coordinator"
   const [cnic, setCnic] = useState("");
+  const [employeeId, setEmployeeId] = useState("");
   const [phone, setPhone] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -46,9 +48,16 @@ const ForgotPassword = () => {
     setErrorMessage("");
     setSuccessMessage("");
 
-    if (!cnic || cnic.length !== 13) {
-      setErrorMessage("CNIC / B-Form number must be exactly 13 digits long.");
-      return;
+    if (role === "student") {
+      if (!cnic || cnic.length !== 13) {
+        setErrorMessage("CNIC / B-Form number must be exactly 13 digits long.");
+        return;
+      }
+    } else if (role === "coordinator") {
+      if (!employeeId || !employeeId.trim()) {
+        setErrorMessage("Employee ID is mandatory for Coordinator password reset.");
+        return;
+      }
     }
 
     if (!phone || phone.length !== 11) {
@@ -71,7 +80,9 @@ const ForgotPassword = () => {
     try {
       setLoading(true);
       const res = await api.post("/users/forgot-password", {
-        cnic: cnic.trim(),
+        role: role,
+        cnic: role === "student" ? cnic.trim() : "",
+        employee_id: role === "coordinator" ? employeeId.trim() : "",
         phone: phone.trim(),
         newPassword: newPassword,
       });
@@ -112,7 +123,9 @@ const ForgotPassword = () => {
         <div className="forgot-password-header">
           <div>
             <h1>Reset Password</h1>
-            <p>Verify CNIC & Phone to update your account password</p>
+            <p>
+              Verify {role === "coordinator" ? "Employee ID" : "CNIC"} & Phone to update your account password
+            </p>
           </div>
           <img
             src={universityLogo}
@@ -121,22 +134,63 @@ const ForgotPassword = () => {
           />
         </div>
 
+        {/* ROLE SELECTION TABS */}
+        <div className="role-toggle-tabs">
+          <button
+            type="button"
+            className={`role-tab-btn ${role === "student" ? "active" : ""}`}
+            onClick={() => {
+              setRole("student");
+              setErrorMessage("");
+            }}
+          >
+            Student Account
+          </button>
+          <button
+            type="button"
+            className={`role-tab-btn ${role === "coordinator" ? "active" : ""}`}
+            onClick={() => {
+              setRole("coordinator");
+              setErrorMessage("");
+            }}
+          >
+            Coordinator Account
+          </button>
+        </div>
+
         <form className="forgot-password-form" onSubmit={handleSubmit}>
-          {/* CNIC FIELD */}
-          <div className="form-group">
-            <label htmlFor="cnic">
-              CNIC / B-Form Number <span style={{ color: "red" }}> *</span>
-            </label>
-            <input
-              id="cnic"
-              type="text"
-              value={cnic}
-              onChange={handleCnicChange}
-              placeholder="13-digit CNIC (e.g. 3520112345671)"
-              required
-            />
-            <small className="forgot-hint-text">Must be 13 digits long without dashes</small>
-          </div>
+          {/* STUDENT CNIC / COORDINATOR EMPLOYEE ID FIELD */}
+          {role === "student" ? (
+            <div className="form-group">
+              <label htmlFor="cnic">
+                CNIC / B-Form Number <span style={{ color: "red" }}> *</span>
+              </label>
+              <input
+                id="cnic"
+                type="text"
+                value={cnic}
+                onChange={handleCnicChange}
+                placeholder="13-digit CNIC (e.g. 3520112345671)"
+                required
+              />
+              <small className="forgot-hint-text">Must be 13 digits long without dashes</small>
+            </div>
+          ) : (
+            <div className="form-group">
+              <label htmlFor="employeeId">
+                Employee ID <span style={{ color: "red" }}> *</span>
+              </label>
+              <input
+                id="employeeId"
+                type="text"
+                value={employeeId}
+                onChange={(e) => setEmployeeId(e.target.value)}
+                placeholder="Enter Official Employee ID (e.g. EMP-1002)"
+                required
+              />
+              <small className="forgot-hint-text">Enter your registered Coordinator Employee ID</small>
+            </div>
+          )}
 
           {/* PHONE FIELD */}
           <div className="form-group">

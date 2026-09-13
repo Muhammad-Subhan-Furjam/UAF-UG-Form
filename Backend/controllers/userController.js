@@ -463,31 +463,60 @@ message:error.message
 };
 
 // =========================================
-// FORGOT PASSWORD (CNIC + Phone Verification)
+// FORGOT PASSWORD (CNIC / Employee ID + Phone Verification)
 // =========================================
 const resetPasswordWithCnicAndPhone = async (req, res) => {
   try {
-    const { cnic, phone, newPassword } = req.body;
+    const { cnic, employee_id, phone, newPassword, role } = req.body;
 
-    if (!cnic || !cnic.trim() || !phone || !phone.trim() || !newPassword) {
+    if (!phone || !phone.trim() || !newPassword) {
       return res.status(400).json({
-        message: "CNIC, Phone Number, and New Password are mandatory.",
+        message: "Phone Number and New Password are mandatory.",
       });
     }
 
-    const cleanCnic = cnic.trim();
     const cleanPhone = phone.trim();
+    let user = null;
 
-    // 1. Find user matching CNIC and Phone
-    const user = await User.findOne({
-      cnic: cleanCnic,
-      phone: cleanPhone,
-    }).populate("campus_id faculty_id department_id degree_id");
+    // Coordinator password reset by Employee ID & Phone
+    if (role === "coordinator" || (employee_id && employee_id.trim())) {
+      if (!employee_id || !employee_id.trim()) {
+        return res.status(400).json({
+          message: "Employee ID is mandatory for coordinator password reset.",
+        });
+      }
 
-    if (!user) {
-      return res.status(400).json({
-        message: "Invalid credentials! No account found matching this CNIC and Phone Number.",
-      });
+      const safeEmpId = escapeRegex(employee_id.trim());
+      user = await User.findOne({
+        phone: cleanPhone,
+        employee_id: { $regex: new RegExp(`^${safeEmpId}$`, "i") },
+      }).populate("campus_id faculty_id department_id degree_id");
+
+      if (!user) {
+        return res.status(400).json({
+          message: "Invalid credentials! No coordinator account found matching this Employee ID and Phone Number.",
+        });
+      }
+    }
+    // Student password reset by CNIC & Phone
+    else {
+      if (!cnic || !cnic.trim()) {
+        return res.status(400).json({
+          message: "CNIC / B-Form Number is mandatory for student password reset.",
+        });
+      }
+
+      const cleanCnic = cnic.trim();
+      user = await User.findOne({
+        phone: cleanPhone,
+        cnic: cleanCnic,
+      }).populate("campus_id faculty_id department_id degree_id");
+
+      if (!user) {
+        return res.status(400).json({
+          message: "Invalid credentials! No student account found matching this CNIC and Phone Number.",
+        });
+      }
     }
 
     if (user.role === "superadmin") {
