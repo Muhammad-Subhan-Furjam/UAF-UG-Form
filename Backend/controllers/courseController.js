@@ -70,28 +70,6 @@ const addCourse = async (req, res) => {
       });
     }
 
-    // 1. Check for duplicate courseCode in the database
-    const existingCode = await Course.findOne({
-      courseCode: { $regex: new RegExp(`^${normalizedCode.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
-    });
-
-    if (existingCode) {
-      return res.status(400).json({
-        message: `Course Code '${normalizedCode}' is already present in the database. Duplicate course codes are not allowed.`,
-      });
-    }
-
-    // 2. Check for duplicate courseTitle in the database
-    const existingTitle = await Course.findOne({
-      courseTitle: { $regex: new RegExp(`^${normalizedTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
-    });
-
-    if (existingTitle) {
-      return res.status(400).json({
-        message: `Course Title '${normalizedTitle}' is already present in the database. Duplicate course titles are not allowed.`,
-      });
-    }
-
     // Find or Create Semester
     const semNum = Number(String(semesterNumber).replace(/\D/g, "")) || 1;
     let semester = await Semester.findOne({
@@ -157,34 +135,11 @@ const updateCourse = async (req, res) => {
             "Invalid Course Code format! Allowed formats: 2-7 uppercase letters-2-4 digits (e.g. CS-101) or 2-7 uppercase letters-2-7 uppercase letters-2-4 digits (e.g. CS-MATH-101).",
         });
       }
-
-      const duplicateCode = await Course.findOne({
-        _id: { $ne: req.params.id },
-        courseCode: { $regex: new RegExp(`^${normalizedCode.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
-      });
-
-      if (duplicateCode) {
-        return res.status(400).json({
-          message: `Course Code '${normalizedCode}' is already present in the database. Duplicate course codes are not allowed.`,
-        });
-      }
       req.body.courseCode = normalizedCode;
     }
 
     if (req.body.courseTitle) {
-      const normalizedTitle = req.body.courseTitle.trim();
-
-      const duplicateTitle = await Course.findOne({
-        _id: { $ne: req.params.id },
-        courseTitle: { $regex: new RegExp(`^${normalizedTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i") },
-      });
-
-      if (duplicateTitle) {
-        return res.status(400).json({
-          message: `Course Title '${normalizedTitle}' is already present in the database. Duplicate course titles are not allowed.`,
-        });
-      }
-      req.body.courseTitle = normalizedTitle;
+      req.body.courseTitle = req.body.courseTitle.trim();
     }
 
     const course = await Course.findByIdAndUpdate(

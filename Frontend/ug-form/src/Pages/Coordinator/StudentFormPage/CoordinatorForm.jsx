@@ -38,6 +38,61 @@ const CoordinatorForm = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  // Add Degree State
+  const [showDegreeModal, setShowDegreeModal] = useState(false);
+  const [newDegreeName, setNewDegreeName] = useState("");
+  const [addingDegree, setAddingDegree] = useState(false);
+  const [degreeMsg, setDegreeMsg] = useState("");
+
+  const handleAddDegreeSubmit = async (e) => {
+    e.preventDefault();
+    if (!newDegreeName.trim() || !campus || !faculty || !department) return;
+    setAddingDegree(true);
+    setDegreeMsg("");
+    try {
+      const res = await api.post("/degrees", {
+        name: newDegreeName.trim(),
+        campus_id: campus,
+        faculty_id: faculty,
+        department_id: department,
+      });
+      const created = res.data?.degree;
+      setDegreeMsg("Degree added successfully!");
+
+      // Refresh degrees
+      const degRes = await api.get("/degrees");
+      const selectedCampusId = String(campus);
+      const selectedFacultyId = String(faculty);
+      const selectedDeptId = String(department);
+
+      const filtered = (degRes.data || []).filter((d) => {
+        const getRefId = (ref) => {
+          if (!ref) return "";
+          if (typeof ref === "object") return String(ref._id || ref.id || "");
+          return String(ref);
+        };
+        const dDeptId = getRefId(d.department_id);
+        const dFacultyId = getRefId(d.faculty_id);
+        const dCampusId = getRefId(d.campus_id);
+        return dDeptId === selectedDeptId && (!dFacultyId || dFacultyId === selectedFacultyId) && (!dCampusId || dCampusId === selectedCampusId);
+      });
+      setDegrees(filtered);
+
+      if (created?._id) {
+        setDegree(created._id);
+      }
+      setTimeout(() => {
+        setShowDegreeModal(false);
+        setNewDegreeName("");
+        setDegreeMsg("");
+      }, 1000);
+    } catch (err) {
+      setDegreeMsg(err.response?.data?.message || "Failed to add degree");
+    } finally {
+      setAddingDegree(false);
+    }
+  };
+
   // Course Category Options
   const courseCategories = [
     "General Course",
@@ -372,7 +427,31 @@ const CoordinatorForm = () => {
 
             {/* DEGREE (MANDATORY) */}
             <div className="form-group">
-              <label>Select Degree *</label>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                <label style={{ margin: 0 }}>Select Degree *</label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowDegreeModal(true);
+                    setDegreeMsg("");
+                    setNewDegreeName("");
+                  }}
+                  disabled={!department}
+                  style={{
+                    background: "#0284c7",
+                    color: "#ffffff",
+                    border: "none",
+                    borderRadius: "4px",
+                    padding: "3px 9px",
+                    fontSize: "12px",
+                    cursor: department ? "pointer" : "not-allowed",
+                    fontWeight: "600",
+                    opacity: department ? 1 : 0.6,
+                  }}
+                >
+                  + Add Degree
+                </button>
+              </div>
               <select
                 value={degree}
                 disabled={!department}
@@ -574,6 +653,40 @@ const CoordinatorForm = () => {
           </form>
         )}
       </section>
+
+      {/* ADD DEGREE MODAL */}
+      {showDegreeModal && (
+        <div className="admin-modal-overlay" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 9999 }}>
+          <div style={{ background: "#ffffff", padding: "24px", borderRadius: "8px", width: "100%", maxWidth: "450px", boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+              <h3 style={{ margin: 0, fontSize: "18px", color: "#1e293b" }}>Add New Degree to Department</h3>
+              <button type="button" onClick={() => setShowDegreeModal(false)} style={{ background: "none", border: "none", fontSize: "18px", cursor: "pointer", color: "#64748b" }}>✕</button>
+            </div>
+            <form onSubmit={handleAddDegreeSubmit}>
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600", fontSize: "14px", color: "#334155" }}>Degree Name *</label>
+                <input
+                  type="text"
+                  value={newDegreeName}
+                  onChange={(e) => setNewDegreeName(e.target.value)}
+                  placeholder="e.g. BS Artificial Intelligence or BS Software Engineering"
+                  required
+                  style={{ width: "100%", padding: "10px", borderRadius: "6px", border: "1px solid #cbd5e1", fontSize: "14px" }}
+                />
+              </div>
+              {degreeMsg && (
+                <p style={{ color: degreeMsg.includes("success") ? "green" : "red", fontSize: "14px", marginBottom: "12px", fontWeight: "600" }}>{degreeMsg}</p>
+              )}
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
+                <button type="button" onClick={() => setShowDegreeModal(false)} style={{ padding: "8px 16px", borderRadius: "6px", border: "1px solid #cbd5e1", background: "#f8fafc", cursor: "pointer" }}>Cancel</button>
+                <button type="submit" disabled={addingDegree} style={{ padding: "8px 16px", borderRadius: "6px", border: "none", background: "#0284c7", color: "#fff", cursor: "pointer", fontWeight: "600" }}>
+                  {addingDegree ? "Saving..." : "Save Degree"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

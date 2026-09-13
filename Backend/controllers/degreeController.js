@@ -58,10 +58,28 @@ const getDegrees = async (req, res) => {
   }
 };
 
-// Add Degree (simple - purana)
+// Add Degree
 const addDegree = async (req, res) => {
   try {
-    const degree = await Degree.create(req.body);
+    const { name, campus_id, faculty_id, department_id, duration } = req.body;
+
+    if (!name || !campus_id || !faculty_id || !department_id) {
+      return res.status(400).json({
+        message: "Degree Name, Campus, Faculty, and Department are required",
+      });
+    }
+
+    const code = req.body.code || (generateCode(name) + Math.floor(1000 + Math.random() * 9000));
+
+    const degree = await Degree.create({
+      name: name.trim(),
+      code,
+      campus_id,
+      faculty_id,
+      department_id,
+      duration: duration || "",
+      status: true,
+    });
 
     res.status(201).json({
       message: "Degree Added Successfully",

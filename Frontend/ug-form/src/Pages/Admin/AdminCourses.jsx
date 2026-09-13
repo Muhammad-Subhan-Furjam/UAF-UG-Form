@@ -36,6 +36,58 @@ const AdminCourses = () => {
   const [saving, setSaving] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
 
+  // Add Degree State
+  const [showDegreeModal, setShowDegreeModal] = useState(false);
+  const [degreeCampusId, setDegreeCampusId] = useState("");
+  const [degreeFacultyId, setDegreeFacultyId] = useState("");
+  const [degreeDeptId, setDegreeDeptId] = useState("");
+  const [newDegreeName, setNewDegreeName] = useState("");
+  const [addingDegree, setAddingDegree] = useState(false);
+  const [degreeMsg, setDegreeMsg] = useState("");
+
+  const handleOpenDegreeModal = () => {
+    setDegreeCampusId(formData.campus_id || campuses[0]?._id || "");
+    setDegreeFacultyId(formData.faculty_id || faculties[0]?._id || "");
+    setDegreeDeptId(formData.department_id || departments[0]?._id || "");
+    setNewDegreeName("");
+    setDegreeMsg("");
+    setShowDegreeModal(true);
+  };
+
+  const handleAddDegreeSubmit = async (e) => {
+    e.preventDefault();
+    if (!newDegreeName.trim() || !degreeCampusId || !degreeFacultyId || !degreeDeptId) return;
+    setAddingDegree(true);
+    setDegreeMsg("");
+    try {
+      const res = await api.post("/degrees", {
+        name: newDegreeName.trim(),
+        campus_id: degreeCampusId,
+        faculty_id: degreeFacultyId,
+        department_id: degreeDeptId,
+      });
+      const created = res.data?.degree;
+      setDegreeMsg("Degree added successfully!");
+
+      // Refresh degrees list
+      const degRes = await api.get("/degrees");
+      setDegrees(degRes.data || []);
+
+      if (created?._id) {
+        setFormData((prev) => ({ ...prev, degree_id: created._id }));
+      }
+      setTimeout(() => {
+        setShowDegreeModal(false);
+        setNewDegreeName("");
+        setDegreeMsg("");
+      }, 1000);
+    } catch (err) {
+      setDegreeMsg(err.response?.data?.message || "Failed to add degree");
+    } finally {
+      setAddingDegree(false);
+    }
+  };
+
   // Options
   const categories = [
     "General Course",
@@ -263,9 +315,14 @@ const AdminCourses = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <button className="add-new-btn" onClick={handleOpenAdd}>
-          + Add System Course
-        </button>
+        <div style={{ display: "flex", gap: "10px" }}>
+          <button className="add-new-btn" style={{ background: "#0284c7" }} onClick={handleOpenDegreeModal}>
+            + Add New Degree
+          </button>
+          <button className="add-new-btn" onClick={handleOpenAdd}>
+            + Add System Course
+          </button>
+        </div>
       </div>
 
       {/* TABLE */}
@@ -412,7 +469,25 @@ const AdminCourses = () => {
 
                 {/* DEGREE */}
                 <div className="form-group">
-                  <label>Degree / Discipline *</label>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                    <label style={{ margin: 0 }}>Degree / Discipline *</label>
+                    <button
+                      type="button"
+                      onClick={handleOpenDegreeModal}
+                      style={{
+                        background: "#0284c7",
+                        color: "#ffffff",
+                        border: "none",
+                        borderRadius: "4px",
+                        padding: "3px 9px",
+                        fontSize: "12px",
+                        cursor: "pointer",
+                        fontWeight: "600",
+                      }}
+                    >
+                      + Add Degree
+                    </button>
+                  </div>
                   <select
                     value={formData.degree_id}
                     onChange={(e) => setFormData({ ...formData, degree_id: e.target.value })}
@@ -549,6 +624,97 @@ const AdminCourses = () => {
                 </button>
                 <button type="submit" className="modal-save-btn" disabled={saving}>
                   {saving ? "Saving..." : "Save Course"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+      {/* ADD DEGREE MODAL */}
+      {showDegreeModal && (
+        <div className="admin-modal-overlay" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.5)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 9999 }}>
+          <div style={{ background: "#ffffff", padding: "24px", borderRadius: "8px", width: "100%", maxWidth: "480px", boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+              <h3 style={{ margin: 0, fontSize: "18px", color: "#1e293b" }}>Add New System Degree</h3>
+              <button type="button" onClick={() => setShowDegreeModal(false)} style={{ background: "none", border: "none", fontSize: "18px", cursor: "pointer", color: "#64748b" }}>✕</button>
+            </div>
+            <form onSubmit={handleAddDegreeSubmit}>
+              <div style={{ marginBottom: "12px" }}>
+                <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px", color: "#334155" }}>Campus *</label>
+                <select
+                  value={degreeCampusId}
+                  onChange={(e) => {
+                    setDegreeCampusId(e.target.value);
+                    setDegreeFacultyId("");
+                    setDegreeDeptId("");
+                  }}
+                  required
+                  style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1", fontSize: "14px" }}
+                >
+                  <option value="">Select Campus</option>
+                  {campuses.map((c) => (
+                    <option key={c._id} value={c._id}>{c.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div style={{ marginBottom: "12px" }}>
+                <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px", color: "#334155" }}>Faculty *</label>
+                <select
+                  value={degreeFacultyId}
+                  onChange={(e) => {
+                    setDegreeFacultyId(e.target.value);
+                    setDegreeDeptId("");
+                  }}
+                  required
+                  style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1", fontSize: "14px" }}
+                >
+                  <option value="">Select Faculty</option>
+                  {faculties
+                    .filter((f) => !degreeCampusId || String(f.campus_id?._id || f.campus_id) === String(degreeCampusId))
+                    .map((f) => (
+                      <option key={f._id} value={f._id}>{f.name}</option>
+                    ))}
+                </select>
+              </div>
+
+              <div style={{ marginBottom: "12px" }}>
+                <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px", color: "#334155" }}>Department *</label>
+                <select
+                  value={degreeDeptId}
+                  onChange={(e) => setDegreeDeptId(e.target.value)}
+                  required
+                  style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1", fontSize: "14px" }}
+                >
+                  <option value="">Select Department</option>
+                  {departments
+                    .filter((d) => !degreeFacultyId || String(d.faculty_id?._id || d.faculty_id) === String(degreeFacultyId))
+                    .map((d) => (
+                      <option key={d._id} value={d._id}>{d.name}</option>
+                    ))}
+                </select>
+              </div>
+
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{ display: "block", marginBottom: "4px", fontWeight: "600", fontSize: "13px", color: "#334155" }}>Degree Name *</label>
+                <input
+                  type="text"
+                  value={newDegreeName}
+                  onChange={(e) => setNewDegreeName(e.target.value)}
+                  placeholder="e.g. BS Artificial Intelligence or BS Software Engineering"
+                  required
+                  style={{ width: "100%", padding: "8px", borderRadius: "6px", border: "1px solid #cbd5e1", fontSize: "14px" }}
+                />
+              </div>
+
+              {degreeMsg && (
+                <p style={{ color: degreeMsg.includes("success") ? "green" : "red", fontSize: "14px", marginBottom: "12px", fontWeight: "600" }}>{degreeMsg}</p>
+              )}
+
+              <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
+                <button type="button" onClick={() => setShowDegreeModal(false)} style={{ padding: "8px 16px", borderRadius: "6px", border: "1px solid #cbd5e1", background: "#f8fafc", cursor: "pointer" }}>Cancel</button>
+                <button type="submit" disabled={addingDegree} style={{ padding: "8px 16px", borderRadius: "6px", border: "none", background: "#0284c7", color: "#fff", cursor: "pointer", fontWeight: "600" }}>
+                  {addingDegree ? "Saving..." : "Save Degree"}
                 </button>
               </div>
             </form>
